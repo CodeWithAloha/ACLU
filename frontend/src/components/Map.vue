@@ -11,16 +11,16 @@
 import Mapbox from 'mapbox-gl'
 import { mapState } from 'vuex'
 import 'mapbox-gl/dist/mapbox-gl.css'
-const locationIcon = require('../assets/location.svg')
+// const locationIcon = require('../assets/location.svg')
 // import Vue from 'vue'
 
 Mapbox.accessToken = 'pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTdza2thcGozNSJ9.zw6CcZLxP6lq0x-xfwp6uA'
 
 export default {
   data: function () {
-    return {
-      locationIcon
-    }
+    return {}
+    //   locationIcon
+    // }
   },
   computed: mapState({
     locationDetermined: 'locationDetermined'
