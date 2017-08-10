@@ -1,3 +1,7 @@
+# Data
+
+Please see the [data schema](Schema.md) for more details.
+
 # Installation
 
 ## Requirements

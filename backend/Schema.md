@@ -1,5 +1,6 @@
-# Data
+# Schema
 
+```
 Lat, Lon -> Set of Rules
 
 [
@@ -42,3 +43,4 @@ Lat, Lon -> Set of Rules
         "last_imported_at": "2017-07-07 00:00:00Z"
     }
 ]
+```
