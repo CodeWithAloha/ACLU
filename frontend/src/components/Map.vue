@@ -1,7 +1,6 @@
 <template lang='html'>
   <div class="container">
     <div class='map'></div>
-    <div class="icon" v-html="locationIcon" v-if="locationDetermined"></div>
     <Nav v-if="locationDetermined"></Nav>
   </div>
 </template>
@@ -11,6 +10,9 @@
 import Mapbox from 'mapbox-gl'
 import { mapState } from 'vuex'
 import 'mapbox-gl/dist/mapbox-gl.css'
+// import geocode and styles
+import MapboxGeocoder from 'mapbox-gl-geocoder'
+import 'mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 // const locationIcon = require('../assets/location.svg')
 // import Vue from 'vue'
 
@@ -32,6 +34,10 @@ export default {
       center: [-158.000072, 21.441922],
       zoom: 9
     })
+    // add geocode text field
+    map.addControl(new MapboxGeocoder({
+      accessToken: Mapbox.accessToken
+    }))
     map.on('load', () => {
       import('./parks.geojson').then(data => {
         map.addLayer({
@@ -58,22 +64,6 @@ export default {
             alert('We can\'t seem to determine your position')
           })
         }
-      })
-
-      map.on('click', 'parks', e => {
-        const bounds = new Mapbox.LngLatBounds()
-        e.features[0].geometry.coordinates.forEach(ll => {
-          if (typeof ll === 'object') {
-            return
-          }
-          bounds.extend(ll)
-        })
-        const center = bounds.getCenter()
-
-        new Mapbox.Popup()
-          .setLngLat(center)
-          .setHTML(e.features[0].properties.name)
-          .addTo(map)
       })
     })
   },
