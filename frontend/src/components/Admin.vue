@@ -1,8 +1,30 @@
 <template lang='html'>
-  <div class="container">
-    <div class='map'></div>
-    <Nav v-if="locationDetermined"></Nav>
-  </div>
+  <div id="example">
+  <md-whiteframe md-elevation="2">
+    <md-toolbar>
+      <h1 class="md-title">Hello!</h1>
+    </md-toolbar>
+  </md-whiteframe>
+  
+  <md-layout md-gutter class="main-content">
+    <md-layout md-flex="35" class="form-content">
+      <md-layout md-column>
+        <md-input-container>
+          <label for="name">Name</label>
+          <md-input v-model="name" id="name" name="name"></md-input>
+        </md-input-container>
+
+        <md-input-container>
+          <label for="email">Email</label>
+          <md-input v-model="email" id="email" name="email"></md-input>
+        </md-input-container>
+      </md-layout>
+    </md-layout>
+    
+    <md-layout md-flex="65" class="page-content map">      
+    </md-layout>   
+  </md-layout>
+</div>
 </template>
 
 <script>
@@ -14,8 +36,7 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import MapboxGeocoder from 'mapbox-gl-geocoder'
 import 'mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 // const locationIcon = require('../assets/location.svg')
-import VueMaterial from 'vue-material'
-import 'vue-material/dist/vue-material.css'
+// import Vue from 'vue'
 
 Mapbox.accessToken = 'pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTdza2thcGozNSJ9.zw6CcZLxP6lq0x-xfwp6uA'
 
@@ -76,7 +97,6 @@ export default {
 <style lang='css' scoped>
   .map {
     height: 100vh;
-    width: 100%;
   }
 
   .icon {
@@ -92,5 +112,18 @@ export default {
     width: 2rem;
     height: 2rem;
     fill: #ff0000;
+  }
+
+  .container {
+    padding: 15px;
+    width: inherit;
+  }
+
+  .md-input-container {
+    width: 100%;
+  }
+
+  .md-column {
+    padding: 10px;
   }
 </style>
