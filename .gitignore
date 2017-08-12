@@ -4,3 +4,6 @@
 .vagrant/
 
 # End of https://www.gitignore.io/api/vagrant
+
+.ropeproject/
+frontend/yarn.lock
