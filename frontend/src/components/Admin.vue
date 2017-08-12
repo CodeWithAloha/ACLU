@@ -2,7 +2,7 @@
   <div id="example">
   <md-whiteframe md-elevation="2">
     <md-toolbar>
-      <h1 class="md-title">Hello!</h1>
+      <h1 class="md-title">Add New Asset</h1>
     </md-toolbar>
   </md-whiteframe>
   
@@ -10,13 +10,54 @@
     <md-layout md-flex="35" class="form-content">
       <md-layout md-column>
         <md-input-container>
-          <label for="name">Name</label>
-          <md-input v-model="name" id="name" name="name"></md-input>
+          <label for="name">Organization Name</label>
+          <md-input v-model="name" id="organization_name" name="organization_name"></md-input>
         </md-input-container>
 
         <md-input-container>
-          <label for="email">Email</label>
-          <md-input v-model="email" id="email" name="email"></md-input>
+          <label for="email">Name</label>
+          <md-input v-model="email" id="name" name="name"></md-input>
+        </md-input-container>
+
+        <md-input-container>
+          <label for="email">Time Of Day Start</label>
+          <md-input v-model="email" id="name" name="name"></md-input>
+        </md-input-container>
+
+        <md-input-container>
+          <label for="email">Time Of Day End</label>
+          <md-input v-model="email" id="name" name="name"></md-input>
+        </md-input-container>
+
+        <md-input-container>
+          <label for="email">Effecteive Datetime Start</label>
+          <md-input v-model="email" id="name" name="name"></md-input>
+        </md-input-container>
+
+        <md-input-container>
+          <label for="email">Effecteive Datetime End</label>
+          <md-input v-model="email" id="name" name="name"></md-input>
+        </md-input-container>
+
+        <md-input-container>
+          <label for="users=">Day Of Restriction</label>
+          <md-select name="option" id="option" multiple v-model="items">
+            <md-option v-for="option in options"
+              :key="option"
+              :value="option">
+              {{ option.name }}
+            </md-option>
+          </md-select>
+        </md-input-container>
+
+        <md-input-container>
+          <label for="email">Holiday Restriction</label>
+          <md-input v-model="email" id="name" name="name"></md-input>
+        </md-input-container>
+
+        <md-input-container>
+          <label for="email">Ownership</label>
+          <md-input v-model="email" id="name" name="name"></md-input>
         </md-input-container>
       </md-layout>
     </md-layout>
@@ -44,9 +85,22 @@ Mapbox.accessToken = 'pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTd
 
 export default {
   data: function () {
-    return {}
-    //   locationIcon
-    // }
+    return {
+      food: '',
+      users: [],
+      options: [
+        { id: 1, name: 'Monday' },
+        { id: 2, name: 'Tuesday' },
+        { id: 3, name: 'Wednesday' },
+        { id: 4, name: 'Thursday' },
+        { id: 5, name: 'Friday' },
+        { id: 6, name: 'Saturday' },
+        { id: 7, name: 'Sunday' }
+      ],
+      items: []
+    }
+      //   locationIcon
+      // }
   },
   computed: mapState({
     locationDetermined: 'locationDetermined'
@@ -100,7 +154,7 @@ export default {
 
 <style lang='css' scoped>
   .map {
-    height: 100vh;
+    height: 100;
   }
 
   .icon {
