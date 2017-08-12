@@ -37,6 +37,8 @@ import MapboxGeocoder from 'mapbox-gl-geocoder'
 import 'mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 // const locationIcon = require('../assets/location.svg')
 // import Vue from 'vue'
+import MapboxDraw from '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw'
+import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css'
 
 Mapbox.accessToken = 'pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTdza2thcGozNSJ9.zw6CcZLxP6lq0x-xfwp6uA'
 
@@ -60,6 +62,8 @@ export default {
     map.addControl(new MapboxGeocoder({
       accessToken: Mapbox.accessToken
     }))
+
+    map.addControl(new MapboxDraw())
     map.on('load', () => {
       import('./parks.geojson').then(data => {
         map.addLayer({
