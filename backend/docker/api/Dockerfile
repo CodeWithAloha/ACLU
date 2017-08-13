@@ -8,4 +8,6 @@ RUN cd /src; pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 5000
 
+ENV MONGO_HOST db
+
 CMD ["python", "/src/app.py"]
