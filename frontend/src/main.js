@@ -8,6 +8,8 @@ import 'vue-material/dist/vue-material.css'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 
+import locale from 'element-ui/lib/locale/lang/en'
+
 import App from './App'
 import router from './router'
 import store from './store'
@@ -17,7 +19,7 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 
 Vue.use(VueMaterial)
-Vue.use(ElementUI)
+Vue.use(ElementUI, { locale })
 
 new Vue({
   el: '#app',
