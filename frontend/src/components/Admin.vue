@@ -11,15 +11,11 @@
       <md-layout md-column>
 
 
-        <md-input-container>
-          <label for="name">Organization Name</label>
-          <md-input v-model="name" id="organization_name" name="organization_name"></md-input>
-        </md-input-container>
+        <label for="email">Organization Name</label>
+        <el-input placeholder="Please input" v-model="organization_name"></el-input>
 
-        <md-input-container>
-          <label for="email">Name</label>
-          <md-input v-model="email" id="name" name="name"></md-input>
-        </md-input-container>
+        <label for="email">Name</label>
+        <el-input placeholder="Please input" v-model="name"></el-input>
 
         <label for="email">Time Of Day Start</label>
         <el-time-select
@@ -43,40 +39,52 @@
           placeholder="Select time">
         </el-time-select>
 
-          <label for="email">Effecteive Datetime Start</label>
-          <el-date-picker
-            v-model="datetime_start"
-            type="datetime"
-            placeholder="Select date and time">
-          </el-date-picker>
+        <label for="email">Effecteive Datetime Start</label>
+        <el-date-picker
+          v-model="datetime_start"
+          type="datetime"
+          placeholder="Select date and time">
+        </el-date-picker>
 
-          <label for="email">Effecteive Datetime End</label>
-          <el-date-picker
-            v-model="datetime_end"
-            type="datetime"
-            placeholder="Select date and time">
-          </el-date-picker>
+        <label for="email">Effecteive Datetime End</label>
+        <el-date-picker
+          v-model="datetime_end"
+          type="datetime"
+          placeholder="Select date and time">
+        </el-date-picker>
 
-        <md-input-container>
-          <label for="users=">Day Of Restriction</label>
-          <md-select name="option" id="option" multiple v-model="items">
-            <md-option v-for="option in options"
-              :key="option"
-              :value="option">
-              {{ option.name }}
-            </md-option>
-          </md-select>
-        </md-input-container>
+        <label for="email">Day Of Week Restrictions</label>
+        <el-select v-model="value5" multiple placeholder="Select">
+          <el-option
+            v-for="item in day_options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select>
 
-        <md-input-container>
-          <label for="email">Holiday Restriction</label>
-          <md-input v-model="email" id="name" name="name"></md-input>
-        </md-input-container>
+        <label for="email">Holiday Restrictions</label>
+        <el-select v-model="holiday_restrictions" placeholder="Select">
+          <el-option
+            v-for="item in holiday_restriction_options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select>
 
-        <md-input-container>
-          <label for="email">Ownership</label>
-          <md-input v-model="email" id="name" name="name"></md-input>
-        </md-input-container>
+        <label for="email">Ownership</label>
+        <el-select v-model="ownership" placeholder="Select">
+          <el-option
+            v-for="item in ownership_options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select>
+
+        <el-button type="submit">Submit</el-button>
+
       </md-layout>
     </md-layout>
     
@@ -104,19 +112,60 @@ Mapbox.accessToken = 'pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTd
 export default {
   data: function () {
     return {
+      organization_name: '',
+      name: '',
       time_start: '',
       time_end: '',
       datetime_start: '',
       datetime_end: '',
-      options: [
-        { id: 1, name: 'Monday' },
-        { id: 2, name: 'Tuesday' },
-        { id: 3, name: 'Wednesday' },
-        { id: 4, name: 'Thursday' },
-        { id: 5, name: 'Friday' },
-        { id: 6, name: 'Saturday' },
-        { id: 7, name: 'Sunday' }
-      ],
+      day_options: [{
+        value: '1',
+        label: 'Monday'
+      }, {
+        value: '2',
+        label: 'Tuesday'
+      }, {
+        value: '3',
+        label: 'Wednesday'
+      }, {
+        value: '4',
+        label: 'Thursday'
+      }, {
+        value: '5',
+        label: 'Friday'
+      }, {
+        value: '6',
+        label: 'Saturday'
+      }, {
+        value: '7',
+        label: 'Sunday'
+      }],
+      ownership_options: [{
+        value: '1',
+        label: 'City'
+      }, {
+        value: '2',
+        label: 'State'
+      }, {
+        value: '3',
+        label: 'Private'
+      }, {
+        value: '4',
+        label: 'Federal'
+      }, {
+        value: '5',
+        label: 'Military'
+      }],
+      holiday_restriction_options: [{
+        value: '1',
+        label: 'State'
+      }, {
+        value: '2',
+        label: 'Federal'
+      }],
+      value5: [],
+      holiday_restrictions: [],
+      ownership: [],
       items: []
     }
       //   locationIcon
@@ -174,7 +223,7 @@ export default {
 
 <style lang='css' scoped>
   .map {
-    height: 100;
+    height: calc(100vh - 64px);
   }
 
   .icon {
@@ -203,5 +252,9 @@ export default {
 
   .md-column {
     padding: 10px;
+  }
+
+  .el-date-editor.el-input {
+      width: auto;
   }
 </style>
