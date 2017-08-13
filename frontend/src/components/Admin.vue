@@ -9,6 +9,8 @@
   <md-layout md-gutter class="main-content">
     <md-layout md-flex="35" class="form-content">
       <md-layout md-column>
+
+
         <md-input-container>
           <label for="name">Organization Name</label>
           <md-input v-model="name" id="organization_name" name="organization_name"></md-input>
@@ -19,25 +21,41 @@
           <md-input v-model="email" id="name" name="name"></md-input>
         </md-input-container>
 
-        <md-input-container>
-          <label for="email">Time Of Day Start</label>
-          <md-input v-model="email" id="name" name="name"></md-input>
-        </md-input-container>
+        <label for="email">Time Of Day Start</label>
+        <el-time-select
+          v-model="time_start"
+          :picker-options="{
+            start: '08:30',
+            step: '00:15',
+            end: '18:30'
+          }"
+          placeholder="Select time">
+        </el-time-select>
 
-        <md-input-container>
-          <label for="email">Time Of Day End</label>
-          <md-input v-model="email" id="name" name="name"></md-input>
-        </md-input-container>
+        <label for="email">Time Of Day End</label>
+        <el-time-select
+          v-model="time_end"
+          :picker-options="{
+            start: '08:30',
+            step: '00:15',
+            end: '18:30'
+          }"
+          placeholder="Select time">
+        </el-time-select>
 
-        <md-input-container>
           <label for="email">Effecteive Datetime Start</label>
-          <md-input v-model="email" id="name" name="name"></md-input>
-        </md-input-container>
+          <el-date-picker
+            v-model="datetime_start"
+            type="datetime"
+            placeholder="Select date and time">
+          </el-date-picker>
 
-        <md-input-container>
           <label for="email">Effecteive Datetime End</label>
-          <md-input v-model="email" id="name" name="name"></md-input>
-        </md-input-container>
+          <el-date-picker
+            v-model="datetime_end"
+            type="datetime"
+            placeholder="Select date and time">
+          </el-date-picker>
 
         <md-input-container>
           <label for="users=">Day Of Restriction</label>
@@ -86,8 +104,10 @@ Mapbox.accessToken = 'pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTd
 export default {
   data: function () {
     return {
-      food: '',
-      users: [],
+      time_start: '',
+      time_end: '',
+      datetime_start: '',
+      datetime_end: '',
       options: [
         { id: 1, name: 'Monday' },
         { id: 2, name: 'Tuesday' },
