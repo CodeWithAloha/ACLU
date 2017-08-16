@@ -83,7 +83,7 @@
           </el-option>
         </el-select>
 
-        <el-button type="submit">Submit</el-button>
+        <button v-on:click="submit">Submit</button>
 
       </md-layout>
     </md-layout>
@@ -166,7 +166,8 @@ export default {
       value5: [],
       holiday_restrictions: [],
       ownership: [],
-      items: []
+      items: [],
+      draw: new MapboxDraw()
     }
       //   locationIcon
       // }
@@ -186,7 +187,7 @@ export default {
       accessToken: Mapbox.accessToken
     }))
 
-    map.addControl(new MapboxDraw())
+    map.addControl(this.draw)
     map.on('load', () => {
       import('./parks.geojson').then(data => {
         map.addLayer({
@@ -216,7 +217,10 @@ export default {
       })
     })
   },
-  methods: {},
+  methods: {
+    submit: function () {
+    }
+  },
   components: {}
 }
 </script>
