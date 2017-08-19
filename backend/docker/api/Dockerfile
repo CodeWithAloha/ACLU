@@ -12,4 +12,4 @@ EXPOSE 5000
 
 WORKDIR /src/api
 
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app", "--reload"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app", "--reload", "--capture-output",  "--enable-stdio-inheritance"]
