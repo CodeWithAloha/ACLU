@@ -34,7 +34,6 @@ def main(argv):
 
     if organization:
         for feature in _features_from_path(feature_collection_path):
-            print(organization["_id"])
             f = {
                 "_id": str(uuid.uuid4()),
                  #"geojson": feature,
@@ -55,7 +54,6 @@ def _features_from_path(feature_collection_path=None):
 def _post_features(feature_as_json):
     resource_base_url = _get_resource_url('features')
     r = requests.post(resource_base_url, data=feature_as_json)
-    print(r.content)
 
 
 def _get_organization(organization_name):
