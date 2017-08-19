@@ -5,7 +5,7 @@ Welcome!  [Code for Hawaii](https://codeforhawaii.org) has partnered with the [A
 Please start by reading the [project proposal](ACLU-Access-App.pdf).
 
 *Questions? Want to help?*  
-**Come join us** on Wednesday nights at the (Code for Hawaii meetups)(https://www.meetup.com/Code-for-Hawaii/).  We meet the first three Wednesdays of the month.  (Contact Ryan for Saturday morning hack sessions too). 
+**Come join us** on Wednesday nights at the [Code for Hawaii meetups](https://www.meetup.com/Code-for-Hawaii/).  We meet the first three Wednesdays of the month.  (Contact Ryan for Saturday morning hack sessions too). 
 
 **Quick Links**
 * [General project board](https://github.com/CodeforHawaii/ACLU/projects/1)
