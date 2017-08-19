@@ -3,7 +3,7 @@
     <div class="main-content">
       <div class="rule-name">
         <h2>{{rule.name}}</h2>
-        <div class="status-sign">
+        <div class="status-sign" align=right>
           <md-avatar class="md-avatar-icon md-large">
             <img v-if="rule.status == 0" src="../assets/greenbox.png" alt="Avatar">
             <img v-if="rule.status == 1" src="../assets/greenbox.png" alt="Avatar">
@@ -120,8 +120,8 @@ export default {
     display: inline-block;
   }
   .main-content {
-    padding-left: 15%;
-    padding-right: 15%;
+    padding-left: 10%;
+    padding-right: 10%;
   }
   .title {
     vertical-align: top;
@@ -131,21 +131,26 @@ export default {
   .title > h4 {
     margin: 0px;
   }
+
   .description {
+    float: right;
     vertical-align: top;
     display: inline-block;
-    width: 70%;
+    width: 75%;
   }
   .description > p {
     margin: 0px;
     padding-bottom: 20px;
   }
   .rule-name > h2 {
+    float: left;
     display: inline-block;
     width: 75%;
   }
   .status-sign {
     display: inline-block;
+    width: 25%;
+    padding-right: 20px;
   }
   .rule-name {
     padding-top: 20px;
