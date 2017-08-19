@@ -38,11 +38,15 @@ export default {
       rules: [
         {
           id: 1,
-          name: 'Foo',
+          name: 'Sit/Lie Ban',
           status: 0
         }, {
           id: 2,
-          name: 'Bar',
+          name: 'Park Hours',
+          status: 1
+        }, {
+          id: 3,
+          name: 'A Harmless Rule',
           status: 1
         }
       ]

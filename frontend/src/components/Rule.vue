@@ -50,7 +50,7 @@ export default {
     return {
       // static rules *remove when api is created
       rule: {
-        name: 'Sit Lie Ban',
+        name: 'Sit/Lie Ban',
         status: 0,
         description: 'No person shall sit or lie on a public mall, or on a tarp, towel, sheet, blanket,' +
           'sleeping bag, bedding, planter, chair, bench, or any other object or material' +
