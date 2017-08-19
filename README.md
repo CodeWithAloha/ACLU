@@ -1,7 +1,17 @@
-# Code for Hawaii / ACLU Access to public lands in Hawai`i App
-We're just getting started, stay tuned!
+# Code for Hawaii + ACLU
+# Access to public lands in Hawai`i App
+Welcome!  [Code for Hawaii](https://codeforhawaii.org) has partnered with the [American Civil Liberties Union of Hawai`i](https://acluhi.org) ("ACLU") to create an app.  The intent of the proposed app is to use your geo-location to assist understanding of whose land you are on and your civil rights there.
 
-For now, please help fill out the [project board](https://github.com/CodeforHawaii/ACLU/projects/1).
+Please start by reading the [project proposal](ACLU-Access-App.pdf).
+
+*Questions? Want to help?*  
+**Come join us** on Wednesday nights at the (Code for Hawaii meetups)(https://www.meetup.com/Code-for-Hawaii/).  We meet the first three Wednesdays of the month.  (Contact Ryan for Saturday morning hack sessions too). 
+
+**Quick Links**
+* [General project board](https://github.com/CodeforHawaii/ACLU/projects/1)
+* [Frontend project board](https://github.com/CodeforHawaii/ACLU/projects/3)
+* [Data sources spreadsheet](https://docs.google.com/spreadsheets/d/1eDXV0qamY_5pcfe0SZbqs2PQXR_yJUs0-liX7sJo3wE/)
+
 
 ## Development / Getting Started
 To provide a consistent development setup, we've made scripts to provision a Linux virtual machine that runs Docker containers. _"yo :dog:..."_
