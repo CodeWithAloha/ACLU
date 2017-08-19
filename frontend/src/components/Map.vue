@@ -7,20 +7,15 @@
 </template>
 
 <script>
-/* eslint no-new:0 */
 import Mapbox from 'mapbox-gl'
 import { mapState } from 'vuex'
 import 'mapbox-gl/dist/mapbox-gl.css'
-// const locationIcon = require('../assets/location.svg')
-// import Vue from 'vue'
 
 Mapbox.accessToken = 'pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTdza2thcGozNSJ9.zw6CcZLxP6lq0x-xfwp6uA'
 
 export default {
   data: function () {
     return {}
-    //   locationIcon
-    // }
   },
   computed: mapState({
     locationDetermined: 'locationDetermined'
@@ -46,6 +41,7 @@ export default {
           }
         })
 
+        /* change this to zoom in on bounds of rule */
         if ('geolocation' in navigator) {
           navigator.geolocation.getCurrentPosition(pos => {
             this.$store.commit('locationFound', pos.coords)

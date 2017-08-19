@@ -26,6 +26,9 @@
           <div class="title">
             <h4>Ordiance</h4>
           </div>
+          <div class="description">
+            <div class="map"></div>
+          </div>
         </div>
     </div>
   </div>
@@ -33,6 +36,14 @@
 </template>
 
 <script>
+/* eslint no-new:0 */
+import Mapbox from 'mapbox-gl'
+import 'mapbox-gl/dist/mapbox-gl.css'
+// const locationIcon = require('../assets/location.svg')
+// import Vue from 'vue'
+
+Mapbox.accessToken = 'pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTdza2thcGozNSJ9.zw6CcZLxP6lq0x-xfwp6uA'
+
 export default {
   name: 'Rule',
   data () {
@@ -64,6 +75,41 @@ export default {
   },
   mounted () {
     // use API to grab rule and set it here with this.$route.params.ruleId
+
+    const map = new Mapbox.Map({
+      container: document.querySelector('.map'),
+      style: 'mapbox://styles/mapbox/streets-v9',
+      center: [-158.000072, 21.441922],
+      zoom: 9
+    })
+    map.on('load', () => {
+      import('./parks.geojson').then(data => {
+        map.addLayer({
+          id: 'parks',
+          type: 'fill',
+          paint: {
+            'fill-color': '#ff0000'
+          },
+          source: {
+            type: 'geojson',
+            data
+          }
+        })
+
+        if ('geolocation' in navigator) {
+          navigator.geolocation.getCurrentPosition(pos => {
+            this.$store.commit('locationFound', pos.coords)
+            map.flyTo({
+              center: [pos.coords.longitude, pos.coords.latitude],
+              zoom: 13
+            })
+          }, err => {
+            console.log(err)
+            alert('We can\'t seem to determine your position')
+          })
+        }
+      })
+    })
   }
 }
 </script>
@@ -107,6 +153,10 @@ export default {
   }
   .bill-text {
     padding-bottom: 20px;
+  }
+  .map {
+    height: 200px;
+    width: 100%;
   }
 
 </style>
