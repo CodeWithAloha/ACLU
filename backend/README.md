@@ -54,12 +54,22 @@ After seeding the organization data, you can retrieve them via
 
 ## Sample spatial query to return a feature
 
+This should get you data around Kapiolani Park.
+
 ```
 http get http://localhost:5000/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[-157.823231, 21.269304]}, "$maxDistance": 250}}}
 ```
 
-See below to create a spatial index before you can issue a spatial query above.
+If you see a 500 error come through, see below to create a spatial index before you can issue a spatial query above.
 
+You'll also probably see an error being leaked through the docker container that looks something like the following:
+
+```
+pymongo.errors.OperationFailure: error processing query: ns=aclu.features limit=25Tree: GEONEAR  field=geojson maxdist=250 isNearSphere=0
+aclu-api | Sort: {}
+aclu-api | Proj: { ownership: 1, restrictions: 1, _created: 1, _id: 1, name: 1, last_imported_at: 1, _updated: 1, geojson: 1, organization: 1, _etag: 1 }
+aclu-api |  planner returned error: unable to find index for $geoNear query
+```
 
 ## Helpful Mongo commands
 
@@ -78,3 +88,5 @@ Here's a list of things we need to do.
 
  - Verify that the schema is correct. It was a first pass, so probably needs to
    change.
+ - Fix this README as I used it as a notepad. :D
+ - Add Postman endpoints
