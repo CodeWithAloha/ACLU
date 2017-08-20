@@ -40,12 +40,13 @@ done;
 
 ## Running data importer
 
+ - Bring up the Dockers via make (if you need to rebuild, make sure to rebuild as the make script won't do that for you)
  - Run the command "Converting parks data to geojson" to get the 2017-07-19.parks.geojson file
  - Copy that file into the importer directory
- - Bring up the Dockers
  - Run the command above to seed the organizations
  - ``` python import.py ``` to bring in the parks data
-
+ - http get localhost:5000/features
+ - PROFIT
 
 # TODO
 
