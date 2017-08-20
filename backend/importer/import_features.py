@@ -5,7 +5,7 @@
 #
 # Distributed under terms of the MIT license.
 
-
+import click
 import datetime
 import json
 import logging
@@ -13,6 +13,7 @@ import logging.config
 import os
 import random
 import requests
+import sys
 import uuid
 
 logging.config.fileConfig(
@@ -24,28 +25,31 @@ API_BASE_URL = "http://localhost:5000"
 API_BASE_URL_FORMAT = "{0}/{{0}}".format(API_BASE_URL)
 
 
-def main(argv):
+@click.command()
+@click.option('--feature_collection_path', default=None, help='Path to feature collection file being imported.')
+def import_features(feature_collection_path=None):
     # Let's just hardcode one implementation and we'll worry about the
     # abstraction later.
 
-    feature_collection_path = os.path.join(
-        os.path.dirname(os.path.realpath(__file__)),
-        '2017-07-19.parks.geojson')
+    if feature_collection_path and os.path.isfile(os.path.realpath(feature_collection_path)):
+        organization = _get_organization("Park")
 
-    organization = _get_organization("Park")
-
-    if organization:
-        for feature in _features_from_path(feature_collection_path):
-            f = {
-                "_id": str(uuid.uuid4()),
-                "geojson": feature,
-                "organization": organization["_id"],
-                "name": "foobar",
-                "restrictions": "foobar restriction",
-                "ownership": random.choice(["city", "state", "private", "federal", "military"]),
-                "last_imported_at": datetime.datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
-            }
-            _post_features(f)
+        if organization:
+            for feature in _features_from_path(os.path.realpath(feature_collection_path)):
+                f = {
+                    "_id": str(uuid.uuid4()),
+                    "geojson": feature,
+                    "organization": organization["_id"],
+                    "name": "foobar",
+                    "restrictions": "foobar restriction",
+                    "ownership": random.choice(["city", "state", "private", "federal", "military"]),
+                    "last_imported_at": datetime.datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
+                }
+                _post_features(f)
+        return sys.exit(0)
+    else:
+        logger.error("Please input a valid, importable feature collection file.")
+        return sys.exit(100)
 
 
 def _features_from_path(feature_collection_path=None):
@@ -87,7 +91,7 @@ def _get_regex_payload(field, field_query):
 
 
 if __name__ == '__main__':
-    main(None)
+    import_features()
 
 
 # vim: fenc=utf-8
