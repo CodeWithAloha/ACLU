@@ -60,9 +60,9 @@ def _post_features(feature_as_json):
     resource_base_url = _get_resource_url('features')
     r = requests.post(resource_base_url, json=feature_as_json)
     if r.status_code == 201:
-        print("Successfully uploaded feature(id=" + feature_as_json["_id"] + ")")
+        logger.info("Successfully uploaded feature(id=" + feature_as_json["_id"] + ")")
     else:
-        print(r.content)
+        logger.info("Unsuccessful: " + r.content)
 
 
 def _get_organization(organization_name):
