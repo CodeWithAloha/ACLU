@@ -28,10 +28,6 @@ docker run -v "$(pwd)":/data geodata/gdal \
     "data/parks/2017.07.19 - Parks__Oahu/Parks__Oahu.shp"
 ```
 
-## Running data importer
-
-TBD
-
 ## Seeding organization data with jq, httpie
 
 ```
@@ -41,6 +37,15 @@ do
   printf '\n\n'
 done;
 ```
+
+## Running data importer
+
+ - Run the command "Converting parks data to geojson" to get the 2017-07-19.parks.geojson file
+ - Copy that file into the importer directory
+ - Bring up the Dockers
+ - Run the command above to seed the organizations
+ - ``` python import.py ``` to bring in the parks data
+
 
 # TODO
 
