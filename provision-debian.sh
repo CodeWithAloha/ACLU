@@ -51,10 +51,10 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 # docker in vm, disabled for now
 sudo sg vagrant <<\DEVOPS_BLOCK
-    cd /var/project-aclu/backend/docker
-    # docker-compose build
-    # docker-compose up -d
+    cd /var/project-aclu/backend
+    docker-compose build
+    docker-compose up -d
 
     # PROFIT
-    # curl localhost:5000/aloha
+    curl localhost:5000/aloha
 DEVOPS_BLOCK

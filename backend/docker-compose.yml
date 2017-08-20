@@ -8,7 +8,7 @@ services:
     environment:
       - MONGO_HOST=db
     ports:
-      - localhost:5000:5000
+      - "127.0.0.1:5000:5000"
     volumes:
       - ./api:/src/api
     links:
@@ -16,7 +16,7 @@ services:
   db:
     image: mongo:3.5.11
     ports:
-      - 27017
+      - "27017"
     container_name: aclu-db
     logging:
       driver: none
