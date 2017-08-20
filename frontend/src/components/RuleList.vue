@@ -27,6 +27,10 @@
         </md-table-row>
       </md-table-body>
     </md-table>
+    <md-bottom-bar>
+      <md-bottom-bar-item md-icon="subject">Organization</md-bottom-bar-item>
+      <md-bottom-bar-item md-icon="subject">Rules</md-bottom-bar-item>
+    </md-bottom-bar>
   </div>
 </template>
 
@@ -47,6 +51,34 @@ export default {
         }, {
           id: 3,
           name: 'A Harmless Rule',
+          status: 1
+        }, {
+          id: 4,
+          name: 'Park Hours',
+          status: 1
+        }, {
+          id: 5,
+          name: 'A Harmless Rule',
+          status: 1
+        }, {
+          id: 6,
+          name: 'Park Hours',
+          status: 1
+        }, {
+          id: 7,
+          name: 'A Harmless Rule',
+          status: 1
+        }, {
+          id: 8,
+          name: 'Park Hours',
+          status: 1
+        }, {
+          id: 10,
+          name: 'Park Hours',
+          status: 1
+        }, {
+          id: 11,
+          name: 'Park Hours',
           status: 1
         }
       ]
@@ -70,5 +102,25 @@ export default {
   .rule-status-cell {
     height: inherit;
     width: 25vw;
+  }
+  .md-table-cell {
+    font-size: 20px;
+  }
+  .md-table {
+    position: absolute;
+    top: 64px;
+    bottom: 64px;
+  }
+  .md-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%  !important;
+  }
+  .md-bottom-bar {
+    position: fixed;
+    bottom: 0;
+    z-index: 4
   }
 </style>
