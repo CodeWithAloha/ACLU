@@ -35,6 +35,8 @@
 </template>
 
 <script>
+import './BottomBar.vue'
+
 export default {
   name: 'RuleList',
   data () {
@@ -123,4 +125,5 @@ export default {
     bottom: 0;
     z-index: 4
   }
+
 </style>

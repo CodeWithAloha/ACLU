@@ -1,5 +1,12 @@
 <template>
   <div class="container">
+    <md-toolbar>
+      <md-button class="md-icon-button">
+        <md-icon>menu</md-icon>
+      </md-button>
+
+      <h2 class="md-title" style="flex: 1">Rule List</h2>
+    </md-toolbar>
     <div class="main-content">
       <div class="rule-name">
         <h2>{{rule.name}}</h2>
@@ -31,6 +38,10 @@
           </div>
         </div>
     </div>
+    <md-bottom-bar>
+      <md-bottom-bar-item md-icon="subject">Organization</md-bottom-bar-item>
+      <md-bottom-bar-item md-icon="subject">Rules</md-bottom-bar-item>
+    </md-bottom-bar>
   </div>
 
 </template>
@@ -120,8 +131,12 @@ export default {
     display: inline-block;
   }
   .main-content {
+    position: fixed;
+    top: 64px;
+    bottom: 54px;
     padding-left: 10%;
     padding-right: 10%;
+    overflow: scroll;
   }
   .title {
     vertical-align: top;
@@ -162,6 +177,11 @@ export default {
   .map {
     height: 200px;
     width: 100%;
+  }
+  .md-bottom-bar {
+    position: fixed;
+    bottom: 0;
+    z-index: 4
   }
 
 </style>
