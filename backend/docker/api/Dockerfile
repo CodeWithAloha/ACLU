@@ -2,6 +2,8 @@ FROM python:3.4-alpine
 
 LABEL maintainer "project-aclu@codeforhawaii.org"
 
+RUN apk add --update git
+
 ADD ./api/requirements.txt /src/requirements.txt
 
 RUN cd /src; pip install --no-cache-dir -r requirements.txt

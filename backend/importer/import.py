@@ -6,10 +6,12 @@
 # Distributed under terms of the MIT license.
 
 
+import datetime
 import json
 import logging
 import logging.config
 import os
+import random
 import requests
 import uuid
 
@@ -27,7 +29,7 @@ def main(argv):
     # abstraction later.
 
     feature_collection_path = os.path.join(
-        os.getcwd(),
+        os.path.dirname(os.path.realpath(__file__)),
         '2017-07-19.parks.geojson')
 
     organization = _get_organization("Park")
@@ -36,9 +38,12 @@ def main(argv):
         for feature in _features_from_path(feature_collection_path):
             f = {
                 "_id": str(uuid.uuid4()),
-                 #"geojson": feature,
-                 "organization": organization["_id"],
-                 "name": "foobar"
+                "geojson": feature,
+                "organization": organization["_id"],
+                "name": "foobar",
+                "restrictions": "foobar restriction",
+                "ownership": random.choice(["city", "state", "private", "federal", "military"]),
+                "last_imported_at": datetime.datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
             }
             _post_features(f)
 
@@ -53,7 +58,11 @@ def _features_from_path(feature_collection_path=None):
 
 def _post_features(feature_as_json):
     resource_base_url = _get_resource_url('features')
-    r = requests.post(resource_base_url, data=feature_as_json)
+    r = requests.post(resource_base_url, json=feature_as_json)
+    if r.status_code == 201:
+        print("Successfully uploaded feature(id=" + feature_as_json["_id"] + ")")
+    else:
+        print(r.content)
 
 
 def _get_organization(organization_name):

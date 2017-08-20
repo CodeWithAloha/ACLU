@@ -9,9 +9,10 @@ class UUIDValidator(Validator):
     """
     Extends the base mongo validator adding support for the uuid data-type
     """
-    def _validate_type_uuid(self, field, value):
+    def _validate_type_uuid(self, value):
         try:
             UUID(value)
+            return True
         except ValueError:
             pass
 
