@@ -38,6 +38,10 @@ do
 done;
 ```
 
+After seeding the organization data, you can retrieve them via
+
+```http get http://localhost:5000/organizations```
+
 ## Running data importer
 
  - Bring up the Dockers via make (if you need to rebuild, make sure to rebuild as the make script won't do that for you)
@@ -47,6 +51,26 @@ done;
  - ``` python import.py ``` to bring in the parks data
  - http get localhost:5000/features
  - PROFIT
+
+## Sample spatial query to return a feature
+
+```
+http get http://localhost:5000/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[-157.823231, 21.269304]}, "$maxDistance": 250}}}
+```
+
+See below to create a spatial index before you can issue a spatial query above.
+
+
+## Helpful Mongo commands
+
+### Creating the spatial index
+
+```docker exec -it <db_container_id> mongo aclu --eval "db.features.ensureIndex({'geojson.geometry': '2dsphere'})"```
+
+### Dropping entire collection
+
+```docker exec -it <db_container_id> mongo aclu --eval "db.features.drop()"```
+
 
 # TODO
 
