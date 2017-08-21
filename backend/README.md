@@ -3,6 +3,9 @@
 ## Requirements
 
 * Docker ([Mac](https://store.docker.com/editions/community/docker-ce-desktop-mac); Linux :neckbeard:)
+* [jq](https://stedolan.github.io/jq/)
+* [httpie](https://httpie.org/)
+* Python 2.7.9
 
 ## Running
 
@@ -48,6 +51,7 @@ After seeding the organization data, you can retrieve them via
  - Run the command "Converting parks data to geojson" to get the 2017-07-19.parks.geojson file
  - Copy that file into the importer directory
  - Run the command above to seed the organizations
+ - ```cd importer; pip install -r requirements.txt```
  - ```python import_features.py --feature_collection_path <path_to/2017-07-19.parks.geojson> ``` to bring in the parks data
  - http get localhost:5000/features
  - PROFIT
