@@ -14,6 +14,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "mapbox-gl": "^0.38.0",
     "material-design-icons": "^3.0.1",
     "vue": "^2.3.3",
