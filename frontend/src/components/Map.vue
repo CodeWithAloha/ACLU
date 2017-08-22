@@ -11,6 +11,9 @@ import Mapbox from 'mapbox-gl'
 import { mapState } from 'vuex'
 import 'mapbox-gl/dist/mapbox-gl.css'
 
+import MapboxGeocoder from 'mapbox-gl-geocoder'
+import 'mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
+
 import Axios from 'axios'
 
 Mapbox.accessToken = 'pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTdza2thcGozNSJ9.zw6CcZLxP6lq0x-xfwp6uA'
@@ -18,11 +21,11 @@ Mapbox.accessToken = 'pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTd
 export default {
   data: function () {
     return {
-      featureList: 'asdf'
+      featureList: ''
     }
   },
   computed: mapState({
-    locationDetermined: 'locationDetermined'
+    locationDetermined: {}
   }),
   mounted () {
     const map = new Mapbox.Map({
@@ -32,28 +35,14 @@ export default {
       zoom: 9
     })
 
+    map.addControl(new MapboxGeocoder({
+      accessToken: Mapbox.accessToken
+    }))
+
     map.on('load', () => {
-      // this.getDataByLocation(-157.823231, 21.269304, 250).then(data => {
-      this.getDataAll().then(data => {
-        console.log('ids: ' + data._items.length)
-        for (var i = 0; i < data._items.length; i++) {
-          console.log(data._items[i])
-          var geojson = data._items[i].geojson
-          var id = data._items[i]._id
-          map.addLayer({
-            id: id,
-            type: 'fill',
-            paint: {
-              'fill-color': '#ff0000'
-            },
-            source: {
-              type: 'geojson',
-              data: geojson
-            }
-          })
-        }
-      })
+      this.setAllLayers('http://localhost:5000/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[-157.823231, 21.269304]}, "$maxDistance": 250}}}', map)
     })
+
     /* change this to zoom in on bounds of rule */
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(pos => {
@@ -69,18 +58,32 @@ export default {
     }
   },
   methods: {
-    getDataByLocation (lng, lat, maxDistance) {
-      return Axios.get('http://localhost:5000/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[' + lng + ', ' + lat + ']}, "$maxDistance": ' + maxDistance + '}}}')
-      .then(response => {
-        this.response = response.data
-        return this.response
-      })
+    setLayers (data, map) {
+      for (var i = 0; i < data._items.length; i++) {
+        var geojson = data._items[i].geojson
+        var id = data._items[i]._id
+        map.addLayer({
+          id: id,
+          type: 'fill',
+          paint: {
+            'fill-color': '#ff0000'
+          },
+          source: {
+            type: 'geojson',
+            data: geojson
+          }
+        })
+      }
     },
-    getDataAll () {
-      return Axios.get('http://localhost:5000/features')
+    setAllLayers (href, map) {
+      return Axios.get(href)
         .then(response => {
-          this.response = response.data
-          return this.response
+          this.setLayers(response.data, map)
+          if (response.data._links.next) {
+            return this.setAllLayers('http://localhost:5000/' + response.data._links.next.href, map)
+          } else {
+            return 0
+          }
         })
     }
   },
