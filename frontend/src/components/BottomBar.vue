@@ -1,15 +1,22 @@
 <template>
   <md-bottom-bar>
-    <md-bottom-bar-item md-icon="subject">Organization</md-bottom-bar-item>
-    <md-bottom-bar-item md-icon="subject">Rules</md-bottom-bar-item>
+    <md-bottom-bar-item md-icon="subject">Organizations</md-bottom-bar-item>
+    <md-bottom-bar-item md-icon="subject" @click="rules">Rules</md-bottom-bar-item>
   </md-bottom-bar>
 </template>
 
 <script>
 export default {
   name: 'bottombar',
+  props: ['longitude', 'latitude'],
   data () {
-    return {
+    return {}
+  },
+  mounted () {
+  },
+  methods: {
+    rules () {
+      this.$router.push({name: 'RuleList', params: {lat: this.latitude, lng: this.longitude}})
     }
   }
 }

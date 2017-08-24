@@ -2,99 +2,97 @@
   <div class="container">
 
     <md-toolbar>
-      <md-button class="md-icon-button">
-        <md-icon>menu</md-icon>
-      </md-button>
-
       <h2 class="md-title" style="flex: 1">Rule List</h2>
     </md-toolbar>
 
-    <md-table v-once>
+    <md-table md-sort="restriction" class="rule-table">
+      <md-table-header>
+        <md-table-row>
+          <md-table-head md-sort-by="dessert">Rule Name</md-table-head>
+          <md-table-head md-sort-by="protein" md-numeric>Restriction</md-table-head>
+        </md-table-row>
+      </md-table-header>
+
       <md-table-body>
-        <md-table-row v-for="(rule, index) in rules" :key="index">
-          <router-link :to="{ name: 'Rule', params: { ruleId: rule.id }}">
-            <md-table-cell class="rule-name-cell">
-              {{ rule.name }}
-            </md-table-cell>
-            <md-table-cell class="rule-status-cell">
-              <md-avatar class="md-avatar-icon md-large">
-                <img v-if="rule.status == 0" src="../assets/greenbox.png" alt="Avatar">
-                <img v-if="rule.status == 1" src="../assets/greenbox.png" alt="Avatar">
-                <img v-if="rule.status == 2" src="../assets/greenbox.png" alt="Avatar">
-              </md-avatar>
-            </md-table-cell>
-          </router-link>
+        <md-table-row v-for="(row, index) in rules" :key="index" @click.native="rowClick(row._id)">
+          <md-table-cell>{{row.restrictions}}</md-table-cell>
+          <md-table-cell class="restriction"><div class="red-circle"></div></md-table-cell>
         </md-table-row>
       </md-table-body>
     </md-table>
-    <md-bottom-bar>
-      <md-bottom-bar-item md-icon="subject">Organization</md-bottom-bar-item>
-      <md-bottom-bar-item md-icon="subject">Rules</md-bottom-bar-item>
-    </md-bottom-bar>
+    <bottombar></bottombar>
   </div>
 </template>
 
 <script>
-import './BottomBar.vue'
+import bottombar from './BottomBar.vue'
+
+import Axios from 'axios'
 
 export default {
   name: 'RuleList',
   data () {
     return {
-      rules: [
-        {
-          id: 1,
-          name: 'Sit/Lie Ban',
-          status: 0
-        }, {
-          id: 2,
-          name: 'Park Hours',
-          status: 1
-        }, {
-          id: 3,
-          name: 'A Harmless Rule',
-          status: 1
-        }, {
-          id: 4,
-          name: 'Park Hours',
-          status: 1
-        }, {
-          id: 5,
-          name: 'A Harmless Rule',
-          status: 1
-        }, {
-          id: 6,
-          name: 'Park Hours',
-          status: 1
-        }, {
-          id: 7,
-          name: 'A Harmless Rule',
-          status: 1
-        }, {
-          id: 8,
-          name: 'Park Hours',
-          status: 1
-        }, {
-          id: 10,
-          name: 'Park Hours',
-          status: 1
-        }, {
-          id: 11,
-          name: 'Park Hours',
-          status: 1
-        }
-      ]
+      rules: []
     }
   },
+  beforeRouterEnter () {
+
+  },
+  created () {
+    this.getPushRules(this.$route.params.lng, this.$route.params.lat).then(data => {
+      console.log(data)
+      if (data._links.next) {
+        var href = 'http://localhost:5000/' + data._links.next.href
+        console.log(href)
+        this.getPushRules(href)
+      }
+    })
+  },
+  mounted () {
+    console.log('mounted' + this.rules)
+  },
   methods: {
-    clicked: function () {
+    getRules: function (href) {
+      return Axios.get(href)
+        .then(function (response) {
+          return response.data
+        })
+    },
+    getPushRules: function (lng, lat) {
+      var url = 'http://localhost:5000/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[' + lng + ', ' + lat + ']}, "$maxDistance": 250}}}'
+      return this.getRules(url).then(data => {
+        for (var i = 0; i < data._items.length; i++) {
+          this.rules.push(data._items[i])
+        }
+        return data
+      })
+    },
+    rowClick: function (id) {
+      this.$router.push({name: 'Rule', params: { ruleId: id }})
     }
-  }
+  },
+  components: { bottombar }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .qwer {
+    width: 100px;
+    height: 100px;
+  }
+  .rule-table {
+    width: 100%;
+  }
+  .restriction {
+  }
+  .red-circle {
+    background: #f00;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
   .table-row {
   }
   .rule-name-cell {

@@ -3,6 +3,7 @@
     <div class='map'></div>
     <!--<div class="icon" v-html="locationIcon" v-if="locationDetermined"></div>-->
     <Nav v-if="locationDetermined"></Nav>
+    <bottombar :longitude="this.location.longitude" :latitude="this.location.latitude"></bottombar>
   </div>
 </template>
 
@@ -15,13 +16,17 @@ import MapboxGeocoder from 'mapbox-gl-geocoder'
 import 'mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 
 import Axios from 'axios'
+import bottombar from './BottomBar.vue'
 
 Mapbox.accessToken = 'pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTdza2thcGozNSJ9.zw6CcZLxP6lq0x-xfwp6uA'
 
 export default {
   data: function () {
     return {
-      featureList: ''
+      location: {
+        longitude: 0,
+        latitude: 0
+      }
     }
   },
   computed: mapState({
@@ -40,22 +45,24 @@ export default {
     }))
 
     map.on('load', () => {
-      this.setAllLayers('http://localhost:5000/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[-157.823231, 21.269304]}, "$maxDistance": 250}}}', map)
-    })
-
-    /* change this to zoom in on bounds of rule */
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(pos => {
-        this.$store.commit('locationFound', pos.coords)
-        map.flyTo({
-          center: [pos.coords.longitude, pos.coords.latitude],
-          zoom: 13
+      /* change this to zoom in on bounds of rule */
+      if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(pos => {
+          this.$store.commit('locationFound', pos.coords)
+          map.flyTo({
+            center: [pos.coords.longitude, pos.coords.latitude],
+            zoom: 13
+          })
+          this.setAllLayers(pos.coords.longitude, pos.coords.latitude, map)
+          this.location.longitude = pos.coords.longitude
+          this.location.latitude = pos.coords.latitude
+          console.log(this.location.longitude)
+        }, err => {
+          console.log(err)
+          alert('We can\'t seem to determine your position')
         })
-      }, err => {
-        console.log(err)
-        alert('We can\'t seem to determine your position')
-      })
-    }
+      }
+    })
   },
   methods: {
     setLayers (data, map) {
@@ -75,19 +82,18 @@ export default {
         })
       }
     },
-    setAllLayers (href, map) {
-      return Axios.get(href)
+    setAllLayers (lng, lat, map) {
+      var url = 'http://localhost:5000/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[' + lng + ', ' + lat + ']}, "$maxDistance": 250}}}'
+      return Axios.get(url)
         .then(response => {
           this.setLayers(response.data, map)
           if (response.data._links.next) {
             return this.setAllLayers('http://localhost:5000/' + response.data._links.next.href, map)
-          } else {
-            return 0
           }
         })
     }
   },
-  components: {}
+  components: { bottombar }
 }
 </script>
 

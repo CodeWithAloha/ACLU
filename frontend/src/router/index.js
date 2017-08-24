@@ -13,7 +13,7 @@ export default new Router({
       name: 'Map',
       component: Map
     }, {
-      path: '/rule_list',
+      path: '/rule_list/:lat?/:lng?',
       name: 'RuleList',
       component: RuleList
     }, {
