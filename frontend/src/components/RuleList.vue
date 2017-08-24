@@ -40,14 +40,7 @@ export default {
 
   },
   created () {
-    this.getPushRules(this.$route.params.lng, this.$route.params.lat).then(data => {
-      console.log(data)
-      if (data._links.next) {
-        var href = 'http://localhost:5000/' + data._links.next.href
-        console.log(href)
-        this.getPushRules(href)
-      }
-    })
+    this.getAllRules(this.$route.params.lng, this.$route.params.lat)
   },
   mounted () {
     console.log('mounted' + this.rules)
@@ -59,13 +52,21 @@ export default {
           return response.data
         })
     },
-    getPushRules: function (lng, lat) {
-      var url = 'http://localhost:5000/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[' + lng + ', ' + lat + ']}, "$maxDistance": 250}}}'
+    pushRules: function (url) {
       return this.getRules(url).then(data => {
         for (var i = 0; i < data._items.length; i++) {
           this.rules.push(data._items[i])
         }
         return data
+      })
+    },
+    getAllRules: function (lng, lat) {
+      var url = 'http://localhost:5000/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[' + lng + ', ' + lat + ']}, "$maxDistance": 25000}}}'
+      this.pushRules(url).then(data => {
+        if (data._links.next) {
+          var href = 'http://localhost:5000/' + data._links.next.href
+          this.pushRules(href)
+        }
       })
     },
     rowClick: function (id) {

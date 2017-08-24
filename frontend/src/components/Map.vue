@@ -40,9 +40,17 @@ export default {
       zoom: 9
     })
 
-    map.addControl(new MapboxGeocoder({
+    var geocoder = new MapboxGeocoder({
       accessToken: Mapbox.accessToken
-    }))
+    })
+    map.addControl(geocoder)
+
+    // on geocoder retrieve
+    geocoder.on('result', (ev) => {
+      // clear map of layers
+      // this.removeAllLayers(map)
+      this.setAllLayers(ev.result.geometry.coordinates[0], ev.result.geometry.coordinates[1], map)
+    })
 
     map.on('load', () => {
       /* change this to zoom in on bounds of rule */
@@ -69,6 +77,7 @@ export default {
       for (var i = 0; i < data._items.length; i++) {
         var geojson = data._items[i].geojson
         var id = data._items[i]._id
+
         map.addLayer({
           id: id,
           type: 'fill',
@@ -83,14 +92,24 @@ export default {
       }
     },
     setAllLayers (lng, lat, map) {
-      var url = 'http://localhost:5000/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[' + lng + ', ' + lat + ']}, "$maxDistance": 250}}}'
-      return Axios.get(url)
+      var url = 'http://localhost:5000/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[' + lng + ', ' + lat + ']}, "$maxDistance": 25000}}}'
+      this.getLayerData(url, map)
+    },
+    getLayerData (href, map) {
+      return Axios.get(href)
         .then(response => {
           this.setLayers(response.data, map)
+          console.log('asdf')
           if (response.data._links.next) {
-            return this.setAllLayers('http://localhost:5000/' + response.data._links.next.href, map)
+            var url = 'http://localhost:5000/' + response.data._links.next.href
+            return this.getLayerData(url, map)
           }
         })
+    },
+    removeAllLayers (map) {
+      map.eachLayer(function (layer) {
+        map.removeLayer(layer)
+      })
     }
   },
   components: { bottombar }
