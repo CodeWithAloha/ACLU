@@ -27,12 +27,15 @@ import Mapbox from 'mapbox-gl'
 import { mapState } from 'vuex'
 import 'mapbox-gl/dist/mapbox-gl.css'
 
-import MapboxGeocoder from 'mapbox-gl-geocoder'
-import 'mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
-
 import Axios from 'axios'
 import bottombar from './BottomBar.vue'
 import topbar from './TopBar.vue'
+
+// import geocode and styles
+import MapboxGeocoder from 'mapbox-gl-geocoder'
+import 'mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
+
+// const locationIcon = require('../assets/location.svg')
 
 Mapbox.accessToken = 'pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTdza2thcGozNSJ9.zw6CcZLxP6lq0x-xfwp6uA'
 

@@ -9,7 +9,6 @@ const store = new Vuex.Store({
   },
   mutations: {
     locationFound (state, coords) {
-      console.log(coords)
       state.locationDetermined = true
       state.location = [coords.latitude, coords.longitude]
     }
