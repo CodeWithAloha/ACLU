@@ -1,52 +1,13 @@
 <template>
   <div class="container">
-    <md-toolbar>
-      <md-button class="md-icon-button">
-        <md-icon>menu</md-icon>
-      </md-button>
+    <topbar name="Rule"></topbar>
 
-      <h2 class="md-title" style="flex: 1">Rule List</h2>
-    </md-toolbar>
     <div class="main-content">
       <div class="rule-name">
-        <h2>{{name}}</h2>
-        <!--
-        <div class="status-sign" align=right>
-          <md-avatar class="md-avatar-icon md-large">
-            <img v-if="rule.status == 0" src="../assets/greenbox.png" alt="Avatar">
-            <img v-if="rule.status == 1" src="../assets/greenbox.png" alt="Avatar">
-            <img v-if="rule.status == 2" src="../assets/greenbox.png" alt="Avatar">
-          </md-avatar>
-        </div>
-        -->
+        <h2>{{rule.name}}</h2>
       </div>
-      <!--
-      <div class="bill-text">
-        <div class="title">
-            <h4>Bill Text</h4>
-          </div>
-          <div class="description">
-            <p>{{ rule.description }}</p>
-            <div v-for="(time, index) in rule.time">
-              ({{index + 1}}) <b>{{time.name}}</b> {{time.description}}
-            </div>
-          </div>
-        </div>
-        <div class="ordiance">
-          <div class="title">
-            <h4>Ordiance</h4>
-          </div>
-          <div class="description">
-            <div class="map"></div>
-          </div>
-        </div>
-      </div
-        -->
     </div>
-    <md-bottom-bar>
-      <md-bottom-bar-item md-icon="subject">Organization</md-bottom-bar-item>
-      <md-bottom-bar-item md-icon="subject">Rules</md-bottom-bar-item>
-    </md-bottom-bar>
+    <bottombar></bottombar>
   </div>
 
 </template>
@@ -55,6 +16,9 @@
 /* eslint no-new:0 */
 import Mapbox from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
+
+import topbar from './TopBar.vue'
+import bottombar from './BottomBar.vue'
 
 import Axios from 'axios'
 // const locationIcon = require('../assets/location.svg')
@@ -67,7 +31,7 @@ export default {
   data () {
     return {
       // static rules *remove when api is created
-      name: ''
+      rule: {}
     }
   },
   methods: {
@@ -82,47 +46,13 @@ export default {
   mounted () {
     this.getRule(this.$route.params.id)
       .then(data => {
-        console.log(data)
+        this.rule = data
         this.name = data.name
-        console.log(this.name)
+        this.restriction = data.restrictions
       })
     // use API to grab rule and set it here with this.$route.params.ruleId
-
-    const map = new Mapbox.Map({
-      container: document.querySelector('.map'),
-      style: 'mapbox://styles/mapbox/streets-v9',
-      center: [-158.000072, 21.441922],
-      zoom: 9
-    })
-    map.on('load', () => {
-      import('./parks.geojson').then(data => {
-        map.addLayer({
-          id: 'parks',
-          type: 'fill',
-          paint: {
-            'fill-color': '#ff0000'
-          },
-          source: {
-            type: 'geojson',
-            data
-          }
-        })
-
-        if ('geolocation' in navigator) {
-          navigator.geolocation.getCurrentPosition(pos => {
-            this.$store.commit('locationFound', pos.coords)
-            map.flyTo({
-              center: [pos.coords.longitude, pos.coords.latitude],
-              zoom: 13
-            })
-          }, err => {
-            console.log(err)
-            alert('We can\'t seem to determine your position')
-          })
-        }
-      })
-    })
-  }
+  },
+  components: { bottombar, topbar }
 }
 </script>
 

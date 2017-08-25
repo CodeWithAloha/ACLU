@@ -1,6 +1,21 @@
 <template lang='html'>
   <div class="container">
+    <topbar name="Map"></topbar>
     <div class='map'></div>
+    <div>
+
+      <md-layout md-gutter>
+        <md-layout md-flex-xsmall="100" md-flex-small="50" md-flex-medium="50">
+          {{rules.length}}
+        </md-layout>
+
+        <md-layout md-flex-xsmall="100" md-flex-small="50" md-flex-medium="50">
+          <div class="warning-description">
+          </div>
+        </md-layout>
+      </md-layout>
+
+    </div>
     <!--<div class="icon" v-html="locationIcon" v-if="locationDetermined"></div>-->
     <Nav v-if="locationDetermined"></Nav>
     <bottombar :longitude="this.location.longitude" :latitude="this.location.latitude"></bottombar>
@@ -17,6 +32,7 @@ import 'mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 
 import Axios from 'axios'
 import bottombar from './BottomBar.vue'
+import topbar from './TopBar.vue'
 
 Mapbox.accessToken = 'pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTdza2thcGozNSJ9.zw6CcZLxP6lq0x-xfwp6uA'
 
@@ -26,7 +42,8 @@ export default {
       location: {
         longitude: 0,
         latitude: 0
-      }
+      },
+      rules: []
     }
   },
   computed: mapState({
@@ -50,6 +67,8 @@ export default {
       // clear map of layers
       // this.removeAllLayers(map)
       this.setAllLayers(ev.result.geometry.coordinates[0], ev.result.geometry.coordinates[1], map)
+      this.location.longitude = ev.result.geometry.coordinates[0]
+      this.location.latitude = ev.result.geometry.coordinates[1]
     })
 
     map.on('load', () => {
@@ -64,7 +83,6 @@ export default {
           this.setAllLayers(pos.coords.longitude, pos.coords.latitude, map)
           this.location.longitude = pos.coords.longitude
           this.location.latitude = pos.coords.latitude
-          console.log(this.location.longitude)
         }, err => {
           console.log(err)
           alert('We can\'t seem to determine your position')
@@ -78,47 +96,53 @@ export default {
         var geojson = data._items[i].geojson
         var id = data._items[i]._id
 
-        map.addLayer({
-          id: id,
-          type: 'fill',
-          paint: {
-            'fill-color': '#ff0000'
-          },
-          source: {
-            type: 'geojson',
-            data: geojson
-          }
-        })
+        if (!this.rules.includes(data._items[i]._id)) {
+          this.rules.push(data._items[i]._id)
+        }
+
+        if (!map.getLayer(id)) {
+          map.addLayer({
+            id: id,
+            type: 'fill',
+            paint: {
+              'fill-color': '#ff0000'
+            },
+            source: {
+              type: 'geojson',
+              data: geojson
+            }
+          })
+        }
       }
     },
     setAllLayers (lng, lat, map) {
-      var url = 'http://localhost:5000/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[' + lng + ', ' + lat + ']}, "$maxDistance": 25000}}}'
+      var url = 'http://localhost:5000/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[' + lng + ', ' + lat + ']}, "$maxDistance": 250}}}'
+      this.rules = []
       this.getLayerData(url, map)
     },
     getLayerData (href, map) {
       return Axios.get(href)
         .then(response => {
           this.setLayers(response.data, map)
-          console.log('asdf')
           if (response.data._links.next) {
             var url = 'http://localhost:5000/' + response.data._links.next.href
             return this.getLayerData(url, map)
           }
         })
-    },
-    removeAllLayers (map) {
-      map.eachLayer(function (layer) {
-        map.removeLayer(layer)
-      })
     }
   },
-  components: { bottombar }
+  components: { bottombar, topbar }
 }
 </script>
 
 <style lang='css' scoped>
+  .warning-description {
+    width: 100%;
+    height: 60px;
+    background-color: red;
+  }
   .map {
-    height: 100vh;
+    height: 65vh;
     width: 100%;
   }
 

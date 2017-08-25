@@ -1,14 +1,12 @@
 <template>
   <div class="container">
 
-    <md-toolbar>
-      <h2 class="md-title" style="flex: 1">Rule List</h2>
-    </md-toolbar>
+    <topbar name="Rule List"></topbar>
 
     <md-table md-sort="restriction" class="rule-table">
       <md-table-header>
         <md-table-row>
-          <md-table-head md-sort-by="dessert">Rule Name</md-table-head>
+          <md-table-head md-sort-by="dessert">Rule ({{rules.length}})</md-table-head>
           <md-table-head md-sort-by="protein" md-numeric>Restriction</md-table-head>
         </md-table-row>
       </md-table-header>
@@ -26,6 +24,7 @@
 
 <script>
 import bottombar from './BottomBar.vue'
+import topbar from './TopBar.vue'
 
 import Axios from 'axios'
 
@@ -61,7 +60,7 @@ export default {
       })
     },
     getAllRules: function (lng, lat) {
-      var url = 'http://localhost:5000/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[' + lng + ', ' + lat + ']}, "$maxDistance": 25000}}}'
+      var url = 'http://localhost:5000/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[' + lng + ', ' + lat + ']}, "$maxDistance": 250}}}'
       this.pushRules(url).then(data => {
         if (data._links.next) {
           var href = 'http://localhost:5000/' + data._links.next.href
@@ -73,7 +72,7 @@ export default {
       this.$router.push({name: 'Rule', params: { ruleId: id }})
     }
   },
-  components: { bottombar }
+  components: { bottombar, topbar }
 }
 </script>
 
