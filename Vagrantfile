@@ -10,4 +10,6 @@ Vagrant.configure(2) do |config|
   config.vm.define "aclu" do |aclu|
   end
   config.vm.provision "shell", path: "provision-debian.sh", privileged: false
+
+  config.vm.network "forwarded_port", guest: 8080, host: 50808
 end

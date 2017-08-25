@@ -58,3 +58,6 @@ sudo sg vagrant <<\DEVOPS_BLOCK
     # PROFIT
     curl localhost:5000/aloha
 DEVOPS_BLOCK
+
+cd /var/project-aclu/frontend
+PATH=/usr/local/node/bin/:${PATH} yarn run dev
