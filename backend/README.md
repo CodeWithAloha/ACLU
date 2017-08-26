@@ -129,4 +129,6 @@ Here's a list of things we need to do.
    the dev machine. Right now, that pip install call will pollute your
    environment if you don't have a virtualenv setup - so sorry if that's
    unexpected. Will update with a warning atop.
+ - Need to decide if we want to run this via python3 or python2. Currently
+   running all in python2
 

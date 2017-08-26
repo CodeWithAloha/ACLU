@@ -8,6 +8,7 @@ DOCKER_COMPOSE_VERSION=1.15.0
 
 sudo apt-get update
 sudo apt-get install -y \
+     python-pip \
      git \
      httpie \
      gdal-bin
