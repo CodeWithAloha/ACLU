@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import Map from '@/components/Map'
 import RuleList from '@/components/RuleList'
 import Rule from '@/components/Rule'
+
 // import Map from '@/components/Map'
 import Admin from '@/components/Admin'
 
