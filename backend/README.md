@@ -52,14 +52,14 @@ After seeding the organization data, you can retrieve them via
 If you are in the Vagrant box, issue the following:
 
  - /<path>/<to>/vagrant ssh
- - /var/project-aclu/backend/etc/seed_data.sh
+ - /var/project-aclu/backend/etc/seed_fake_park_data.sh
 
 ### Docker
 
  - Bring up the Dockers via make (if you need to rebuild, make sure to rebuild as the make script won't do that for you)
- - ```./etc/seed_data.sh```
+ - ```./etc/seed_fake_park_data.sh```
 
-The seed_data.sh script should perform the following:
+The seed_fake_park_data.sh script should perform the following:
 
  - Run the command "Converting parks data to geojson" to convert the parks data into a 2017-07-19.parks.geojson file placed into the importer directory
  - Run the command above to seed the organizations
