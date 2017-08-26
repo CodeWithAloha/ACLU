@@ -1,1 +1,3 @@
-eve==0.7.4
+git+git://github.com/pyeve/eve.git#egg=eve
+# eve==0.7.4
+gunicorn==19.7.1

@@ -1,21 +1,22 @@
-# Data
-
-Please see the [data schema](Schema.md) for more details.
-
-# Installation
+# Development
 
 ## Requirements
 
-* Docker
+* Docker ([Mac](https://store.docker.com/editions/community/docker-ce-desktop-mac); Linux :neckbeard:)
+* [jq](https://stedolan.github.io/jq/)
+* [httpie](https://httpie.org/)
+* Python 2.7.9
 
-## Running API
+## Running
 
 ```
-cd docker
-docker-compose build
-docker-compose up -d
-curl localhost:5000/aloha
+$ make dev
+$ curl http://localhost:5000/aloha
 ```
+
+# Data
+
+Please see the [data schema](Schema.md) for more details.
 
 # Common tasks
 
@@ -30,10 +31,6 @@ docker run -v "$(pwd)":/data geodata/gdal \
     "data/parks/2017.07.19 - Parks__Oahu/Parks__Oahu.shp"
 ```
 
-## Running data importer
-
-TBD
-
 ## Seeding organization data with jq, httpie
 
 ```
@@ -44,9 +41,58 @@ do
 done;
 ```
 
+After seeding the organization data, you can retrieve them via
+
+```http get http://localhost:5000/organizations```
+
+## Running data importer
+
+ - Bring up the Dockers via make (if you need to rebuild, make sure to rebuild as the make script won't do that for you)
+ - Run the command "Converting parks data to geojson" to get the 2017-07-19.parks.geojson file
+ - Copy that file into the importer directory
+ - Run the command above to seed the organizations
+ - ```cd importer; pip install -r requirements.txt```
+ - ```python import_features.py --feature_collection_path <path_to/2017-07-19.parks.geojson> ``` to bring in the parks data
+ - http get localhost:5000/features
+ - PROFIT
+
+## Sample spatial query to return a feature
+
+This should get you data around Kapiolani Park.
+
+```
+http get http://localhost:5000/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[-157.823231, 21.269304]}, "$maxDistance": 250}}}
+```
+
+If you see a 500 error come through, see below to create a spatial index before you can issue a spatial query above.
+
+You'll also probably see an error being leaked through the docker container that looks something like the following:
+
+```
+pymongo.errors.OperationFailure: error processing query: ns=aclu.features limit=25Tree: GEONEAR  field=geojson maxdist=250 isNearSphere=0
+aclu-api | Sort: {}
+aclu-api | Proj: { ownership: 1, restrictions: 1, _created: 1, _id: 1, name: 1, last_imported_at: 1, _updated: 1, geojson: 1, organization: 1, _etag: 1 }
+aclu-api |  planner returned error: unable to find index for $geoNear query
+```
+
+## Helpful Mongo commands
+
+### Creating the spatial index
+
+```docker exec -it <db_container_id> mongo aclu --eval "db.features.ensureIndex({'geojson.geometry': '2dsphere'})"```
+
+### Dropping entire collection
+
+```docker exec -it <db_container_id> mongo aclu --eval "db.features.drop()"```
+
+
 # TODO
 
 Here's a list of things we need to do.
 
  - Verify that the schema is correct. It was a first pass, so probably needs to
    change.
+ - Fix this README as I used it as a notepad. :D
+ - Add Postman endpoints
+ - Need to bring in more feature properties as possible first class properties
+   wrt the data schmea

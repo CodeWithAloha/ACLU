@@ -2,12 +2,16 @@ FROM python:3.4-alpine
 
 LABEL maintainer "project-aclu@codeforhawaii.org"
 
-ADD ./api /src/
+RUN apk add --update git
+
+ADD ./api/requirements.txt /src/requirements.txt
 
 RUN cd /src; pip install --no-cache-dir -r requirements.txt
 
+ADD ./api/ /src
+
 EXPOSE 5000
 
-ENV MONGO_HOST db
+WORKDIR /src/api
 
-CMD ["python", "/src/app.py"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app", "--reload", "--capture-output", "--enable-stdio-inheritance", "--access-logfile", "-", "--error-logfile", "-"]
