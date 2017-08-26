@@ -8,9 +8,9 @@
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
     "build": "node build/build.js",
-    "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
-    "e2e": "node test/e2e/runner.js",
-    "test": "npm run unit && npm run e2e",
+    "test:unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
+    "test:e2e": "node test/e2e/runner.js",
+    "test": "yarn test:unit && yarn test:e2e",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
@@ -92,8 +92,8 @@
     "webpack-merge": "^4.1.0"
   },
   "engines": {
-    "node": ">= 4.0.0",
-    "npm": ">= 3.0.0"
+    "node": "8.1.4",
+    "yarn": "0.27.5"
   },
   "browserslist": [
     "> 1%",
