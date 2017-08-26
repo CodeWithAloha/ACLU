@@ -35,10 +35,6 @@ import topbar from './TopBar.vue'
 import MapboxGeocoder from 'mapbox-gl-geocoder'
 import 'mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 
-// const locationIcon = require('../assets/location.svg')
-import VueMaterial from 'vue-material'
-import 'vue-material/dist/vue-material.css'
-
 Mapbox.accessToken = 'pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTdza2thcGozNSJ9.zw6CcZLxP6lq0x-xfwp6uA'
 
 export default {
