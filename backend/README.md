@@ -47,6 +47,15 @@ After seeding the organization data, you can retrieve them via
 
 ## Importing data
 
+### Vagrant
+
+If you are in the Vagrant box, issue the following:
+
+ - /<path>/<to>/vagrant ssh
+ - /var/project-aclu/backend/etc/seed_data.sh
+
+### Docker
+
  - Bring up the Dockers via make (if you need to rebuild, make sure to rebuild as the make script won't do that for you)
  - ```./etc/seed_data.sh```
 
