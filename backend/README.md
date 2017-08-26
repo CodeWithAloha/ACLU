@@ -47,6 +47,19 @@ After seeding the organization data, you can retrieve them via
 
 ## Importing data
 
+**Note / Warning:**
+
+If you aren't running in a virtualenv on your local machine, we would suggest
+you do so before you run the seed_*_data.sh scripts. There are some (dangerous) assumptions
+being made about the environment you're running - one of them being that you're
+running in a virtualenv so that running pip won't pollute your system env. If
+this isn't the case, and you've already run the script, we're sorries. With
+that said, you might want to review the seed_*_data.sh scripts in /etc to see
+exactly what assumptions are being made. If you're planning to run this in
+Virtualbox / Vagrant, then you can ignore this as polluting that environment is
+less dangerous (but should at some point still be installed into a virtualenv
+in the box) so that the environments are closer to one another.
+
 ### Vagrant
 
 If you are in the Vagrant box, issue the following:
@@ -107,9 +120,13 @@ aclu-api |  planner returned error: unable to find index for $geoNear query
 
 Here's a list of things we need to do.
 
- - Verify that the schema is correct. It was a first pass, so probably needs to
-   change.
+ - Verify that the schema is correct. It was a first pass, so probably needs to change.
  - Fix this README as I used it as a notepad. :D
  - Add Postman endpoints
  - Need to bring in more feature properties as possible first class properties
    wrt the data schmea
+ - Need to setup a fixed virtualenv for this in the Vagrant box along with on
+   the dev machine. Right now, that pip install call will pollute your
+   environment if you don't have a virtualenv setup - so sorry if that's
+   unexpected. Will update with a warning atop.
+
