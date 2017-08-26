@@ -103,3 +103,6 @@ ENV/
 /site
 
 # End of https://www.gitignore.io/api/python
+
+# Custom
+importer/*.geojson

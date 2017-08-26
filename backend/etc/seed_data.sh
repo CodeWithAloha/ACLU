@@ -136,8 +136,6 @@ function help () {
 
 # shellcheck disable=SC2015
 [[ "${__usage+x}" ]] || read -r -d '' __usage <<-'EOF' || true # exits non-zero when EOF encountered
-  -f --file  [arg] Filename to process. Required.
-  -t --temp  [arg] Location of tempfile. Default="/tmp/bar"
   -v               Enable verbose mode, print script as it is executed
   -d --debug       Enables debug mode
   -h --help        This page
@@ -147,9 +145,14 @@ EOF
 
 # shellcheck disable=SC2015
 [[ "${__helptext+x}" ]] || read -r -d '' __helptext <<-'EOF' || true # exits non-zero when EOF encountered
- This is Bash3 Boilerplate's help text. Feel free to add any description of your
- program or elaborate more on command-line arguments. This section is not
- parsed and will be added as-is to the help.
+ This seed command is to help feed fake data into our system. It is based on
+ two sources. The first source is a json file that contains some hand-crafted
+ organizations. The second source is a park shapefile that's been converted to
+ geojson and attached to aforementioned organizations.
+
+ While you can run this seed file multiple times, it isn't idempotent. The
+ state of the world under this script will be shifting, but the only thing it
+ should be doing is adding more features to hand-crafted organization.
 EOF
 
 # Translate usage string -> getopts arguments, and set $arg_<flag> defaults
@@ -362,7 +365,6 @@ fi
 ### Validation. Error out if the things required for your script are not present
 ##############################################################################
 
-[[ "${arg_f:-}" ]]     || help      "Setting a filename with -f or --file is required"
 [[ "${LOG_LEVEL:-}" ]] || emergency "Cannot continue without LOG_LEVEL. "
 
 
@@ -375,19 +377,26 @@ info "__dir: ${__dir}"
 info "__base: ${__base}"
 info "OSTYPE: ${OSTYPE}"
 
-info "arg_f: ${arg_f}"
 info "arg_d: ${arg_d}"
 info "arg_v: ${arg_v}"
 info "arg_h: ${arg_h}"
 
-info "$(echo -e "multiple lines example - line #1\nmultiple lines example - line #2\nimagine logging the output of 'ls -al /path/'")"
+debug "Seeding data... "
+jq -r '.[] | tostring' "${__dir}/../data/seed/organizations.json" | while read line
+do
+  echo ${line} | http --print=HhBb POST http://localhost:5000/organizations/
+  printf '\n\n'
+done;
 
-# All of these go to STDERR, so you can use STDOUT for piping machine readable information to other software
-debug "Info useful to developers for debugging the application, not useful during operations."
-info "Normal operational messages - may be harvested for reporting, measuring throughput, etc. - no action required."
-notice "Events that are unusual but not error conditions - might be summarized in an email to developers or admins to spot potential problems - no immediate action required."
-warning "Warning messages, not an error, but indication that an error will occur if action is not taken, e.g. file system 85% full - each item must be resolved within a given time. This is a debug message"
-error "Non-urgent failures, these should be relayed to developers or admins; each item must be resolved within a given time."
-critical "Should be corrected immediately, but indicates failure in a primary system, an example is a loss of a backup ISP connection."
-alert "Should be corrected immediately, therefore notify staff who can fix the problem. An example would be the loss of a primary ISP connection."
-emergency "A \"panic\" condition usually affecting multiple apps/servers/sites. At this level it would usually notify all tech staff on call."
+cd "${__dir}/../"
+
+docker run -v "$(pwd)":/data geodata/gdal \
+    ogr2ogr -f GeoJSON -t_srs crs:84 \
+    "importer/2017-07-19.parks.geojson" \
+    "data/parks/2017.07.19 - Parks__Oahu/Parks__Oahu.shp"
+
+cd "${__dir}/../importer"
+
+pip install -r requirements.txt
+
+python import_features.py --feature_collection_path "./2017-07-19.parks.geojson"

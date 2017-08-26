@@ -45,16 +45,24 @@ After seeding the organization data, you can retrieve them via
 
 ```http get http://localhost:5000/organizations```
 
-## Running data importer
+## Importing data
 
  - Bring up the Dockers via make (if you need to rebuild, make sure to rebuild as the make script won't do that for you)
- - Run the command "Converting parks data to geojson" to get the 2017-07-19.parks.geojson file
- - Copy that file into the importer directory
+ - ```./etc/seed_data.sh```
+
+The seed_data.sh script should perform the following:
+
+ - Run the command "Converting parks data to geojson" to convert the parks data into a 2017-07-19.parks.geojson file placed into the importer directory
  - Run the command above to seed the organizations
  - ```cd importer; pip install -r requirements.txt```
  - ```python import_features.py --feature_collection_path <path_to/2017-07-19.parks.geojson> ``` to bring in the parks data
+
+To see that the script worked:
+
  - http get localhost:5000/features
  - PROFIT
+
+While you can run this seed file multiple times, it isn't idempotent. The state of the world under this script will be shifting, but the only thing it should be doing is adding more features to hand-crafted organization.
 
 ## Sample spatial query to return a feature
 
