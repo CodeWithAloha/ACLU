@@ -2,7 +2,7 @@
 set -x # echo bash commands before execution, useful for debugging
 set -e # stop bash execution on on first error
 
-NODE_VERSION=8.4.0 # latest Node version as of 15-Aug-2017
+NODE_VERSION=8.1.4 # latest Node version as of 15-Aug-2017
 JQ_VERSION=1.5 # latest jq version as of 15-Aug-2015
 DOCKER_COMPOSE_VERSION=1.15.0
 
