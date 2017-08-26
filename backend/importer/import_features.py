@@ -30,6 +30,13 @@ API_BASE_URL_FORMAT = "{0}/{{0}}".format(API_BASE_URL)
 def import_features(feature_collection_path=None):
     # Let's just hardcode one implementation and we'll worry about the
     # abstraction later.
+    #
+    # I think what needs to be done here is that we use a template file (via
+    # Jinja) that we feed into this script. The template file has the 'default'
+    # properties aka the holes we need to fill via lambdas and it's basically
+    # used to complete the feature for submission. I imagine different
+    # feature/geojson files will each need a unique template (and it should
+    # scale somewhat nicely)
 
     if feature_collection_path and os.path.isfile(os.path.realpath(feature_collection_path)):
         organization = _get_organization("Park")
