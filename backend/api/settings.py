@@ -14,6 +14,8 @@ ITEM_METHODS = ['GET', 'PATCH', 'PUT', 'DELETE']
 MONGO_QUERY_BLACKLIST = ['$where']
 ALLOW_CUSTOM_FIELDS_IN_GEOJSON = True
 
+X_DOMAINS = '*'
+
 features = {
     'item_url': 'regex("[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}")',
     'schema': {

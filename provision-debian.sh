@@ -54,12 +54,4 @@ sudo chmod +x /usr/local/bin/docker-compose
 sudo sg vagrant <<\DEVOPS_BLOCK
     cd /var/project-aclu/backend
     docker-compose build
-    docker-compose up -d
-
-    # PROFIT
-    curl localhost:50050/aloha
 DEVOPS_BLOCK
-
-# Need to move this to its own script at some point
-cd /var/project-aclu/frontend
-PATH=/usr/local/node/bin/:${PATH} yarn run dev
