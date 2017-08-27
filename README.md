@@ -47,3 +47,16 @@ vagrant up
 ```
 vagrant ssh
 ```
+
+### Getting the app up and running
+
+After running ```vagrant up``, you'll want to perform the following:
+
+```
+vagrant ssh
+/var/project-aclu/etc/start.sh
+/var/project-aclu/backend/etc/seed_fake_park_data.sh
+```
+
+After these commands are run, you should be able to go to
+http://localhost:50808 and see something.
