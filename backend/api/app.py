@@ -12,7 +12,7 @@ from uuid_validator import UUIDValidator
 
 
 host = '0.0.0.0'
-port = int(os.environ.get('PORT')) if 'PORT' in os.environ else 5000
+port = int(os.environ.get('PORT')) if 'PORT' in os.environ else 50050
 
 app = Eve(json_encoder=UUIDEncoder, validator=UUIDValidator)
 

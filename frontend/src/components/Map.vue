@@ -116,7 +116,7 @@ export default {
       }
     },
     setAllLayers (lng, lat, map) {
-      var url = 'http://localhost:5000/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[' + lng + ', ' + lat + ']}, "$maxDistance": 250}}}'
+      var url = 'http://localhost:50050/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[' + lng + ', ' + lat + ']}, "$maxDistance": 250}}}'
       this.rules = []
       this.getLayerData(url, map)
     },
@@ -125,7 +125,7 @@ export default {
         .then(response => {
           this.setLayers(response.data, map)
           if (response.data._links.next) {
-            var url = 'http://localhost:5000/' + response.data._links.next.href
+            var url = 'http://localhost:50050/' + response.data._links.next.href
             return this.getLayerData(url, map)
           }
         })

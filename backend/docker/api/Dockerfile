@@ -10,8 +10,8 @@ RUN cd /src; pip install --no-cache-dir -r requirements.txt
 
 ADD ./api/ /src
 
-EXPOSE 5000
+EXPOSE 50050
 
 WORKDIR /src/api
 
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app", "--reload", "--capture-output", "--enable-stdio-inheritance", "--access-logfile", "-", "--error-logfile", "-"]
+CMD ["gunicorn", "--bind", "0.0.0.0:50050", "app:app", "--reload", "--capture-output", "--enable-stdio-inheritance", "--access-logfile", "-", "--error-logfile", "-"]

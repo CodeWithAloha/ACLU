@@ -8,7 +8,7 @@ services:
     environment:
       - MONGO_HOST=db
     ports:
-      - "127.0.0.1:5000:5000"
+      - "50050:50050"
     volumes:
       - ./api:/src/api
     links:

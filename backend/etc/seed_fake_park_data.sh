@@ -384,7 +384,7 @@ info "arg_h: ${arg_h}"
 debug "Seeding data... "
 jq -r '.[] | tostring' "${__dir}/../data/seed/organizations.json" | while read line
 do
-  echo ${line} | http --print=HhBb POST http://localhost:5000/organizations/
+  echo ${line} | http --print=HhBb POST http://localhost:50050/organizations/
   printf '\n\n'
 done;
 

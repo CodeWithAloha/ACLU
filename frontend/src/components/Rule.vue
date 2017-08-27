@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     getRule: function (id) {
-      var url = 'http://localhost:5000/features/' + this.$route.params.ruleId
+      var url = 'http://localhost:50050/features/' + this.$route.params.ruleId
       return Axios.get(url)
         .then(function (response) {
           return response.data

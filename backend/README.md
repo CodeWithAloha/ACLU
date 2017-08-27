@@ -11,7 +11,7 @@
 
 ```
 $ make dev
-$ curl http://localhost:5000/aloha
+$ curl http://localhost:50050/aloha
 ```
 
 # Data
@@ -36,14 +36,14 @@ docker run -v "$(pwd)":/data geodata/gdal \
 ```
 jq -r '.[] | tostring' ./data/seed/organizations.json | while read line
 do
-  echo ${line} | http --print=HhBb POST http://localhost:5000/organizations/
+  echo ${line} | http --print=HhBb POST http://localhost:50050/organizations/
   printf '\n\n'
 done;
 ```
 
 After seeding the organization data, you can retrieve them via
 
-```http get http://localhost:5000/organizations```
+```http get http://localhost:50050/organizations```
 
 ## Importing data
 
@@ -81,7 +81,7 @@ The seed_fake_park_data.sh script should perform the following:
 
 To see that the script worked:
 
- - http get localhost:5000/features
+ - http get localhost:50050/features
  - PROFIT
 
 While you can run this seed file multiple times, it isn't idempotent. The state of the world under this script will be shifting, but the only thing it should be doing is adding more features to hand-crafted organization.
@@ -91,7 +91,7 @@ While you can run this seed file multiple times, it isn't idempotent. The state 
 This should get you data around Kapiolani Park.
 
 ```
-http get http://localhost:5000/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[-157.823231, 21.269304]}, "$maxDistance": 250}}}
+http get http://localhost:50050/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[-157.823231, 21.269304]}, "$maxDistance": 250}}}
 ```
 
 If you see a 500 error come through, see below to create a spatial index before you can issue a spatial query above.

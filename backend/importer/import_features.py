@@ -21,7 +21,7 @@ logging.config.fileConfig(
 logger = logging.getLogger("aclu_importer")
 
 
-API_BASE_URL = "http://localhost:5000"
+API_BASE_URL = "http://localhost:50050"
 API_BASE_URL_FORMAT = "{0}/{{0}}".format(API_BASE_URL)
 
 

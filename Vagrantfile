@@ -9,7 +9,7 @@ Vagrant.configure(2) do |config|
   config.vm.synced_folder "./backend", "/var/project-aclu/backend"
   config.vm.define "aclu" do |aclu|
   end
+  config.vm.network "forwarded_port", guest: 8080, host_ip: "127.0.0.1", host: 50808 # nodejs-frontend
+  config.vm.network "forwarded_port", guest: 50050, host_ip: "127.0.0.1", host: 50050 # eve-backend
   config.vm.provision "shell", path: "provision-debian.sh", privileged: false
-
-  config.vm.network "forwarded_port", guest: 8080, host: 50808
 end
