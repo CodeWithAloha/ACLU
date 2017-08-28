@@ -17,6 +17,10 @@ export default new Router({
       name: 'Map',
       component: Map
     }, {
+      path: '/admin',
+      name: 'Admin',
+      component: Admin
+    }, {
       path: '/rule_list/:lat/:lng',
       name: 'RuleList',
       component: RuleList
@@ -26,8 +30,8 @@ export default new Router({
       component: Rule
     }, {
       path: '/',
-      name: 'Admin',
-      component: Admin
+      name: 'Map',
+      component: Map
     }
 
   ]
