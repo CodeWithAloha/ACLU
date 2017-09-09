@@ -27,7 +27,7 @@ wget -qO- https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x
 sudo ln -s /usr/local/node-v${NODE_VERSION}-linux-x64 /usr/local/node
 
 # install yarn
-sudo env "PATH=/usr/local/node/bin/:${PATH}" npm install -g yarn@">=1.0.0"
+sudo env "PATH=/usr/local/node/bin/:${PATH}" npm install -g yarn@"0.27.5"
 
 # add /usr/local/node to user vagrant's path
 echo "export PATH=/usr/local/node/bin/:${PATH}" >> ${HOME}/.profile
