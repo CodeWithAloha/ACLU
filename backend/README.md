@@ -115,6 +115,9 @@ aclu-api |  planner returned error: unable to find index for $geoNear query
 
 ```docker exec -it <db_container_id> mongo aclu --eval "db.features.drop()"```
 
+# Tests
+
+```PYTHONPATH=. ptw --poll --clear --afterrun 'true && echo "Last test run at: " `date`' .```
 
 # TODO
 
