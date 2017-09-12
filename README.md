@@ -1,6 +1,6 @@
 # Code for Hawaii + ACLU
 # Access to public lands in Hawai`i App
-Welcome!  [Code for Hawaii](https://codeforhawaii.org) has partnered with the [American Civil Liberties Union of Hawai`i](https://acluhi.org) ("ACLU") to create an app.  The intent of the proposed app is to use your geo-location to assist understanding of whose land you are on and your civil rights there.
+Welcome!  [Code for Hawaii](https://www.codeforhawaii.org) has partnered with the [American Civil Liberties Union of Hawai`i](https://acluhi.org) ("ACLU") to create an app.  The intent of the proposed app is to use your geo-location to assist understanding of whose land you are on and your civil rights there.
 
 Please start by reading the [project proposal](ACLU-Access-App.pdf).
 
