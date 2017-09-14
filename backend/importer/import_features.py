@@ -18,7 +18,7 @@ import uuid
 
 logging.config.fileConfig(
     os.path.join(os.path.dirname(os.path.realpath(__file__)), 'logging.conf'))
-logger = logging.getLogger("aclu_importer")
+logger = logging.getLogger("aclu_importer.features")
 
 
 API_BASE_URL = "http://localhost:50050"
