@@ -26,10 +26,6 @@ var app = express()
 var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
-  watchOptions: {
-     poll: 1000,
-     aggregateTimeout: 1000
-  },
   publicPath: webpackConfig.output.publicPath,
   quiet: true
 })
