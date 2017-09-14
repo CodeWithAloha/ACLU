@@ -66,7 +66,35 @@ organizations = {
     }
 }
 
+holidays = {
+    'item_url': 'regex("[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}")',
+    'schema': {
+        '_id': {'type': 'uuid'},
+        'name': {
+            'type': 'string',
+            'minlength': 1,
+            'maxlength': 256,
+            'required': True
+        },
+        'type': {
+            'type': 'string',
+            'allowed': ["federal", "state", "city"],
+            'required': True
+        },
+        'holiday_start_at': {
+            'type': 'datetime',
+            'unique': True,
+            'required': True
+        },
+        'holiday_end_at': {
+            'type': 'datetime',
+            'required': True
+        }
+    }
+}
+
 DOMAIN = {
     'organizations': organizations,
-    'features': features
+    'features': features,
+    'holidays': holidays
 }
