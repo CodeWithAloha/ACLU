@@ -50,7 +50,7 @@ vagrant ssh
 
 ### Getting the app up and running
 
-After running ```vagrant up``, you'll want to perform the following:
+After running `vagrant up`, you'll want to perform the following:
 
 ```
 vagrant ssh
