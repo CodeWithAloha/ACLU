@@ -11,4 +11,5 @@ docker exec -it $(docker ps -aqf "name=aclu-db") mongo aclu --eval "db.features.
 
 # Start up the nodes
 cd /var/project-aclu/frontend
-PATH=/usr/local/node/bin/:${PATH} yarn run dev&
+yarn
+yarn run dev
