@@ -38,7 +38,7 @@ import 'mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 Mapbox.accessToken = 'pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTdza2thcGozNSJ9.zw6CcZLxP6lq0x-xfwp6uA'
 
 export default {
-  data: function () {
+  data: function() {
     return {
       location: {
         longitude: 0,
@@ -50,7 +50,7 @@ export default {
   computed: mapState({
     locationDetermined: {}
   }),
-  mounted () {
+  mounted() {
     const map = new Mapbox.Map({
       container: document.querySelector('.map'),
       style: 'mapbox://styles/mapbox/streets-v9',
@@ -92,7 +92,7 @@ export default {
     })
   },
   methods: {
-    setLayers (data, map) {
+    setLayers(data, map) {
       for (var i = 0; i < data._items.length; i++) {
         var geojson = data._items[i].geojson
         var id = data._items[i]._id
@@ -115,12 +115,12 @@ export default {
         }
       }
     },
-    setAllLayers (lng, lat, map) {
+    setAllLayers(lng, lat, map) {
       var url = 'http://localhost:50050/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[' + lng + ', ' + lat + ']}, "$maxDistance": 250}}}'
       this.rules = []
       this.getLayerData(url, map)
     },
-    getLayerData (href, map) {
+    getLayerData(href, map) {
       return Axios.get(href)
         .then(response => {
           this.setLayers(response.data, map)
@@ -136,28 +136,29 @@ export default {
 </script>
 
 <style lang='css' scoped>
-  .warning-description {
-    width: 100%;
-    height: 60px;
-    background-color: red;
-  }
-  .map {
-    height: 65vh;
-    width: 100%;
-  }
+.warning-description {
+  width: 100%;
+  height: 60px;
+  background-color: red;
+}
 
-  .icon {
-    position: fixed;
-    width: 2rem;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50% -50%);
-    z-index: 9;
-  }
+.map {
+  height: 65vh;
+  width: 100%;
+}
 
-  .icon > svg {
-    width: 2rem;
-    height: 2rem;
-    fill: #ff0000;
-  }
+.icon {
+  position: fixed;
+  width: 2rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% -50%);
+  z-index: 9;
+}
+
+.icon>svg {
+  width: 2rem;
+  height: 2rem;
+  fill: #ff0000;
+}
 </style>
