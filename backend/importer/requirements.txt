@@ -3,3 +3,4 @@ flake8==3.4.1
 pymongo==3.4.0
 requests==2.18.3
 icalendar==3.11.7
+beautifulsoup4==4.6.0
