@@ -15,6 +15,7 @@ import random
 import requests
 import sys
 import uuid
+from import_park_hours import import_park_hours
 
 logging.config.fileConfig(
     os.path.join(os.path.dirname(os.path.realpath(__file__)), 'logging.conf'))
@@ -38,12 +39,15 @@ def import_features(feature_collection_path=None):
     # feature/geojson files will each need a unique template (and it should
     # scale somewhat nicely)
 
+    park_hours = import_park_hours()
+
     if feature_collection_path and os.path.isfile(os.path.realpath(feature_collection_path)):
         organization = _get_organization("Park")
 
         if organization:
             for feature in _features_from_path(os.path.realpath(feature_collection_path)):
-                feature['hours'] = "8:00AM - 8:00PM"  # TODO: import hours here
+                feature['hours'] = park_hours.get(
+                    feature['properties']['name'], 'N/A')
                 f = {
                     "_id": str(uuid.uuid4()),
                     "geojson": feature,
@@ -73,6 +77,7 @@ def _features_from_path(feature_collection_path = None):
 def _post_features(feature_as_json):
     resource_base_url=_get_resource_url('features')
     r=requests.post(resource_base_url, json = feature_as_json)
+    if r.status_code == 201:
         logger.info("Successfully uploaded feature(id=" +
                     feature_as_json["_id"] + ")")
         logger.info("Successfully uploaded feature(id=" +
