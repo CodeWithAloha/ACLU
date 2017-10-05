@@ -12,7 +12,6 @@ logger = logging.getLogger("aclu_importer.park_hours")
 
 PARK_URL = "https://www.honolulu.gov/parks/default/park-closure-hours.html"
 
-
 """
     Scrapes the park closure site and returns a dictionary of times
     TODO: handle outliers

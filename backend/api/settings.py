@@ -34,6 +34,11 @@ features = {
                 'embeddable': True
             }
         },
+        "hours": {
+            'type': 'string',
+            'minlength': 1,
+            'maxlength': 64
+        },
         'geojson': {
             'type': 'feature'
         },
