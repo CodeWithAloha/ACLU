@@ -1,0 +1,29 @@
+version: '3'
+services:
+  ui:
+    build:
+      context: ./frontend
+      dockerfile: ./docker/Dockerfile
+    container_name: aclu-ui
+    ports:
+      - "80:80"
+  api:
+    build:
+      context: ./backend
+      dockerfile: ./docker/api/Dockerfile
+    container_name: aclu-api
+    environment:
+      - MONGO_HOST=db
+    ports:
+      - "50050:50050"
+    volumes:
+      - ./backend/api:/src/api
+    links:
+      - db
+  db:
+    image: mongo:3.5.11
+    ports:
+      - "27017"
+    container_name: aclu-db
+    logging:
+      driver: none
