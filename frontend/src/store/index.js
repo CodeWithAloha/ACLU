@@ -10,6 +10,9 @@ const store = new Vuex.Store({
     rules: []
   },
   mutations: {
+    setUserValid(state, valid) {
+      state.uservalid = valid;
+    },
     locationFound(state, coords) {
       state.locationDetermined = true;
       state.location = [coords.latitude, coords.longitude];

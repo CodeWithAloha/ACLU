@@ -22,7 +22,7 @@ Vue.config.productionTip = false;
 Vue.use(VueMaterial);
 Vue.use(MaterialDesignsIcons);
 
-import "colors.css/src/_variables.css";
+import "./styles/_palette.css";
 
 /* eslint-disable no-new */
 

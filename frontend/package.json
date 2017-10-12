@@ -16,7 +16,6 @@
   "dependencies": {
     "@mapbox/mapbox-gl-draw": "^1.0.0",
     "axios": "^0.16.2",
-    "colors.css": "^3.0.0",
     "element-ui": "^1.4.2",
     "mapbox-gl": "^0.38.0",
     "mapbox-gl-geocoder": "^2.0.1",

@@ -123,7 +123,6 @@ export default {
     },
     setAllLayers(lng, lat, map) {
       var url = 'http://localhost:50050/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[' + lng + ', ' + lat + ']}, "$maxDistance": 50}}}'
-      this.rules = []
       this.getLayerData(url, map)
     },
     getLayerData(href, map) {
