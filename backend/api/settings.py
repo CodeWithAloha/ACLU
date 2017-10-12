@@ -71,6 +71,10 @@ features = {
         'geojson': {
             'type': 'feature'
         },
+        'ownership': {
+            'type': 'string',
+            'allowed': ["city", "state", "private", "federal", "military"]
+        },
         'last_imported_at': {
             'type': 'datetime'
         },
