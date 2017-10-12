@@ -6,6 +6,7 @@ const store = new Vuex.Store({
   state: {
     locationDetermined: false,
     location: null,
+    userValid: true,
     rules: []
   },
   mutations: {

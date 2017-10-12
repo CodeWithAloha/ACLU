@@ -14,12 +14,13 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
-    "axios": "^0.16.2",
-    "material-design-icons": "^3.0.1",
     "@mapbox/mapbox-gl-draw": "^1.0.0",
+    "axios": "^0.16.2",
+    "colors.css": "^3.0.0",
     "element-ui": "^1.4.2",
     "mapbox-gl": "^0.38.0",
     "mapbox-gl-geocoder": "^2.0.1",
+    "material-design-icons": "^3.0.1",
     "vue": "^2.3.3",
     "vue-material": "^0.7.4",
     "vue-router": "^2.6.0",
