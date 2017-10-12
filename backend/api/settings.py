@@ -31,13 +31,16 @@ features = {
             'schema': {
                 'datetime_start': {
                     'type': 'datetime',
+                    'required': False
                 },
                 'datetime_end': {
                     'type': 'datetime'
+                    'required': False
                 },
                 'days': {
                     'type': 'list',
-                    'allowed': ['Su', 'M', 'T', 'W', 'Th', 'F', 'Sa']
+                    'allowed': ['Su', 'M', 'T', 'W', 'Th', 'F', 'Sa'],
+                    'required': False
                 },
                 'fed_holidays_datetime_start': {
                     'type': 'datetime',
