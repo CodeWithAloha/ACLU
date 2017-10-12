@@ -26,6 +26,35 @@ features = {
             'maxlength': 256,
             'required': True
         },
+        "restrictions": {
+            'type': "dict",
+            'schema': {
+                'datetime_start': {
+                    'type': 'datetime',
+                },
+                'datetime_end': {
+                    'type': 'datetime'
+                },
+                'days': {
+                    'type': 'list',
+                    'allowed': ['Su', 'M', 'T', 'W', 'Th', 'F', 'Sa']
+
+                },
+                'fed_holidays_datetime_start': {
+                    'type': 'datetime',
+                    'required': False
+                },
+                'fed_holidays_datetime_end': {
+                    'type': 'datetime',
+                    'required': False
+                },
+
+                'state_holidays': {
+                    'type': 'boolean',
+                    'required': False
+                }
+            }
+        },
         'organization': {
             'type': 'uuid',
             'data_relation': {
@@ -34,22 +63,8 @@ features = {
                 'embeddable': True
             }
         },
-        "hours": {
-            'type': 'string',
-            'minlength': 1,
-            'maxlength': 64
-        },
         'geojson': {
             'type': 'feature'
-        },
-        'restrictions': {
-            'type': 'string',
-            'minlength': 1,
-            'maxlength': 512
-        },
-        'ownership': {
-            'type': 'string',
-            'allowed': ["city", "state", "private", "federal", "military"]
         },
         'last_imported_at': {
             'type': 'datetime'
