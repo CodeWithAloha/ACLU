@@ -38,7 +38,6 @@ features = {
                 'days': {
                     'type': 'list',
                     'allowed': ['Su', 'M', 'T', 'W', 'Th', 'F', 'Sa']
-
                 },
                 'fed_holidays_datetime_start': {
                     'type': 'datetime',
@@ -48,9 +47,12 @@ features = {
                     'type': 'datetime',
                     'required': False
                 },
-
-                'state_holidays': {
-                    'type': 'boolean',
+                'state_holiday_datetime_start': {
+                    'type': 'datetime',
+                    'required': False
+                },
+                'state_holiday_datetime_end': {
+                    'type': 'datetime',
                     'required': False
                 }
             }
