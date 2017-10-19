@@ -34,30 +34,29 @@ features = {
                     'required': False
                 },
                 'datetime_end': {
-                    'type': 'datetime'
+                    'type': 'datetime',
                     'required': False
                 },
-                'days': {
+                'days': {  # blacklist
                     'type': 'list',
                     'allowed': ['Su', 'M', 'T', 'W', 'Th', 'F', 'Sa'],
                     'required': False
                 },
-                'fed_holidays_datetime_start': {
-                    'type': 'datetime',
+                'fed_holidays': {  # keys are uuid's of fed holidays,  vals are bool
+                    'type': 'boolean',
                     'required': False
                 },
-                'fed_holidays_datetime_end': {
-                    'type': 'datetime',
+                'state_holiday': {
+                    'type': 'boolean',
                     'required': False
                 },
-                'state_holiday_datetime_start': {
-                    'type': 'datetime',
-                    'required': False
+                # 0000 0000 0000 0000
+                #
+                # blacklist
+                # TODO: map every bit to an action
+                'action_restriction': {
+                    'type': 'string'
                 },
-                'state_holiday_datetime_end': {
-                    'type': 'datetime',
-                    'required': False
-                }
             }
         },
         'organization': {
