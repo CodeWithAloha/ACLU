@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+# Copyright © 2017
+#
+# Distributed under terms of the MIT license.
 """Scraper for park hours"""
 
 import os
