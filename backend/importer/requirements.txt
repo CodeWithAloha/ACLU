@@ -1,3 +1,4 @@
+arrow==0.10.0
 click==6.7
 flake8==3.4.1
 pymongo==3.4.0
