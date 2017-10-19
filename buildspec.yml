@@ -1,0 +1,51 @@
+version: 0.2
+
+env:
+  variables:
+     NODE_VERSION: "8.1.4"
+     YARN_VERSION: "0.27.5"
+     AWS_DEFAULT_REGION: "us-east-1"  
+phases:
+  install:
+    commands:
+      # - echo Installing AWS CLI
+      # - apt-get install python-pip -y
+      # - pip install awscli --upgrade --user
+      - echo Installing Node ...
+      - wget -qO- https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz | tar xJ --directory /usr/local
+      - ln -s /usr/local/node-v${NODE_VERSION}-linux-x64 /usr/local/node
+      - export PATH=/usr/local/node/bin/:${PATH}
+      - echo Installing Yarn ...
+      - npm install -g yarn@"${YARN_VERSION}"
+      - echo Logging into AWS ECR
+      - $(aws ecr get-login --region $AWS_DEFAULT_REGION)
+  pre_build:
+    commands:
+      - cd $CODEBUILD_SRC_DIR # move to code buil root directory, in case that previous script cd into a different directory
+      - echo Define build version
+      - IMAGE_TAG=`date +%s%3N`
+      - echo Installing dependencies
+      - cd frontend
+      - yarn
+      # - yarn test
+  build:
+    commands:
+      - cd $CODEBUILD_SRC_DIR # move to code buil root directory, in case that previous script cd into a different directory
+      - echo Building Frontend
+      - cd frontend
+      - yarn build --prod
+      - echo Building API containers
+      - cd ../backend
+      - docker build -t $IMAGES_REPO_URL:$IMAGE_TAG .
+  post_build:
+    commands:
+      - cd $CODEBUILD_SRC_DIR # move to code buil root directory, in case that previous script cd into a different directory
+      - echo Updating site in s3
+      - aws s3 sync ./frontend/dist s3://hi.aclu.com --acl public-read --delete --region $AWS_DEFAULT_REGION
+      - echo Pushing docker API container to AWS ECR
+      - docker push $IMAGES_REPO_URL:$IMAGE_TAG
+artifacts:
+  files:
+    - frontend/dist/**/*
+  #discard-paths: yes
+  #base-directory: location
