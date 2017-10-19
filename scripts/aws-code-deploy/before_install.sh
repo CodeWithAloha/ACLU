@@ -13,4 +13,5 @@ sudo wget -qO- https://get.docker.com/ | sudo sh
 sudo wget -O /usr/local/bin/docker-compose https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/run.sh
 
 # TODO - Remove this if unnecessary! Add r and x permissions to all users...
-sudo chmod ugo+rx /usr/local/bin/docker-compose
+#sudo chmod ugo+rx /usr/local/bin/docker-compose
+sudo usermod -aG docker ubuntu
