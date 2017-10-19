@@ -165,7 +165,5 @@ resource "aws_instance" "aclu" {
   key_name              = "${var.KEY_PAIR}"
   iam_instance_profile  = "${aws_iam_instance_profile.instance_profile.id}"
   security_groups       = ["${aws_security_group.aclu_sg.name}", "${aws_security_group.aclu_admin_sg.name}"]
-  tags {
-    project = "${var.APP_NAME}"
-  }
+  tags = "${var.global_tags}"
 }

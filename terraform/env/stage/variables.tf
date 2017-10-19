@@ -49,3 +49,13 @@ variable "admin_cidrs" {
     "199.68.252.130/32" # Boxjelly
   ]
 }
+
+variable "global_tags" {
+  type = "map"
+
+  default = {
+    "project"     = "aclu"
+    "createdBy"   = "terraform"
+    "environment" = "stage"
+  }
+}
