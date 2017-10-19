@@ -1,8 +1,8 @@
 version: '3'
 services:
   api:
-    # $IMAGES_REPO_URL variable should have been setup by TF during provisioning
-    image: aclu:latest
+    # TODO - Need a way to make the ECR url to be read from env variables (probably dinamically generate docker-compose)
+    image: 705750910119.dkr.ecr.us-west-2.amazonaws.com/aclu:latest
     container_name: aclu-api
     environment:
       - MONGO_HOST=db
