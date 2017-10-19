@@ -1,22 +1,30 @@
 <template>
   <md-bottom-bar>
-    <md-bottom-bar-item md-icon="subject">Organizations</md-bottom-bar-item>
-    <md-bottom-bar-item md-icon="subject" @click="rules">Rules</md-bottom-bar-item>
+    <md-bottom-bar-item md-icon="subject" :md-active="false">Organizations</md-bottom-bar-item>
+    <md-bottom-bar-item md-icon="subject" :md-active="rules.length > 0" @click="showRules">Rules
+      <span v-if="rules.length > 0">( {{ rules.length }} ) </span>
+    </md-bottom-bar-item>
   </md-bottom-bar>
 </template>
 
 <script>
+
+import { mapState } from 'vuex'
+
 export default {
   name: 'bottombar',
   props: ['longitude', 'latitude'],
-  data () {
+  data() {
     return {}
   },
-  mounted () {
+  computed: mapState({
+    rules: state => state.rules
+  }),
+  mounted() {
   },
   methods: {
-    rules () {
-      this.$router.push({name: 'RuleList', params: {lat: this.latitude, lng: this.longitude}})
+    showRules() {
+      this.$router.push({ name: 'RuleList', params: { lat: this.latitude, lng: this.longitude } })
     }
   }
 }
@@ -24,9 +32,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .md-bottom-bar {
-    position: fixed;
-    bottom: 0;
-    z-index: 4
-  }
+.md-bottom-bar {
+  position: fixed;
+  bottom: 0;
+  z-index: 4
+}
 </style>

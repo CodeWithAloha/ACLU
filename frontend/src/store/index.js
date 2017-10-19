@@ -1,18 +1,26 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-Vue.use(Vuex)
+import Vue from "vue";
+import Vuex from "vuex";
+Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
     locationDetermined: false,
-    location: null
+    location: null,
+    userValid: true,
+    rules: []
   },
   mutations: {
-    locationFound (state, coords) {
-      state.locationDetermined = true
-      state.location = [coords.latitude, coords.longitude]
+    setUserValid(state, valid) {
+      state.uservalid = valid;
+    },
+    locationFound(state, coords) {
+      state.locationDetermined = true;
+      state.location = [coords.latitude, coords.longitude];
+    },
+    updateRules(state, rules) {
+      state.rules = rules;
     }
   }
-})
+});
 
-export default store
+export default store;

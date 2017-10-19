@@ -399,3 +399,5 @@ cd "${__dir}/../importer"
 pip install -r requirements.txt
 
 python import_features.py --feature_collection_path "./2017-07-19.parks.geojson"
+
+python import_holidays.py --federal_ics_file "../data/holidays/federal/2017-09-09/holidays.ics"

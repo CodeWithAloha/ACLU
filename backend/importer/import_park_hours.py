@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+# Copyright © 2017
+#
+# Distributed under terms of the MIT license.
 """Scraper for park hours"""
 
 import os
@@ -11,7 +17,6 @@ logging.config.fileConfig(
 logger = logging.getLogger("aclu_importer.park_hours")
 
 PARK_URL = "https://www.honolulu.gov/parks/default/park-closure-hours.html"
-
 
 """
     Scrapes the park closure site and returns a dictionary of times

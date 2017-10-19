@@ -4,13 +4,16 @@
     <div class='map'></div>
     <div>
 
-      <md-layout md-gutter>
-        <md-layout md-flex-xsmall="100" md-flex-small="50" md-flex-medium="50">
-          {{rules.length}}
+      <md-layout md-gutter="8">
+        <md-layout class="rules" md-flex-xsmall="100" md-flex-small="50" md-flex-medium="50">
+          {{ rules.length }} rules
         </md-layout>
 
         <md-layout md-flex-xsmall="100" md-flex-small="50" md-flex-medium="50">
           <div class="warning-description">
+            <div class="description-item red" :class="{'-active': rules.length > 0}"></div>
+            <div class="description-item yellow"></div>
+            <div class="description-item green" :class="{'-active': rules.length == 0}"></div>
           </div>
         </md-layout>
       </md-layout>
@@ -38,17 +41,17 @@ import 'mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 Mapbox.accessToken = 'pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTdza2thcGozNSJ9.zw6CcZLxP6lq0x-xfwp6uA'
 
 export default {
-  data: function() {
+  data() {
     return {
       location: {
         longitude: 0,
         latitude: 0
-      },
-      rules: []
+      }
     }
   },
   computed: mapState({
-    locationDetermined: {}
+    locationDetermined: state => state.locationDetermined,
+    rules: state => state.rules
   }),
   mounted() {
     const map = new Mapbox.Map({
@@ -93,19 +96,20 @@ export default {
   },
   methods: {
     setLayers(data, map) {
+      const new_rules = []
       for (var i = 0; i < data._items.length; i++) {
         var geojson = data._items[i].geojson
         var id = data._items[i]._id
 
-        if (!this.rules.includes(data._items[i]._id)) {
-          this.rules.push(data._items[i]._id)
+        if (!new_rules.includes(data._items[i]._id)) {
+          new_rules.push(data._items[i]._id)
         }
         if (!map.getLayer(id)) {
           map.addLayer({
-            id: id,
+            id,
             type: 'fill',
             paint: {
-              'fill-color': '#ff0000'
+              'fill-color': '#FF4136'
             },
             source: {
               type: 'geojson',
@@ -114,10 +118,11 @@ export default {
           })
         }
       }
+      console.log(new_rules)
+      this.$store.commit('updateRules', new_rules);
     },
     setAllLayers(lng, lat, map) {
       var url = 'http://localhost:50050/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[' + lng + ', ' + lat + ']}, "$maxDistance": 50}}}'
-      this.rules = []
       this.getLayerData(url, map)
     },
     getLayerData(href, map) {
@@ -139,8 +144,28 @@ export default {
 .warning-description {
   width: 100%;
   height: 60px;
-  background-color: red;
+  text-align: center;
 }
+
+.warning-description>div {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.red {
+  background-color: var(--red);
+}
+
+.yellow {
+  background-color: var(--yellow);
+}
+
+.green {
+  background-color: var(--green);
+}
+
 
 .map {
   height: 65vh;
@@ -156,9 +181,23 @@ export default {
   z-index: 9;
 }
 
+.rules {
+  text-align: center;
+  justify-content: center;
+  padding: 10px 0;
+}
+
 .icon>svg {
   width: 2rem;
   height: 2rem;
-  fill: #ff0000;
+  fill: var(--red);
+}
+
+.description-item {
+  opacity: 0.5;
+}
+
+.description-item.-active {
+  opacity: 1;
 }
 </style>
