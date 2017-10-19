@@ -7,17 +7,17 @@ env:
 phases:
   install:
     commands:
-      # - echo Installing AWS CLI
-      # - apt-get install python-pip -y
-      # - pip install awscli --upgrade --user
       - echo Installing Node ...
       - wget -qO- https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz | tar xJ --directory /usr/local
       - ln -s /usr/local/node-v${NODE_VERSION}-linux-x64 /usr/local/node
       - export PATH=/usr/local/node/bin/:${PATH}
       - echo Installing Yarn ...
       - npm install -g yarn@"${YARN_VERSION}"
+      - echo Upgrading AWS CLI
+      # - apt-get install python-pip -y
+      - pip install awscli --upgrade --user
       - echo Logging into AWS ECR
-      - $(aws ecr get-login --region $AWS_DEFAULT_REGION)
+      - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
   pre_build:
     commands:
       - cd $CODEBUILD_SRC_DIR # move to code buil root directory, in case that previous script cd into a different directory
@@ -34,8 +34,9 @@ phases:
       - cd frontend
       - yarn build --prod
       - echo Building API containers
-      - cd ../backend
+      - cd $CODEBUILD_SRC_DIR/backend
       - docker build -t $IMAGES_REPO_URL:$IMAGE_TAG .
+      - docker tag $IMAGES_REPO_URL:$IMAGE_TAG $IMAGES_REPO_URL:latest
   post_build:
     commands:
       - cd $CODEBUILD_SRC_DIR # move to code buil root directory, in case that previous script cd into a different directory
@@ -43,6 +44,8 @@ phases:
       - aws s3 sync ./frontend/dist s3://$FRONTEND_BUCKET --acl public-read --delete --region $AWS_DEFAULT_REGION
       - echo Pushing docker API container to AWS ECR
       - docker push $IMAGES_REPO_URL:$IMAGE_TAG
+      - echo adding latest tag
+      - docker push $IMAGES_REPO_URL:latest
 artifacts:
   files:
     - frontend/dist/**/*
