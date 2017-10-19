@@ -8,7 +8,7 @@ files:
     destination: /var/project-aclu/
 permissions:
     - object: /var/project-aclu/scripts
-      owner: root
+      owner: ubuntu
       mode: 777
       type:
         - directory
@@ -16,11 +16,11 @@ hooks:
   BeforeInstall:
     - location: scripts/aws-code-deploy/before_install.sh
       timeout: 300
-      runas: root
+      runas: ubuntu
   AfterInstall:
     - location: scripts/aws-code-deploy/after_install.sh
       timeout: 300
-      runas: root
+      runas: ubuntu
   # ApplicationStart:
   #   - location: scripts/aws-code-deploy/start_server
   #     timeout: 300
