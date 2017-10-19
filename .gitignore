@@ -6,7 +6,6 @@
 # End of https://www.gitignore.io/api/vagrant
 
 .ropeproject/
-frontend/yarn.lock
 .DS_Store
 
 # gitignore.io.sh - a simple gitignore.io shell wrapper
