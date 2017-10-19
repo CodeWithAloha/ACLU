@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
-    bucket     = "felimartina.terraform"
+    bucket     = "aclu.terraform"
     key        = "aclu/envs/stage/terraform.tfstate"
-    region     = "us-east-1"
+    region     = "us-west-1"
     profile    = "aclu"
   }
 }

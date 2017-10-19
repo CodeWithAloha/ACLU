@@ -1,11 +1,11 @@
 # You  will need to create a 'terraform.tfvars' file providing your secret keys and credentials
 variable "PROFILE" {
   description = "You must have an aws profile in your local credentials files that has ACCESS_KEY, SECRET_KEY, and REGION set. Check README.md for details"
-  default       = "aclu"
+  default     = "aclu"
 }
 
 variable "REGION" {
-  default = "us-east-1"
+  default = "us-west-1"
 }
 
 variable "ENV" {
@@ -23,10 +23,6 @@ variable "KEY_PAIR" {
 
 variable "FRONT_END_BUCKET_NAME" {
   default = "hi.aclu.com"
-}
-
-variable "SOURCE_BUCKET_ARN" {
-  default = "arn:aws:s3:::temp-felimartina"
 }
 
 variable "GITHUB_OWNER" {

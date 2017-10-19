@@ -4,7 +4,6 @@ env:
   variables:
      NODE_VERSION: "8.1.4"
      YARN_VERSION: "0.27.5"
-     AWS_DEFAULT_REGION: "us-east-1"  
 phases:
   install:
     commands:
