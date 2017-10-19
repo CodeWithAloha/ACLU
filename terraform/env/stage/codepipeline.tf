@@ -1,8 +1,3 @@
-# Bucket to store builds
-resource "aws_s3_bucket" "codepipeline_build_repository" {
-  bucket = "aclu-builds"
-  acl    = "private"
-}
 
 resource "aws_iam_role" "codepipeline_role" {
   name = "${var.APP_NAME}-codepipeline-role"

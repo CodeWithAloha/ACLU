@@ -119,15 +119,18 @@ resource "aws_codebuild_project" "aclu" {
       "name"  = "FRONTEND_HOST"
       "value" = "${aws_eip.aclu.public_ip}"
     }
+
+    environment_variable {
+      "name"  = "FRONTEND_BUCKET"
+      "value" = "${aws_s3_bucket.frontend.id}"
+    }
+
   }
 
   source {
     type     = "CODEPIPELINE"
     buildspec = "buildspec.yml"
   }
-
-  tags {
-    "project" = "${var.APP_NAME}"
-    "environment" = "${var.ENV}"
-  }
+  
+  tags = "${var.global_tags}"
 }
