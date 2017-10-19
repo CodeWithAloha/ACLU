@@ -38,7 +38,8 @@ EOF
 resource "aws_iam_instance_profile" "instance_profile" {
   name = "${var.APP_NAME}-instance-profile"
   role = "${aws_iam_role.instance_iam_role.id}"
-}		
+}	
+
 resource "aws_iam_role_policy" "instance_role_policy" {
   name = "${var.APP_NAME}-instance-role-policy"
   role = "${aws_iam_role.instance_iam_role.id}"
@@ -127,8 +128,8 @@ resource "aws_security_group_rule" "api_sg_group_rule" {
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
 }
-
 # By default allow all outbound traffic...we can restrict this later
+
 resource "aws_security_group_rule" "egress_sg_group_rule" {
   security_group_id = "${aws_security_group.aclu_sg.id}"
   description       = "Allow all outbound traffic from instance (for updates). We can restrict it later for PRDO if neccessary"
@@ -139,10 +140,13 @@ resource "aws_security_group_rule" "egress_sg_group_rule" {
   cidr_blocks = ["0.0.0.0/0"]
   }
 
-# TODO Add SG
-# TODO Add Elastic IP and add it as ENV variable to codebuild
-# TODO Add Role to call connect to CodeDeploy
+resource "aws_eip" "aclu" {
+  instance = "${aws_instance.aclu.id}"
+  vpc      = true
+}
 
+# TODO Refine CodeDeploy role
+# TODO Add VPC (modularize stuff)
 # We use a template_file to create the user-data script for the ec2 instance
 # this is because the instance behavior depends on TF outputs such us ECR URL
 data "template_file" "bootstrap_script" {

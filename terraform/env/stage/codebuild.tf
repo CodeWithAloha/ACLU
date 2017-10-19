@@ -114,6 +114,11 @@ resource "aws_codebuild_project" "aclu" {
       "name"  = "AWS_DEFAULT_REGION"
       "value" = "${var.REGION}"
     }
+
+    environment_variable {
+      "name"  = "FRONTEND_HOST"
+      "value" = "${aws_eip.aclu.public_ip}"
+    }
   }
 
   source {
