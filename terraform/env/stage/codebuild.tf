@@ -54,8 +54,8 @@ resource "aws_iam_policy" "codebuild_policy" {
       "Effect": "Allow",
       "Action": "s3:*",
       "Resource": [
-        "arn:aws:s3:::${var.FRONT_END_BUCKET_NAME}",
-        "arn:aws:s3:::${var.FRONT_END_BUCKET_NAME}/*"
+        "${aws_s3_bucket.frontend.arn}",
+        "${aws_s3_bucket.frontend.arn}/*"
       ]
     }, {
       "Sid": "ManageArtifactsInBuildBucket",
