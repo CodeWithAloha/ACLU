@@ -40,7 +40,7 @@ phases:
     commands:
       - cd $CODEBUILD_SRC_DIR # move to code buil root directory, in case that previous script cd into a different directory
       - echo Updating site in s3
-      - aws s3 sync ./frontend/dist $FRONTEND_BUCKET --acl public-read --delete --region $AWS_DEFAULT_REGION
+      - aws s3 sync ./frontend/dist s3://$FRONTEND_BUCKET --acl public-read --delete --region $AWS_DEFAULT_REGION
       - echo Pushing docker API container to AWS ECR
       - docker push $IMAGES_REPO_URL:$IMAGE_TAG
 artifacts:
