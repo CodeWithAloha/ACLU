@@ -21,6 +21,10 @@ logger = logging.getLogger("aclu_importer.park_hours")
 
 PARK_URL = "https://www.honolulu.gov/parks/default/park-closure-hours.html"
 
+def import_park_hours():
+    return parse_park_hours_html_text(get_html_text(PARK_URL))
+
+
 """
     Scrapes the park closure site and returns a dictionary of times
     TODO: handle outliers
@@ -32,7 +36,7 @@ def parse_park_closure_times(timestr):
     if not timestr:
         return None 
     # online regex playground for this data here: https://regex101.com/r/vR9Gr1/1
-    timere = re.compile("((?P<close_word>[A-Za-z]+)|(?P<close_hour>1[0-2]|0?[1-9]):(?P<close_minutes>[0-5][0-9]) (?P<close_ap>[ap])\.m\.)(?P<separator> +(to|-) +)((?P<open_word>[A-Za-z]+)|(?P<open_hour>1[0-2]|0?[1-9]):(?P<open_minutes>[0-5][0-9]) (?P<open_ap>[ap])\.m\.)(?P<notes>.*)")
+    timere = re.compile("((?P<close_word>[A-Za-z]+)|(?P<close_hour>1[0-2]|0?[1-9]):(?P<close_minutes>[0-5][0-9]) (?P<close_ap>[ap])\.m\.)(?P<separator> +(to|-) +)((?P<open_word>[A-Za-z]+)|(?P<open_hour>1[0-2]|0?[1-9]):(?P<open_minutes>[0-5][0-9]) (?P<open_ap>[ap])\.m\.?)(?P<notes>.*)")
     parsed = timere.match(timestr.strip())
     if not parsed:
         return [timestr]
@@ -51,10 +55,10 @@ def parse_park_closure_times(timestr):
 
     return result
 
-def import_park_hours(html_text):
-    """Import park hours"""
+
+def parse_park_hours_html_text(html_text):
     soup = BeautifulSoup(html_text, "html.parser")
-    mapping = []
+    mapping = {}
     for table in soup('table'):
         # skip table heading
         for tr in table('tr')[1:]:
@@ -86,7 +90,7 @@ def import_park_hours(html_text):
                     desc = desc.strip("- ")
                     entry['hours'][desc] = closure_times
 
-            mapping.append(entry)
+            mapping[entry["name"]] = entry["hours"]
     return mapping
 
 
@@ -104,7 +108,7 @@ def get_html_text(url_or_path):
 def main(argv):
     url_or_path = argv[1] if len(argv) > 1 else PARK_URL
     html_text = get_html_text(url_or_path)
-    park_hours = import_park_hours(html_text)
+    park_hours = parse_park_hours_html_text(html_text)
     json_text = json.dumps(park_hours)
     print(json_text)
     return 0
