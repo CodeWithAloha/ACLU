@@ -12,6 +12,6 @@ ADD ./api/ /src
 
 EXPOSE 50050
 
-WORKDIR /src/api
+WORKDIR /src
 
 CMD ["gunicorn", "--bind", "0.0.0.0:50050", "app:app", "--reload", "--capture-output", "--enable-stdio-inheritance", "--access-logfile", "-", "--error-logfile", "-"]
