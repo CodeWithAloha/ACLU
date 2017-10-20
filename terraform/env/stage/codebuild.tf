@@ -116,7 +116,7 @@ resource "aws_codebuild_project" "aclu" {
     }
 
     environment_variable {
-      "name"  = "FRONTEND_HOST"
+      "name"  = "API_URL"
       "value" = "${aws_eip.aclu.public_ip}"
     }
 

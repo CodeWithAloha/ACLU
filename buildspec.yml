@@ -26,6 +26,9 @@ phases:
       - echo Installing dependencies
       - cd frontend
       - yarn
+      # TODO Remove this when we frontend is configured to read BASE_PATH from env
+      - echo TEMP FIX - Replacing http://localhost with actual API URL
+      - sed build/dev-server.js -i'' -e 's|localhost|'$API_URL'|'
       # - yarn test
   build:
     commands:
