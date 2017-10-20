@@ -1,2061 +1,1391 @@
 {
   "Mauʻumae Nature Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Mauʻumae Nature Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Fort Street Mall": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Fort Street Mall"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kuliʻouʻou Beach Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kuliʻouʻou Beach Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Mānana Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Mānana Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Waiʻalae Beach Park, parking lot": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Waiʻalae Beach Park, parking lot"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Hoa Aloha Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Hoa Aloha Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Keʻehi Lagoon Beach Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 600
-      }
-    },
-    "name": "Keʻehi Lagoon Beach Park"
+    "park": {
+      "close": 2200,
+      "open": 600
+    }
   },
   "Kaʻaʻawa Beach Park (": {
-    "hours": {
-      "Restroom)": {
-        "close": 2100,
-        "open": 630
-      }
-    },
-    "name": "Kaʻaʻawa Beach Park ("
+    "Restroom)": {
+      "close": 2100,
+      "open": 630
+    }
   },
   "Melemanu Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 600
-      }
-    },
-    "name": "Melemanu Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 600
+    }
   },
   "Paki Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Paki Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Crestview Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Crestview Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kaiaka Bay Beach Park": {
-    "hours": {
-      "park": {
-        "close": 1845,
-        "open": 700
-      }
-    },
-    "name": "Kaiaka Bay Beach Park"
+    "park": {
+      "close": 1845,
+      "open": 700
+    }
   },
   "Kuilei Cliffs (Diamond Head Road lookouts)": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kuilei Cliffs (Diamond Head Road lookouts)"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kahaluʻu Regional Park": {
-    "hours": {
-      "park": [
-        "8:00 p.m. - 7:00 a.m"
-      ]
-    },
-    "name": "Kahaluʻu Regional Park"
+    "park": {
+      "close": 2000,
+      "open": 700
+    }
   },
   "Sheridan Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Sheridan Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Sunset Beach Recreation Center": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Sunset Beach Recreation Center"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Keolu Hills Neighborhood Park": {
-    "hours": {
-      "Skatepark": {
-        "close": 1900,
-        "open": 700
-      },
-      "park": {
-        "close": 2200,
-        "open": 500
-      },
-      "Restroom": {
-        "close": 2100,
-        "open": 700
-      }
+    "Skatepark": {
+      "close": 1900,
+      "open": 700
     },
-    "name": "Keolu Hills Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    },
+    "Restroom": {
+      "close": 2100,
+      "open": 700
+    }
   },
   "Kamaʻiʻo Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kamaʻiʻo Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Ala Puʻumalu Community Park": {
-    "hours": {
-      "park": {
-        "close": 2000,
-        "open": 700
-      }
-    },
-    "name": "Ala Puʻumalu Community Park"
+    "park": {
+      "close": 2000,
+      "open": 700
+    }
   },
   "Kailua Beach Park": {
-    "hours": {
-      "Parking 'C'; Boat Ramp Parking": {
-        "close": 2200,
-        "open": 500
-      },
-      "Parking": {
-        "close": 2200,
-        "open": 500
-      },
-      "Restroom": {
-        "close": 2200,
-        "open": 600
-      }
+    "Parking 'C'; Boat Ramp Parking": {
+      "close": 2200,
+      "open": 500
     },
-    "name": "Kailua Beach Park"
+    "Parking": {
+      "close": 2200,
+      "open": 500
+    },
+    "Restroom": {
+      "close": 2200,
+      "open": 600
+    }
   },
   "Kāneʻohe Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kāneʻohe Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Sun Yat Sen Mall": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Sun Yat Sen Mall"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Ala Wai Promenade, Ala Moana-Kalākaua": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Ala Wai Promenade, Ala Moana-Kalākaua"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Newtown Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Newtown Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kupehau Slopes": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kupehau Slopes"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Waimea Bay Beach Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Waimea Bay Beach Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Enchanted Lake Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Enchanted Lake Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Pūʻōhala Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 600
-      }
-    },
-    "name": "Pūʻōhala Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 600
+    }
   },
   "Waiāhole Beach Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Waiāhole Beach Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Beretania Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 530
-      }
-    },
-    "name": "Beretania Community Park"
+    "park": {
+      "close": 2200,
+      "open": 530
+    }
   },
   "Lehua Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Lehua Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Ewa Beach Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Ewa Beach Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Puʻunui Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Puʻunui Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "ʻAikahi Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "ʻAikahi Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Maunawili Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 600
-      }
-    },
-    "name": "Maunawili Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 600
+    }
   },
   "Diamond Head Beach Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Diamond Head Beach Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Depots Beach Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Depots Beach Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Hoʻaeʻae Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Hoʻaeʻae Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "ʻAʻala Park": {
-    "hours": {
-      "park": {
-        "close": 2100,
-        "open": 600
-      }
-    },
-    "name": "ʻAʻala Park"
+    "park": {
+      "close": 2100,
+      "open": 600
+    }
   },
   "Hauʻula Beach Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Hauʻula Beach Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Pūpūkea Beach Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Pūpūkea Beach Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Waimānalo  District Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 600
-      }
-    },
-    "name": "Waimānalo  District Park"
+    "park": {
+      "close": 2200,
+      "open": 600
+    }
   },
   "Kunawai Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kunawai Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Moanalua Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Moanalua Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "College Walk Mall": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "College Walk Mall"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kanoa Street Mini Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kanoa Street Mini Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Pearl City District Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Pearl City District Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Crane Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Crane Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Haleʻiwa Aliʻi Beach": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 600
-      }
-    },
-    "name": "Haleʻiwa Aliʻi Beach"
+    "park": {
+      "close": 2200,
+      "open": 600
+    }
   },
   "Ewa Mahiko District Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Ewa Mahiko District Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Pālolo Valley District Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Pālolo Valley District Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kailua District Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kailua District Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kalihi Waena Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kalihi Waena Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kaluapuhi Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kaluapuhi Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Ala Wai Promenade, Kalākaua-McCully": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Ala Wai Promenade, Kalākaua-McCully"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Waimalu Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Waimalu Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Caesar and Eleanor Gomes Park at Pele Street": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Caesar and Eleanor Gomes Park at Pele Street"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kokololio Beach Park (Parking Gate)": {
-    "hours": {
-      "park": {
-        "close": 2000,
-        "open": 645
-      }
-    },
-    "name": "Kokololio Beach Park (Parking Gate)"
+    "park": {
+      "close": 2000,
+      "open": 645
+    }
   },
   "ʻAuwaiolimu Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2100,
-        "open": 600
-      }
-    },
-    "name": "ʻAuwaiolimu Neighborhood Park"
+    "park": {
+      "close": 2100,
+      "open": 600
+    }
   },
   "Kunia Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kunia Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Pililāʻau Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Pililāʻau Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kahaluʻu Beach Park": {
-    "hours": {
-      "park": [
-        "10:00 p.m. - 5:00 a.m"
-      ]
-    },
-    "name": "Kahaluʻu Beach Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Makakilo Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Makakilo Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Mililani Waena Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Mililani Waena Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kāneʻohe Beach Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 600
-      }
-    },
-    "name": "Kāneʻohe Beach Park"
+    "park": {
+      "close": 2200,
+      "open": 600
+    }
   },
   "Queen Emma Square": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Queen Emma Square"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kamehameha Community Park": {
-    "hours": {
-      "park": {
-        "close": 2130,
-        "open": 600
-      }
-    },
-    "name": "Kamehameha Community Park"
+    "park": {
+      "close": 2130,
+      "open": 600
+    }
   },
   "Kauluwela Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kauluwela Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Ulehawa Beach Park #1 & #2": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Ulehawa Beach Park #1 & #2"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Keaʻalau Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2000,
-        "open": 600
-      }
-    },
-    "name": "Keaʻalau Neighborhood Park"
+    "park": {
+      "close": 2000,
+      "open": 600
+    }
   },
   "Kawaiahao Mini Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kawaiahao Mini Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Waialua District Park (Parking)": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Waialua District Park (Parking)"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "ʻĀina Koa Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "ʻĀina Koa Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Puuloa Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2000,
-        "open": 500
-      }
-    },
-    "name": "Puuloa Neighborhood Park"
+    "park": {
+      "close": 2000,
+      "open": 500
+    }
   },
   "Kapiʻolani Park": {
-    "hours": {
-      "park": {
-        "close": 1200,
-        "open": 500
-      }
-    },
-    "name": "Kapiʻolani Park"
+    "park": {
+      "close": 1200,
+      "open": 500
+    }
   },
   "Kaimuki Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kaimuki Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Hanauma Bay Nature Preserve": {
-    "hours": {
-      "park": {
-        "close": 1800,
-        "notes": "(Winter)",
-        "open": 600
-      },
-      "Hanauma Bay Nature Preserve": {
-        "close": 1900,
-        "notes": "(Summer)",
-        "open": 600
-      }
+    "park": {
+      "close": 1800,
+      "notes": "(Winter)",
+      "open": 600
     },
-    "name": "Hanauma Bay Nature Preserve"
+    "Hanauma Bay Nature Preserve": {
+      "close": 1900,
+      "notes": "(Summer)",
+      "open": 600
+    }
   },
   "Mānana Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Mānana Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kalama Beach Park (Parking Gate)": {
-    "hours": {
-      "park": {
-        "close": 1800,
-        "open": 700
-      }
-    },
-    "name": "Kalama Beach Park (Parking Gate)"
+    "park": {
+      "close": 1800,
+      "open": 700
+    }
   },
   "Kahi Kane Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kahi Kane Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Āliamanu Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Āliamanu Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Ewa Beach Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Ewa Beach Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kānewai Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kānewai Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Smith-Beretania Community Park": {
-    "hours": {
-      "park": {
-        "close": 1900,
-        "open": 700
-      }
-    },
-    "name": "Smith-Beretania Community Park"
+    "park": {
+      "close": 1900,
+      "open": 700
+    }
   },
   "Waiau District Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Waiau District Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "ʻAiea District Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "ʻAiea District Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kapolei Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kapolei Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kualoa Regional Park (Parking Gate)": {
-    "hours": {
-      "park": {
-        "close": 2000,
-        "open": 700
-      }
-    },
-    "name": "Kualoa Regional Park (Parking Gate)"
+    "park": {
+      "close": 2000,
+      "open": 700
+    }
   },
   "Kawai Nui Neighborhood Park (Parking Gate)": {
-    "hours": {
-      "park": {
-        "close": 1900,
-        "open": 700
-      }
-    },
-    "name": "Kawai Nui Neighborhood Park (Parking Gate)"
+    "park": {
+      "close": 1900,
+      "open": 700
+    }
   },
   "Lēʻahi Beach Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Lēʻahi Beach Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Fern Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Fern Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Wilson Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Wilson Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Ala Moana Regional Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 400
-      }
-    },
-    "name": "Ala Moana Regional Park"
+    "park": {
+      "close": 2200,
+      "open": 400
+    }
   },
   "Old Stadium Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Old Stadium Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Na Pueo Mini Park": {
-    "hours": {
-      "park": {
-        "close": 2000,
-        "open": 500
-      }
-    },
-    "name": "Na Pueo Mini Park"
+    "park": {
+      "close": 2000,
+      "open": 500
+    }
   },
   "West Loch Shoreline Park": {
-    "hours": {
-      "park": {
-        "close": 1900,
-        "open": 700
-      }
-    },
-    "name": "West Loch Shoreline Park"
+    "park": {
+      "close": 1900,
+      "open": 700
+    }
   },
   "Ala Wai Neighborhood Park, Annex": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Ala Wai Neighborhood Park, Annex"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kahe Point Beach Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kahe Point Beach Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kaʻelepulu Mini Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 600
-      }
-    },
-    "name": "Kaʻelepulu Mini Park"
+    "park": {
+      "close": 2200,
+      "open": 600
+    }
   },
   "Union Mall": {
-    "hours": {
-      "park": [
-        "10:00 p.m. to 5:00 a.m"
-      ]
-    },
-    "name": "Union Mall"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kaʻahele Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kaʻahele Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Nāpuanani Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2000,
-        "open": 600
-      }
-    },
-    "name": "Nāpuanani Neighborhood Park"
+    "park": {
+      "close": 2000,
+      "open": 600
+    }
   },
   "Ala Wai Community Park": {
-    "hours": {
-      "park": {
-        "close": 2300,
-        "open": 500
-      }
-    },
-    "name": "Ala Wai Community Park"
+    "park": {
+      "close": 2300,
+      "open": 500
+    }
   },
   "Kahaluʻu Community Park": {
-    "hours": {
-      "park": [
-        "10:00 p.m. - 5:00 a.m"
-      ]
-    },
-    "name": "Kahaluʻu Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Hans L'Orange Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 630
-      }
-    },
-    "name": "Hans L'Orange Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 630
+    }
   },
   "Mililani District Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Mililani District Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Booth District Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Booth District Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Waipahu District Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Waipahu District Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kalihi Uka Community Park": {
-    "hours": {
-      "park": {
-        "close": 2130,
-        "open": 600
-      }
-    },
-    "name": "Kalihi Uka Community Park"
+    "park": {
+      "close": 2130,
+      "open": 600
+    }
   },
   "Whitmore Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Whitmore Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Koko Head District Park": {
-    "hours": {
-      "park": {
-        "close": 2300,
-        "open": 400
-      }
-    },
-    "name": "Koko Head District Park"
+    "park": {
+      "close": 2300,
+      "open": 400
+    }
   },
   "Waikele Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Waikele Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kaʻala Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kaʻala Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kalāheo Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 600
-      }
-    },
-    "name": "Kalāheo Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 600
+    }
   },
   "Kapāolono Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kapāolono Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kahala Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kahala Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kapunahala Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 600
-      }
-    },
-    "name": "Kapunahala Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 600
+    }
   },
   "Mother Waldron Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Mother Waldron Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kūhiō  Beach Park": {
-    "hours": {
-      "park": {
-        "close": 200,
-        "open": 500
-      }
-    },
-    "name": "Kūhiō  Beach Park"
+    "park": {
+      "close": 200,
+      "open": 500
+    }
   },
   "Maunawili Valley Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 600
-      }
-    },
-    "name": "Maunawili Valley Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 600
+    }
   },
   "Ala Wai Golf Course Access Road": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Ala Wai Golf Course Access Road"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Neal S. Blaisdell Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Neal S. Blaisdell Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Lanakila District Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      },
-      "Basketball Courts": {
-        "close": 2200,
-        "open": 800
-      }
+    "park": {
+      "close": 2200,
+      "open": 500
     },
-    "name": "Lanakila District Park"
+    "Basketball Courts": {
+      "close": 2200,
+      "open": 800
+    }
   },
   "Maʻili Beach Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Maʻili Beach Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kalo Place Mini Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kalo Place Mini Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kokeʻe Beach Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kokeʻe Beach Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Date Street Mini Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Date Street Mini Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "ʻIliahi Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "ʻIliahi Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Alahula Square": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Alahula Square"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Palailai Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Palailai Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kaomaʻaikū Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": "Dusk",
-        "open": "Dawn"
-      }
-    },
-    "name": "Kaomaʻaikū Neighborhood Park"
+    "park": {
+      "close": "Dusk",
+      "open": "Dawn"
+    }
   },
   "Kila Kalikimaka Mall": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kila Kalikimaka Mall"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "ʻĀlewa Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "ʻĀlewa Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Pacific Palisades Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Pacific Palisades Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Pōkaʻī Bay Beach Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Pōkaʻī Bay Beach Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Puʻu 0 Kaimuki": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Puʻu 0 Kaimuki"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kamāmalu Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2230,
-        "open": 530
-      }
-    },
-    "name": "Kamāmalu Neighborhood Park"
+    "park": {
+      "close": 2230,
+      "open": 530
+    }
   },
   "Peter Buck Mini Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Peter Buck Mini Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Ewa Puʻuloa District Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Ewa Puʻuloa District Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Mauna Lahilahi Beach Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Mauna Lahilahi Beach Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Noholoa Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Noholoa Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Princess Kaiʻulani Triangle Urban Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Princess Kaiʻulani Triangle Urban Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Maunalani Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Maunalani Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kuahelani Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kuahelani Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Pearlridge Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Pearlridge Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Whitmore Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Whitmore Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kealohi Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kealohi Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Hauʻula Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 600
-      }
-    },
-    "name": "Hauʻula Community Park"
+    "park": {
+      "close": 2200,
+      "open": 600
+    }
   },
   "Pāwaʻa In-Ha Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Pāwaʻa In-Ha Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Lualualei Beach Park #1": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Lualualei Beach Park #1"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Lualualei Beach Park #2": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Lualualei Beach Park #2"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kalanianaʻole Beach Park (Forac/Zablan)": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      },
-      "Black Rock / Cove Beach": {
-        "close": 2200,
-        "open": 500
-      }
+    "park": {
+      "close": 2200,
+      "open": 500
     },
-    "name": "Kalanianaʻole Beach Park (Forac/Zablan)"
+    "Black Rock / Cove Beach": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Banzai Skatepark": {
-    "hours": {
-      "park": {
-        "close": 1900,
-        "open": 700
-      }
-    },
-    "name": "Banzai Skatepark"
+    "park": {
+      "close": 1900,
+      "open": 700
+    }
   },
   "Kalihi Valley District Park": {
-    "hours": {
-      "park": {
-        "close": 2130,
-        "open": 600
-      }
-    },
-    "name": "Kalihi Valley District Park"
+    "park": {
+      "close": 2130,
+      "open": 600
+    }
   },
   "Mānana Kai Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Mānana Kai Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Ala Wai Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Ala Wai Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Frank Judd Mini Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Frank Judd Mini Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Wahiawā District Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Wahiawā District Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kalākaua District Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kalākaua District Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Mōʻiliʻili Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Mōʻiliʻili Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Patsy T. Mink Central Oʻahu Regional Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 630
-      }
-    },
-    "name": "Patsy T. Mink Central Oʻahu Regional Park"
+    "park": {
+      "close": 2200,
+      "open": 630
+    }
   },
   "Operation Red Wing Medal of Honor Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Operation Red Wing Medal of Honor Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kekaulike Mall": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kekaulike Mall"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Waipahu Cultural Garden Park": {
-    "hours": {
-      "park": {
-        "close": 1600,
-        "open": 800
-      }
-    },
-    "name": "Waipahu Cultural Garden Park"
+    "park": {
+      "close": 1600,
+      "open": 800
+    }
   },
   "Kapolei Regional Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kapolei Regional Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Puʻu O Hulu Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Puʻu O Hulu Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Mililani Mauka Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Mililani Mauka Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Mokulēʻia Beach Park (Parking Lot)": {
-    "hours": {
-      "park": {
-        "close": 1900,
-        "open": 700
-      }
-    },
-    "name": "Mokulēʻia Beach Park (Parking Lot)"
+    "park": {
+      "close": 1900,
+      "open": 700
+    }
   },
   "Salt Lake District Park": {
-    "hours": {
-      "park": {
-        "close": 2100,
-        "open": 600
-      }
-    },
-    "name": "Salt Lake District Park"
+    "park": {
+      "close": 2100,
+      "open": 600
+    }
   },
   "Kaʻōnohi Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kaʻōnohi Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Mākālei Beach Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Mākālei Beach Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kīpapa Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kīpapa Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Mililani Town Center Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Mililani Town Center Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Waialua Bandstand": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Waialua Bandstand"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Makakilo Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Makakilo Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Moanalua Valley Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 1900,
-        "open": 700
-      }
-    },
-    "name": "Moanalua Valley Neighborhood Park"
+    "park": {
+      "close": 1900,
+      "open": 700
+    }
   },
   "Waialeʻe Beach Park (Parking)": {
-    "hours": {
-      "park": {
-        "close": 2000,
-        "notes": "(gate closed)",
-        "open": 800
-      }
-    },
-    "name": "Waialeʻe Beach Park (Parking)"
+    "park": {
+      "close": 2000,
+      "notes": "(gate closed)",
+      "open": 800
+    }
   },
   "Surfer's Beach": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Surfer's Beach"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Hōlanialiʻi  Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Hōlanialiʻi  Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kamokila Community Park": {
-    "hours": {
-      "park": {
-        "close": 1900,
-        "open": 600
-      }
-    },
-    "name": "Kamokila Community Park"
+    "park": {
+      "close": 1900,
+      "open": 600
+    }
   },
   "Mokauea Mini Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 600
-      }
-    },
-    "name": "Mokauea Mini Park"
+    "park": {
+      "close": 2200,
+      "open": 600
+    }
   },
   "Tracks Beach Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Tracks Beach Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Heʻeia Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 600
-      }
-    },
-    "name": "Heʻeia Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 600
+    }
   },
   "Nanikai Beach Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Nanikai Beach Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Waimānalo  Bay Beach Park": {
-    "hours": {
-      "park": {
-        "close": 1945,
-        "open": 600
-      }
-    },
-    "name": "Waimānalo  Bay Beach Park"
+    "park": {
+      "close": 1945,
+      "open": 600
+    }
   },
   "Waimānalo  Beach Park": {
-    "hours": {
-      "park": {
-        "close": 2130,
-        "open": 700
-      }
-    },
-    "name": "Waimānalo  Beach Park"
+    "park": {
+      "close": 2130,
+      "open": 700
+    }
   },
   "Pacheco Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Pacheco Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Hālawa District Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Hālawa District Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Mililani Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2000,
-        "open": 500
-      }
-    },
-    "name": "Mililani Neighborhood Park"
+    "park": {
+      "close": 2000,
+      "open": 500
+    }
   },
   "Dr. Sun Yat-sen Memorial Park \"Chinatown Gateway Park\"": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Dr. Sun Yat-sen Memorial Park \"Chinatown Gateway Park\""
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Cartwright Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Cartwright Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Waiʻanae District Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Waiʻanae District Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kaiona Beach Park (Restroom)": {
-    "hours": {
-      "park": {
-        "close": 1900,
-        "open": 700
-      }
-    },
-    "name": "Kaiona Beach Park (Restroom)"
+    "park": {
+      "close": 1900,
+      "open": 700
+    }
   },
   "Hōkūahiahi Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Hōkūahiahi Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "DeCorte Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2130,
-        "open": 600
-      }
-    },
-    "name": "DeCorte Neighborhood Park"
+    "park": {
+      "close": 2130,
+      "open": 600
+    }
   },
   "Mililani Mauka District Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Mililani Mauka District Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Hawaiʻi Kai Dog Park": {
-    "hours": {
-      "park": {
-        "close": 2000,
-        "open": 600
-      }
-    },
-    "name": "Hawaiʻi Kai Dog Park"
+    "park": {
+      "close": 2000,
+      "open": 600
+    }
   },
   "Dole Community Park": {
-    "hours": {
-      "park": {
-        "close": 2030,
-        "open": 500
-      }
-    },
-    "name": "Dole Community Park"
+    "park": {
+      "close": 2030,
+      "open": 500
+    }
   },
   "Kamānele Square Urban Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kamānele Square Urban Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Waipiʻo Peninsula Soccer Park": {
-    "hours": {
-      "park": {
-        "close": 1830,
-        "open": 600
-      }
-    },
-    "name": "Waipiʻo Peninsula Soccer Park"
+    "park": {
+      "close": 1830,
+      "open": 600
+    }
   },
   "King Kalākaua Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 600
-      }
-    },
-    "name": "King Kalākaua Park"
+    "park": {
+      "close": 2200,
+      "open": 600
+    }
   },
   "Geiger Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Geiger Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Makiki District Park": {
-    "hours": {
-      "Skate Park": {
-        "close": 2000,
-        "open": 700
-      },
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
+    "Skate Park": {
+      "close": 2000,
+      "open": 700
     },
-    "name": "Makiki District Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Makaʻunulau Community Park": {
-    "hours": {
-      "park": {
-        "close": 2000,
-        "open": 500
-      }
-    },
-    "name": "Makaʻunulau Community Park"
+    "park": {
+      "close": 2000,
+      "open": 500
+    }
   },
   "Mānoa Valley District Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Mānoa Valley District Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Laenani Beach Park": {
-    "hours": {
-      "park": [
-        "10:00 p.m. - 5:00 a.m"
-      ]
-    },
-    "name": "Laenani Beach Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kāneʻohe Comm. & Senior Center": {
-    "hours": {
-      "park": {
-        "close": 2100,
-        "open": 700
-      }
-    },
-    "name": "Kāneʻohe Comm. & Senior Center"
+    "park": {
+      "close": 2100,
+      "open": 700
+    }
   },
   "McCully District Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "McCully District Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Koko Kai Beach Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Koko Kai Beach Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Swanzy Beach Park (Back Parking Lot)": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 600
-      }
-    },
-    "name": "Swanzy Beach Park (Back Parking Lot)"
+    "park": {
+      "close": 2200,
+      "open": 600
+    }
   },
   "Asing Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Asing Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kamaliʻi Mini Park": {
-    "hours": {
-      "park": {
-        "close": 1900,
-        "open": 700
-      }
-    },
-    "name": "Kamaliʻi Mini Park"
+    "park": {
+      "close": 1900,
+      "open": 700
+    }
   },
   "Nuʻuanu Valley Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 600
-      }
-    },
-    "name": "Nuʻuanu Valley Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 600
+    }
   },
   "Maukalani Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2000,
-        "open": 600
-      }
-    },
-    "name": "Maukalani Neighborhood Park"
+    "park": {
+      "close": 2000,
+      "open": 600
+    }
   },
   "Kawai Nui Model Airplane Field": {
-    "hours": {
-      "park": {
-        "close": 1900,
-        "open": 700
-      }
-    },
-    "name": "Kawai Nui Model Airplane Field"
+    "park": {
+      "close": 1900,
+      "open": 700
+    }
   },
   "Kāneʻohe Civic Center Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      },
-      "Parking": {
-        "close": 2200,
-        "open": 700
-      }
+    "park": {
+      "close": 2200,
+      "open": 500
     },
-    "name": "Kāneʻohe Civic Center Park"
+    "Parking": {
+      "close": 2200,
+      "open": 700
+    }
   },
   "Kāneʻohe District Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kāneʻohe District Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kahiwelo Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kahiwelo Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Duke Kahanamoku Beach Park": {
-    "hours": {
-      "park": {
-        "close": 200,
-        "open": 500
-      }
-    },
-    "name": "Duke Kahanamoku Beach Park"
+    "park": {
+      "close": 200,
+      "open": 500
+    }
   },
   "ʻĀhuimanu Community Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "ʻĀhuimanu Community Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Nāhele Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Nāhele Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kunawai Springs": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Kunawai Springs"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Makalapa Neighborhood Park": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Makalapa Neighborhood Park"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   },
   "Kauluwela Mall": {
-    "hours": {
-      "park": {
-        "close": 2100,
-        "open": 530
-      }
-    },
-    "name": "Kauluwela Mall"
+    "park": {
+      "close": 2100,
+      "open": 530
+    }
   },
   "Thomas Square": {
-    "hours": {
-      "park": {
-        "close": 2200,
-        "open": 500
-      }
-    },
-    "name": "Thomas Square"
+    "park": {
+      "close": 2200,
+      "open": 500
+    }
   }
 }
