@@ -16,9 +16,11 @@ hooks:
   BeforeInstall:
     - location: scripts/aws-code-deploy/before_install.sh
       timeout: 300
+      runas: ubuntu
   AfterInstall:
     - location: scripts/aws-code-deploy/after_install.sh
       timeout: 300
+      runas: ubuntu
   # ApplicationStart:
   #   - location: scripts/aws-code-deploy/start_server
   #     timeout: 300
