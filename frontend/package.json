@@ -11,7 +11,7 @@
     "test:unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test:e2e": "node test/e2e/runner.js",
     "test": "yarn test:unit && yarn test:e2e",
-    "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
+    "lint": "eslint --fix --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
     "@mapbox/mapbox-gl-draw": "^1.0.0",
@@ -20,6 +20,7 @@
     "mapbox-gl": "^0.38.0",
     "mapbox-gl-geocoder": "^2.0.1",
     "material-design-icons": "^3.0.1",
+    "prettier": "^1.7.4",
     "vue": "^2.3.3",
     "vue-material": "^0.7.4",
     "vue-router": "^2.6.0",
@@ -45,10 +46,12 @@
     "css-loader": "^0.28.0",
     "cssnano": "^3.10.0",
     "eslint": "^3.19.0",
+    "eslint-config-prettier": "^2.6.0",
     "eslint-config-standard": "^6.2.1",
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-loader": "^1.7.1",
     "eslint-plugin-html": "^3.0.0",
+    "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^2.0.1",
     "eventsource-polyfill": "^0.9.6",
