@@ -13,46 +13,45 @@
 
 <script>
 /* eslint no-new:0 */
-import Mapbox from 'mapbox-gl'
-import 'mapbox-gl/dist/mapbox-gl.css'
+import Mapbox from "mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
 
-import topbar from './TopBar.vue'
-import bottombar from './BottomBar.vue'
+import topbar from "./TopBar.vue";
+import bottombar from "./BottomBar.vue";
 
-import Axios from 'axios'
+import Axios from "axios";
 // const locationIcon = require('../assets/location.svg')
 // import Vue from 'vue'
 
-Mapbox.accessToken = 'pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTdza2thcGozNSJ9.zw6CcZLxP6lq0x-xfwp6uA'
+Mapbox.accessToken =
+  "pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTdza2thcGozNSJ9.zw6CcZLxP6lq0x-xfwp6uA";
 
 export default {
-  name: 'Rule',
+  name: "Rule",
   data() {
     return {
       // static rules *remove when api is created
       rule: {}
-    }
+    };
   },
   methods: {
     getRule: function(id) {
-      var url = 'http://localhost:50050/features/' + this.$route.params.ruleId
-      return Axios.get(url)
-        .then(function(response) {
-          return response.data
-        })
+      var url = "http://localhost:50050/features/" + this.$route.params.ruleId;
+      return Axios.get(url).then(function(response) {
+        return response.data;
+      });
     }
   },
   mounted() {
-    this.getRule(this.$route.params.id)
-      .then(data => {
-        this.rule = data
-        this.name = data.name
-        this.restriction = data.restrictions
-      })
+    this.getRule(this.$route.params.id).then(data => {
+      this.rule = data;
+      this.name = data.name;
+      this.restriction = data.restrictions;
+    });
     // use API to grab rule and set it here with this.$route.params.ruleId
   },
   components: { bottombar, topbar }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

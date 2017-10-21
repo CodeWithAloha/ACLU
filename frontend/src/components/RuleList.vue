@@ -25,57 +25,59 @@
 </template>
 
 <script>
-import bottombar from './BottomBar.vue'
-import topbar from './TopBar.vue'
+import bottombar from "./BottomBar.vue";
+import topbar from "./TopBar.vue";
 
-import Axios from 'axios'
+import Axios from "axios";
 
 export default {
-  name: 'RuleList',
+  name: "RuleList",
   data() {
     return {
       rules: []
-    }
+    };
   },
-  beforeRouterEnter() {
-
-  },
+  beforeRouterEnter() {},
   created() {
-    this.getAllRules(this.$route.params.lng, this.$route.params.lat)
+    this.getAllRules(this.$route.params.lng, this.$route.params.lat);
   },
   mounted() {
-    console.log('mounted' + this.rules)
+    console.log("mounted" + this.rules);
   },
   methods: {
     getRules: function(href) {
-      return Axios.get(href)
-        .then(function(response) {
-          return response.data
-        })
+      return Axios.get(href).then(function(response) {
+        return response.data;
+      });
     },
     pushRules: function(url) {
       return this.getRules(url).then(data => {
         for (var i = 0; i < data._items.length; i++) {
-          this.rules.push(data._items[i])
+          this.rules.push(data._items[i]);
         }
-        return data
-      })
+        return data;
+      });
     },
     getAllRules: function(lng, lat) {
-      var url = 'http://localhost:50050/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[' + lng + ', ' + lat + ']}, "$maxDistance": 250}}}'
+      var url =
+        'http://localhost:50050/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[' +
+        lng +
+        ", " +
+        lat +
+        ']}, "$maxDistance": 250}}}';
       this.pushRules(url).then(data => {
         if (data._links.next) {
-          var href = 'http://localhost:50050/' + data._links.next.href
-          this.pushRules(href)
+          var href = "http://localhost:50050/" + data._links.next.href;
+          this.pushRules(href);
         }
-      })
+      });
     },
     rowClick: function(id) {
-      this.$router.push({ name: 'Rule', params: { ruleId: id } })
+      this.$router.push({ name: "Rule", params: { ruleId: id } });
     }
   },
   components: { bottombar, topbar }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
