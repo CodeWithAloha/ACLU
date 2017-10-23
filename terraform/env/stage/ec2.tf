@@ -166,4 +166,9 @@ resource "aws_instance" "aclu" {
   iam_instance_profile  = "${aws_iam_instance_profile.instance_profile.id}"
   security_groups       = ["${aws_security_group.aclu_sg.name}", "${aws_security_group.aclu_admin_sg.name}"]
   tags = "${var.global_tags}"
+
+  root_block_device = {
+    volume_type = "gp2"
+    volume_size = "20"
+  }
 }
