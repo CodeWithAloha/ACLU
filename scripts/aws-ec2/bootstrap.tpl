@@ -37,3 +37,26 @@ service awslogs restart
 sudo chmod ugo+rx /etc/profile
 echo export ECR_REGION=${ECR_REGION}  >> /etc/profile
 echo export IMAGES_REPO_URL=${IMAGES_REPO_URL}  >> /etc/profile
+
+# Install libraries required for aclu project
+export JQ_VERSION=1.5 # latest jq version as of 15-Aug-2015
+export DOCKER_COMPOSE_VERSION=1.15.0
+
+# Install and update required libraries (python, httpie, and gdal are used for importer...we may be able to remove then later)
+sudo apt-get install -y \
+     httpie \
+     gdal-bin
+
+# install ./jq (https://stedolan.github.io/jq/)
+sudo wget -O /usr/local/bin/jq https://github.com/stedolan/jq/releases/download/jq-$JQ_VERSION/jq-linux64
+sudo chmod a+x /usr/local/bin/jq
+
+# used convenience scripts since this is just test
+# https://docs.docker.com/engine/installation/linux/docker-ce/debian/#install-using-the-convenience-script
+sudo wget -qO- https://get.docker.com/ | sudo sh
+
+# download docker-compose
+sudo wget -O /usr/local/bin/docker-compose https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/run.sh
+sudo chmod a+x /usr/local/bin/docker-compose
+# Add r and x permissions to ubuntu user...
+sudo usermod -aG docker ubuntu
