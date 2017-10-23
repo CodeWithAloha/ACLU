@@ -74,6 +74,7 @@ resource "aws_iam_policy" "codebuild_policy" {
         "ecr:GetAuthorizationToken",
         "ecr:InitiateLayerUpload",
         "ecr:PutImage",
+        "ecr:BatchDeleteImage",
         "ecr:UploadLayerPart"
       ],
       "Resource": "*"      
