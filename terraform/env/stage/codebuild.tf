@@ -111,6 +111,11 @@ resource "aws_codebuild_project" "aclu" {
     }
 
     environment_variable {
+      "name"  = "IMAGES_REPO_NAME"
+      "value" = "${aws_ecr_repository.aclu.name}"
+    }
+
+    environment_variable {
       "name"  = "AWS_DEFAULT_REGION"
       "value" = "${var.REGION}"
     }
