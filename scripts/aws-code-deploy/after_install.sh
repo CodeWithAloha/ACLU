@@ -14,10 +14,8 @@ $(aws ecr get-login --region us-west-2 --no-include-email) # Ended up harcoding 
 # Docker compose
 cd /var/project-aclu/
 # TODO this should probably go in APPLICATION_STOP step
-docker-compose down
-# force docker to fetch latest aclu image
-docker-compose pull
-docker-compose up -d
 
-# Create the spatial index TODO - Not sure if it is ok to run this on every deploy...is it idempotent? TODO2 - What about import scripts?
-docker exec $(docker ps -aqf "name=aclu-db") mongo aclu --eval "db.features.ensureIndex({'geojson.geometry': '2dsphere'})"
+# force docker to fetch latest aclu image
+sudo docker-compose pull
+# build dockers
+sudo docker-compose build
