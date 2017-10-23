@@ -39,6 +39,8 @@ phases:
       - echo Building API containers
       - cd $CODEBUILD_SRC_DIR/backend
       - docker build -t $IMAGES_REPO_URL:$IMAGE_TAG .
+      - echo Remove `latest` tag from previous image
+      - aws ecr batch-delete-image --repository-name $IMAGES_REPO_NAME --image-ids imageTag=latest
       - docker tag $IMAGES_REPO_URL:$IMAGE_TAG $IMAGES_REPO_URL:latest
   post_build:
     commands:

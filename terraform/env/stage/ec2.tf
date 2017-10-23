@@ -153,8 +153,9 @@ data "template_file" "bootstrap_script" {
   template = "${file("../../../scripts/aws-ec2/bootstrap.tpl")}"
   
   vars {
-    ECR_REGION      = "${var.REGION}"
-    IMAGES_REPO_URL = "${aws_ecr_repository.aclu.repository_url}"
+    ECR_REGION        = "${var.REGION}"
+    IMAGES_REPO_URL   = "${aws_ecr_repository.aclu.repository_url}"
+    IMAGES_REPO_NAME  = "${aws_ecr_repository.aclu.name}"
   }
 }
 

@@ -37,6 +37,7 @@ service awslogs restart
 sudo chmod ugo+rx /etc/profile
 echo export ECR_REGION=${ECR_REGION}  >> /etc/profile
 echo export IMAGES_REPO_URL=${IMAGES_REPO_URL}  >> /etc/profile
+echo export IMAGES_REPO_NAME=${IMAGES_REPO_NAME}  >> /etc/profile
 
 # Install libraries required for aclu project
 export JQ_VERSION=1.5 # latest jq version as of 15-Aug-2015

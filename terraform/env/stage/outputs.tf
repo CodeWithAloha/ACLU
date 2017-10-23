@@ -6,6 +6,10 @@ output "ecr_url" {
   value = "${aws_ecr_repository.aclu.repository_url}"
 }
 
+output "ecr_repo_name" {
+  value = "${aws_ecr_repository.aclu.name}"
+}
+
 output "frontend_domain" {
   value = "${aws_s3_bucket.frontend.website_endpoint}"
 }
