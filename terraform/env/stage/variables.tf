@@ -34,7 +34,7 @@ variable "GITHUB_REPO" {
 }
 
 variable "GITHUB_BRANCH" {
-  default = "implementing-aws-codedeploy"
+  default = "master"
 }
 
 variable "GITHUB_TOKEN" {
