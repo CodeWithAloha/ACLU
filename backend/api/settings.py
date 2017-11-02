@@ -29,12 +29,12 @@ features = {
         "restrictions": {
             'type': "dict",
             'schema': {
-                'datetime_start': {
-                    'type': 'datetime',
+                'hours_start': {  # 0000 - 2359
+                    'type': 'number',
                     'required': False
                 },
-                'datetime_end': {
-                    'type': 'datetime',
+                'hours_end': {  # 0000 - 2359
+                    'type': 'number',
                     'required': False
                 },
                 'days': {  # blacklist
