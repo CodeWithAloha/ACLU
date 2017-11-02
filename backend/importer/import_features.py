@@ -42,43 +42,37 @@ def import_features(feature_collection_path=None):
     # feature/geojson files will each need a unique template (and it should
     # scale somewhat nicely)
 
-    park_hours = import_park_hours()
+    with open("../data/parks/2017.10.20_Honolulu-Park-Hours/park-closure-hours.json") as parks_file:
+        park_hours = json.load(parks_file)
+        print park_hours
 
-    if feature_collection_path and os.path.isfile(os.path.realpath(feature_collection_path)):
-        organization = _get_organization("Park")
+        if feature_collection_path and os.path.isfile(os.path.realpath(feature_collection_path)):
+            organization = _get_organization("Park")
 
-        if organization:
-            for feature in _features_from_path(os.path.realpath(feature_collection_path)):
-                f = {
-                    "_id": str(uuid.uuid4()),
-                    "geojson": feature,
-                    "restrictions": {},
-                    "organization": organization["_id"],
-                    "name": feature['properties']['name'],
-                    "last_imported_at": datetime.datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
-                }
-                hours = park_hours.get(feature['properties']['name'], False)
-                if hours:
-                    hours_parts = re.split('(to|-)', hours)
-                    am = hours_parts[2].replace('.', '').strip()
-                    pm = hours_parts[0].replace('.', '').strip()
-
-                    am_datetime = arrow.get(am, 'H:mm a')
-                    pm_datetime = arrow.get(pm, 'H:mm a')
-                    am_datetime = am_datetime.replace(year=2017)
-                    pm_datetime = pm_datetime.replace(year=2017)
-
-                    f['restrictions']['datetime_start'] = am_datetime.datetime.strftime(
-                        '%a, %d %b %Y %H:%M:%S GMT')
-                    f['restrictions']['datetime_end'] = pm_datetime.datetime.strftime(
-                        '%a, %d %b %Y %H:%M:%S GMT')
-
-                _post_features(f)
-        return sys.exit(0)
-    else:
-        logger.error(
-            "Please input a valid, importable feature collection file.")
-        return sys.exit(100)
+            if organization:
+                for feature in _features_from_path(os.path.realpath(feature_collection_path)):
+                    f = {
+                        "_id": str(uuid.uuid4()),
+                        "geojson": feature,
+                        "restrictions": {},
+                        "organization": organization["_id"],
+                        "name": feature['properties']['name'],
+                        "last_imported_at": datetime.datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
+                    }
+                    hours = park_hours.get(
+                        feature['properties']['name'], False)
+                    if hours:
+                        hours_parts = hours.get('park')
+                        f['restrictions']['hours_start'] = int(hours_parts.get(
+                            'open'))
+                        f['restrictions']['hours_end'] = int(hours_parts.get(
+                            'close'))
+                    _post_features(f)
+            return sys.exit(0)
+        else:
+            logger.error(
+                "Please input a valid, importable feature collection file.")
+            return sys.exit(100)
 
 
 def _features_from_path(feature_collection_path=None):
