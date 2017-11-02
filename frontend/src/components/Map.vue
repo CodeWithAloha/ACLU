@@ -3,7 +3,6 @@
     <topbar name="Map"></topbar>
     <div class='map'></div>
     <div>
-
       <md-layout md-gutter="8">
         <md-layout class="rules" md-flex-xsmall="100" md-flex-small="50" md-flex-medium="50">
           {{ rules.length }} rules
@@ -19,7 +18,6 @@
       </md-layout>
 
     </div>
-    <!--<div class="icon" v-html="locationIcon" v-if="locationDetermined"></div>-->
     <Nav v-if="locationDetermined"></Nav>
     <bottombar :longitude="this.location.longitude" :latitude="this.location.latitude"></bottombar>
   </div>
@@ -125,10 +123,17 @@ export default {
       var url = 'http://localhost:50050/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[' + lng + ', ' + lat + ']}, "$maxDistance": 50}}}'
       this.getLayerData(url, map)
     },
+    /**
+     * @argument 
+     */
     getLayerData(href, map) {
       return Axios.get(href)
         .then(response => {
           this.setLayers(response.data, map)
+          if (response.data._items) {
+            // parse the hours
+            console.log(response.data._items)
+          }
           if (response.data._links.next) {
             var url = 'http://localhost:50050/' + response.data._links.next.href
             return this.getLayerData(url, map)

@@ -65,7 +65,8 @@ def _post_holiday(holiday_as_json):
     resource_base_url = _get_resource_url('holidays')
     r = requests.post(resource_base_url, json=holiday_as_json)
     if r.status_code == 201:
-        logger.info("Successfully uploaded holiday(id=" + holiday_as_json["_id"] + ")")
+        logger.info("Successfully uploaded holiday(id=" +
+                    holiday_as_json["_id"] + ")")
     else:
         logger.info("Unsuccessful: " + r.content)
 
