@@ -10,19 +10,18 @@
 
 <script>
 export default {
-  name: 'topbar',
-  props: ['name'],
-  data () {
-    return {}
+  name: "topbar",
+  props: ["name"],
+  data() {
+    return {};
   },
-  mounted () {
-  },
+  mounted() {},
   methods: {
-    goBack: function () {
-      this.$router.go(-1)
+    goBack: function() {
+      this.$router.go(-1);
     }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
