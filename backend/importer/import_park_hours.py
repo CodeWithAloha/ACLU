@@ -21,22 +21,23 @@ logger = logging.getLogger("aclu_importer.park_hours")
 
 PARK_URL = "https://www.honolulu.gov/parks/default/park-closure-hours.html"
 
+
 def import_park_hours():
     return parse_park_hours_html_text(get_html_text(PARK_URL))
 
 
 """
     Scrapes the park closure site and returns a dictionary of times
-    TODO: handle outliers
     @return mapping { Dictionary<Park { string }, Time { String } > }
 """
 
 
 def parse_park_closure_times(timestr):
     if not timestr:
-        return None 
+        return None
     # online regex playground for this data here: https://regex101.com/r/vR9Gr1/1
-    timere = re.compile("((?P<close_word>[A-Za-z]+)|(?P<close_hour>1[0-2]|0?[1-9]):(?P<close_minutes>[0-5][0-9]) (?P<close_ap>[ap])\.m\.)(?P<separator> +(to|-) +)((?P<open_word>[A-Za-z]+)|(?P<open_hour>1[0-2]|0?[1-9]):(?P<open_minutes>[0-5][0-9]) (?P<open_ap>[ap])\.m\.?)(?P<notes>.*)")
+    timere = re.compile(
+        "((?P<close_word>[A-Za-z]+)|(?P<close_hour>1[0-2]|0?[1-9]):(?P<close_minutes>[0-5][0-9]) (?P<close_ap>[ap])\.m\.)(?P<separator> +(to|-) +)((?P<open_word>[A-Za-z]+)|(?P<open_hour>1[0-2]|0?[1-9]):(?P<open_minutes>[0-5][0-9]) (?P<open_ap>[ap])\.m\.?)(?P<notes>.*)")
     parsed = timere.match(timestr.strip())
     if not parsed:
         return [timestr]
@@ -44,11 +45,13 @@ def parse_park_closure_times(timestr):
     result = None
     d = parsed.groupdict()
     if d["close_hour"]:
-        close_military_time = int(d["close_hour"]) * 100 + int(d["close_minutes"]) + (0 if d["close_ap"] == 'a' else 1200)
-        open_military_time = int(d["open_hour"]) * 100 + int(d["open_minutes"]) + (0 if d["open_ap"] == 'a' else 1200)
-        result = { "close": close_military_time, "open": open_military_time }
+        close_military_time = int(
+            d["close_hour"]) * 100 + int(d["close_minutes"]) + (0 if d["close_ap"] == 'a' else 1200)
+        open_military_time = int(
+            d["open_hour"]) * 100 + int(d["open_minutes"]) + (0 if d["open_ap"] == 'a' else 1200)
+        result = {"close": close_military_time, "open": open_military_time}
     elif d["close_word"] and d["open_word"]:
-        result = { "close": d["close_word"], "open": d["open_word"]}
+        result = {"close": d["close_word"], "open": d["open_word"]}
 
     if d["notes"].strip():
         result["notes"] = d["notes"].strip()

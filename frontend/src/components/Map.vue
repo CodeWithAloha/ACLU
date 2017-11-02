@@ -102,14 +102,12 @@ export default {
   },
   methods: {
     setLayers(data, map) {
-      const newRules = [];
-      for (var i = 0; i < data._items.length; i++) {
-        var geojson = data._items[i].geojson;
-        var id = data._items[i]._id;
-
-        if (!newRules.includes(data._items[i]._id)) {
-          newRules.push(data._items[i]._id);
-        }
+      /**
+       * TODO: check current hours
+       */
+      const new_rules = data._items.map(rule => {
+        const { geojson, _id } = rule;
+        const id = _id;
         if (!map.getLayer(id)) {
           map.addLayer({
             id,
@@ -123,9 +121,9 @@ export default {
             }
           });
         }
-      }
-      console.log(newRules);
-      this.$store.commit("updateRules", newRules);
+        return rule;
+      });
+      this.$store.commit("updateRules", new_rules);
     },
     setAllLayers(lng, lat, map) {
       var url =
@@ -164,7 +162,7 @@ export default {
   text-align: center;
 }
 
-.warning-description>div {
+.warning-description > div {
   display: inline-block;
   width: 25px;
   height: 25px;
@@ -182,7 +180,6 @@ export default {
 .green {
   background-color: var(--green);
 }
-
 
 .map {
   height: 65vh;
@@ -204,7 +201,7 @@ export default {
   padding: 10px 0;
 }
 
-.icon>svg {
+.icon > svg {
   width: 2rem;
   height: 2rem;
   fill: var(--red);
