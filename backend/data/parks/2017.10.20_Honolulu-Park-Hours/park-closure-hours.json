@@ -41,8 +41,8 @@
       "open": 600
     }
   },
-  "Kaʻaʻawa Beach Park (": {
-    "Restroom)": {
+  "Kaʻaʻawa Beach Park": {
+    "park": {
       "close": 2100,
       "open": 630
     }
@@ -126,7 +126,7 @@
       "close": 2200,
       "open": 500
     },
-    "Parking": {
+    "park": {
       "close": 2200,
       "open": 500
     },
@@ -357,7 +357,7 @@
       "open": 500
     }
   },
-  "Kokololio Beach Park (Parking Gate)": {
+  "Kokololio Beach Park ": {
     "park": {
       "close": 2000,
       "open": 645
@@ -489,7 +489,7 @@
       "open": 500
     }
   },
-  "Kalama Beach Park (Parking Gate)": {
+  "Kalama Beach Park": {
     "park": {
       "close": 1800,
       "open": 700
@@ -543,13 +543,13 @@
       "open": 500
     }
   },
-  "Kualoa Regional Park (Parking Gate)": {
+  "Kualoa Regional Park": {
     "park": {
       "close": 2000,
       "open": 700
     }
   },
-  "Kawai Nui Neighborhood Park (Parking Gate)": {
+  "Kawai Nui Neighborhood Park": {
     "park": {
       "close": 1900,
       "open": 700
@@ -597,7 +597,7 @@
       "open": 700
     }
   },
-  "Ala Wai Neighborhood Park, Annex": {
+  "Ala Wai Neighborhood Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -729,7 +729,7 @@
       "open": 500
     }
   },
-  "Kūhiō  Beach Park": {
+  "Kūhiō Beach Park": {
     "park": {
       "close": 200,
       "open": 500
@@ -1182,7 +1182,7 @@
       "open": 500
     }
   },
-  "Kaiona Beach Park (Restroom)": {
+  "Kaiona Beach Park": {
     "park": {
       "close": 1900,
       "open": 700
