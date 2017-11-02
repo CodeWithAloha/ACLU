@@ -1,16 +1,16 @@
-output "public_ip" {
+output "API_IP" {
   value = "${aws_eip.aclu.public_ip}"
 }
 
-output "ecr_url" {
+output "ECR_URL" {
   value = "${aws_ecr_repository.aclu.repository_url}"
 }
 
-output "ecr_repo_name" {
+output "ECR_REPO_NAME" {
   value = "${aws_ecr_repository.aclu.name}"
 }
 
-output "frontend_domain" {
+output "FRONTEND_DOMAIN" {
   value = "${aws_cloudfront_distribution.frontend_distribution.domain_name}"
   }
 
