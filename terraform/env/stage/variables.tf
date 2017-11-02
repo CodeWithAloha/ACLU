@@ -59,3 +59,8 @@ variable "global_tags" {
     "environment" = "stage"
   }
 }
+
+variable "DOMAIN" {
+  description = "Website Domian (ie. hawaii.aclu.com)"
+  default     = "hawaii.aclu.com"
+}

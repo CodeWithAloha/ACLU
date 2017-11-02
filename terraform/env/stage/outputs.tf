@@ -1,4 +1,4 @@
-output "public_ip" {
+output "api_ip" {
   value = "${aws_eip.aclu.public_ip}"
 }
 
@@ -11,5 +11,6 @@ output "ecr_repo_name" {
 }
 
 output "frontend_domain" {
-  value = "${aws_s3_bucket.frontend.website_endpoint}"
-}
+  value = "${aws_cloudfront_distribution.frontend_distribution.domain_name}"
+  }
+
