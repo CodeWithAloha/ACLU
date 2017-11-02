@@ -28,7 +28,7 @@ phases:
       - yarn
       # TODO Remove this when we frontend is configured to read BASE_PATH from env
       - echo TEMP FIX - Replacing http://localhost with actual API URL
-      - find ./ -type f -print0 | xargs -0 sed -i'' -e 's|localhost|'$API_URL'|'
+      - find ./ -type f -print0 | xargs -0 sed -i'' -e 's|http://localhost|'https://$API_URL'|'
       # - yarn test
   build:
     commands:
