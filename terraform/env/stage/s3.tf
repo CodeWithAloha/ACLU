@@ -17,7 +17,7 @@ resource "aws_s3_bucket" "frontend" {
     max_age_seconds = 3000
   }
 
-  tags = "${var.global_tags}"
+  tags = "${var.GLOBAL_TAGS}"
 }
 
 # Bucket to store builds
@@ -25,5 +25,5 @@ resource "aws_s3_bucket" "codepipeline_build_repository" {
   bucket = "aclu-builds"
   acl    = "private"
 
-  tags = "${var.global_tags}"
+  tags = "${var.GLOBAL_TAGS}"
 }

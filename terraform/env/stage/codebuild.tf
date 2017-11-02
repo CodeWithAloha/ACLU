@@ -138,5 +138,5 @@ resource "aws_codebuild_project" "aclu" {
     buildspec = "buildspec.yml"
   }
   
-  tags = "${var.global_tags}"
+  tags = "${var.GLOBAL_TAGS}"
 }

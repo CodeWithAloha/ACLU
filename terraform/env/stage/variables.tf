@@ -34,14 +34,14 @@ variable "GITHUB_REPO" {
 }
 
 variable "GITHUB_BRANCH" {
-  default = "master"
+  default = "implementing-aws-codedeploy"
 }
 
 variable "GITHUB_TOKEN" {
   description = "OAuth token from github to grant CodePipeline access to your github repo. Should be in terraform.tfvars file."
 }
 
-variable "admin_cidrs" {
+variable "ADMIN_CIDRS" {
   type = "list"
 
   default = [
@@ -50,7 +50,7 @@ variable "admin_cidrs" {
   ]
 }
 
-variable "global_tags" {
+variable "GLOBAL_TAGS" {
   type = "map"
 
   default = {

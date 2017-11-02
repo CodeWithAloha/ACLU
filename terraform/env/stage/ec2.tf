@@ -103,8 +103,8 @@ resource "aws_security_group_rule" "ssh_admin_sg_group_rule" {
   protocol          = "tcp"
   
   # Create one rule per whitelisted ip
-  cidr_blocks       = ["${element(var.admin_cidrs, count.index)}"]
-  count             = "${length(var.admin_cidrs)}"
+  cidr_blocks       = ["${element(var.ADMIN_CIDRS, count.index)}"]
+  count             = "${length(var.ADMIN_CIDRS)}"
 }
 
 # Instance Security Group
@@ -166,7 +166,7 @@ resource "aws_instance" "aclu" {
   key_name              = "${var.KEY_PAIR}"
   iam_instance_profile  = "${aws_iam_instance_profile.instance_profile.id}"
   security_groups       = ["${aws_security_group.aclu_sg.name}", "${aws_security_group.aclu_admin_sg.name}"]
-  tags = "${var.global_tags}"
+  tags = "${var.GLOBAL_TAGS}"
 
   root_block_device = {
     volume_type = "gp2"
