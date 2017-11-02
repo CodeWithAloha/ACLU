@@ -30,8 +30,8 @@ resource "aws_cloudfront_distribution" "frontend_distribution" {
 
     viewer_protocol_policy = "allow-all"
     min_ttl                = 0
-    default_ttl            = 60 // Short TTL since we are using it for STAGE and CI/CD
-    max_ttl                = 300 // Short TTL since we are using it for STAGE and CI/CD
+    default_ttl            = 300 // Short TTL since we are using it for STAGE and CI/CD
+    max_ttl                = 600 // Short TTL since we are using it for STAGE and CI/CD
   }
 
   price_class = "PriceClass_100" // Only availbale in US
