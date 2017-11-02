@@ -96,133 +96,155 @@
 
 <script>
 /* eslint no-new:0 */
-import Mapbox from 'mapbox-gl'
-import { mapState } from 'vuex'
-import 'mapbox-gl/dist/mapbox-gl.css'
+import Mapbox from "mapbox-gl";
+import { mapState } from "vuex";
+import "mapbox-gl/dist/mapbox-gl.css";
 // import geocode and styles
-import MapboxGeocoder from 'mapbox-gl-geocoder'
-import 'mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
+import MapboxGeocoder from "mapbox-gl-geocoder";
+import "mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 // const locationIcon = require('../assets/location.svg')
 // import Vue from 'vue'
-import MapboxDraw from '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw'
-import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css'
+import MapboxDraw from "@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw";
+import "@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css";
 
-Mapbox.accessToken = 'pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTdza2thcGozNSJ9.zw6CcZLxP6lq0x-xfwp6uA'
+Mapbox.accessToken =
+  "pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTdza2thcGozNSJ9.zw6CcZLxP6lq0x-xfwp6uA";
 
 export default {
-  data: function () {
+  data: function() {
     return {
-      organization_name: '',
-      name: '',
-      time_start: '',
-      time_end: '',
-      datetime_start: '',
-      datetime_end: '',
-      day_options: [{
-        value: '1',
-        label: 'Monday'
-      }, {
-        value: '2',
-        label: 'Tuesday'
-      }, {
-        value: '3',
-        label: 'Wednesday'
-      }, {
-        value: '4',
-        label: 'Thursday'
-      }, {
-        value: '5',
-        label: 'Friday'
-      }, {
-        value: '6',
-        label: 'Saturday'
-      }, {
-        value: '7',
-        label: 'Sunday'
-      }],
-      ownership_options: [{
-        value: '1',
-        label: 'City'
-      }, {
-        value: '2',
-        label: 'State'
-      }, {
-        value: '3',
-        label: 'Private'
-      }, {
-        value: '4',
-        label: 'Federal'
-      }, {
-        value: '5',
-        label: 'Military'
-      }],
-      holiday_restriction_options: [{
-        value: '1',
-        label: 'State'
-      }, {
-        value: '2',
-        label: 'Federal'
-      }],
+      organization_name: "",
+      name: "",
+      time_start: "",
+      time_end: "",
+      datetime_start: "",
+      datetime_end: "",
+      day_options: [
+        {
+          value: "1",
+          label: "Monday"
+        },
+        {
+          value: "2",
+          label: "Tuesday"
+        },
+        {
+          value: "3",
+          label: "Wednesday"
+        },
+        {
+          value: "4",
+          label: "Thursday"
+        },
+        {
+          value: "5",
+          label: "Friday"
+        },
+        {
+          value: "6",
+          label: "Saturday"
+        },
+        {
+          value: "7",
+          label: "Sunday"
+        }
+      ],
+      ownership_options: [
+        {
+          value: "1",
+          label: "City"
+        },
+        {
+          value: "2",
+          label: "State"
+        },
+        {
+          value: "3",
+          label: "Private"
+        },
+        {
+          value: "4",
+          label: "Federal"
+        },
+        {
+          value: "5",
+          label: "Military"
+        }
+      ],
+      holiday_restriction_options: [
+        {
+          value: "1",
+          label: "State"
+        },
+        {
+          value: "2",
+          label: "Federal"
+        }
+      ],
       value5: [],
       holiday_restrictions: [],
       ownership: [],
       items: [],
       draw: new MapboxDraw()
-    }
-      //   locationIcon
-      // }
+    };
+    //   locationIcon
+    // }
   },
   computed: mapState({
-    locationDetermined: 'locationDetermined'
+    locationDetermined: "locationDetermined"
   }),
-  mounted () {
+  mounted() {
     const map = new Mapbox.Map({
-      container: document.querySelector('.map'),
-      style: 'mapbox://styles/mapbox/streets-v9',
+      container: document.querySelector(".map"),
+      style: "mapbox://styles/mapbox/streets-v9",
       center: [-158.000072, 21.441922],
       zoom: 9
-    })
+    });
     // add geocode text field
-    map.addControl(new MapboxGeocoder({
-      accessToken: Mapbox.accessToken
-    }))
+    map.addControl(
+      new MapboxGeocoder({
+        accessToken: Mapbox.accessToken
+      })
+    );
 
-    map.addControl(this.draw)
-    map.on('load', () => {
-      import('./parks.geojson').then(data => {
+    map.addControl(this.draw);
+    map.on("load", () => {
+      import("./parks.geojson").then(data => {
         map.addLayer({
-          id: 'parks',
-          type: 'fill',
+          id: "parks",
+          type: "fill",
           paint: {
-            'fill-color': '#ff0000'
+            "fill-color": "#ff0000"
           },
           source: {
-            type: 'geojson',
+            type: "geojson",
             data
           }
-        })
+        });
 
-        if ('geolocation' in navigator) {
-          navigator.geolocation.getCurrentPosition(pos => {
-            this.$store.commit('locationFound', pos.coords)
-            map.flyTo({
-              center: [pos.coords.longitude, pos.coords.latitude],
-              zoom: 13
-            })
-          }, err => {
-            console.log(err)
-            alert('We can\'t seem to determine your position')
-          })
+        if ("geolocation" in navigator) {
+          navigator.geolocation.getCurrentPosition(
+            pos => {
+              this.$store.commit("locationFound", pos.coords);
+              map.flyTo({
+                center: [pos.coords.longitude, pos.coords.latitude],
+                zoom: 13
+              });
+            },
+            err => {
+              console.log(err);
+              alert("We can't seem to determine your position");
+            }
+          );
         }
-      })
-    })
+      });
+    });
   },
   methods: {
-    submit: function () {
-    }
+    submit: function() {}
   },
   components: {}
-}
+};
 </script>
 
 <style lang='css' scoped>
