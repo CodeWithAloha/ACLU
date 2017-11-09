@@ -1,6 +1,5 @@
 <template>
   <md-bottom-bar>
-    <md-bottom-bar-item md-icon="subject" :md-active="false">Organizations</md-bottom-bar-item>
     <md-bottom-bar-item md-icon="subject" :md-active="rules.length > 0" @click="showRules">Rules
       <span v-if="rules.length > 0">( {{ rules.length }} ) </span>
     </md-bottom-bar-item>
@@ -36,6 +35,6 @@ export default {
 .md-bottom-bar {
   position: fixed;
   bottom: 0;
-  z-index: 4
+  z-index: 4;
 }
 </style>

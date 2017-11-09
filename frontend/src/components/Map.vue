@@ -1,25 +1,12 @@
 <template lang='html'>
   <div class="container">
-    <topbar name="Map"></topbar>
+    <topbar name="Map" :back-button="false"></topbar>
     <div class='map'></div>
-    <div>
-      <md-layout md-gutter="8">
-        <md-layout class="rules" md-flex-xsmall="100" md-flex-small="50" md-flex-medium="50">
-          {{ rules.length }} rules
-        </md-layout>
-
-        <md-layout md-flex-xsmall="100" md-flex-small="50" md-flex-medium="50">
-          <div class="warning-description">
-            <div class="description-item red" :class="{'-active': rules.length > 0}"></div>
-            <div class="description-item yellow"></div>
-            <div class="description-item green" :class="{'-active': rules.length == 0}"></div>
-          </div>
-        </md-layout>
+    <div v-if="locationDetermined">
+      <md-layout style="position: absolute; bottom: 0; left: 0; right: 0; padding-bottom: 1rem;">
+        <md-button :style="{background: buttonColor, color: 'white'}" class="md-raised" style="width: 75%; margin-left: auto; margin-right: auto;">Restrictions</md-button>
       </md-layout>
-
     </div>
-    <Nav v-if="locationDetermined"></Nav>
-    <bottombar :longitude="this.location.longitude" :latitude="this.location.latitude"></bottombar>
   </div>
 </template>
 
@@ -50,7 +37,9 @@ export default {
   },
   computed: mapState({
     locationDetermined: state => state.locationDetermined,
-    rules: state => state.rules
+    userValid: state => state.userValid,
+    rules: state => state.rules,
+    buttonColor: state => (state.userValid > 0 ? "#ff4136" : "#2ecc40")
   }),
   mounted() {
     const map = new Mapbox.Map({
@@ -156,10 +145,6 @@ export default {
     getLayerData(href, map) {
       return Axios.get(href).then(response => {
         this.setLayers(response.data, map);
-        if (response.data._items) {
-          // parse the hours
-          console.log(response.data._items);
-        }
         if (response.data._links.next) {
           var url = "http://localhost:50050/" + response.data._links.next.href;
           return this.getLayerData(url, map);
@@ -198,7 +183,7 @@ export default {
 }
 
 .map {
-  height: 65vh;
+  height: calc(100vh - 64px);
   width: 100%;
 }
 
