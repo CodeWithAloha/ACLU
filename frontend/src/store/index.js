@@ -18,6 +18,9 @@ const store = new Vuex.Store({
       state.location = [coords.latitude, coords.longitude];
     },
     updateRules(state, rules) {
+      if (rules.find(({ isValid }) => isValid === false)) {
+        state.userValid = false;
+      }
       state.rules = rules;
     }
   }

@@ -105,15 +105,31 @@ export default {
       /**
        * TODO: check current hours
        */
+      const now = new Date();
       const newRules = data._items.map(rule => {
         const { geojson, _id } = rule;
+        const hoursStart = rule.restrictions.hours_start;
+        const hoursEnd = rule.restrictions.hours_end;
+        const currentTime = now.getHours() * 100 + now.getMinutes(); // format time as 2459
+        let isOpen, fillColor;
+
+        if (hoursStart && hoursEnd) {
+          isOpen = currentTime > hoursStart && currentTime < hoursEnd;
+          rule.isValid = isOpen;
+          fillColor = isOpen ? "#2ecc40" : "#ff4136";
+        } else {
+          isOpen = true;
+          rule.isValid = true;
+          fillColor = "#ff4136";
+        }
+
         const id = _id;
         if (!map.getLayer(id)) {
           map.addLayer({
             id,
             type: "fill",
             paint: {
-              "fill-color": "#FF4136"
+              "fill-color": fillColor
             },
             source: {
               type: "geojson",
