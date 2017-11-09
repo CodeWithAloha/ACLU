@@ -89,8 +89,6 @@ def _post_features(feature_as_json):
     if r.status_code == 201:
         logger.info("Successfully uploaded feature(id=" +
                     feature_as_json["_id"] + ")")
-        logger.info("Successfully uploaded feature(id=" +
-                    feature_as_json["_id"] + ")")
     else:
         logger.info("Unsuccessful: " + r.content)
 
