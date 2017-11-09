@@ -11,14 +11,10 @@ import json
 import logging
 import logging.config
 import os
-import random
 import requests
 import sys
 import uuid
-import re
-import arrow
 
-from import_park_hours import import_park_hours
 
 logging.config.fileConfig(
     os.path.join(os.path.dirname(os.path.realpath(__file__)), 'logging.conf'))
@@ -87,8 +83,6 @@ def _post_features(feature_as_json):
     resource_base_url = _get_resource_url('features')
     r = requests.post(resource_base_url, json=feature_as_json)
     if r.status_code == 201:
-        logger.info("Successfully uploaded feature(id=" +
-                    feature_as_json["_id"] + ")")
         logger.info("Successfully uploaded feature(id=" +
                     feature_as_json["_id"] + ")")
     else:
