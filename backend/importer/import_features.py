@@ -11,14 +11,10 @@ import json
 import logging
 import logging.config
 import os
-import random
 import requests
 import sys
 import uuid
-import re
-import arrow
 
-from import_park_hours import import_park_hours
 
 logging.config.fileConfig(
     os.path.join(os.path.dirname(os.path.realpath(__file__)), 'logging.conf'))
