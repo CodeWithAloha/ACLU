@@ -105,7 +105,7 @@ export default {
       /**
        * TODO: check current hours
        */
-      const new_rules = data._items.map(rule => {
+      const newRules = data._items.map(rule => {
         const { geojson, _id } = rule;
         const id = _id;
         if (!map.getLayer(id)) {
@@ -123,7 +123,7 @@ export default {
         }
         return rule;
       });
-      this.$store.commit("updateRules", new_rules);
+      this.$store.commit("updateRules", newRules);
     },
     setAllLayers(lng, lat, map) {
       var url =
