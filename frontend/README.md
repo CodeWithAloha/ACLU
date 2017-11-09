@@ -41,3 +41,6 @@ Prettier helps keep code style standardized via auto-format.  It is currently ho
 - To format on save from your favorite code editor: `use the googles`
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+### Style Guide
+The Vuejs team has a lovely [style guide](https://vuejs.org/v2/style-guide/) which we can attempt to follow
