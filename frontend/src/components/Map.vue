@@ -27,14 +27,6 @@ Mapbox.accessToken =
   "pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTdza2thcGozNSJ9.zw6CcZLxP6lq0x-xfwp6uA";
 
 export default {
-  data() {
-    return {
-      location: {
-        longitude: 0,
-        latitude: 0
-      }
-    };
-  },
   computed: mapState({
     location: state => state.location,
     locationDetermined: state => state.locationDetermined,
@@ -135,8 +127,8 @@ export default {
       this.$router.push({
         name: "RuleList",
         params: {
-          lat: this.$data.location.latitude,
-          lng: this.$data.location.longitude
+          lat: this.location.latitude,
+          lng: this.location.longitude
         }
       });
     },

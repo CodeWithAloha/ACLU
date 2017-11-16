@@ -27,52 +27,15 @@
 <script>
 import bottombar from "./BottomBar.vue";
 import topbar from "./TopBar.vue";
-
-import Axios from "axios";
+import { mapState } from "vuex";
 
 export default {
   name: "RuleList",
-  data() {
-    return {
-      rules: []
-    };
-  },
-  beforeRouterEnter() {},
-  created() {
-    this.getAllRules(this.$route.params.lng, this.$route.params.lat);
-  },
-  mounted() {
-    console.log("mounted" + this.rules);
-  },
+  computed: mapState({
+    rules: state => state.rules
+  }),
   methods: {
-    getRules: function(href) {
-      return Axios.get(href).then(function(response) {
-        return response.data;
-      });
-    },
-    pushRules: function(url) {
-      return this.getRules(url).then(data => {
-        for (var i = 0; i < data._items.length; i++) {
-          this.rules.push(data._items[i]);
-        }
-        return data;
-      });
-    },
-    getAllRules: function(lng, lat) {
-      var url =
-        'http://localhost:50050/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[' +
-        lng +
-        ", " +
-        lat +
-        ']}, "$maxDistance": 250}}}';
-      this.pushRules(url).then(data => {
-        if (data._links.next) {
-          var href = "http://localhost:50050/" + data._links.next.href;
-          this.pushRules(href);
-        }
-      });
-    },
-    rowClick: function(id) {
+    rowClick(id) {
       this.$router.push({ name: "Rule", params: { ruleId: id } });
     }
   },
@@ -91,7 +54,8 @@ export default {
   width: 100%;
 }
 
-.restriction {}
+.restriction {
+}
 
 .red-circle {
   background: #f00;
@@ -100,7 +64,8 @@ export default {
   border-radius: 50%;
 }
 
-.table-row {}
+.table-row {
+}
 
 .rule-name-cell {
   height: inherit;
@@ -133,6 +98,6 @@ export default {
 .md-bottom-bar {
   position: fixed;
   bottom: 0;
-  z-index: 4
+  z-index: 4;
 }
 </style>
