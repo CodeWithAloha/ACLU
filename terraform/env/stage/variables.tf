@@ -62,5 +62,20 @@ variable "GLOBAL_TAGS" {
 
 variable "DOMAIN" {
   description = "Website Domian (ie. hawaii.aclu.com)"
-  default     = "hawaii.aclu.com"
+  default     = "aclu.codeforhawaii.org"
+}
+
+variable "API_DOMAIN" {
+  description = "API Domain (ie. api.aclu.codeforhawaii.org)"
+  default     = "api.aclu.codeforhawaii.org"
+}
+
+variable "DOMAIN_CERTIFICATE_ARN" {
+  description = "SSL Certificate should be in AWS Certificate Manager in region us-east-1"
+  default     = "arn:aws:acm:us-east-1:705750910119:certificate/b079df26-2c6b-4c06-a6bd-5bfe8852f3c0"
+}
+
+variable "ELB_CERTIFICATE_ARN" {
+  description = "SSL Certificate should be in AWS Certificate Manager in the same region where we are gonna provision"
+  default     = "arn:aws:acm:us-west-2:705750910119:certificate/9a7aeb93-0e09-4504-9125-1af33cff6e44"
 }

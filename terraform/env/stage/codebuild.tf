@@ -123,7 +123,7 @@ resource "aws_codebuild_project" "aclu" {
 
     environment_variable {
       "name"  = "API_URL"
-      "value" = "${aws_eip.aclu.public_ip}"
+      "value" = "${var.API_DOMAIN}"
     }
 
     environment_variable {

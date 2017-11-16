@@ -128,6 +128,16 @@ resource "aws_security_group_rule" "api_sg_group_rule" {
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
 }
+resource "aws_security_group_rule" "ssl_sg_group_rule" {
+  security_group_id = "${aws_security_group.aclu_sg.id}"
+  description       = "Allow HTTPS for ACLU API"
+  type              = "ingress"
+  from_port         = 443
+  to_port           = 443
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+}
+
 # By default allow all outbound traffic...we can restrict this later
 
 resource "aws_security_group_rule" "egress_sg_group_rule" {
@@ -161,11 +171,12 @@ data "template_file" "bootstrap_script" {
 
 resource "aws_instance" "aclu" {
   ami                   = "${data.aws_ami.ubuntu.id}"
-  instance_type         = "t2.micro"
+  instance_type         = "t2.medium"
   user_data             = "${data.template_file.bootstrap_script.rendered}"
   key_name              = "${var.KEY_PAIR}"
   iam_instance_profile  = "${aws_iam_instance_profile.instance_profile.id}"
   security_groups       = ["${aws_security_group.aclu_sg.name}", "${aws_security_group.aclu_admin_sg.name}"]
+  
   tags = "${var.GLOBAL_TAGS}"
 
   root_block_device = {

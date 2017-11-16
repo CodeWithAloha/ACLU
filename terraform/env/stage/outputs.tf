@@ -1,5 +1,5 @@
-output "API_IP" {
-  value = "${aws_eip.aclu.public_ip}"
+output "API_URL" {
+  value = "${var.API_DOMAIN}"
 }
 
 output "ECR_URL" {
