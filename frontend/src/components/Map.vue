@@ -4,7 +4,7 @@
     <div class='map'></div>
     <div v-if="locationDetermined">
       <md-layout style="position: absolute; bottom: 0; left: 0; right: 0; padding-bottom: 1rem;">
-        <md-button :style="{background: buttonColor, color: 'white'}" class="md-raised" style="width: 75%; margin-left: auto; margin-right: auto;">Restrictions</md-button>
+        <md-button @click="showRuleList" :style="{background: buttonColor, color: 'white'}" class="md-raised" style="width: 75%; margin-left: auto; margin-right: auto;">Restrictions</md-button>
       </md-layout>
     </div>
   </div>
@@ -36,6 +36,7 @@ export default {
     };
   },
   computed: mapState({
+    location: state => state.location,
     locationDetermined: state => state.locationDetermined,
     userValid: state => state.userValid,
     rules: state => state.rules,
@@ -129,6 +130,15 @@ export default {
         return rule;
       });
       this.$store.commit("updateRules", newRules);
+    },
+    showRuleList() {
+      this.$router.push({
+        name: "RuleList",
+        params: {
+          lat: this.$data.location.latitude,
+          lng: this.$data.location.longitude
+        }
+      });
     },
     setAllLayers(lng, lat, map) {
       var url =
