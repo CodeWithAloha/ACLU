@@ -4,10 +4,20 @@
 
     <div class="main-content">
       <div class="rule-name">
-        <h2>{{ rule.name }}</h2>
+        <h2>{{ $route.params.category }}</h2>
+      </div>
+      <div>
+        <p v-for="rule in rules">
+          {{ rule.name }}<br/>
+          <span v-if="rule.restrictions.hours_start">
+            Open Hours:
+            <br/>
+            {{ rule.restrictions.hours_start }} - {{ rule.restrictions.hours_end }}
+          </span>
+        </p>
+        </div>
       </div>
     </div>
-    <bottombar></bottombar>
   </div>
 </template>
 
@@ -17,40 +27,19 @@ import Mapbox from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 import topbar from "./TopBar.vue";
-import bottombar from "./BottomBar.vue";
 
-import Axios from "axios";
+import { mapState } from "vuex";
 // const locationIcon = require('../assets/location.svg')
-// import Vue from 'vue'
 
 Mapbox.accessToken =
   "pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTdza2thcGozNSJ9.zw6CcZLxP6lq0x-xfwp6uA";
 
 export default {
   name: "Rule",
-  data() {
-    return {
-      // static rules *remove when api is created
-      rule: {}
-    };
-  },
-  methods: {
-    getRule: function(id) {
-      var url = "http://localhost:50050/features/" + this.$route.params.ruleId;
-      return Axios.get(url).then(function(response) {
-        return response.data;
-      });
-    }
-  },
-  mounted() {
-    this.getRule(this.$route.params.id).then(data => {
-      this.rule = data;
-      this.name = data.name;
-      this.restriction = data.restrictions;
-    });
-    // use API to grab rule and set it here with this.$route.params.ruleId
-  },
-  components: { bottombar, topbar }
+  computed: mapState({
+    rules: state => state.rules
+  }),
+  components: { topbar }
 };
 </script>
 
@@ -61,12 +50,9 @@ export default {
 }
 
 .main-content {
-  position: fixed;
-  top: 64px;
-  bottom: 54px;
-  padding-left: 10%;
-  padding-right: 10%;
-  overflow: scroll;
+  width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .title {
@@ -75,7 +61,7 @@ export default {
   width: 25%;
 }
 
-.title>h4 {
+.title > h4 {
   margin: 0px;
 }
 
@@ -86,15 +72,9 @@ export default {
   width: 75%;
 }
 
-.description>p {
+.description > p {
   margin: 0px;
   padding-bottom: 20px;
-}
-
-.rule-name>h2 {
-  float: left;
-  display: inline-block;
-  width: 75%;
 }
 
 .status-sign {
@@ -120,6 +100,6 @@ export default {
 .md-bottom-bar {
   position: fixed;
   bottom: 0;
-  z-index: 4
+  z-index: 4;
 }
 </style>

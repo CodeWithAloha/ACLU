@@ -84,9 +84,6 @@ export default {
   },
   methods: {
     setLayers(data, map) {
-      /**
-       * TODO: check current hours
-       */
       const now = new Date();
       const newRules = data._items.map(rule => {
         const { geojson, _id } = rule;

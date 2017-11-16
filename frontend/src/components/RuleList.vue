@@ -4,39 +4,29 @@
     <topbar name="Rule List"></topbar>
 
     <md-table md-sort="restriction" class="rule-table">
-      <md-table-header>
-        <md-table-row>
-          <md-table-head md-sort-by="dessert">Rule ({{ rules.length }})</md-table-head>
-          <md-table-head md-sort-by="protein" md-numeric>Restriction</md-table-head>
-        </md-table-row>
-      </md-table-header>
-
       <md-table-body>
-        <md-table-row v-for="(row, index) in rules" :key="index" @click.native="rowClick(row._id)">
-          <md-table-cell>{{ row.name }}</md-table-cell>
-          <md-table-cell class="restriction">
-            <div class="red-circle"></div>
-          </md-table-cell>
+        <md-table-row v-for="category in categories" @click.native="rowClick(category)">
+          <md-table-cell style="text-align: center;">{{ category }}</md-table-cell>
         </md-table-row>
       </md-table-body>
     </md-table>
-    <bottombar></bottombar>
   </div>
 </template>
 
 <script>
 import bottombar from "./BottomBar.vue";
 import topbar from "./TopBar.vue";
-import { mapState } from "vuex";
 
 export default {
   name: "RuleList",
-  computed: mapState({
-    rules: state => state.rules
-  }),
+  data() {
+    return {
+      categories: ["Recreation", "Private land", "Activism"]
+    };
+  },
   methods: {
-    rowClick(id) {
-      this.$router.push({ name: "Rule", params: { ruleId: id } });
+    rowClick(category) {
+      this.$router.push({ name: "Rule", params: { category } });
     }
   },
   components: { bottombar, topbar }

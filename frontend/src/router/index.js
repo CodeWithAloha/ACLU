@@ -23,12 +23,12 @@ export default new Router({
       component: Admin
     },
     {
-      path: "/rule_list/:lat/:lng",
+      path: "/rule_list/",
       name: "RuleList",
       component: RuleList
     },
     {
-      path: "/rule/:ruleId",
+      path: "/rule/:category",
       name: "Rule",
       component: Rule
     },
