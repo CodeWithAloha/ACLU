@@ -7,16 +7,15 @@ resource "aws_elb" "aclu" {
     instance_port     = 50050
     instance_protocol = "http"
     lb_port           = 50050
-    lb_protocol       = "https"
-    ssl_certificate_id = "${var.ELB_CERTIFICATE_ARN}"
+    lb_protocol       = "http"
   }
 
   health_check {
     healthy_threshold   = 2
-    unhealthy_threshold = 2
-    timeout             = 20
+    unhealthy_threshold = 10
+    timeout             = 59
     target              = "HTTP:50050/aloha"
-    interval            = 30
+    interval            = 60
   }
 
   instances                   = ["${aws_instance.aclu.id}"]
