@@ -171,7 +171,7 @@ data "template_file" "bootstrap_script" {
 
 resource "aws_instance" "aclu" {
   ami                   = "${data.aws_ami.ubuntu.id}"
-  instance_type         = "t2.medium"
+  instance_type         = "t2.micro"
   user_data             = "${data.template_file.bootstrap_script.rendered}"
   key_name              = "${var.KEY_PAIR}"
   iam_instance_profile  = "${aws_iam_instance_profile.instance_profile.id}"

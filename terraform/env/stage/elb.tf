@@ -12,10 +12,10 @@ resource "aws_elb" "aclu" {
 
   health_check {
     healthy_threshold   = 2
-    unhealthy_threshold = 10
-    timeout             = 59
+    unhealthy_threshold = 2
+    timeout             = 20
     target              = "HTTP:50050/aloha"
-    interval            = 60
+    interval            = 30
   }
 
   instances                   = ["${aws_instance.aclu.id}"]
