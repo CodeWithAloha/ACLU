@@ -1,0 +1,32 @@
+# For help completing this file, see the "AppSpec File Reference" in the  
+#   "AWS CodeDeploy User Guide" at
+#   http://docs.aws.amazon.com/codedeploy/latest/userguide/app-spec-ref.html
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/project-aclu/
+permissions:
+    - object: /var/project-aclu/scripts
+      owner: root
+      mode: 777
+      type:
+        - directory
+hooks:
+  # BeforeInstall:
+  #   - location: scripts/aws-code-deploy/before_install.sh
+  #     timeout: 300
+  #     runas: root
+  AfterInstall:
+    - location: scripts/aws-code-deploy/after_install.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: scripts/aws-code-deploy/app_start.sh
+      timeout: 300
+      runas: root
+  ApplicationStop:
+    - location: scripts/aws-code-deploy/app_stop.sh
+      timeout: 300
+      runas: root
+

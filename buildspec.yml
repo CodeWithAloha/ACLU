@@ -1,0 +1,58 @@
+version: 0.2
+
+env:
+  variables:
+     NODE_VERSION: "8.1.4"
+     YARN_VERSION: "0.27.5"
+phases:
+  install:
+    commands:
+      - echo Installing Node ...
+      - wget -qO- https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz | tar xJ --directory /usr/local
+      - ln -s /usr/local/node-v${NODE_VERSION}-linux-x64 /usr/local/node
+      - export PATH=/usr/local/node/bin/:${PATH}
+      - echo Installing Yarn ...
+      - npm install -g yarn@"${YARN_VERSION}"
+      - echo Upgrading AWS CLI
+      # - apt-get install python-pip -y
+      - pip install awscli --upgrade --user
+      - echo Logging into AWS ECR
+      - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+  pre_build:
+    commands:
+      - cd $CODEBUILD_SRC_DIR # move to code buil root directory, in case that previous script cd into a different directory
+      - echo Define build version
+      - IMAGE_TAG=`date +%s%3N`
+      - echo Installing dependencies
+      - cd frontend
+      - yarn
+      # TODO Remove this when we frontend is configured to read BASE_PATH from env
+      - echo TEMP FIX - Replacing http://localhost with actual API URL
+      - find ./ -type f -print0 | xargs -0 sed -i'' -e 's|http://localhost:50050|'https://$API_URL'|'
+      # - yarn test
+  build:
+    commands:
+      - cd $CODEBUILD_SRC_DIR # move to code buil root directory, in case that previous script cd into a different directory
+      - echo Building Frontend
+      - cd frontend
+      - yarn build --prod
+      - echo Building API containers
+      - cd $CODEBUILD_SRC_DIR/backend
+      - docker build -t $IMAGES_REPO_URL:$IMAGE_TAG .
+      - echo Remove `latest` tag from previous image
+      - aws ecr batch-delete-image --repository-name $IMAGES_REPO_NAME --image-ids imageTag=latest
+      - docker tag $IMAGES_REPO_URL:$IMAGE_TAG $IMAGES_REPO_URL:latest
+  post_build:
+    commands:
+      - cd $CODEBUILD_SRC_DIR # move to code buil root directory, in case that previous script cd into a different directory
+      - echo Updating site in s3
+      - aws s3 sync ./frontend/dist s3://$FRONTEND_BUCKET --acl public-read --delete --region $AWS_DEFAULT_REGION
+      - echo Pushing docker API container to AWS ECR
+      - docker push $IMAGES_REPO_URL:$IMAGE_TAG
+      - echo adding latest tag
+      - docker push $IMAGES_REPO_URL:latest
+artifacts:
+  files:
+    - frontend/dist/**/*
+  #discard-paths: yes
+  #base-directory: location
