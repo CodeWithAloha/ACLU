@@ -6,7 +6,7 @@ const store = new Vuex.Store({
   state: {
     locationDetermined: false,
     location: null,
-    userValid: true,
+    userValid: 0, // 0 = valid, 1 = iffy, 2 = restricted
     rules: []
   },
   mutations: {
@@ -18,6 +18,9 @@ const store = new Vuex.Store({
       state.location = [coords.latitude, coords.longitude];
     },
     updateRules(state, rules) {
+      if (rules.find(({ isValid }) => isValid === false)) {
+        state.userValid = 2;
+      }
       state.rules = rules;
     }
   }

@@ -11,11 +11,10 @@ import json
 import logging
 import logging.config
 import os
-import random
 import requests
 import sys
 import uuid
-from import_park_hours import import_park_hours
+
 
 logging.config.fileConfig(
     os.path.join(os.path.dirname(os.path.realpath(__file__)), 'logging.conf'))
@@ -39,29 +38,37 @@ def import_features(feature_collection_path=None):
     # feature/geojson files will each need a unique template (and it should
     # scale somewhat nicely)
 
-    park_hours = import_park_hours()
+    with open("../data/parks/2017.10.20_Honolulu-Park-Hours/park-closure-hours.json") as parks_file:
+        park_hours = json.load(parks_file)
+        print park_hours
 
-    if feature_collection_path and os.path.isfile(os.path.realpath(feature_collection_path)):
-        organization = _get_organization("Park")
+        if feature_collection_path and os.path.isfile(os.path.realpath(feature_collection_path)):
+            organization = _get_organization("Park")
 
-        if organization:
-            for feature in _features_from_path(os.path.realpath(feature_collection_path)):
-                f = {
-                    "_id": str(uuid.uuid4()),
-                    "hours": park_hours.get(feature['properties']['name'], 'N/A'),
-                    "geojson": feature,
-                    "organization": organization["_id"],
-                    "name": feature['properties']['name'],
-                    "restrictions": "Park Hours",
-                    "ownership": random.choice(["city", "state", "private", "federal", "military"]),
-                    "last_imported_at": datetime.datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
-                }
-                _post_features(f)
-        return sys.exit(0)
-    else:
-        logger.error(
-            "Please input a valid, importable feature collection file.")
-        return sys.exit(100)
+            if organization:
+                for feature in _features_from_path(os.path.realpath(feature_collection_path)):
+                    f = {
+                        "_id": str(uuid.uuid4()),
+                        "geojson": feature,
+                        "restrictions": {},
+                        "organization": organization["_id"],
+                        "name": feature['properties']['name'],
+                        "last_imported_at": datetime.datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
+                    }
+                    hours = park_hours.get(
+                        feature['properties']['name'], False)
+                    if hours:
+                        hours_parts = hours.get('park')
+                        f['restrictions']['hours_start'] = int(hours_parts.get(
+                            'open'))
+                        f['restrictions']['hours_end'] = int(hours_parts.get(
+                            'close'))
+                    _post_features(f)
+            return sys.exit(0)
+        else:
+            logger.error(
+                "Please input a valid, importable feature collection file.")
+            return sys.exit(100)
 
 
 def _features_from_path(feature_collection_path=None):
@@ -76,8 +83,6 @@ def _post_features(feature_as_json):
     resource_base_url = _get_resource_url('features')
     r = requests.post(resource_base_url, json=feature_as_json)
     if r.status_code == 201:
-        logger.info("Successfully uploaded feature(id=" +
-                    feature_as_json["_id"] + ")")
         logger.info("Successfully uploaded feature(id=" +
                     feature_as_json["_id"] + ")")
     else:

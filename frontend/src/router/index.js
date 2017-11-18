@@ -1,38 +1,41 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import Vue from "vue";
+import Router from "vue-router";
 
-import Map from '@/components/Map'
-import RuleList from '@/components/RuleList'
-import Rule from '@/components/Rule'
+import Map from "@/components/Map";
+import RuleList from "@/components/RuleList";
+import Rule from "@/components/Rule";
 
 // import Map from '@/components/Map'
-import Admin from '@/components/Admin'
+import Admin from "@/components/Admin";
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [
     {
-      path: '/map',
-      name: 'Map',
+      path: "/map",
+      name: "Map",
       component: Map
-    }, {
-      path: '/admin',
-      name: 'Admin',
+    },
+    {
+      path: "/admin",
+      name: "Admin",
       component: Admin
-    }, {
-      path: '/rule_list/:lat/:lng',
-      name: 'RuleList',
+    },
+    {
+      path: "/rule_list/",
+      name: "RuleList",
       component: RuleList
-    }, {
-      path: '/rule/:ruleId',
-      name: 'Rule',
+    },
+    {
+      path: "/rule/:category",
+      name: "Rule",
       component: Rule
-    }, {
-      path: '/',
-      name: 'Map',
+    },
+    {
+      path: "/",
+      name: "Map",
       component: Map
     }
-
   ]
-})
+});

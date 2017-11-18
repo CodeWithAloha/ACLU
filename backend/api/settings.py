@@ -26,6 +26,39 @@ features = {
             'maxlength': 256,
             'required': True
         },
+        "restrictions": {
+            'type': "dict",
+            'schema': {
+                'hours_start': {  # 0000 - 2359
+                    'type': 'number',
+                    'required': False
+                },
+                'hours_end': {  # 0000 - 2359
+                    'type': 'number',
+                    'required': False
+                },
+                'days': {  # blacklist
+                    'type': 'list',
+                    'allowed': ['Su', 'M', 'T', 'W', 'Th', 'F', 'Sa'],
+                    'required': False
+                },
+                'fed_holidays': {  # keys are uuid's of fed holidays,  vals are bool
+                    'type': 'boolean',
+                    'required': False
+                },
+                'state_holiday': {
+                    'type': 'boolean',
+                    'required': False
+                },
+                # 0000 0000 0000 0000
+                #
+                # blacklist
+                # TODO: map every bit to an action
+                'action_restriction': {
+                    'type': 'string'
+                },
+            }
+        },
         'organization': {
             'type': 'uuid',
             'data_relation': {
@@ -34,18 +67,8 @@ features = {
                 'embeddable': True
             }
         },
-        "hours": {
-            'type': 'string',
-            'minlength': 1,
-            'maxlength': 64
-        },
         'geojson': {
             'type': 'feature'
-        },
-        'restrictions': {
-            'type': 'string',
-            'minlength': 1,
-            'maxlength': 512
         },
         'ownership': {
             'type': 'string',
