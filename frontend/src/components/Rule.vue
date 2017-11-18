@@ -31,8 +31,9 @@ import topbar from "./TopBar.vue";
 import { mapState } from "vuex";
 // const locationIcon = require('../assets/location.svg')
 
-Mapbox.accessToken =
-  "pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTdza2thcGozNSJ9.zw6CcZLxP6lq0x-xfwp6uA";
+import config from "@/config";
+
+Mapbox.accessToken = config.API_TOKEN;
 
 export default {
   name: "Rule",

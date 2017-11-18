@@ -87,9 +87,9 @@
 
       </md-layout>
     </md-layout>
-    
-    <md-layout md-flex="65" class="page-content map">      
-    </md-layout>   
+
+    <md-layout md-flex="65" class="page-content map">
+    </md-layout>
   </md-layout>
 </div>
 </template>
@@ -106,9 +106,9 @@ import "mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 // import Vue from 'vue'
 import MapboxDraw from "@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw";
 import "@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css";
+import config from "@/config";
 
-Mapbox.accessToken =
-  "pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTdza2thcGozNSJ9.zw6CcZLxP6lq0x-xfwp6uA";
+Mapbox.accessToken = config.API_TOKEN;
 
 export default {
   data: function() {
