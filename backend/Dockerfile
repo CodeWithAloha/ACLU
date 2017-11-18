@@ -2,7 +2,7 @@ FROM python:3.4-alpine
 
 LABEL maintainer "project-aclu@codeforhawaii.org"
 
-RUN apk add --update git
+RUN apk add --update git gcc
 
 ADD ./api/requirements.txt /src/requirements.txt
 
