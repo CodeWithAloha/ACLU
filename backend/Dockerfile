@@ -2,7 +2,10 @@ FROM python:3.4-alpine
 
 LABEL maintainer "project-aclu@codeforhawaii.org"
 
-RUN apk add --update git gcc
+RUN apk add --update git 
+
+# gunicorn gevent dependencies 
+RUN apk add --update gcc linux-headers
 
 ADD ./api/requirements.txt /src/requirements.txt
 
