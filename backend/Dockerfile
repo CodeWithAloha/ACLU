@@ -14,4 +14,4 @@ EXPOSE 50050
 
 WORKDIR /src
 
-CMD ["gunicorn", "--bind", "0.0.0.0:50050", "app:app", "--reload", "--capture-output", "--enable-stdio-inheritance", "--access-logfile", "-", "--error-logfile", "-"]
+CMD ["gunicorn", "-k", "gevent", "--bind", "0.0.0.0:50050", "app:app", "--reload", "--capture-output", "--enable-stdio-inheritance", "--access-logfile", "-", "--error-logfile", "-"]
