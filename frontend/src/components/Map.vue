@@ -16,7 +16,6 @@ import { mapState } from "vuex";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 import Axios from "axios";
-import bottombar from "./BottomBar.vue";
 import topbar from "./TopBar.vue";
 
 // import geocode and styles
@@ -151,7 +150,7 @@ export default {
       });
     }
   },
-  components: { bottombar, topbar }
+  components: { topbar }
 };
 </script>
 

@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import bottombar from "./BottomBar.vue";
 import topbar from "./TopBar.vue";
 
 export default {
@@ -33,7 +32,7 @@ export default {
       this.$router.push({ name: "Rule", params: { category } });
     }
   },
-  components: { bottombar, topbar }
+  components: { topbar }
 };
 </script>
 
@@ -87,11 +86,5 @@ export default {
   left: 0;
   z-index: 2;
   width: 100% !important;
-}
-
-.md-bottom-bar {
-  position: fixed;
-  bottom: 0;
-  z-index: 4;
 }
 </style>

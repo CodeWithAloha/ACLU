@@ -99,10 +99,4 @@ export default {
   height: 200px;
   width: 100%;
 }
-
-.md-bottom-bar {
-  position: fixed;
-  bottom: 0;
-  z-index: 4;
-}
 </style>

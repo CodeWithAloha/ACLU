@@ -26,9 +26,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.md-bottom-bar {
-  position: fixed;
-  bottom: 0;
-  z-index: 4;
-}
+
 </style>
