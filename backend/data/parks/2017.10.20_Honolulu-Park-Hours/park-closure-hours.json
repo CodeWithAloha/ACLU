@@ -1,5 +1,5 @@
 {
-  "Mauʻumae Nature Park": {
+  "Mauumae Nature Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -11,19 +11,19 @@
       "open": 500
     }
   },
-  "Kuliʻouʻou Beach Park": {
+  "Kuliouou Beach Park": {
     "park": {
       "close": 2200,
       "open": 500
     }
   },
-  "Mānana Neighborhood Park": {
+  "Manana Neighborhood Park": {
     "park": {
       "close": 2200,
       "open": 500
     }
   },
-  "Waiʻalae Beach Park, parking lot": {
+  "Waialae Beach Park, parking lot": {
     "park": {
       "close": 2200,
       "open": 500
@@ -35,13 +35,13 @@
       "open": 500
     }
   },
-  "Keʻehi Lagoon Beach Park": {
+  "Keehi Lagoon Beach Park": {
     "park": {
       "close": 2200,
       "open": 600
     }
   },
-  "Kaʻaʻawa Beach Park": {
+  "Kaaawa Beach Park": {
     "park": {
       "close": 2100,
       "open": 630
@@ -77,7 +77,7 @@
       "open": 500
     }
   },
-  "Kahaluʻu Regional Park": {
+  "Kahaluu Regional Park": {
     "park": {
       "close": 2000,
       "open": 700
@@ -109,13 +109,13 @@
       "open": 700
     }
   },
-  "Kamaʻiʻo Neighborhood Park": {
+  "Kamaio Neighborhood Park": {
     "park": {
       "close": 2200,
       "open": 500
     }
   },
-  "Ala Puʻumalu Community Park": {
+  "Ala Puumalu Community Park": {
     "park": {
       "close": 2000,
       "open": 700
@@ -135,7 +135,7 @@
       "open": 600
     }
   },
-  "Kāneʻohe Community Park": {
+  "Kaneohe Community Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -147,7 +147,7 @@
       "open": 500
     }
   },
-  "Ala Wai Promenade, Ala Moana-Kalākaua": {
+  "Ala Wai Promenade, Ala Moana-Kalakaua": {
     "park": {
       "close": 2200,
       "open": 500
@@ -177,13 +177,13 @@
       "open": 500
     }
   },
-  "Pūʻōhala Neighborhood Park": {
+  "Pūohala Neighborhood Park": {
     "park": {
       "close": 2200,
       "open": 600
     }
   },
-  "Waiāhole Beach Park": {
+  "Waiahole Beach Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -207,13 +207,13 @@
       "open": 500
     }
   },
-  "Puʻunui Community Park": {
+  "Puunui Community Park": {
     "park": {
       "close": 2200,
       "open": 500
     }
   },
-  "ʻAikahi Community Park": {
+  "Aikahi Community Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -237,19 +237,19 @@
       "open": 500
     }
   },
-  "Hoʻaeʻae Community Park": {
+  "Hoaeae Community Park": {
     "park": {
       "close": 2200,
       "open": 500
     }
   },
-  "ʻAʻala Park": {
+  "Aala Park": {
     "park": {
       "close": 2100,
       "open": 600
     }
   },
-  "Hauʻula Beach Park": {
+  "Hauula Beach Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -261,7 +261,7 @@
       "open": 500
     }
   },
-  "Waimānalo  District Park": {
+  "Waimanalo  District Park": {
     "park": {
       "close": 2200,
       "open": 600
@@ -303,7 +303,7 @@
       "open": 500
     }
   },
-  "Haleʻiwa Aliʻi Beach": {
+  "Haleiwa Alii Beach": {
     "park": {
       "close": 2200,
       "open": 600
@@ -315,7 +315,7 @@
       "open": 500
     }
   },
-  "Pālolo Valley District Park": {
+  "Palolo Valley District Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -339,7 +339,7 @@
       "open": 500
     }
   },
-  "Ala Wai Promenade, Kalākaua-McCully": {
+  "Ala Wai Promenade, Kalakaua-McCully": {
     "park": {
       "close": 2200,
       "open": 500
@@ -363,7 +363,7 @@
       "open": 645
     }
   },
-  "ʻAuwaiolimu Neighborhood Park": {
+  "Auwaiolimu Neighborhood Park": {
     "park": {
       "close": 2100,
       "open": 600
@@ -375,13 +375,13 @@
       "open": 500
     }
   },
-  "Pililāʻau Community Park": {
+  "Pililaau Community Park": {
     "park": {
       "close": 2200,
       "open": 500
     }
   },
-  "Kahaluʻu Beach Park": {
+  "Kahaluu Beach Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -399,7 +399,7 @@
       "open": 500
     }
   },
-  "Kāneʻohe Beach Park": {
+  "Kaneohe Beach Park": {
     "park": {
       "close": 2200,
       "open": 600
@@ -429,7 +429,7 @@
       "open": 500
     }
   },
-  "Keaʻalau Neighborhood Park": {
+  "Keaalau Neighborhood Park": {
     "park": {
       "close": 2000,
       "open": 600
@@ -447,7 +447,7 @@
       "open": 500
     }
   },
-  "ʻĀina Koa Neighborhood Park": {
+  "Aina Koa Neighborhood Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -459,7 +459,7 @@
       "open": 500
     }
   },
-  "Kapiʻolani Park": {
+  "Kapiolani Park": {
     "park": {
       "close": 1200,
       "open": 500
@@ -483,7 +483,7 @@
       "open": 600
     }
   },
-  "Mānana Community Park": {
+  "Manana Community Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -501,7 +501,7 @@
       "open": 500
     }
   },
-  "Āliamanu Neighborhood Park": {
+  "aliamanu Neighborhood Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -513,7 +513,7 @@
       "open": 500
     }
   },
-  "Kānewai Community Park": {
+  "Kanewai Community Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -531,7 +531,7 @@
       "open": 500
     }
   },
-  "ʻAiea District Park": {
+  "Aiea District Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -555,7 +555,7 @@
       "open": 700
     }
   },
-  "Lēʻahi Beach Park": {
+  "Lēahi Beach Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -609,7 +609,7 @@
       "open": 500
     }
   },
-  "Kaʻelepulu Mini Park": {
+  "Kaelepulu Mini Park": {
     "park": {
       "close": 2200,
       "open": 600
@@ -621,13 +621,13 @@
       "open": 500
     }
   },
-  "Kaʻahele Neighborhood Park": {
+  "Kaahele Neighborhood Park": {
     "park": {
       "close": 2200,
       "open": 500
     }
   },
-  "Nāpuanani Neighborhood Park": {
+  "Napuanani Neighborhood Park": {
     "park": {
       "close": 2000,
       "open": 600
@@ -639,7 +639,7 @@
       "open": 500
     }
   },
-  "Kahaluʻu Community Park": {
+  "Kahaluu Community Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -693,19 +693,19 @@
       "open": 500
     }
   },
-  "Kaʻala Neighborhood Park": {
+  "Kaala Neighborhood Park": {
     "park": {
       "close": 2200,
       "open": 500
     }
   },
-  "Kalāheo Neighborhood Park": {
+  "Kalaheo Neighborhood Park": {
     "park": {
       "close": 2200,
       "open": 600
     }
   },
-  "Kapāolono Community Park": {
+  "Kapaolono Community Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -729,7 +729,7 @@
       "open": 500
     }
   },
-  "Kūhiō Beach Park": {
+  "Kūhio Beach Park": {
     "park": {
       "close": 200,
       "open": 500
@@ -763,7 +763,7 @@
       "open": 800
     }
   },
-  "Maʻili Beach Park": {
+  "Maili Beach Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -775,7 +775,7 @@
       "open": 500
     }
   },
-  "Kokeʻe Beach Park": {
+  "Kokee Beach Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -787,7 +787,7 @@
       "open": 500
     }
   },
-  "ʻIliahi Neighborhood Park": {
+  "Iliahi Neighborhood Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -805,7 +805,7 @@
       "open": 500
     }
   },
-  "Kaomaʻaikū Neighborhood Park": {
+  "Kaomaaikū Neighborhood Park": {
     "park": {
       "close": "Dusk",
       "open": "Dawn"
@@ -817,7 +817,7 @@
       "open": 500
     }
   },
-  "ʻĀlewa Neighborhood Park": {
+  "Alewa Neighborhood Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -829,19 +829,19 @@
       "open": 500
     }
   },
-  "Pōkaʻī Bay Beach Park": {
+  "Pokai Bay Beach Park": {
     "park": {
       "close": 2200,
       "open": 500
     }
   },
-  "Puʻu 0 Kaimuki": {
+  "Puu 0 Kaimuki": {
     "park": {
       "close": 2200,
       "open": 500
     }
   },
-  "Kamāmalu Neighborhood Park": {
+  "Kamamalu Neighborhood Park": {
     "park": {
       "close": 2230,
       "open": 530
@@ -853,7 +853,7 @@
       "open": 500
     }
   },
-  "Ewa Puʻuloa District Park": {
+  "Ewa Puuloa District Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -871,7 +871,7 @@
       "open": 500
     }
   },
-  "Princess Kaiʻulani Triangle Urban Park": {
+  "Princess Kaiulani Triangle Urban Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -907,13 +907,13 @@
       "open": 500
     }
   },
-  "Hauʻula Community Park": {
+  "Hauula Community Park": {
     "park": {
       "close": 2200,
       "open": 600
     }
   },
-  "Pāwaʻa In-Ha Park": {
+  "Pawaa In-Ha Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -931,7 +931,7 @@
       "open": 500
     }
   },
-  "Kalanianaʻole Beach Park (Forac/Zablan)": {
+  "Kalanianaole Beach Park (Forac/Zablan)": {
     "park": {
       "close": 2200,
       "open": 500
@@ -953,7 +953,7 @@
       "open": 600
     }
   },
-  "Mānana Kai Neighborhood Park": {
+  "Manana Kai Neighborhood Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -971,25 +971,25 @@
       "open": 500
     }
   },
-  "Wahiawā District Park": {
+  "Wahiawa District Park": {
     "park": {
       "close": 2200,
       "open": 500
     }
   },
-  "Kalākaua District Park": {
+  "Kalakaua District Park": {
     "park": {
       "close": 2200,
       "open": 500
     }
   },
-  "Mōʻiliʻili Neighborhood Park": {
+  "Moiliili Neighborhood Park": {
     "park": {
       "close": 2200,
       "open": 500
     }
   },
-  "Patsy T. Mink Central Oʻahu Regional Park": {
+  "Patsy T. Mink Central Oahu Regional Park": {
     "park": {
       "close": 2200,
       "open": 630
@@ -1019,7 +1019,7 @@
       "open": 500
     }
   },
-  "Puʻu O Hulu Community Park": {
+  "Puu O Hulu Community Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -1031,7 +1031,7 @@
       "open": 500
     }
   },
-  "Mokulēʻia Beach Park (Parking Lot)": {
+  "Mokulēia Beach Park (Parking Lot)": {
     "park": {
       "close": 1900,
       "open": 700
@@ -1043,19 +1043,19 @@
       "open": 600
     }
   },
-  "Kaʻōnohi Neighborhood Park": {
+  "Kaonohi Neighborhood Park": {
     "park": {
       "close": 2200,
       "open": 500
     }
   },
-  "Mākālei Beach Park": {
+  "Makalei Beach Park": {
     "park": {
       "close": 2200,
       "open": 500
     }
   },
-  "Kīpapa Neighborhood Park": {
+  "Kipapa Neighborhood Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -1085,7 +1085,7 @@
       "open": 700
     }
   },
-  "Waialeʻe Beach Park (Parking)": {
+  "Waialee Beach Park (Parking)": {
     "park": {
       "close": 2000,
       "notes": "(gate closed)",
@@ -1098,7 +1098,7 @@
       "open": 500
     }
   },
-  "Hōlanialiʻi  Neighborhood Park": {
+  "Holanialii  Neighborhood Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -1122,7 +1122,7 @@
       "open": 500
     }
   },
-  "Heʻeia Neighborhood Park": {
+  "Heeia Neighborhood Park": {
     "park": {
       "close": 2200,
       "open": 600
@@ -1134,13 +1134,13 @@
       "open": 500
     }
   },
-  "Waimānalo  Bay Beach Park": {
+  "Waimanalo  Bay Beach Park": {
     "park": {
       "close": 1945,
       "open": 600
     }
   },
-  "Waimānalo  Beach Park": {
+  "Waimanalo  Beach Park": {
     "park": {
       "close": 2130,
       "open": 700
@@ -1152,7 +1152,7 @@
       "open": 500
     }
   },
-  "Hālawa District Park": {
+  "Halawa District Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -1176,7 +1176,7 @@
       "open": 500
     }
   },
-  "Waiʻanae District Park": {
+  "Waianae District Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -1188,7 +1188,7 @@
       "open": 700
     }
   },
-  "Hōkūahiahi Neighborhood Park": {
+  "Hokūahiahi Neighborhood Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -1206,7 +1206,7 @@
       "open": 500
     }
   },
-  "Hawaiʻi Kai Dog Park": {
+  "Hawaii Kai Dog Park": {
     "park": {
       "close": 2000,
       "open": 600
@@ -1218,19 +1218,19 @@
       "open": 500
     }
   },
-  "Kamānele Square Urban Park": {
+  "Kamanele Square Urban Park": {
     "park": {
       "close": 2200,
       "open": 500
     }
   },
-  "Waipiʻo Peninsula Soccer Park": {
+  "Waipio Peninsula Soccer Park": {
     "park": {
       "close": 1830,
       "open": 600
     }
   },
-  "King Kalākaua Park": {
+  "King Kalakaua Park": {
     "park": {
       "close": 2200,
       "open": 600
@@ -1252,13 +1252,13 @@
       "open": 500
     }
   },
-  "Makaʻunulau Community Park": {
+  "Makaunulau Community Park": {
     "park": {
       "close": 2000,
       "open": 500
     }
   },
-  "Mānoa Valley District Park": {
+  "Manoa Valley District Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -1270,7 +1270,7 @@
       "open": 500
     }
   },
-  "Kāneʻohe Comm. & Senior Center": {
+  "Kaneohe Comm. & Senior Center": {
     "park": {
       "close": 2100,
       "open": 700
@@ -1300,13 +1300,13 @@
       "open": 500
     }
   },
-  "Kamaliʻi Mini Park": {
+  "Kamalii Mini Park": {
     "park": {
       "close": 1900,
       "open": 700
     }
   },
-  "Nuʻuanu Valley Neighborhood Park": {
+  "Nuuanu Valley Neighborhood Park": {
     "park": {
       "close": 2200,
       "open": 600
@@ -1324,7 +1324,7 @@
       "open": 700
     }
   },
-  "Kāneʻohe Civic Center Park": {
+  "Kaneohe Civic Center Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -1334,7 +1334,7 @@
       "open": 700
     }
   },
-  "Kāneʻohe District Park": {
+  "Kaneohe District Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -1352,13 +1352,13 @@
       "open": 500
     }
   },
-  "ʻĀhuimanu Community Park": {
+  "Ahuimanu Community Park": {
     "park": {
       "close": 2200,
       "open": 500
     }
   },
-  "Nāhele Neighborhood Park": {
+  "Nahele Neighborhood Park": {
     "park": {
       "close": 2200,
       "open": 500
