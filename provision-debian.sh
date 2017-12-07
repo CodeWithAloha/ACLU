@@ -49,9 +49,3 @@ sudo usermod -aG docker vagrant
 # download docker-compose
 sudo wget -O /usr/local/bin/docker-compose https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/run.sh
 sudo chmod +x /usr/local/bin/docker-compose
-
-# docker in vm, disabled for now
-sudo sg vagrant <<\DEVOPS_BLOCK
-    cd /var/project-aclu/backend
-    docker-compose build
-DEVOPS_BLOCK
