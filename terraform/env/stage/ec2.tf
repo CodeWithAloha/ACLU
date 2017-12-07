@@ -1,20 +1,5 @@
 # Since leveraging ECS may be too cumbersome at this stage we will use an EC2 instance with docker installed for now
 
-# Get latest ubuntu AMI for this region
-data "aws_ami" "ubuntu" {
-  most_recent = true
-
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-}
-
 # Create an IAM role for the Web Servers.
 resource "aws_iam_role" "instance_iam_role" {
   name = "${var.APP_NAME}-instance-role"
@@ -170,7 +155,7 @@ data "template_file" "bootstrap_script" {
 }
 
 resource "aws_instance" "aclu" {
-  ami                   = "${data.aws_ami.ubuntu.id}"
+  ami                   = "ami-5dca1925" # Ubuntu 16.04 ami
   instance_type         = "t2.micro"
   user_data             = "${data.template_file.bootstrap_script.rendered}"
   key_name              = "${var.KEY_PAIR}"

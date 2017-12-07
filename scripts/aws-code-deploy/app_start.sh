@@ -12,4 +12,4 @@ sudo rm -f importer/2017-07-19.parks.geojson
 # Seed db. We do this on every run now because we are on a stage site!
 cd etc
 sudo chmod +x seed_fake_park_data.sh
-./seed_fake_park_data.sh
+sudo ./seed_fake_park_data.sh

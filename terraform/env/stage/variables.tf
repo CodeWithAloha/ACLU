@@ -46,7 +46,8 @@ variable "ADMIN_CIDRS" {
 
   default = [
     "50.113.42.119/32", # Pipe's IP
-    "199.68.252.130/32" # Boxjelly
+    "199.68.252.130/32", # Boxjelly
+    "167.216.21.125/32" # Manoa Innovation Center
   ]
 }
 
