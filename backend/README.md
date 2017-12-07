@@ -20,6 +20,14 @@ Please see the [data schema](Schema.md) for more details.
 
 # Common tasks
 
+## Converting tmk data to geojson
+
+To create tmk geojson, from the backend directory, run the following script:
+
+```
+./data/tmk/20170713/tmk_shapefile_to_geojson.sh
+```
+
 ## Converting parks data to geojson
 
 To create geojson, from the backend directory, run the following:
