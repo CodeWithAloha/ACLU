@@ -1,7 +1,7 @@
 <template>
   <div class="container">
 
-    <topbar name="Rule List"></topbar>
+    <TopBar name="Rule List"></TopBar>
 
     <md-table md-sort="restriction" class="rule-table">
       <md-table-body>
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import topbar from "./TopBar.vue";
+import TopBar from "./TopBar.vue";
 
 export default {
   name: "RuleList",
@@ -32,7 +32,7 @@ export default {
       this.$router.push({ name: "Rule", params: { category } });
     }
   },
-  components: { topbar }
+  components: { TopBar }
 };
 </script>
 

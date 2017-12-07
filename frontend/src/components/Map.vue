@@ -1,6 +1,6 @@
 <template lang='html'>
   <div class="container">
-    <topbar name="Map" :back-button="false"></topbar>
+    <TopBar name="Map" :back-button="false"></TopBar>
     <div class='map'></div>
     <div v-if="locationDetermined">
       <md-layout style="position: absolute; bottom: 0; left: 0; right: 0; padding-bottom: 1rem;">
@@ -16,7 +16,7 @@ import { mapState } from "vuex";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 import Axios from "axios";
-import topbar from "./TopBar.vue";
+import TopBar from "./TopBar.vue";
 
 // import geocode and styles
 import MapboxGeocoder from "mapbox-gl-geocoder";
@@ -26,6 +26,8 @@ Mapbox.accessToken =
   "pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTdza2thcGozNSJ9.zw6CcZLxP6lq0x-xfwp6uA";
 
 export default {
+  components: { TopBar },
+
   computed: mapState({
     location: state => state.location,
     locationDetermined: state => state.locationDetermined,
@@ -33,6 +35,7 @@ export default {
     rules: state => state.rules,
     buttonColor: state => (state.userValid > 0 ? "#ff4136" : "#2ecc40")
   }),
+
   mounted() {
     const map = new Mapbox.Map({
       container: document.querySelector(".map"),
@@ -81,6 +84,7 @@ export default {
       }
     });
   },
+
   methods: {
     setLayers(data, map) {
       const now = new Date();
@@ -149,8 +153,7 @@ export default {
         }
       });
     }
-  },
-  components: { topbar }
+  }
 };
 </script>
 

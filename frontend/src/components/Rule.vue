@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <topbar name="Rule"></topbar>
+    <TopBar name="Rule"></TopBar>
 
     <div class="main-content">
       <div class="rule-name">
@@ -29,7 +29,7 @@
 import Mapbox from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-import topbar from "./TopBar.vue";
+import TopBar from "./TopBar.vue";
 
 import { mapState } from "vuex";
 // const locationIcon = require('../assets/location.svg')
@@ -39,10 +39,12 @@ Mapbox.accessToken =
 
 export default {
   name: "Rule",
+
+  components: { TopBar },
+
   computed: mapState({
     rules: state => state.rules
-  }),
-  components: { topbar }
+  })
 };
 </script>
 
