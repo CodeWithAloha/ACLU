@@ -11,7 +11,8 @@ sudo apt-get install -y \
      python-pip \
      git \
      httpie \
-     gdal-bin
+     gdal-bin \
+     unzip
 
 
 # install ./jq (https://stedolan.github.io/jq/)
