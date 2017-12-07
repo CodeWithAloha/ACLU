@@ -177,7 +177,7 @@
       "open": 500
     }
   },
-  "Pūohala Neighborhood Park": {
+  "Puohala Neighborhood Park": {
     "park": {
       "close": 2200,
       "open": 600
@@ -255,7 +255,7 @@
       "open": 500
     }
   },
-  "Pūpūkea Beach Park": {
+  "Pupukea Beach Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -423,7 +423,7 @@
       "open": 500
     }
   },
-  "Ulehawa Beach Park #1 & #2": {
+  "Ulehawa Beach Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -441,7 +441,7 @@
       "open": 500
     }
   },
-  "Waialua District Park (Parking)": {
+  "Waialua District Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -501,7 +501,7 @@
       "open": 500
     }
   },
-  "aliamanu Neighborhood Park": {
+  "Aliamanu Neighborhood Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -555,7 +555,7 @@
       "open": 700
     }
   },
-  "Lēahi Beach Park": {
+  "Leahi Beach Park": {
     "park": {
       "close": 2200,
       "open": 500
@@ -729,7 +729,7 @@
       "open": 500
     }
   },
-  "Kūhio Beach Park": {
+  "Kuhio Beach Park": {
     "park": {
       "close": 200,
       "open": 500
@@ -805,7 +805,7 @@
       "open": 500
     }
   },
-  "Kaomaaikū Neighborhood Park": {
+  "Kaomaaiku Neighborhood Park": {
     "park": {
       "close": "Dusk",
       "open": "Dawn"
@@ -1031,7 +1031,7 @@
       "open": 500
     }
   },
-  "Mokulēia Beach Park (Parking Lot)": {
+  "Mokuleia Beach Park (Parking Lot)": {
     "park": {
       "close": 1900,
       "open": 700
@@ -1188,7 +1188,7 @@
       "open": 700
     }
   },
-  "Hokūahiahi Neighborhood Park": {
+  "Hokuahiahi Neighborhood Park": {
     "park": {
       "close": 2200,
       "open": 500
