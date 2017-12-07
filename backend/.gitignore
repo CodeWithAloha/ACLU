@@ -106,3 +106,5 @@ ENV/
 
 # Custom
 importer/*.geojson
+data/tmk/**/tmp
+data/tmk/**/*.geojson
