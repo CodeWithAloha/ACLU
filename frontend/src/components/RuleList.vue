@@ -5,7 +5,11 @@
 
     <md-table md-sort="restriction" class="rule-table">
       <md-table-body>
-        <md-table-row v-for="category in categories" @click.native="rowClick(category)">
+        <md-table-row 
+          v-for="category in categories" 
+          :key="category"
+          @click.native="rowClick(category)"
+        >
           <md-table-cell style="text-align: center;">{{ category }}</md-table-cell>
         </md-table-row>
       </md-table-body>

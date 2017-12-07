@@ -7,7 +7,10 @@
         <h2>{{ $route.params.category }}</h2>
       </div>
       <div>
-        <p v-for="rule in rules">
+        <p 
+          v-for="rule in rules"
+          :key="rule"
+        >
           {{ rule.name }}<br/>
           <span v-if="rule.restrictions.hours_start">
             Open Hours:
