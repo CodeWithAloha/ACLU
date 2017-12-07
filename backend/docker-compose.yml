@@ -3,7 +3,7 @@ services:
   api:
     build:
       context: .
-      dockerfile: ./docker/api/Dockerfile
+      dockerfile: ./Dockerfile
     container_name: aclu-api
     environment:
       - MONGO_HOST=db
