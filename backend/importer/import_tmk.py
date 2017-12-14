@@ -41,7 +41,11 @@ def import_tmk(tmk_feature_collection_path):
                     "name": "TMK " + str(feature['properties']['TMK']),
                     "last_imported_at": datetime.datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
                 }
-                _post_features(f)
+                try:
+                    _post_features(f)
+                except Exception as e:
+                    logger.error(e)
+
         return sys.exit(0)
     else:
         logger.error("Please input a valid, importable feature collection file.")
