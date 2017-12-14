@@ -1,4 +1,4 @@
-git+git://github.com/pyeve/eve.git#egg=eve
+git+git://github.com/pyeve/eve.git@3bfff772f30e6f3d83db58d8e4bbc5c02041e12a#egg=eve
 # eve==0.7.4
 gunicorn==19.7.1
 gevent

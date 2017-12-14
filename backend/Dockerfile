@@ -9,7 +9,7 @@ RUN apk add --update gcc musl-dev
 
 ADD ./api/requirements.txt /src/requirements.txt
 
-RUN cd /src; pip install --no-cache-dir -r requirements.txt
+RUN cd /src; pip install --no-cache-dir -r requirements.txt --upgrade
 
 ADD ./api/ /src
 
