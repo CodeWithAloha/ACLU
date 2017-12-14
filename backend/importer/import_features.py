@@ -58,11 +58,12 @@ def import_features(feature_collection_path=None):
                     hours = park_hours.get(
                         feature['properties']['name'], False)
                     if hours:
-                        hours_parts = hours.get('park')
-                        f['restrictions']['hours_start'] = int(hours_parts.get(
-                            'open'))
-                        f['restrictions']['hours_end'] = int(hours_parts.get(
-                            'close'))
+                        try:
+                            hours_parts = hours.get('park')
+                            f['restrictions']['hours_start'] = int(hours_parts.get( 'open'))
+                            f['restrictions']['hours_end'] = int(hours_parts.get('close'))
+                        except:
+                            pass
                     _post_features(f)
             return sys.exit(0)
         else:
