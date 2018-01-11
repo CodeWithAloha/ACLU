@@ -44,7 +44,9 @@ def import_park_features(park_features_path, api_base_url):
 
 
 def _construct_park_feature_json(feature, organization, park_hours=None):
+
     park_name = feature['properties']['name']
+
     f = {
         "_id": str(uuid.uuid4()),
         "geojson": feature,
@@ -54,6 +56,12 @@ def _construct_park_feature_json(feature, organization, park_hours=None):
         "last_imported_at": datetime.datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
     }
 
+    _attach_park_hours(f, park_name, park_hours)
+
+    return f
+
+
+def _attach_park_hours(f, park_name, park_hours):
     try:
         hours = park_hours.get(park_name, False)
         if hours:
@@ -63,8 +71,6 @@ def _construct_park_feature_json(feature, organization, park_hours=None):
             f['restrictions']['hours_end'] = int(hours_parts.get('close'))
     except:
         pass
-
-    return f
 
 
 def _get_park_hours(park_hours_path=None):
