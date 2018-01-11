@@ -2,7 +2,7 @@
   <div class="container">
     <TopBar name="Map" :back-button="false"></TopBar>
     <div class='map'></div>
-    <div v-if="locationDetermined">
+    <div>
       <md-layout style="position: absolute; bottom: 0; left: 0; right: 0; padding-bottom: 1rem;">
         <md-button @click="showRuleList" :style="{background: buttonColor, color: 'white'}" class="md-raised" style="width: 75%; margin-left: auto; margin-right: auto;">Restrictions</md-button>
       </md-layout>
@@ -27,7 +27,11 @@ Mapbox.accessToken =
 
 export default {
   components: { TopBar },
-
+  data() {
+    return {
+      maxDistance: 200,
+    };
+  },
   computed: mapState({
     location: state => state.location,
     locationDetermined: state => state.locationDetermined,
@@ -58,11 +62,31 @@ export default {
         ev.result.geometry.coordinates[1],
         map
       );
-      this.location.longitude = ev.result.geometry.coordinates[0];
-      this.location.latitude = ev.result.geometry.coordinates[1];
+
+      location.longitude = ev.result.geometry.coordinates[0];
+      location.latitude = ev.result.geometry.coordinates[1];
+
+      map.getSource('single-point').setData(ev.result.geometry);
     });
 
     map.on("load", () => {
+      map.addSource('single-point', {
+          "type": "geojson",
+          "data": {
+              "type": "FeatureCollection",
+              "features": []
+          }
+      });
+
+      map.addLayer({
+          "id": "point",
+          "source": "single-point",
+          "type": "circle",
+          "paint": {
+              "circle-radius": 10,
+              "circle-color": "#007cbf"
+          }
+      });
       /* change this to zoom in on bounds of rule */
       if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(
@@ -73,8 +97,8 @@ export default {
               zoom: 13
             });
             this.setAllLayers(pos.coords.longitude, pos.coords.latitude, map);
-            this.location.longitude = pos.coords.longitude;
-            this.location.latitude = pos.coords.latitude;
+            location.longitude = pos.coords.longitude;
+            location.latitude = pos.coords.latitude;
           },
           err => {
             console.log(err);
@@ -127,8 +151,8 @@ export default {
       this.$router.push({
         name: "RuleList",
         params: {
-          lat: this.location.latitude,
-          lng: this.location.longitude
+          lat: location.latitude,
+          lng: location.longitude
         }
       });
     },
@@ -138,7 +162,8 @@ export default {
         lng +
         ", " +
         lat +
-        ']}, "$maxDistance": 50}}}';
+        ']}, "$maxDistance": ' + this.maxDistance + '}}}';
+      console.log(url);
       this.getLayerData(url, map);
     },
     /**

@@ -3,21 +3,23 @@
     <TopBar name="Rule"></TopBar>
 
     <div class="main-content">
-      <div class="rule-name">
-        <h2>{{ $route.params.category }}</h2>
+      <h2 class="big" >RESTRICTION</h2>
+      <h2 class="small">DETAILS</h2>
+      <div class="category-name">
+        <h2 class="category">{{ $route.params.category }}</h2>
       </div>
       <div>
-        <p 
-          v-for="rule in rules"
-          :key="rule"
+        <div class="rule-item"
+          v-for="(rule, index) in rules"
+          :key="index"
         >
-          {{ rule.name }}<br/>
+          <div class="rule-name"> {{rule.name}} </div>
           <span v-if="rule.restrictions.hours_start">
             Open Hours:
             <br/>
-            {{ rule.restrictions.hours_start }} - {{ rule.restrictions.hours_end }}
+            {{ hour12to24(rule.restrictions.hours_start) }} - {{ hour12to24(rule.restrictions.hours_end) }}
           </span>
-        </p>
+        </div>
         </div>
       </div>
     </div>
@@ -43,13 +45,53 @@ export default {
   components: { TopBar },
 
   computed: mapState({
-    rules: state => state.rules
-  })
+    rules: state => state.rules,
+  }),
+
+  methods: {
+    hour12to24(time) {
+      let t = parseInt(time);
+
+      if(t < 1200) {
+        if(t < 100) {
+          t = t + 1200;
+        }
+        t = t.toString();
+        t = t.slice(0, t.length - 2) + ":" + t.slice(t.length - 2, t.length)
+        return t + " AM";
+      } else {
+        t = t - 1200;
+        if(t < 100) {
+          t + 1200;
+        }
+        t = t.toString();
+        t = t.slice(0, t.length - 2) + ":" + t.slice(t.length - 2, t.length)
+        return t + " PM";
+      }
+    }
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.rule-item {
+  border-top: solid rgb(238, 217, 217) 1px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.category {
+  margin: 0px;
+}
+.big {
+  margin-bottom: 0px;
+  font-size: 24px;
+}
+.small {
+  margin-top: 0px;
+  font-size: 16px;
+  font-weight: 100;
+}
 .bill-text {
   display: inline-block;
 }
@@ -87,10 +129,14 @@ export default {
   width: 25%;
   padding-right: 20px;
 }
-
 .rule-name {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  font-weight: bold;
+}
+
+.category-name {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
 }
 
 .bill-text {

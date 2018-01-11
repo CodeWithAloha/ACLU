@@ -6,8 +6,8 @@
     <md-table md-sort="restriction" class="rule-table">
       <md-table-body>
         <md-table-row 
-          v-for="category in categories" 
-          :key="category"
+          v-for="(category, index) in categories" 
+          :key="index"
           @click.native="rowClick(category)"
         >
           <md-table-cell style="text-align: center;">{{ category }}</md-table-cell>
@@ -38,6 +38,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.main-content {
+  width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
 .qwer {
   width: 100px;
   height: 100px;
