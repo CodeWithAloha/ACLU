@@ -15,6 +15,10 @@ import requests
 import sys
 import uuid
 
+from utilities import get_api_resource_url
+from utilities import get_organization
+from utilities import post_feature
+
 
 logging.config.fileConfig(
     os.path.join(os.path.dirname(os.path.realpath(__file__)), 'logging.conf'))
@@ -26,7 +30,7 @@ logger = logging.getLogger("aclu_importer.parks")
 @click.option('--api_base_url', default='http://localhost:50050', help='API base url. Defaults to http://localhost:50050')
 def import_park_features(park_features_path, api_base_url):
 
-    organization = _get_organization(api_base_url, "Park")
+    organization = get_organization(api_base_url, "Park")
 
     if organization:
 
@@ -34,7 +38,7 @@ def import_park_features(park_features_path, api_base_url):
 
         for feature in _features_from_path(park_features_path):
             f = _construct_park_feature_json(feature, organization, park_hours)
-            _post_features(api_base_url, f)
+            post_feature(api_base_url, f)
 
     return sys.exit(0)
 
@@ -72,42 +76,12 @@ def _get_park_hours(park_hours_path=None):
         return None
 
 
-def _get_api_resource_url(api_base_url, resource):
-    return "{0}/{1}".format(api_base_url, resource)
-
-
 def _features_from_path(feature_collection_path=None):
     with open(feature_collection_path) as json_data:
         feature_collection = json.load(json_data)
         if 'features' in feature_collection:
             for feature in feature_collection["features"]:
                 yield feature
-
-
-def _post_features(api_base_url, feature_as_json):
-    resource_base_url = _get_api_resource_url(api_base_url, 'features')
-    r = requests.post(resource_base_url, json=feature_as_json)
-    if r.status_code == 201:
-        logger.info("Successfully uploaded feature(id=" +
-                    feature_as_json["_id"] + ")")
-    else:
-        logger.info("Unsuccessful: " + r.content)
-
-
-def _get_organization(api_base_url, organization_name):
-    resource_base_url = _get_api_resource_url(api_base_url, 'organizations')
-    resource_payload = _get_regex_payload("name", organization_name)
-    r = requests.get(resource_base_url, params=resource_payload)
-    if r.status_code == 200:
-        json_resp = r.json()
-        if (len(json_resp["_items"])) == 1:
-            return json_resp["_items"][0]
-    return None
-
-
-def _get_regex_payload(field, field_query):
-    regex_payload = {field: {'$regex': ".*" + field_query + ".*"}}
-    return {'where': json.dumps(regex_payload)}
 
 
 if __name__ == '__main__':
