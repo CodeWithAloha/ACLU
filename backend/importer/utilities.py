@@ -46,6 +46,19 @@ def post_feature(api_base_url, feature_as_json):
         logger.error("Error trying to post Feature")
 
 
+def post_holiday(api_base_url, holiday_as_json):
+    try:
+        resource_base_url = _get_api_resource_url(api_base_url, 'holidays')
+        r = requests.post(resource_base_url, json=holiday_as_json)
+        if r.status_code == 201:
+            id = holiday_as_json["_id"]
+            logger.info("Successfully uploaded Holiday (id={0})".format(id))
+        else:
+            logger.info("Unsuccessful: " + r.content)
+    except:
+        logger.error("Error trying to post Holiday")
+
+
 def get_pyeve_formatted_datetime(a_dt):
     return a_dt.strftime('%a, %d %b %Y %H:%M:%S GMT')
 
