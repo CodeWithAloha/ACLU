@@ -1,3 +1,4 @@
+var webpack = require("webpack");
 var path = require("path");
 var utils = require("./utils");
 var config = require("../config");
@@ -26,6 +27,11 @@ module.exports = {
       "@": resolve("src")
     }
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    }),
+  ],
   module: {
     rules: [
       // {

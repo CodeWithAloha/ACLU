@@ -14,6 +14,7 @@
 import Mapbox from "mapbox-gl";
 import { mapState } from "vuex";
 import "mapbox-gl/dist/mapbox-gl.css";
+import config from "@/config";
 
 import Axios from "axios";
 import TopBar from "./TopBar.vue";
@@ -22,8 +23,7 @@ import TopBar from "./TopBar.vue";
 import MapboxGeocoder from "mapbox-gl-geocoder";
 import "mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 
-Mapbox.accessToken =
-  "pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTdza2thcGozNSJ9.zw6CcZLxP6lq0x-xfwp6uA";
+Mapbox.accessToken = config.API_TOKEN;
 
 export default {
   components: { TopBar },
@@ -134,7 +134,7 @@ export default {
     },
     setAllLayers(lng, lat, map) {
       var url =
-        'http://localhost:50050/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[' +
+        `${config.API_URL}/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[` +
         lng +
         ", " +
         lat +
@@ -142,13 +142,13 @@ export default {
       this.getLayerData(url, map);
     },
     /**
-     * @argument 
+     * @argument
      */
     getLayerData(href, map) {
       return Axios.get(href).then(response => {
         this.setLayers(response.data, map);
         if (response.data._links.next) {
-          var url = "http://localhost:50050/" + response.data._links.next.href;
+          var url = `${config.API_URL}/` + response.data._links.next.href;
           return this.getLayerData(url, map);
         }
       });
