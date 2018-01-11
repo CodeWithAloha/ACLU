@@ -40,7 +40,8 @@ def import_features(feature_collection_path=None):
 
     with open("../data/parks/2017.10.20_Honolulu-Park-Hours/park-closure-hours.json") as parks_file:
         park_hours = json.load(parks_file)
-        print park_hours
+
+        logger.info(park_hours)
 
         if feature_collection_path and os.path.isfile(os.path.realpath(feature_collection_path)):
             organization = _get_organization("Park")

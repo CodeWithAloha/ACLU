@@ -113,7 +113,7 @@ def main(argv):
     html_text = get_html_text(url_or_path)
     park_hours = parse_park_hours_html_text(html_text)
     json_text = json.dumps(park_hours)
-    print(json_text)
+    logger.info(json_text)
     return 0
 
 
