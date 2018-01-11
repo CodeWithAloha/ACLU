@@ -86,7 +86,7 @@ The seed_fake_park_data.sh script should perform the following:
  - Run the command "Converting parks data to geojson" to convert the parks data into a 2017-07-19.parks.geojson file placed into the importer directory
  - Run the command above to seed the organizations
  - ```cd importer; pip install -r requirements.txt```
- - ```python import_features.py --feature_collection_path <path_to/2017-07-19.parks.geojson> ``` to bring in the parks data
+ - ```python import_parks.py --feature_collection_path <path_to/2017-07-19.parks.geojson> ``` to bring in the parks data
 
 To see that the script worked:
 
