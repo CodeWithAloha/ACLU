@@ -11,12 +11,12 @@ import json
 import logging
 import logging.config
 import os
-import requests
 import sys
 import uuid
 
-from utilities import get_api_resource_url
+from utilities import get_features_from_geojson
 from utilities import get_organization
+from utilities import get_pyeve_formatted_datetime
 from utilities import post_feature
 
 
@@ -36,7 +36,7 @@ def import_park_features(park_features_path, api_base_url):
 
         park_hours = _get_park_hours("../data/parks/2017.10.20_Honolulu-Park-Hours/park-closure-hours.json")
 
-        for feature in _features_from_path(park_features_path):
+        for feature in get_features_from_geojson(park_features_path):
             f = _construct_park_feature_json(feature, organization, park_hours)
             post_feature(api_base_url, f)
 
@@ -53,7 +53,8 @@ def _construct_park_feature_json(feature, organization, park_hours=None):
         "restrictions": {},
         "organization": organization["_id"],
         "name": park_name,
-        "last_imported_at": datetime.datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
+        "last_imported_at":
+            get_pyeve_formatted_datetime(datetime.datetime.utcnow())
     }
 
     _attach_park_hours(f, park_name, park_hours)
@@ -80,14 +81,6 @@ def _get_park_hours(park_hours_path=None):
     except:
         logger.error("Error occurred trying to retrieve park hours.")
         return None
-
-
-def _features_from_path(feature_collection_path=None):
-    with open(feature_collection_path) as json_data:
-        feature_collection = json.load(json_data)
-        if 'features' in feature_collection:
-            for feature in feature_collection["features"]:
-                yield feature
 
 
 if __name__ == '__main__':
