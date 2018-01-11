@@ -18,7 +18,10 @@ def get_organization(api_base_url, org_name):
         "Attempting to get an Organization (name={0})".format(org_name))
 
     try:
-        resource_base_url = _get_api_resource_url(api_base_url, 'organizations')
+        resource_base_url = _get_api_resource_url(
+            api_base_url,
+            'organizations')
+
         resource_payload = _get_regex_payload("name", org_name)
         r = requests.get(resource_base_url, params=resource_payload)
         if r.status_code == 200:
