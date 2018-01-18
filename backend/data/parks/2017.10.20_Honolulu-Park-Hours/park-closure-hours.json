@@ -459,12 +459,19 @@
       "open": 500
     }
   },
-  "Kapiolani Park": {
+  "Kapiolani Beach Park": {
     "park": {
-      "close": 1200,
+      "close": 0000,
       "open": 500
     }
   },
+  "Kapiolani Regional Park": {
+    "park": {
+      "close": 0000,
+      "open": 500
+    }
+  },
+
   "Kaimuki Community Park": {
     "park": {
       "close": 2200,
