@@ -29,7 +29,7 @@ export default {
   components: { TopBar },
   data() {
     return {
-      maxDistance: 200,
+      maxDistance: 200
     };
   },
   computed: mapState({
@@ -66,27 +66,29 @@ export default {
       location.longitude = ev.result.geometry.coordinates[0];
       location.latitude = ev.result.geometry.coordinates[1];
 
-      map.getSource('single-point').setData(ev.result.geometry);
+      map.getSource("single-point").setData(ev.result.geometry);
     });
 
     map.on("load", () => {
-      map.addSource('single-point', {
-          "type": "geojson",
-          "data": {
-              "type": "FeatureCollection",
-              "features": []
-          }
+      map.addSource("single-point", {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: []
+        }
       });
 
+      // Where the user is located
       map.addLayer({
-          "id": "point",
-          "source": "single-point",
-          "type": "circle",
-          "paint": {
-              "circle-radius": 10,
-              "circle-color": "#007cbf"
-          }
+        id: "point",
+        source: "single-point",
+        type: "circle",
+        paint: {
+          "circle-radius": 10,
+          "circle-color": "#007cbf"
+        }
       });
+
       /* change this to zoom in on bounds of rule */
       if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(
@@ -97,8 +99,6 @@ export default {
               zoom: 13
             });
             this.setAllLayers(pos.coords.longitude, pos.coords.latitude, map);
-            location.longitude = pos.coords.longitude;
-            location.latitude = pos.coords.latitude;
           },
           err => {
             console.log(err);
@@ -112,6 +112,7 @@ export default {
   methods: {
     setLayers(data, map) {
       const now = new Date();
+      let trackLayer = null;
       const newRules = data._items.map(rule => {
         const { geojson, _id } = rule;
         const hoursStart = rule.restrictions.hours_start;
@@ -126,10 +127,11 @@ export default {
         } else {
           isOpen = true;
           rule.isValid = true;
-          fillColor = "#ff4136";
+          fillColor = "#2ecc40";
         }
 
         const id = _id;
+        trackLayer = id;
         if (!map.getLayer(id)) {
           map.addLayer({
             id,
@@ -145,6 +147,32 @@ export default {
         }
         return rule;
       });
+      if (trackLayer) {
+        // set the user marker above the new layers
+        const marker = map.getLayer("point");
+        if (marker) {
+          map.removeLayer("point");
+          // map.addSource("single-point", {
+          //   type: "geojson",
+          //   data: {
+          //     type: "FeatureCollection",
+          //     features: []
+          //   }
+          // });
+          map.addLayer(
+            {
+              id: "point",
+              source: "single-point",
+              type: "circle",
+              paint: {
+                "circle-radius": 10,
+                "circle-color": "#007cbf"
+              }
+            },
+            trackLayer
+          );
+        }
+      }
       this.$store.commit("updateRules", newRules);
     },
     showRuleList() {
@@ -162,12 +190,14 @@ export default {
         lng +
         ", " +
         lat +
-        ']}, "$maxDistance": ' + this.maxDistance + '}}}';
+        ']}, "$maxDistance": ' +
+        this.maxDistance +
+        "}}}";
       console.log(url);
       this.getLayerData(url, map);
     },
     /**
-     * @argument 
+     * @argument
      */
     getLayerData(href, map) {
       return Axios.get(href).then(response => {
