@@ -50,11 +50,13 @@ vagrant ssh
 
 ### Getting the app up and running
 
-After running `vagrant up`, you'll want to perform the following:
+After running `vagrant up`, and ssh'ing in via `vagrant ssh` and you'll be logged into the virtual machine and want to perform the following:
 
 ```
-vagrant ssh
-/var/project-aclu/etc/start.sh
+# start.sh runs the docker container, pass & to run in the background
+/var/project-aclu/etc/start.sh & 
+
+# after the database is up, seed some data into the mongo database
 /var/project-aclu/backend/etc/seed_fake_park_data.sh
 ```
 
