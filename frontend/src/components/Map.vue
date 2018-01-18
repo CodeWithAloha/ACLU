@@ -21,6 +21,7 @@ import TopBar from "./TopBar.vue";
 // import geocode and styles
 import MapboxGeocoder from "mapbox-gl-geocoder";
 import "mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
+import * as turf from "@turf/turf";
 
 Mapbox.accessToken =
   "pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTdza2thcGozNSJ9.zw6CcZLxP6lq0x-xfwp6uA";
@@ -29,7 +30,7 @@ export default {
   components: { TopBar },
   data() {
     return {
-      maxDistance: 200
+      maxDistance: 50
     };
   },
   computed: mapState({
@@ -57,6 +58,7 @@ export default {
     geocoder.on("result", ev => {
       // clear map of layers
       // this.removeAllLayers(map)
+      this.calcMaxDistance(map);
       this.setAllLayers(
         ev.result.geometry.coordinates[0],
         ev.result.geometry.coordinates[1],
@@ -68,6 +70,10 @@ export default {
 
       map.getSource("single-point").setData(ev.result.geometry);
     });
+
+    /**
+     *  Calculates the max distance for queries
+     */
 
     map.on("load", () => {
       map.addSource("single-point", {
@@ -98,6 +104,7 @@ export default {
               center: [pos.coords.longitude, pos.coords.latitude],
               zoom: 13
             });
+            this.calcMaxDistance(map);
             this.setAllLayers(pos.coords.longitude, pos.coords.latitude, map);
           },
           err => {
@@ -147,34 +154,22 @@ export default {
         }
         return rule;
       });
-      if (trackLayer) {
+      if (trackLayer && map.getLayer("point")) {
         // set the user marker above the new layers
-        const marker = map.getLayer("point");
-        if (marker) {
-          map.removeLayer("point");
-          // map.addSource("single-point", {
-          //   type: "geojson",
-          //   data: {
-          //     type: "FeatureCollection",
-          //     features: []
-          //   }
-          // });
-          map.addLayer(
-            {
-              id: "point",
-              source: "single-point",
-              type: "circle",
-              paint: {
-                "circle-radius": 10,
-                "circle-color": "#007cbf"
-              }
-            },
-            trackLayer
-          );
-        }
+        map.removeLayer("point");
+        map.addLayer({
+          id: "point",
+          source: "single-point",
+          type: "circle",
+          paint: {
+            "circle-radius": 10,
+            "circle-color": "#007cbf"
+          }
+        });
       }
       this.$store.commit("updateRules", newRules);
     },
+
     showRuleList() {
       this.$router.push({
         name: "RuleList",
@@ -193,12 +188,15 @@ export default {
         ']}, "$maxDistance": ' +
         this.maxDistance +
         "}}}";
-      console.log(url);
       this.getLayerData(url, map);
     },
-    /**
-     * @argument
-     */
+    calcMaxDistance(map) {
+      const bounds = map.getBounds();
+      const from = turf.point(bounds._sw.toArray());
+      const to = turf.point(bounds._ne.toArray());
+      const maxDistance = turf.distance(from, to);
+      Object.assign(this.$data, { maxDistance });
+    },
     getLayerData(href, map) {
       return Axios.get(href).then(response => {
         this.setLayers(response.data, map);

@@ -20,6 +20,8 @@ const store = new Vuex.Store({
     updateRules(state, rules) {
       if (rules.find(({ isValid }) => isValid === false)) {
         state.userValid = 2;
+      } else {
+        state.userValid = 0;
       }
       state.rules = rules;
     }
