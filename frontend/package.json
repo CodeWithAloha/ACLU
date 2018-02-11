@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@mapbox/mapbox-gl-draw": "^1.0.0",
+    "@turf/turf": "^5.1.6",
     "axios": "^0.16.2",
     "element-ui": "^1.4.2",
     "mapbox-gl": "^0.38.0",
