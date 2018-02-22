@@ -12,5 +12,8 @@ output "ECR_REPO_NAME" {
 
 output "FRONTEND_DOMAIN" {
   value = "${aws_cloudfront_distribution.frontend_distribution.domain_name}"
-  }
+}
 
+output "PIPELINE" {
+  value = "${aws_codepipeline.aclu.id}"
+}

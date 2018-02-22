@@ -166,6 +166,6 @@ resource "aws_instance" "aclu" {
 
   root_block_device = {
     volume_type = "gp2"
-    volume_size = "20"
+    volume_size = "30"
   }
 }
