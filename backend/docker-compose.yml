@@ -6,7 +6,11 @@ services:
       dockerfile: ./Dockerfile
     container_name: aclu-api
     environment:
-      - MONGO_HOST=db
+      - MONGO_HOST=${MONGO_HOST}
+      - MONGO_PORT=${MONGO_PORT}
+      - MONGO_USERNAME=${MONGO_USERNAME}
+      - MONGO_PASSWORD=${MONGO_PASSWORD}
+      - MONGO_DBNAME=${MONGO_DBNAME}
     ports:
       - "50050:50050"
     volumes:
