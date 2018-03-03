@@ -106,26 +106,28 @@ feature_park_restrictions = {
         },
         "restrictions": {
             'type': "dict",
-            'hours_start': { # 0000 - 2359
-                'type': 'number',
-                'required': False
-            },
-            'hours_end': { # 0000 - 2359
-                'type': 'number',
-                'required': False
-            },
-            'days': { # blacklist
-                'type': 'list',
-                'allowed': ['Su', 'M', 'T', 'W', 'Th', 'F', 'Sa'],
-                'required': False
-            },
-            'fed_holidays': { # keys are uuid's of fed holidays,  vals are bool
-                'type': 'boolean',
-                'required': False
-            },
-            'state_holiday': {
-                'type': 'boolean',
-                'required': False
+            'schema': {
+                'hours_start': { # 0000 - 2359
+                    'type': 'number',
+                    'required': False
+                },
+                'hours_end': { # 0000 - 2359
+                    'type': 'number',
+                    'required': False
+                },
+                'days': { # blacklist
+                    'type': 'list',
+                    'allowed': ['Su', 'M', 'T', 'W', 'Th', 'F', 'Sa'],
+                    'required': False
+                },
+                'fed_holidays': { # keys are uuid's of fed holidays,  vals are bool
+                    'type': 'boolean',
+                    'required': False
+                },
+                'state_holiday': {
+                    'type': 'boolean',
+                    'required': False
+                }
             }
         }
     }

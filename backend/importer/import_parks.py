@@ -18,6 +18,7 @@ from utilities import get_features_from_geojson
 from utilities import get_organization
 from utilities import get_pyeve_formatted_datetime
 from utilities import post_feature
+from utilities import post_park_restriction
 
 
 logging.config.fileConfig(
@@ -37,27 +38,43 @@ def import_park_features(park_features_path, api_base_url):
         park_hours = _get_park_hours("../data/parks/2017.10.20_Honolulu-Park-Hours/park-closure-hours.json")
 
         for feature in get_features_from_geojson(park_features_path):
-            f = _construct_park_feature_json(feature, organization, park_hours)
-            post_feature(api_base_url, f)
+            f = _construct_park_feature_json(feature, organization)
+            feature_id = post_feature(api_base_url, f)
+            r = _construct_park_restriction_json(feature, feature_id, park_hours)
+            post_park_restriction(api_base_url, r)
 
     return sys.exit(0)
 
 
-def _construct_park_feature_json(feature, organization, park_hours=None):
+def _construct_park_feature_json(feature, organization):
 
     park_name = feature['properties']['name']
 
     f = {
         "_id": str(uuid.uuid4()),
         "geojson": feature,
-        "restrictions": {},
         "organization": organization["_id"],
         "name": park_name,
-        "last_imported_at":
-            get_pyeve_formatted_datetime(datetime.datetime.utcnow())
+        "type": "park",
+        "ownership": "city",
+        "last_imported_at": get_pyeve_formatted_datetime(datetime.datetime.utcnow())
+    }
+
+    return f
+
+
+def _construct_park_restriction_json(feature, feature_id, park_hours=None):
+
+    park_name = feature['properties']['name']
+
+    f = {
+        "_id": str(uuid.uuid4()),
+        "feature_id": feature_id,
     }
 
     _attach_park_hours(f, park_name, park_hours)
+
+    logger.debug(f)
 
     return f
 
@@ -68,10 +85,14 @@ def _attach_park_hours(f, park_name, park_hours):
         if hours:
             logger.info("Setting park hours for {0}".format(park_name))
             hours_parts = hours.get('park')
+            f['restrictions'] = {}
             f['restrictions']['hours_start'] = int(hours_parts.get('open'))
             f['restrictions']['hours_end'] = int(hours_parts.get('close'))
-    except:
-        pass
+        else:
+            logger.error("No park hours for " + park_name)
+    except Exception as e:
+        logger.error("Error occurred trying to attach park hour restrictions: "
+                     + str(e))
 
 
 def _get_park_hours(park_hours_path=None):

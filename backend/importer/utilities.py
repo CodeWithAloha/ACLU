@@ -40,10 +40,29 @@ def post_feature(api_base_url, feature_as_json):
         if r.status_code == 201:
             id = feature_as_json["_id"]
             logger.info("Successfully uploaded Feature (id={0})".format(id))
+            return id
         else:
             logger.info("Unsuccessful: " + r.content)
+            return None
     except:
         logger.error("Error trying to post Feature")
+        return None
+
+
+def post_park_restriction(api_base_url, park_restriction_as_json):
+    try:
+        resource_base_url = _get_api_resource_url(api_base_url, 'feature_park_restrictions')
+        r = requests.post(resource_base_url, json=park_restriction_as_json)
+        if r.status_code == 201:
+            id = park_restriction_as_json["_id"]
+            logger.info("Successfully uploaded Park Restriction (id={0})".format(id))
+            return id
+        else:
+            logger.info("Unsuccessful: " + r.content)
+            return None
+    except:
+        logger.error("Error trying to post Park Restriction")
+        return None
 
 
 def post_holiday(api_base_url, holiday_as_json):
