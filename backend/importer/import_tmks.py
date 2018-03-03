@@ -44,9 +44,9 @@ def _construct_tmk_feature_json(feature, organization):
     return {
         "_id": str(uuid.uuid4()),
         "geojson": feature,
-        "restrictions": {},
         "organization": organization["_id"],
         "name": "TMK " + str(feature['properties']['TMK']),
+        "type": "tmk",
         "last_imported_at":
             get_pyeve_formatted_datetime(datetime.datetime.utcnow())
     }
