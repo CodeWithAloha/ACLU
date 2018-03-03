@@ -34,6 +34,11 @@ features = {
                 'embeddable': True
             }
         },
+        'type': {
+            'type': 'string',
+            'allowed': ["park", "tmk"],
+            'required': True
+        },
         'geojson': {
             'type': 'feature'
         },
