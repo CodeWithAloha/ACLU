@@ -9,6 +9,12 @@
 
 ## Running
 
+As a note, to run the database, you need a .env file in this directory that
+contains the database environment variables. Please ask someone in the channel
+#cfh-aclu for the file. We do know that there is an extraneous Mongo db image
+currently in the docker-compose script, but we kept it around for s-giggles in
+the case that someone wants to run Mongo locally.
+
 ```
 $ make dev
 $ curl http://localhost:50050/aloha
