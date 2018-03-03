@@ -38,7 +38,7 @@ phases:
       - yarn build --prod
       - echo Building API containers
       - cd $CODEBUILD_SRC_DIR/backend
-      - docker build -t $IMAGES_REPO_URL:$IMAGE_TAG .
+      - docker build --build-arg MONGO_HOST=$MONGO_HOST --build-arg MONGO_PORT=$MONGO_PORT --build-arg MONGO_USERNAME=$MONGO_USERNAME --build-arg MONGO_PASSWORD=$MONGO_PASSWORD --build-arg MONGO_DBNAME=$MONGO_DBNAME -t $IMAGES_REPO_URL:$IMAGE_TAG .
       - echo Remove `latest` tag from previous image
       - aws ecr batch-delete-image --repository-name $IMAGES_REPO_NAME --image-ids imageTag=latest
       - docker tag $IMAGES_REPO_URL:$IMAGE_TAG $IMAGES_REPO_URL:latest

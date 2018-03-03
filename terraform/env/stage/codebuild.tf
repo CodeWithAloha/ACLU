@@ -131,6 +131,30 @@ resource "aws_codebuild_project" "aclu" {
       "value" = "${aws_s3_bucket.frontend.id}"
     }
 
+    environment_variable {
+      "name"  = "MONGO_HOST"
+      "value" = "UPDATE_THIS_VARIABLE"
+    }
+
+    environment_variable {
+      "name"  = "MONGO_PORT"
+      "value" = "UPDATE_THIS_VARIABLE"
+    }
+
+    environment_variable {
+      "name"  = "MONGO_USERNAME"
+      "value" = "UPDATE_THIS_VARIABLE"
+    }
+    
+    environment_variable {
+      "name"  = "MONGO_PASSWORD"
+      "value" = "UPDATE_THIS_VARIABLE"
+    }
+
+    environment_variable {
+      "name"  = "MONGO_DBNAME"
+      "value" = "UPDATE_THIS_VARIABLE"
+    }
   }
 
   source {

@@ -1,4 +1,4 @@
 #!/bin/bash
 # Stop running docker
 cd /var/project-aclu/
-sudo docker-compose down
+sudo docker stop $(docker ps -aqf "name=aclu-api")
