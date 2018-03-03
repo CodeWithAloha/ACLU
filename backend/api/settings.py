@@ -4,7 +4,7 @@
 import os
 
 MONGO_HOST = os.environ.get('MONGO_HOST', 'localhost')
-MONGO_PORT = os.environ.get('MONGO_PORT', 27017)
+MONGO_PORT = int(os.environ.get('MONGO_PORT', 27017))
 MONGO_USERNAME = os.environ.get('MONGO_USERNAME', '')
 MONGO_PASSWORD = os.environ.get('MONGO_PASSWORD', '')
 MONGO_DBNAME = os.environ.get('MONGO_DBNAME', 'aclu')
@@ -26,39 +26,6 @@ features = {
             'maxlength': 256,
             'required': True
         },
-        "restrictions": {
-            'type': "dict",
-            'schema': {
-                'hours_start': {  # 0000 - 2359
-                    'type': 'number',
-                    'required': False
-                },
-                'hours_end': {  # 0000 - 2359
-                    'type': 'number',
-                    'required': False
-                },
-                'days': {  # blacklist
-                    'type': 'list',
-                    'allowed': ['Su', 'M', 'T', 'W', 'Th', 'F', 'Sa'],
-                    'required': False
-                },
-                'fed_holidays': {  # keys are uuid's of fed holidays,  vals are bool
-                    'type': 'boolean',
-                    'required': False
-                },
-                'state_holiday': {
-                    'type': 'boolean',
-                    'required': False
-                },
-                # 0000 0000 0000 0000
-                #
-                # blacklist
-                # TODO: map every bit to an action
-                'action_restriction': {
-                    'type': 'string'
-                },
-            }
-        },
         'organization': {
             'type': 'uuid',
             'data_relation': {
@@ -66,6 +33,11 @@ features = {
                 'field': '_id',
                 'embeddable': True
             }
+        },
+        'type': {
+            'type': 'string',
+            'allowed': ["park", "tmk"],
+            'required': True
         },
         'geojson': {
             'type': 'feature'
@@ -80,6 +52,7 @@ features = {
     }
 }
 
+
 organizations = {
     'item_url': 'regex("[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}")',
     'allowed_filters': ['name'],
@@ -93,6 +66,7 @@ organizations = {
         }
     }
 }
+
 
 holidays = {
     'item_url': 'regex("[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}")',
@@ -121,8 +95,46 @@ holidays = {
     }
 }
 
+
+feature_park_restrictions = {
+    'item_url': 'regex("[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}")',
+    'schema': {
+        '_id': {'type': 'uuid'},
+        'feature_id': {
+            'type': 'uuid',
+            'required': True
+        },
+        "restrictions": {
+            'type': "dict",
+            'hours_start': { # 0000 - 2359
+                'type': 'number',
+                'required': False
+            },
+            'hours_end': { # 0000 - 2359
+                'type': 'number',
+                'required': False
+            },
+            'days': { # blacklist
+                'type': 'list',
+                'allowed': ['Su', 'M', 'T', 'W', 'Th', 'F', 'Sa'],
+                'required': False
+            },
+            'fed_holidays': { # keys are uuid's of fed holidays,  vals are bool
+                'type': 'boolean',
+                'required': False
+            },
+            'state_holiday': {
+                'type': 'boolean',
+                'required': False
+            }
+        }
+    }
+}
+
+
 DOMAIN = {
     'organizations': organizations,
     'features': features,
+    'feature_park_restrictions': feature_park_restrictions,
     'holidays': holidays
 }
