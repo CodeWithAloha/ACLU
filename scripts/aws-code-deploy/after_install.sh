@@ -9,5 +9,6 @@ $(aws ecr get-login --region us-west-2 --no-include-email) # Ended up harcoding 
 
 # Get latest version of image
 cd /var/project-aclu/
-docker image rmi "705750910119.dkr.ecr.us-west-2.amazonaws.com/aclu:latest"
-docker pull "705750910119.dkr.ecr.us-west-2.amazonaws.com/aclu:latest"
+sudo docker rm $(docker ps -aqf "name=aclu-api")
+sudo docker rmi -f "705750910119.dkr.ecr.us-west-2.amazonaws.com/aclu:latest"
+sudo docker pull "705750910119.dkr.ecr.us-west-2.amazonaws.com/aclu:latest"
