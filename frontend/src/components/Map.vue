@@ -122,8 +122,9 @@ export default {
       let trackLayer = null;
       const newRules = data._items.map(rule => {
         const { geojson, _id } = rule;
-        const hoursStart = rule.restrictions.hours_start;
-        const hoursEnd = rule.restrictions.hours_end;
+        const restrictions = rule.restrictions || {};
+        const hoursStart = restrictions.hours_start;
+        const hoursEnd = restrictions.hours_end;
         const currentTime = now.getHours() * 100 + now.getMinutes(); // format time as 2459
         let isOpen, fillColor;
 
