@@ -9,6 +9,7 @@ import click
 import datetime
 import logging
 import logging.config
+import multiprocessing
 import os
 import sys
 import uuid
@@ -30,12 +31,20 @@ logger = logging.getLogger("aclu_importer.tmks")
 @click.option('--api_base_url', default='http://localhost:50050', help='API base url. Defaults to http://localhost:50050')
 def import_tmk(tmk_features_path, api_base_url):
 
+    pool = multiprocessing.Pool(processes=multiprocessing.cpu_count())
+
     organization = get_organization(api_base_url, "Park")
 
+    numFeatures = 0
     if organization:
         for feature in get_features_from_geojson(tmk_features_path):
+            numFeatures += 1
             f = _construct_tmk_feature_json(feature, organization)
-            post_feature(api_base_url, f)
+            pool.apply_async(post_feature, [api_base_url, f])
+
+    print(numFeatures)
+    pool.close()
+    pool.join()
 
     return sys.exit(0)
 
