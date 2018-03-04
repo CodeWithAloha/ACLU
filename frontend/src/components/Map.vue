@@ -38,7 +38,7 @@ export default {
     locationDetermined: state => state.locationDetermined,
     userValid: state => state.userValid,
     rules: state => state.rules,
-    buttonColor: state => (state.userValid > 0 ? "#ff4136" : "#2ecc40")
+    buttonColor: state => (state.userValid > 0 ? "var(--maroon)" : "var(--olive")
   }),
 
   mounted() {
