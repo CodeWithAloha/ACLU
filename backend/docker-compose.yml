@@ -15,12 +15,12 @@ services:
       - "50050:50050"
     volumes:
       - ./api:/src/api
-    links:
-      - db
-  db:
-    image: mongo:3.5.11
-    ports:
-      - "27017"
-    container_name: aclu-db
-    logging:
-      driver: none
+  #   links:
+  #     - db
+  # db:
+  #   image: mongo:3.5.11
+  #   ports:
+  #     - "27017"
+  #   container_name: aclu-db
+  #   logging:
+  #     driver: none
