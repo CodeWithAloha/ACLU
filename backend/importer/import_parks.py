@@ -39,11 +39,14 @@ def import_park_features(park_features_path, api_base_url):
 
     organization = get_organization(api_base_url, "Park")
 
+    num_features = 0
+
     if organization:
 
         park_hours = _get_park_hours("../data/parks/2017.10.20_Honolulu-Park-Hours/park-closure-hours.json")
 
         for feature in get_features_from_geojson(park_features_path):
+            num_features += 1
             pool.apply_async(
                 _post_park_feature_and_restriction,
                 [api_base_url, organization, feature, park_hours])
@@ -53,8 +56,7 @@ def import_park_features(park_features_path, api_base_url):
 
     end_time = timer()
 
-    logger.info("import_park_features took {} seconds".format(end_time -
-                                                              start_time))
+    logger.info("import_park_features took {} seconds and imported {} park features".format(end_time - start_time, num_features))
 
     return sys.exit(0)
 
