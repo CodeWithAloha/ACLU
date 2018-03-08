@@ -39,14 +39,14 @@
           placeholder="Select time">
         </el-time-select>
 
-        <label for="email">Effecteive Datetime Start</label>
+        <label for="email">Effective Datetime Start</label>
         <el-date-picker
           v-model="datetime_start"
           type="datetime"
           placeholder="Select date and time">
         </el-date-picker>
 
-        <label for="email">Effecteive Datetime End</label>
+        <label for="email">Effective Datetime End</label>
         <el-date-picker
           v-model="datetime_end"
           type="datetime"
