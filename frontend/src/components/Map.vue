@@ -1,6 +1,7 @@
 <template lang='html'>
   <div class="container">
     <div class='map'></div>
+    <div id='geocoder' class='geocoder'></div>
     <div>
       <md-layout style="position: absolute; bottom: 0; left: 0; right: 0; padding-bottom: 1rem;">
         <md-button @click="showRuleList" :style="{background: buttonColor, color: 'white'}" class="md-raised" style="width: 75%; margin-left: auto; margin-right: auto;">Restrictions</md-button>
@@ -51,7 +52,8 @@ export default {
     var geocoder = new MapboxGeocoder({
       accessToken: Mapbox.accessToken
     });
-    map.addControl(geocoder);
+
+    document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
 
     // on geocoder retrieve
     geocoder.on("result", ev => {
@@ -201,6 +203,17 @@ export default {
 };
 </script>
 
+<style lang='css'>
+.geocoder .mapboxgl-ctrl-geocoder { 
+  min-width:100%;
+  width:100%;
+}
+
+.geocoder .mapboxgl-ctrl-geocoder input[type=text] {
+  min-width:100%; 
+}
+</style>
+
 <style lang='css' scoped>
 .warning-description {
   width: 100%;
@@ -259,5 +272,14 @@ export default {
 
 .description-item.-active {
   opacity: 1;
+}
+
+.geocoder {
+  position:absolute;
+  z-index:1;
+  width:90%;
+  left:50%;
+  margin-left:-45%;
+  top:20px;
 }
 </style>
