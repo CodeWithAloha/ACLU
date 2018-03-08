@@ -1,7 +1,12 @@
 <template lang='html'>
   <div class="container">
     <div class='map'></div>
-    <div id='geocoder' class='geocoder'></div>
+    <div id='navbar' class='navbar'>
+      <div id='geocoder' class='geocoder'></div>
+      <div id='my_location'>
+        <i class="material-icons">my_location</i>
+      </div>
+    </div>
     <div>
       <md-layout style="position: absolute; bottom: 0; left: 0; right: 0; padding-bottom: 1rem;">
         <md-button @click="showRuleList" :style="{background: buttonColor, color: 'white'}" class="md-raised" style="width: 75%; margin-left: auto; margin-right: auto;">Restrictions</md-button>
@@ -204,12 +209,12 @@ export default {
 </script>
 
 <style lang='css'>
-.geocoder .mapboxgl-ctrl-geocoder { 
+#geocoder .mapboxgl-ctrl-geocoder { 
   min-width:100%;
   width:100%;
 }
 
-.geocoder .mapboxgl-ctrl-geocoder input[type=text] {
+#geocoder .mapboxgl-ctrl-geocoder input[type=text] {
   min-width:100%; 
 }
 </style>
@@ -274,12 +279,27 @@ export default {
   opacity: 1;
 }
 
-.geocoder {
+.navbar {
   position:absolute;
   z-index:1;
-  width:90%;
+  width:98%;
   left:50%;
-  margin-left:-45%;
+  margin-left:-49%;
   top:20px;
 }
+
+#geocoder {
+  width:95%;
+  float:left;
+  margin-right:.5em;
+}
+
+#my_location {
+  float:left;
+  background-color:white;
+  border:1px solid #666;
+  padding:.275em;
+  vertical-align:middle;
+}
+
 </style>
