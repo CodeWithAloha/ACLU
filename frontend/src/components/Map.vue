@@ -30,7 +30,7 @@ export default {
   components: { TopBar },
   data() {
     return {
-      maxDistance: 50
+      maxDistance: 200
     };
   },
   computed: mapState({
@@ -57,8 +57,7 @@ export default {
     // on geocoder retrieve
     geocoder.on("result", ev => {
       // clear map of layers
-      // this.removeAllLayers(map)
-      this.calcMaxDistance(map);
+      this.removeAllLayers(map)
       this.setAllLayers(
         ev.result.geometry.coordinates[0],
         ev.result.geometry.coordinates[1],
@@ -104,7 +103,6 @@ export default {
               center: [pos.coords.longitude, pos.coords.latitude],
               zoom: 13
             });
-            this.calcMaxDistance(map);
             this.setAllLayers(pos.coords.longitude, pos.coords.latitude, map);
           },
           err => {
@@ -190,13 +188,6 @@ export default {
         this.maxDistance +
         "}}}";
       this.getLayerData(url, map);
-    },
-    calcMaxDistance(map) {
-      const bounds = map.getBounds();
-      const from = turf.point(bounds._sw.toArray());
-      const to = turf.point(bounds._ne.toArray());
-      const maxDistance = turf.distance(from, to);
-      Object.assign(this.$data, { maxDistance });
     },
     getLayerData(href, map) {
       return Axios.get(href).then(response => {
