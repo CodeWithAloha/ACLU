@@ -1,6 +1,5 @@
 <template lang='html'>
   <div class="container">
-    <TopBar name="Map" :back-button="false"></TopBar>
     <div class='map'></div>
     <div>
       <md-layout style="position: absolute; bottom: 0; left: 0; right: 0; padding-bottom: 1rem;">
@@ -229,7 +228,7 @@ export default {
 }
 
 .map {
-  height: calc(100vh - 64px);
+  height: calc(100vh);
   width: 100%;
 }
 
