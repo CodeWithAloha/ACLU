@@ -20,6 +20,8 @@ import Mapbox from "mapbox-gl";
 import { mapState } from "vuex";
 import "mapbox-gl/dist/mapbox-gl.css";
 
+import { RestrictionState } from "../models/RetrictionState"
+import { FeatureFactory } from "../models/Features"
 import Axios from "axios";
 import TopBar from "./TopBar.vue";
 
@@ -145,7 +147,7 @@ export default {
           }
         });
       });
-      Promise.all(promises).then(features => {
+      Promise.all(promises).then(() => {
         if (trackLayer && map.getLayer("point")) {
           // set the user marker above the new layers
           map.removeLayer("point");
@@ -159,8 +161,7 @@ export default {
             }
           });
         }
-        // TODO change this (by pipe)
-        this.$store.commit("updateRules", features);
+        this.$store.commit("updateFeatures", features);
       });
     },
 
@@ -206,105 +207,6 @@ export default {
     }
   }
 };
-const FeatureTypes = {
-  Park: "PARK",
-  Tmk: "TMK"
-};
-const RestrictionStateType = {
-  Valid: "VALID",
-  Invalid: "INVALID",
-  Warning: "WARNING"
-};
-class RestrictionState {
-  constructor(state, description) {
-    this.state = state;
-    this.color = "#000000";
-
-    switch (this.state) {
-      default:
-      case RestrictionStateType.Valid:
-        this.color = "#2ecc40";
-        break;
-      case RestrictionStateType.Invalid:
-        this.color = "#ff4136";
-        break;
-      case RestrictionStateType.Warning:
-        this.color = "YELLOW";
-        break;
-    }
-  }
-}
-
-class FeatureFactory {
-  constructor() {}
-
-  createFeature(feature) {
-    switch (feature.type.toUpperCase()) {
-      case FeatureTypes.Park:
-        return new ParkFeature(feature);
-      case FeatureTypes.Tmk:
-        return new TmkFeature(feature);
-      default:
-        console.log("Unknown feature type: " + feature.type);
-        break;
-    }
-  }
-}
-class ParkFeature {
-  constructor(feature) {
-    // Take all properties from feature
-    for (var property in feature) {
-      if (!feature.hasOwnProperty(property)) continue;
-
-      this[property] = feature[property];
-    }
-  }
-
-  getRestrictionState() {
-    const href =
-      'https://api.aclu.codeforhawaii.org/feature_park_restrictions/?where={"feature_id":"###FEATURE_ID###"}';
-    return Axios.get(href.replace("###FEATURE_ID###", this._id))
-      .then(response => {
-        console.log(response);
-        const restrictions = response.data._items[0].restrictions;
-        const currentTime = now.getHours() * 100 + now.getMinutes(); // format time as 2359
-        if (restrictions.hours_start && restrictions.hours_end) {
-          return new RestrictionState(
-            RestrictionStateType.Invalid,
-            "LOREM IPSUM"
-          );
-        } else {
-          return new RestrictionState(
-            RestrictionStateType.Valid,
-            "LOREM IPSUM"
-          );
-        }
-      })
-      .catch(err => {
-        console.log("Unable to parse restrictions for feature: " + this._id);
-        return new RestrictionState(
-            RestrictionStateType.Valid,
-            "LOREM IPSUM"
-          );
-      });
-  }
-}
-class TmkFeature {
-  constructor(feature) {
-    // Take all properties from feature
-    for (var property in feature) {
-      if (!feature.hasOwnProperty(property)) continue;
-
-      this[property] = feature[property];
-    }
-  }
-
-  getRestrictionState() {
-    return Promise.resolve(
-      new RestrictionState(RestrictionStateType.Invalid, "LOREM IPSUM")
-    );
-  }
-}
 </script>
 
 <style lang='css'>
