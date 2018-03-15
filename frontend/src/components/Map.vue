@@ -4,7 +4,7 @@
     <div id='navbar' class='navbar'>
       <div id='geocoder' class='geocoder'></div>
       <div id='my_location'>
-        <i class="material-icons">my_location</i>
+        <i class="material-icons center_self">my_location</i>
       </div>
     </div>
     <div>
@@ -58,8 +58,11 @@ export default {
       zoom: 9
     });
 
+    const bboxHawaii = [-160.3, 16.7, -151.8, 23.3];
+    // add geocode text field
     var geocoder = new MapboxGeocoder({
-      accessToken: Mapbox.accessToken
+      accessToken: Mapbox.accessToken,
+      bbox: bboxHawaii
     });
 
     document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
@@ -67,7 +70,7 @@ export default {
     // on geocoder retrieve
     geocoder.on("result", ev => {
       // clear map of layers
-      this.removeAllLayers(map);
+      // this.removeAllLayers(map)
       this.setAllLayers(
         ev.result.geometry.coordinates[0],
         ev.result.geometry.coordinates[1],
@@ -175,8 +178,7 @@ export default {
       });
     },
     setAllLayers(lng, lat, map) {
-      var url =
-        'https://api.aclu.codeforhawaii.org/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[' +
+      var url = process.env.ACLU_API_BASE_URL + '/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[' +
         lng +
         ", " +
         lat +
@@ -192,9 +194,7 @@ export default {
         );
         this.setLayers(features, map);
         if (response.data._links.next) {
-          var url =
-            "https://api.aclu.codeforhawaii.org/" +
-            response.data._links.next.href;
+          var url = process.env.ACLU_API_BASE_URL + "/" + response.data._links.next.href;
           return this.getLayerData(url, map);
         }
       });
@@ -287,6 +287,7 @@ export default {
   left:50%;
   margin-left:-49%;
   top:20px;
+  display: flex;
 }
 
 #geocoder {
@@ -301,6 +302,11 @@ export default {
   border:1px solid #666;
   padding:.275em;
   vertical-align:middle;
+  display: flex;
+}
+
+.center_self {
+  align-self: center;
 }
 
 </style>

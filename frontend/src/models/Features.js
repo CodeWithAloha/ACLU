@@ -32,7 +32,7 @@ export class ParkFeature {
   getRestrictionState () {
     if (this.restrictionState) return this.restrictionState
     const href =
-      'https://api.aclu.codeforhawaii.org/feature_park_restrictions/?where={"feature_id":"###FEATURE_ID###"}'
+    process.env.ACLU_API_BASE_URL + '/feature_park_restrictions/?where={"feature_id":"###FEATURE_ID###"}'
     return Axios.get(href.replace('###FEATURE_ID###', this._id))
       .then(response => {
         const restrictions = response.data._items.length > 0 ? response.data._items[0].restrictions : undefined
