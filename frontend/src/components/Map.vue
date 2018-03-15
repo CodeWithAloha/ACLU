@@ -4,7 +4,7 @@
     <div id='navbar' class='navbar'>
       <div id='geocoder' class='geocoder'></div>
       <div id='my_location'>
-        <i class="material-icons">my_location</i>
+        <i class="material-icons center_self">my_location</i>
       </div>
     </div>
     <div>
@@ -286,6 +286,7 @@ export default {
   left:50%;
   margin-left:-49%;
   top:20px;
+  display: flex;
 }
 
 #geocoder {
@@ -300,6 +301,11 @@ export default {
   border:1px solid #666;
   padding:.275em;
   vertical-align:middle;
+  display: flex;
+}
+
+.center_self {
+  align-self: center;
 }
 
 </style>
