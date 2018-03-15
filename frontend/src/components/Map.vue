@@ -54,8 +54,11 @@ export default {
       zoom: 9
     });
 
+    const bboxHawaii = [-160.3, 16.7, -151.8, 23.3];
+    // add geocode text field
     var geocoder = new MapboxGeocoder({
-      accessToken: Mapbox.accessToken
+      accessToken: Mapbox.accessToken,
+      bbox: bboxHawaii
     });
 
     document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
