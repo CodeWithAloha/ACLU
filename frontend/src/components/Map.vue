@@ -66,7 +66,7 @@ export default {
     // on geocoder retrieve
     geocoder.on("result", ev => {
       // clear map of layers
-      this.removeAllLayers(map)
+      // this.removeAllLayers(map)
       this.setAllLayers(
         ev.result.geometry.coordinates[0],
         ev.result.geometry.coordinates[1],
@@ -188,8 +188,7 @@ export default {
       });
     },
     setAllLayers(lng, lat, map) {
-      var url =
-        'http://localhost:50050/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[' +
+      var url = process.env.ACLU_API_BASE_URL + '/features/?where={"geojson.geometry":{"$near":{"$geometry":{"type":"Point", "coordinates":[' +
         lng +
         ", " +
         lat +
@@ -202,7 +201,7 @@ export default {
       return Axios.get(href).then(response => {
         this.setLayers(response.data, map);
         if (response.data._links.next) {
-          var url = "http://localhost:50050/" + response.data._links.next.href;
+          var url = process.env.ACLU_API_BASE_URL + "/" + response.data._links.next.href;
           return this.getLayerData(url, map);
         }
       });
