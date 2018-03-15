@@ -10,8 +10,10 @@ import datetime
 import json
 import logging
 import logging.config
+import multiprocessing
 import os
 import sys
+from timeit import default_timer as timer
 import uuid
 
 from utilities import get_features_from_geojson
@@ -31,19 +33,42 @@ logger = logging.getLogger("aclu_importer.parks")
 @click.option('--api_base_url', default='http://localhost:50050', help='API base url. Defaults to http://localhost:50050')
 def import_park_features(park_features_path, api_base_url):
 
+    start_time = timer()
+
+    pool = multiprocessing.Pool(processes=multiprocessing.cpu_count())
+
     organization = get_organization(api_base_url, "Park")
+
+    num_features = 0
 
     if organization:
 
         park_hours = _get_park_hours("../data/parks/2017.10.20_Honolulu-Park-Hours/park-closure-hours.json")
 
         for feature in get_features_from_geojson(park_features_path):
-            f = _construct_park_feature_json(feature, organization)
-            feature_id = post_feature(api_base_url, f)
-            r = _construct_park_restriction_json(feature, feature_id, park_hours)
-            post_park_restriction(api_base_url, r)
+            num_features += 1
+            pool.apply_async(
+                _post_park_feature_and_restriction,
+                [api_base_url, organization, feature, park_hours])
+
+    pool.close()
+    pool.join()
+
+    end_time = timer()
+
+    logger.info("import_park_features took {} seconds and imported {} park features".format(end_time - start_time, num_features))
 
     return sys.exit(0)
+
+
+def _post_park_feature_and_restriction(api_base_url,
+                                       organization,
+                                       feature,
+                                       park_hours):
+    f = _construct_park_feature_json(feature, organization)
+    feature_id = post_feature(api_base_url, f)
+    r = _construct_park_restriction_json(feature, feature_id, park_hours)
+    post_park_restriction(api_base_url, r)
 
 
 def _construct_park_feature_json(feature, organization):
@@ -73,8 +98,6 @@ def _construct_park_restriction_json(feature, feature_id, park_hours=None):
     }
 
     _attach_park_hours(f, park_name, park_hours)
-
-    logger.debug(f)
 
     return f
 
