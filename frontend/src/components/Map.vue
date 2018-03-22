@@ -70,7 +70,7 @@ export default {
     // on geocoder retrieve
     geocoder.on("result", ev => {
       // clear map of layers
-      // this.removeAllLayers(map)
+      this.removeAllLayers(map)
       this.setAllLayers(
         ev.result.geometry.coordinates[0],
         ev.result.geometry.coordinates[1],
@@ -200,10 +200,11 @@ export default {
       });
     },
     removeAllLayers(map) {
-      // TODO: Need to fix this  here
-      //   map.eachLayer(function (layer) {
-      //     map.removeLayer(layer)
-      //   })
+      return;
+      const layers = map.getStyle().layers;
+      for(let layer of layers) {
+        map.removeLayer(layer);
+      }
     }
   }
 };
@@ -291,13 +292,11 @@ export default {
 }
 
 #geocoder {
-  width:95%;
-  float:left;
+  flex-grow: 1;
   margin-right:.5em;
 }
 
 #my_location {
-  float:left;
   background-color:white;
   border:1px solid #666;
   padding:.275em;
