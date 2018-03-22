@@ -38,7 +38,8 @@ export default {
   data() {
     return {
       maxDistance: 200,
-      FeatureFactory: new FeatureFactory()
+      FeatureFactory: new FeatureFactory(),
+      layers: {}
     };
   },
   computed: mapState({
@@ -135,8 +136,9 @@ export default {
         const id = feature._id;
         trackLayer = id;
         return feature.getRestrictionState().then(restrictionState => {
-          if (!map.getLayer(id)) {
-            map.addLayer({
+          let layer = this.layers[id];
+          if(layer) return;
+          layer = {
               id,
               type: "fill",
               paint: {
@@ -146,8 +148,9 @@ export default {
                 type: "geojson",
                 data: feature.geojson
               }
-            });
-          }
+          };
+          this.layers[id] = layer;
+          map.addLayer(layer);
         });
       });
       Promise.all(promises).then(() => {
@@ -200,11 +203,10 @@ export default {
       });
     },
     removeAllLayers(map) {
-      return;
-      const layers = map.getStyle().layers;
-      for(let layer of layers) {
-        map.removeLayer(layer);
+      for(let layerid in this.layers) {
+        map.removeLayer(layerid);
       }
+      this.layers = {};
     }
   }
 };
