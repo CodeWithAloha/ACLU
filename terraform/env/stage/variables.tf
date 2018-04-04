@@ -22,7 +22,7 @@ variable "KEY_PAIR" {
 }
 
 variable "FRONT_END_BUCKET_NAME" {
-  default = "hi.aclu.com"
+  default = "hawaii.aclu.com"
 }
 
 variable "GITHUB_OWNER" {

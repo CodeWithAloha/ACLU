@@ -1,6 +1,6 @@
 # Bucket to host front end site
 resource "aws_s3_bucket" "frontend" {
-  bucket = "hawaii.aclu.com"
+  bucket = "${var.FRONT_END_BUCKET_NAME}"
   acl    = "public-read"
 
   website {
@@ -11,6 +11,7 @@ resource "aws_s3_bucket" "frontend" {
   cors_rule {
     allowed_headers = ["*"]
     allowed_methods = ["PUT", "POST"]
+
     # TODO - This will change when we get a domain for website
     allowed_origins = ["https://hawaii.aclu.com"]
     expose_headers  = ["ETag"]
