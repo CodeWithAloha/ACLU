@@ -1,7 +1,7 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import { RestrictionStateType } from '../models/RetrictionState'
-Vue.use(Vuex)
+import Vue from "vue";
+import Vuex from "vuex";
+import { RestrictionStateType } from "../models/RestrictionState";
+Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
@@ -11,22 +11,27 @@ const store = new Vuex.Store({
     rules: []
   },
   mutations: {
-    setUserValid (state, valid) {
-      state.uservalid = valid
+    setUserValid(state, valid) {
+      state.uservalid = valid;
     },
-    locationFound (state, coords) {
-      state.locationDetermined = true
-      state.location = [coords.latitude, coords.longitude]
+    locationFound(state, coords) {
+      state.locationDetermined = true;
+      state.location = [coords.latitude, coords.longitude];
     },
-    updateFeatures (state, rules) {
-      if (rules.find(({ restrictionState }) => restrictionState.state === RestrictionStateType.Invalid)) {
-        state.userValid = 2
+    updateFeatures(state, rules) {
+      if (
+        rules.find(
+          ({ restrictionState }) =>
+            restrictionState.state === RestrictionStateType.Invalid
+        )
+      ) {
+        state.userValid = 2;
       } else {
-        state.userValid = 0
+        state.userValid = 0;
       }
-      state.rules = rules
+      state.rules = rules;
     }
   }
-})
+});
 
-export default store
+export default store;

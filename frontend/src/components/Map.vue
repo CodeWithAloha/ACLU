@@ -20,21 +20,18 @@ import Mapbox from "mapbox-gl";
 import { mapState } from "vuex";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-import { RestrictionState } from "../models/RetrictionState"
-import { FeatureFactory } from "../models/Features"
+import { RestrictionState, FeatureFactory } from "../models"
 import Axios from "axios";
-import TopBar from "./TopBar.vue";
 
 // import geocode and styles
 import MapboxGeocoder from "mapbox-gl-geocoder";
 import "mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import * as turf from "@turf/turf";
 
-Mapbox.accessToken =
-  "pk.eyJ1IjoicnVzc2VsbHZlYTIiLCJhIjoiY2lmZzVrNWJkOWV2cnNlbTdza2thcGozNSJ9.zw6CcZLxP6lq0x-xfwp6uA";
+Mapbox.accessToken = process.env.MAPBOX_ACCESS_TOKEN;
 
 export default {
-  components: { TopBar },
+  components: {  },
   data() {
     return {
       maxDistance: 200,
@@ -48,7 +45,7 @@ export default {
     userValid: state => state.userValid,
     rules: state => state.rules,
     buttonColor: state =>
-      state.userValid > 0 ? "var(--maroon)" : "var(--olive"
+      state.userValid > 0 ? "var(--maroon)" : "var(--olive)"
   }),
 
   mounted() {

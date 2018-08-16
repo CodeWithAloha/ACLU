@@ -209,35 +209,35 @@ export default {
 
     map.addControl(this.draw);
     map.on("load", () => {
-      import("./parks.geojson").then(data => {
-        map.addLayer({
-          id: "parks",
-          type: "fill",
-          paint: {
-            "fill-color": "#ff0000"
-          },
-          source: {
-            type: "geojson",
-            data
-          }
-        });
+      // import("./parks.geojson").then(data => {
+      //   map.addLayer({
+      //     id: "parks",
+      //     type: "fill",
+      //     paint: {
+      //       "fill-color": "#ff0000"
+      //     },
+      //     source: {
+      //       type: "geojson",
+      //       data
+      //     }
+      //   });
 
-        if ("geolocation" in navigator) {
-          navigator.geolocation.getCurrentPosition(
-            pos => {
-              this.$store.commit("locationFound", pos.coords);
-              map.flyTo({
-                center: [pos.coords.longitude, pos.coords.latitude],
-                zoom: 13
-              });
-            },
-            err => {
-              console.log(err);
-              alert("We can't seem to determine your position");
-            }
-          );
-        }
-      });
+      //   if ("geolocation" in navigator) {
+      //     navigator.geolocation.getCurrentPosition(
+      //       pos => {
+      //         this.$store.commit("locationFound", pos.coords);
+      //         map.flyTo({
+      //           center: [pos.coords.longitude, pos.coords.latitude],
+      //           zoom: 13
+      //         });
+      //       },
+      //       err => {
+      //         console.log(err);
+      //         alert("We can't seem to determine your position");
+      //       }
+      //     );
+      //   }
+      // });
     });
   },
   methods: {
