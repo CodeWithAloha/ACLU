@@ -5,5 +5,5 @@ cd /var/project-aclu/
 CONTAINER_NAME="aclu-api"
 CONTAINER_ID="$(docker ps --all --quiet --filter=name="$CONTAINER_NAME")"
 if [ -n "$CONTAINER_ID" ]; then
-  docker stop $CONTAINER_ID && docker rm $CONTAINER_ID || true
+  docker stop $CONTAINER_ID && docker rm $CONTAINER_ID
 fi

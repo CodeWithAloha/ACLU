@@ -14,6 +14,10 @@ output "FRONTEND_DOMAIN" {
   value = "${aws_cloudfront_distribution.frontend_distribution.domain_name}"
 }
 
+output "BACKEND_DOMAIN" {
+  value = "${aws_cloudfront_distribution.backend_distribution.domain_name}"
+}
+
 output "PIPELINE" {
   value = "${aws_codepipeline.aclu.id}"
 }
