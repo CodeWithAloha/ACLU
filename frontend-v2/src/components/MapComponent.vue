@@ -16,8 +16,7 @@ export default {
   },
   data: function() {
     return {
-      mapboxToken:
-        "pk.eyJ1IjoiZmVsaW1hcnRpbmEiLCJhIjoiY2psNjJ6eDdqMnRhYTNycXRvODY1bjE4bSJ9.uG_1mtEmMpjlHXp0xVIN6w",
+      mapboxToken: process.env.VUE_APP_MAPBOX_TOKEN,
       mapOptions: {
         style: "mapbox://styles/mapbox/light-v9",
         center: [-96, 37.8],
