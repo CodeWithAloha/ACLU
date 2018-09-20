@@ -1,7 +1,6 @@
 <template>
   <div class="splash">
-    <img alt="Vue logo" src="../assets/logo.png">
-		<p>Splash screen</p>
+		<img src="../assets/brand-ribbon.svg" alt="ACLU | Code for Hawaii">
   </div>
 </template>
 
@@ -12,3 +11,9 @@ export default {
   }
 }
 </script>
+
+<style>
+body {
+  background-image: url('../assets/splash-desktop.jpg');
+}
+</style>
