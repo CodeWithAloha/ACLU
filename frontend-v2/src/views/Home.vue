@@ -1,14 +1,21 @@
 <template>
   <div class="page-container md-layout-column">
     <md-toolbar class="md-primary">
-      <md-button class="md-icon-button" @click="showNavigation = true">
-        <md-icon>menu</md-icon>
-      </md-button>
-      <span class="md-title">My Title</span>
-
-      <div class="md-toolbar-section-end">
-        <md-button @click="showSidepanel = true">Favorites</md-button>
-      </div>
+			<div class="md-layout md-gutter md-alignment-center-center">
+				<div class="md-layout-item menu">
+					<md-button class="md-icon-button" @click="showNavigation = true">
+						<md-icon>settings</md-icon>
+					</md-button>
+				</div>
+				<div class="md-layout-item title">
+					<span class="md-title">Holo Holo</span>
+				</div>
+				<div class="md-layout-item search">
+					<md-button class="md-icon-button" @click="showSearch = true">
+						<md-icon>search</md-icon>
+					</md-button>
+				</div>
+			</div>
     </md-toolbar>
 
     <md-drawer :md-active.sync="showNavigation">
@@ -75,6 +82,20 @@ export default {
   overflow: hidden;
   position: relative;
   border: 1px solid rgba(#000, 0.12);
+}
+.md-toolbar .md-layout {
+	width: 100%;
+}
+.menu {
+	text-align: left;
+}
+
+.title {
+	text-align: center;
+}
+
+.search {
+	text-align: right;
 }
 
 .md-drawer,
