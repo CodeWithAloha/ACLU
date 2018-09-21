@@ -1,13 +1,13 @@
 <template>
-  <div class="settings">
+  <div class="report-feedback">
     <img alt="Vue logo" src="../assets/logo.png">
-		<p>Settings screen</p>
+		<p>Report Feedback screen</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'settings',
+  name: 'report-feedback',
   components: {
   }
 }
