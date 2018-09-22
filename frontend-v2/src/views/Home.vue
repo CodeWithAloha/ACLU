@@ -1,14 +1,15 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-		<p>Home screen</p>
+		<MapComponent></MapComponent>
   </div>
 </template>
 
 <script>
+import MapComponent from '@/components/MapComponent.vue'
 export default {
   name: 'home',
   components: {
+		MapComponent
   }
 }
 </script>
