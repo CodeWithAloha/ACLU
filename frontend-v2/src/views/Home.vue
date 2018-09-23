@@ -4,7 +4,7 @@
 		<div class="page-container md-layout-column">
 			<NavBarComponent></NavBarComponent>
 			<md-content>
-				<MapComponent></MapComponent>
+				<MapComponent @mapLoaded="onMapLoaded"></MapComponent>
 			</md-content>
 		</div>
 	</div>
@@ -20,16 +20,15 @@ export default {
   components: {
 		MapComponent,
 		NavBarComponent,
-		Loading
+		Loading,
 	},
 	data: () => ({
-		loading: true
+		loading: true,
 	}),
-	mounted: function () {
-		// Example of how to use "loading" component
-		setTimeout(() => {
-			this.loading = false
-		}, 3000);
+	methods: {
+		onMapLoaded() {
+			this.loading = false;
+		}
 	}
 }
 </script>
