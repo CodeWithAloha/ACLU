@@ -31,7 +31,7 @@ phases:
     commands:
       - cd $CODEBUILD_SRC_DIR # move to code buil root directory, in case that previous script cd into a different directory
       - echo Building Frontend
-      - cd frontend
+      - cd frontend-v2
       - npm run build --prod
       - echo Building API containers
       - cd $CODEBUILD_SRC_DIR/backend
@@ -43,13 +43,13 @@ phases:
     commands:
       - cd $CODEBUILD_SRC_DIR # move to code buil root directory, in case that previous script cd into a different directory
       - echo Updating site in s3
-      - aws s3 sync ./frontend/dist s3://$FRONTEND_BUCKET --acl public-read --delete --region $AWS_DEFAULT_REGION
+      - aws s3 sync ./frontend-v2/dist s3://$FRONTEND_BUCKET --acl public-read --delete --region $AWS_DEFAULT_REGION
       - echo Pushing docker API container to AWS ECR
       - docker push $IMAGES_REPO_URL:$IMAGE_TAG
       - echo adding latest tag
       - docker push $IMAGES_REPO_URL:latest
 artifacts:
   files:
-    - frontend/dist/**/*
+    - frontend-v2/dist/**/*
   #discard-paths: yes
   #base-directory: location
