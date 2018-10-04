@@ -16,5 +16,6 @@ export default {
   bottom: 50px;
   background-color: #4e82ed;
   width: 100%;
+	text-align: center;
 }
 </style>
