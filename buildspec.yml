@@ -8,6 +8,7 @@ phases:
     commands:
       - echo Installing Node ...
       - wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+      - ~/.nvm/nvm.sh --version
       - nvm install ${NODE_VERSION}
       # - wget -qO- https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz | tar xJ --directory /usr/local
       # - ln -s /usr/local/node-v${NODE_VERSION}-linux-x64 /usr/local/node
