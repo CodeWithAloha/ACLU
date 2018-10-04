@@ -6,17 +6,17 @@ env:
 phases:
   install:
     commands:
-      - echo Installing Node ...
+      - echo Installing Node...
       # - wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
       - wget -qO- https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz | tar xJ --directory /usr/local
       - ln -s /usr/local/node-v${NODE_VERSION}-linux-x64 /usr/local/node
       - export PATH=/usr/local/node/bin/:${PATH}
+      # Permission settings for npm
       - mkdir ~/.npm-global
       - npm config set prefix '~/.npm-global'
       - export PATH=~/.npm-global/bin/:${PATH}
-      # - NPM_CONFIG_PREFIX=~/.npm-global
 
-      - echo Upgrading AWS CLI
+      - echo Upgrading AWS CLI...
       # - apt-get install python-pip -y
       - pip install awscli --upgrade --user
       - echo Logging into AWS ECR
