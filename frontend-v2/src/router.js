@@ -8,14 +8,23 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/splash',
+      name: 'splash',
+      component: Splash
+    },
+    {
       path: '/',
+      name: 'splash',
+      component: Splash
+    },
+    {
+      path: '/home',
       name: 'home',
       component: Home
     },
     {
-      path: '/splash',
-      name: 'splash',
-      component: Splash
+      path: '/report-feedback',
+      name: 'report-feedback'
     },
     {
       path: '/settings',
