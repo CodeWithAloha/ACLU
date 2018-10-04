@@ -1,17 +1,15 @@
 <template>
   <div class="home">
-		<p>Home screen</p>
-		<div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/settings">About</router-link>
-    </div>
+		<MapComponent></MapComponent>
   </div>
 </template>
 
 <script>
+import MapComponent from '@/components/MapComponent.vue'
 export default {
   name: 'home',
   components: {
+		MapComponent
   }
 }
 </script>
