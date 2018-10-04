@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import Loading from '@/components/Loading.vue'
-import MapComponent from '@/components/MapComponent.vue'
-import NavBarComponent from '@/components/NavBarComponent.vue'
+import LoadingComponent from '@/components/LoadingComponent'
+import MapComponent from '@/components/MapComponent'
+import NavBarComponent from '@/components/NavBarComponent'
 
 export default {
   name: 'Home',

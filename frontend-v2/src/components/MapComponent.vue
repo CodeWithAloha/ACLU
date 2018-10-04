@@ -1,6 +1,5 @@
 <template>
   <div>
-		<Loading :loading="loading"></Loading>
     <mapbox
 		@map-load="onMapLoaded"
 		:accessToken="mapboxToken"
