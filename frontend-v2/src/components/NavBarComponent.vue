@@ -58,14 +58,20 @@
 					</router-link>
 				</md-list-item>
 			</md-list>
+
+			<RibbonComponent></RibbonComponent>
 		</md-drawer>
 	</div>
 </template>
 
 <script>
+import RibbonComponent from '@/components/RibbonComponent'
+
 export default {
   name: "NavBarComponent",
-  components: {},
+  components: {
+		RibbonComponent,
+	},
   data: () => ({
     showNavigation: false,
     showSidepanel: false
