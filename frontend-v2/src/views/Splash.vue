@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     hide: function() {
-      this.$router.push("/");
+      this.$router.push("/home");
     }
   }
 };
