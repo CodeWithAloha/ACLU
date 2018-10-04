@@ -3,16 +3,18 @@
 		<div>
 			<img class="logo" src="../assets/holoholo-logo@3x.png" alt="Holo Holo">
 		</div>
-		<div class="ribbon">
-			<img src="../assets/brand-ribbon.svg" alt="ACLU | Code for Hawaii">
-		</div>
+		<RibbonComponent></RibbonComponent>
 	</div>
 </template>
 
 <script>
+import RibbonComponent from "@/components/RibbonComponent";
+
 export default {
   name: "splash",
-  components: {},
+  components: {
+    RibbonComponent
+  },
   mounted: function() {
     setTimeout(() => {
       this.hide();
@@ -43,11 +45,5 @@ export default {
 
 .logo {
   margin-top: -150px;
-}
-.ribbon {
-  position: absolute;
-  bottom: 50px;
-  background-color: #4e82ed;
-  width: 100%;
 }
 </style>
