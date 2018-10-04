@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<Loading :loading="loading"></Loading>
+		<LoadingComponent :loading="loading"></LoadingComponent>
 		<div class="page-container md-layout-column">
 			<NavBarComponent></NavBarComponent>
 			<md-content>
@@ -20,7 +20,7 @@ export default {
   components: {
 		MapComponent,
 		NavBarComponent,
-		Loading,
+		LoadingComponent,
 	},
 	data: () => ({
 		loading: true,
