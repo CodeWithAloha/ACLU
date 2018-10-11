@@ -1,35 +1,35 @@
 <template>
 	<div>
-		<LoadingComponent :loading="loading"></LoadingComponent>
+		<Loading :loading="loading"></Loading>
 		<div class="page-container md-layout-column">
-			<NavBarComponent></NavBarComponent>
+			<NavBar></NavBar>
 			<md-content>
-				<MapComponent @mapLoaded="onMapLoaded"></MapComponent>
+				<Map @mapLoaded="onMapLoaded"></Map>
 			</md-content>
 		</div>
 	</div>
 </template>
 
 <script>
-import LoadingComponent from '@/components/LoadingComponent'
-import MapComponent from '@/components/MapComponent'
-import NavBarComponent from '@/components/NavBarComponent'
+import Loading from '@/components/Loading'
+import Map from '@/components/Map'
+import NavBar from '@/components/NavBar'
 
 export default {
   name: 'Home',
   components: {
-		MapComponent,
-		NavBarComponent,
-		LoadingComponent,
-	},
-	data: () => ({
-		loading: true,
-	}),
-	methods: {
-		onMapLoaded() {
-			this.loading = false;
-		}
-	}
+    Map,
+    NavBar,
+    Loading
+  },
+  data: () => ({
+    loading: true
+  }),
+  methods: {
+    onMapLoaded () {
+      this.loading = false
+    }
+  }
 }
 </script>
 <style scoped>

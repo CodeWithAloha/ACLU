@@ -6,9 +6,9 @@
 
 <script>
 export default {
-  name: "RibbonComponent",
+  name: 'Ribbon',
   components: {}
-};
+}
 </script>
 <style>
 .ribbon {

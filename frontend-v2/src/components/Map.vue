@@ -8,34 +8,34 @@
 </template>
 
 <script>
-import Mapbox from "mapbox-gl-vue";
-import Constants from "@/services/constants";
+import Mapbox from 'mapbox-gl-vue'
+import Constants from '@/services/constants'
 
 export default {
-  name: "MapComponent",
+  name: 'Map',
   components: {
     Mapbox
   },
-  data: function() {
-    console.log(JSON.stringify(Constants));
+  data: function () {
+    console.log(JSON.stringify(Constants))
     return {
       mapboxToken: process.env.VUE_APP_MAPBOX_TOKEN,
       mapOptions: {
-        style: "mapbox://styles/mapbox/light-v9",
+        style: 'mapbox://styles/mapbox/light-v9',
         center: [
           Constants.Map.Defaults.Longitude,
           Constants.Map.Defaults.Latitude
         ],
         zoom: Constants.Map.Defaults.Zoom
       }
-    };
+    }
   },
   methods: {
-    onMapLoaded: function() {
-      this.$emit("mapLoaded");
+    onMapLoaded: function () {
+      this.$emit('mapLoaded')
     }
   }
-};
+}
 </script>
 
 <style scoped>
