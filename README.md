@@ -8,57 +8,20 @@ Please start by reading the [project proposal](docs/ACLU-Access-App.pdf).
 **Come join us** on Wednesday nights at the [Code for Hawaii meetups](https://www.meetup.com/Code-for-Hawaii/).  We meet the first three Wednesdays of the month.  (Contact Ryan for Saturday morning hack sessions too). 
 
 **Quick Links**
-* [General project board](https://github.com/CodeforHawaii/ACLU/projects/1)
-* [Frontend project board](https://github.com/CodeforHawaii/ACLU/projects/3)
+* [General project board](https://github.com/CodeforHawaii/ACLU/projects/4)
 * [Data sources spreadsheet](https://docs.google.com/spreadsheets/d/1eDXV0qamY_5pcfe0SZbqs2PQXR_yJUs0-liX7sJo3wE/)
 
+## Frontend Development
 
-## Development / Getting Started
-To provide a consistent development setup, we've made scripts to provision a Linux virtual machine that runs Docker containers. _"yo :dog:..."_
+We are using Vue.js for our frontend. The project was created using [vue-cli](https://cli.vuejs.org/).
+If you look at the folder structure you will see a `frontend` and a `frontend-v2` folders. Go for the `v2` :)
 
-If you don't know what that means, read the sections below. :arrow_down:
+1. `cd frontend-v2`
+1. `npm install`
+1. `npm run serve`
+1. Open http://localhost:8080
 
-If you do, just make sure you have `VirtualBox` (v5.0+) and `vagrant` (v 1.9+), then run `vagrant up`. :clap:
+## Backend Development
 
-### VirtualBox
-[VirtualBox](https://www.virtualbox.org) is a product from [Oracle](https://www.oracle.com) that runs an entire Operating System (the _"guest OS"_) inside the VirtualBox program on your computer (the _"host OS"_).
-
-:question: _Why on :earth_americas: would you want that?_  
- **A:** This allows us to encapsulate the entire development environment in the _guest OS_ without having to modify your _host OS_. Thus, we can install all the development tools we need without worrying about potentially breaking any configuration on your computer. It also gives us a common OS (Linux) that we know things will work on. :smiley:
-
-Please [download VirtualBox here](https://www.virtualbox.org/wiki/Downloads) for your _host OS_ and install it.
-
-### Vagrant
-[Vagrant](https://www.vagrantup.com) is a [HashiCorp](https://www.hashicorp.com) product that provides a convenient scripting interface to control VirtualBox and manage Virtual Machines.
-
-:question: _Again, why do you need this?_  
- **A:** Vagrant allows us to automatically configure the _guest OS/VM_ exactly how we want it in a consistent fashion. This means you won't have to spend time downloading, installing, and configuring the correct versions of development tools (e.g. node, yarn, python, httpie, docker, etc..) to setup your build environment.
-
-Please [download Vagrant here](https://www.vagrantup.com/downloads.html) for your OS and install it.
-
-### Creating the VM
-After VirtualBox and Vagrant are installed, run the following command from the root directory of the `aclu` repo:
-```
-vagrant up
-````
-...and maybe grab some :coffee: and :doughnut: -- depending on your internet connection, this may take awhile!
-
-### Running a shell in the VM
-```
-vagrant ssh
-```
-
-### Getting the app up and running
-
-After running `vagrant up`, and ssh'ing in via `vagrant ssh` and you'll be logged into the virtual machine and want to perform the following:
-
-```
-# start.sh runs the docker container, pass & to run in the background
-/var/project-aclu/etc/start.sh & 
-
-# after the database is up, seed some data into the mongo database
-/var/project-aclu/backend/etc/seed_fake_park_data.sh
-```
-
-After these commands are run, you should be able to go to
-http://localhost:50808 and see something.
+Sorry, we are not doing much work on the backend these days and the steps to setup a dev environment for the database are kind of cumbersome. If you are interested in helping on our backend, feel free to drop by our Wednesday meetup and we can happily walk you through the process.
+Just as a heads ups, we are using MongoDB + Python/Flask + Eve.
