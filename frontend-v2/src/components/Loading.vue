@@ -11,14 +11,14 @@ export default {
     loading: true
   },
   methods: {
-    start() {
-      this.loading = true;
+    start () {
+      this.loading = true
     },
-    finish() {
-      this.loading = false;
+    finish () {
+      this.loading = false
     }
   }
-};
+}
 </script>
 
 <style scoped>

@@ -8,24 +8,24 @@
 </template>
 
 <script>
-import RibbonComponent from "@/components/RibbonComponent";
+import RibbonComponent from '@/components/Ribbon'
 
 export default {
-  name: "splash",
+  name: 'splash',
   components: {
     RibbonComponent
   },
-  mounted: function() {
+  mounted: function () {
     setTimeout(() => {
-      this.hide();
-    }, 5000);
+      this.hide()
+    }, 5000)
   },
   methods: {
-    hide: function() {
-      this.$router.push("/home");
+    hide: function () {
+      this.$router.push('/home')
     }
   }
-};
+}
 </script>
 
 <style>

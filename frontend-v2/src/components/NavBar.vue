@@ -59,24 +59,24 @@
 				</md-list-item>
 			</md-list>
 
-			<RibbonComponent></RibbonComponent>
+			<Ribbon />
 		</md-drawer>
 	</div>
 </template>
 
 <script>
-import RibbonComponent from '@/components/RibbonComponent'
+import Ribbon from '@/components/Ribbon'
 
 export default {
-  name: "NavBarComponent",
+  name: 'NavBar',
   components: {
-		RibbonComponent,
-	},
+    Ribbon
+  },
   data: () => ({
     showNavigation: false,
     showSidepanel: false
   })
-};
+}
 </script>
 
 <style lang="scss" scoped>
