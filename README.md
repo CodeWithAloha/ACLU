@@ -23,5 +23,5 @@ If you look at the folder structure you will see a `frontend` and a `frontend-v2
 
 ## Backend Development
 
-Sorry, we are not doing much work on the backend these days and the steps to setup a dev env for the database are kinda of cumbersome. If you are interested in helping on our backend feel free to drop by one Wednesday and we can hapily walk you through the process.
+Sorry, we are not doing much work on the backend these days and the steps to setup a dev environment for the database are kind of cumbersome. If you are interested in helping on our backend, feel free to drop by our Wednesday meetup and we can happily walk you through the process.
 Just as a heads ups, we are using MongoDB + Python/Flask + Eve.
