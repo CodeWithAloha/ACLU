@@ -4,7 +4,7 @@
 			<div class="md-layout md-alignment-center-center">
 				<div class="md-layout-item menu">
 					<md-button class="md-icon-button" @click="showNavigation= true">
-						<md-icon>settings</md-icon>
+						<md-icon>menu</md-icon>
 					</md-button>
 				</div>
 				<div class="md-layout-item title">
