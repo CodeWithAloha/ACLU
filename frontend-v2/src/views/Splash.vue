@@ -1,10 +1,10 @@
 <template>
-	<div class="splash" @click="hide">
-		<div>
-			<img class="logo" src="../assets/holoholo-logo@3x.png" alt="Holo Holo">
-		</div>
-		<RibbonComponent></RibbonComponent>
-	</div>
+  <div class="splash" @click="hide">
+    <div>
+      <img class="logo" src="../assets/holoholo-logo@3x.png" alt="Holo Holo">
+    </div>
+    <RibbonComponent></RibbonComponent>
+  </div>
 </template>
 
 <script>

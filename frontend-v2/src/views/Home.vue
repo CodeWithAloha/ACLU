@@ -1,13 +1,13 @@
 <template>
-	<div>
-		<Loading :loading="loading"></Loading>
-		<div class="page-container md-layout-column">
-			<NavBar></NavBar>
-			<md-content>
-				<Map @mapLoaded="onMapLoaded"></Map>
-			</md-content>
-		</div>
-	</div>
+  <div>
+    <Loading :loading="loading"></Loading>
+    <div class="page-container md-layout-column">
+      <NavBar></NavBar>
+      <md-content>
+        <Map @mapLoaded="onMapLoaded"></Map>
+      </md-content>
+    </div>
+  </div>
 </template>
 
 <script>
