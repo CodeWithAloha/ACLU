@@ -1,7 +1,7 @@
 <template>
-	<div class="ribbon">
-		<img src="../assets/brand-ribbon.svg" alt="ACLU | Code for Hawaii">
-	</div>
+  <div class="ribbon">
+    <img src="../assets/brand-ribbon.svg" alt="ACLU | Code for Hawaii">
+  </div>
 </template>
 
 <script>
@@ -16,6 +16,6 @@ export default {
   bottom: 50px;
   background-color: #4e82ed;
   width: 100%;
-	text-align: center;
+  text-align: center;
 }
 </style>
