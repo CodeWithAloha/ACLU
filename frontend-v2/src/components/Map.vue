@@ -10,6 +10,7 @@
 <script>
 import Mapbox from 'mapbox-gl-vue'
 import Constants from '@/services/constants'
+import Geolocation from '@/services/geolocation'
 
 export default {
   name: 'Map',
@@ -17,8 +18,8 @@ export default {
     Mapbox
   },
   data: function () {
-    console.log(JSON.stringify(Constants))
     return {
+			mapRef: null,
       mapboxToken: process.env.VUE_APP_MAPBOX_TOKEN,
       mapOptions: {
         style: 'mapbox://styles/mapbox/light-v9',
@@ -31,10 +32,24 @@ export default {
     }
   },
   methods: {
-    onMapLoaded: function () {
-      this.$emit('mapLoaded')
-    }
-  }
+    onMapLoaded: function (map) {
+			this.$emit('mapLoaded')
+			this.mapRef = map
+		},
+		centerOnUserLocation: async function() {
+			try {
+				const position = await Geolocation.getCurrentPosition()
+				// this.$store.commit("locationFound", pos.coords);
+				// TODO: store location in use`r session?
+				map.flyTo({
+					center: [pos.coords.longitude, pos.coords.latitude],
+					zoom: 13
+				});
+			} catch (error) {
+				console.log(error)
+			}
+		}
+	}
 }
 </script>
 
