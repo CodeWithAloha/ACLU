@@ -1,9 +1,9 @@
 <template>
   <div>
     <mapbox
-		@map-load="onMapLoaded"
-		:accessToken="mapboxToken"
-		:mapOptions="mapOptions"></mapbox>
+    @map-load="onMapLoaded"
+    :accessToken="mapboxToken"
+    :mapOptions="mapOptions"></mapbox>
   </div>
 </template>
 

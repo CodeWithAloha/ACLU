@@ -1,16 +1,18 @@
 <template>
-	<div>
-		<Loading :loading="loading"></Loading>
-		<div class="page-container md-layout-column">
-			<NavBar></NavBar>
-			<md-content>
-				<Map @mapLoaded="onMapLoaded"></Map>
-			</md-content>
-		</div>
-	</div>
+  <div>
+    <Splash></Splash>
+    <Loading :loading="loading"></Loading>
+    <div class="page-container md-layout-column">
+      <NavBar></NavBar>
+      <md-content>
+        <Map @mapLoaded="onMapLoaded"></Map>
+      </md-content>
+    </div>
+  </div>
 </template>
 
 <script>
+import Splash from '@/components/Splash'
 import Loading from '@/components/Loading'
 import Map from '@/components/Map'
 import NavBar from '@/components/NavBar'
@@ -20,7 +22,8 @@ export default {
   components: {
     Map,
     NavBar,
-    Loading
+    Loading,
+    Splash
   },
   data: () => ({
     loading: true
