@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   Map: {
     Defaults: {
       Latitude: 21.441922,

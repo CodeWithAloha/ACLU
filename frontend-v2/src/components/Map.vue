@@ -17,7 +17,6 @@ export default {
     Mapbox
   },
   data: function () {
-    console.log(JSON.stringify(Constants))
     return {
       mapboxToken: process.env.VUE_APP_MAPBOX_TOKEN,
       mapOptions: {
