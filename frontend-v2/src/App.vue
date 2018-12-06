@@ -1,8 +1,24 @@
 <template>
   <div id="app">
-    <router-view/>
+    <div class="page-container md-layout-column">
+      <NavBar></NavBar>
+      <md-content>
+        <router-view/>
+      </md-content>
+    </div>
   </div>
 </template>
+
+<script>
+import NavBar from '@/components/NavBar'
+export default {
+  name: 'App',
+  components: {
+    NavBar,
+  },
+}
+</script>
+
 
 <style>
 body, html {
