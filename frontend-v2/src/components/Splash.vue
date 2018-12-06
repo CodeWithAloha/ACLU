@@ -1,5 +1,5 @@
 <template>
-  <div class="splash" :class="[isActive ? 'visible' : 'hidden']" @click="hide">
+  <div class="splash" :class="[show ? 'visible' : 'hidden']" @click="hide">
     <div>
       <img class="logo" src="../assets/holoholo-logo@3x.png" alt="Holo Holo">
     </div>
@@ -12,7 +12,10 @@ import RibbonComponent from '@/components/Ribbon'
 
 export default {
   name: 'Splash',
-  data: () => ({isActive: true}),
+  // data: () => ({isActive: true}),
+  props: {
+    show: false
+  },
   components: {
     RibbonComponent
   },

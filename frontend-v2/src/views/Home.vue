@@ -1,13 +1,8 @@
 <template>
   <div>
-    <Splash></Splash>
-    <Loading :loading="loading"></Loading>
-    <div class="page-container md-layout-column">
-      <NavBar></NavBar>
-      <md-content>
-        <Map @mapLoaded="onMapLoaded"></Map>
-      </md-content>
-    </div>
+    <Splash :show="loading"></Splash>
+    <Loading></Loading>
+    <Map @mapLoaded="onMapLoaded"></Map>
   </div>
 </template>
 
@@ -15,15 +10,13 @@
 import Splash from '@/components/Splash'
 import Loading from '@/components/Loading'
 import Map from '@/components/Map'
-import NavBar from '@/components/NavBar'
 
 export default {
   name: 'Home',
   components: {
     Map,
-    NavBar,
     Loading,
-    Splash
+    Splash,
   },
   data: () => ({
     loading: true
