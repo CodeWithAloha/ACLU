@@ -34,7 +34,7 @@ variable "GITHUB_REPO" {
 }
 
 variable "GITHUB_BRANCH" {
-  default = "master"
+  default = "develop"
 }
 
 variable "GITHUB_TOKEN" {
@@ -45,10 +45,10 @@ variable "ADMIN_CIDRS" {
   type = "list"
 
   default = [
-    "50.113.42.119/32",  # Pipe's IP
+    "72.253.233.100/32", # Pipe's IP
     "199.68.252.130/32", # Boxjelly
-    "167.216.21.125/32",
-  ] # Manoa Innovation Center
+    "167.216.21.125/32", # Manoa Innovation Center
+  ]
 }
 
 variable "GLOBAL_TAGS" {
@@ -73,7 +73,7 @@ variable "API_DOMAIN" {
 
 variable "DOMAIN_CERTIFICATE_ARN" {
   description = "SSL Certificate should be in AWS Certificate Manager in region us-east-1"
-  default     = "arn:aws:acm:us-east-1:705750910119:certificate/b079df26-2c6b-4c06-a6bd-5bfe8852f3c0"
+  default     = "arn:aws:acm:us-east-1:705750910119:certificate/f794e2d2-15c8-427e-983b-0da7477cea73"
 }
 
 variable "ELB_CERTIFICATE_ARN" {
