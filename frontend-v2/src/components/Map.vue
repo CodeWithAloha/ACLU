@@ -3,12 +3,7 @@
     <mapbox
     @map-load="onMapLoaded"
     :accessToken="mapboxToken"
-    :map-options="{
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v9',
-      center: [-74.50, 40],
-      zoom: 9
-    }"></mapbox>
+    :map-options="mapOptions"></mapbox>
     <!-- Can't bind options to a Vue DataObject because it breaks mapbox -->
   </div>
 </template>
@@ -18,6 +13,11 @@ import Mapbox from "mapbox-gl-vue";
 import Constants from "@/services/constants";
 import Geolocation from "@/services/geolocation";
 
+/**
+ *  We have to keep the map reference outside vue 'data' object
+ *  otherwise the mapbox styles break 
+ */
+let mapRef = {}
 export default {
   name: "Map",
   components: {
@@ -25,25 +25,29 @@ export default {
   },
   data: function() {
     return {
-      map: {},
       mapboxToken: process.env.VUE_APP_MAPBOX_TOKEN,
-      style: Constants.Map.Defaults.Style,
-      centerLon: Constants.Map.Defaults.Longitude,
-      centerLat: Constants.Map.Defaults.Latitude,
-      zoom: Constants.Map.Defaults.Zoom
+      mapOptions: {
+        container: 'map',
+        style: Constants.Map.Defaults.Style, //'mapbox://styles/mapbox/streets-v9',
+        center: [
+          Constants.Map.Defaults.Longitude,
+          Constants.Map.Defaults.Latitude
+        ],
+        zoom: Constants.Map.Defaults.Zoom
+      },
     };
   },
   methods: {
     onMapLoaded: async function(map) {
       this.$emit("mapLoaded");
-      this.map = map;
-      await this.centerAtUserLocation();
+      mapRef = map;
+      await this.centerAtUserLocation(map);
     },
-    centerAtUserLocation: async function() {
+    centerAtUserLocation: async function(map) {
       try {
-        // const pos = await Geolocation.getCurrentPosition();
-        this.map.flyTo({
-          // center: [pos.coords.longitude, pos.coords.latitude],
+        const pos = await Geolocation.getCurrentPosition();
+        mapRef.flyTo({
+          center: [pos.coords.longitude, pos.coords.latitude],
           zoom: 13
         });
       } catch (error) {
