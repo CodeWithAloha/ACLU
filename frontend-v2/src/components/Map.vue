@@ -3,59 +3,70 @@
     <mapbox
     @map-load="onMapLoaded"
     :accessToken="mapboxToken"
-    :map-options="mapOptions"></mapbox>
+    :map-options="mapOptions"
+    :geolocate-control="geolocateControl"></mapbox>
     <!-- Can't bind options to a Vue DataObject because it breaks mapbox -->
   </div>
 </template>
 
 <script>
-import Mapbox from 'mapbox-gl-vue'
-import Constants from '@/services/constants'
-import Geolocation from '@/services/geolocation'
+import Mapbox from "mapbox-gl-vue";
+import Constants from "@/services/constants";
+import Geolocation from "@/services/geolocation";
 
 /**
  *  We have to keep the map reference outside vue 'data' object
  *  otherwise the mapbox styles break
  */
-let mapRef = {}
+let mapRef = {};
 export default {
-  name: 'Map',
+  name: "Map",
   components: {
     Mapbox
   },
-  data: function () {
+  data: function() {
     return {
-      mapboxToken: process.env.VUE_APP_MAPBOX_TOKEN,
+      mapboxToken: Constants.Settings.MapBoxToken,
       mapOptions: {
-        container: 'map',
+        container: "map",
         style: Constants.Map.Defaults.Style, // 'mapbox://styles/mapbox/streets-v9',
         center: [
           Constants.Map.Defaults.Longitude,
           Constants.Map.Defaults.Latitude
         ],
         zoom: Constants.Map.Defaults.Zoom
+      },
+      geolocateControl: {
+        show: true,
+        position: "top-left",
+        options: {
+          trackUserLocation: true,
+          positionOptions: {
+            enableHighAccuracy: true
+          }
+        }
       }
-    }
+    };
   },
   methods: {
-    onMapLoaded: async function (map) {
-      this.$emit('mapLoaded')
-      mapRef = map
-      await this.centerAtUserLocation(map)
-    },
-    centerAtUserLocation: async function (map) {
+    onMapLoaded: async function(map) {
       try {
-        const pos = await Geolocation.getCurrentPosition()
-        mapRef.flyTo({
-          center: [pos.coords.longitude, pos.coords.latitude],
-          zoom: 13
-        })
+        this.$emit("mapLoaded");
+        mapRef = map;
+        const pos = await Geolocation.getCurrentPosition();
+        await this.centerAtUserLocation(map, pos.coords);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
+    },
+    centerAtUserLocation: async function(map, pos) {
+      mapRef.flyTo({
+        center: [pos.longitude, pos.latitude],
+        zoom: 13
+      });
     }
   }
-}
+};
 </script>
 
 <style scoped>
