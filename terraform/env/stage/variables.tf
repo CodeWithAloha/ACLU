@@ -81,9 +81,7 @@ variable "ELB_CERTIFICATE_ARN" {
   default     = "arn:aws:acm:us-west-2:705750910119:certificate/9a7aeb93-0e09-4504-9125-1af33cff6e44"
 }
 
-variable "SLACK_WEBHOOK_URL" {
-  default = "https://hooks.slack.com/services/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"
-}
+variable "SLACK_WEBHOOK_URL" {}
 
 variable "SLACK_CHANNEL" {
   default = "cfh-aclu"
