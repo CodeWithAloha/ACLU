@@ -10,7 +10,7 @@ Please start by reading the [project proposal](docs/ACLU-Access-App.pdf).
 **Quick Links**
 * [General project board](https://github.com/CodeforHawaii/ACLU/projects/4)
 * [Data sources spreadsheet](https://docs.google.com/spreadsheets/d/1eDXV0qamY_5pcfe0SZbqs2PQXR_yJUs0-liX7sJo3wE/)
-* [App Prototype](https://projects.invisionapp.com/d/main#/projects/prototypes/15135829)
+* [App Prototype](https://invis.io/P8NLK5NZ2YU)
 
 ## Frontend Development
 
