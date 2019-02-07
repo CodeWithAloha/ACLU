@@ -16,7 +16,7 @@ export default {
   components: {
     Map,
     Loading,
-    Splash,
+    Splash
   },
   data: () => ({
     loading: true
