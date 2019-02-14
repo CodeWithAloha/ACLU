@@ -1,8 +1,12 @@
-import Constants from '@/services/constants'
-import Axios from 'axios'
+import Feature from '@/models/Feature';
+import { Settings } from '@/services/constants';
+import Axios from 'axios';
 
 export default {
-  getFeaturesNearBy: (pos, radius) => {
+  /**
+   * Returns features near to the given position.
+   */
+  getFeaturesNearBy: async (pos, radius = 10000) => {
     const geoQuery = {
       'geojson.geometry': {
         $near: {
@@ -10,21 +14,27 @@ export default {
             type: 'Point',
             coordinates: [pos.longitude, pos.latitude]
           },
-          $maxDistance: this.maxDistance
+          $maxDistance: radius
         }
       }
     }
-    const url = `${Constants.Settings.ApiBasePath}/features/?where=` + JSON.stringify(geoQuery)
-    return Axios.get(url).then(response => {
-      const features = response.data._items.map(item =>
-        this.FeatureFactory.createFeature(item)
-      )
-      this.setLayers(features, map)
-      if (response.data._links.next) {
-        var url =
-          process.env.ACLU_API_BASE_URL + '/' + response.data._links.next.href
-        return this.getLayerData(url, map)
-      }
-    })
+    const url = `${Settings.ApiBasePath}/features/?where=${JSON.stringify(
+      geoQuery
+    )}`
+    let response = await Axios.get(url)
+    const features = parseFeatures(response.data._items)
+    while (response.data._links.next) {
+      response = await Axios.get(`${Settings.ApiBasePath}/${response.data._links.next.href}`)
+      features.concat(parseFeatures(response.data._items))
+    }
+    return features
+    // if () {
+    //   return this.getLayerData(url, map);
+    // }
   }
+}
+
+function parseFeatures (features) {
+  console.log(features)
+  return features.map(item => new Feature(item))
 }

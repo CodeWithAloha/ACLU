@@ -11,8 +11,10 @@
 
 <script>
 import Mapbox from "mapbox-gl-vue";
-import Constants from "@/services/constants";
+import { Map, Settings } from "@/services/constants";
 import Geolocation from "@/services/geolocation";
+import FeatureService from "@/services/features";
+import { log } from 'util';
 
 /**
  *  We have to keep the map reference outside vue 'data' object
@@ -26,15 +28,15 @@ export default {
   },
   data: function() {
     return {
-      mapboxToken: Constants.Settings.MapBoxToken,
+      mapboxToken: Settings.MapBoxToken,
       mapOptions: {
         container: "map",
-        style: Constants.Map.Defaults.Style, // 'mapbox://styles/mapbox/streets-v9',
+        style: Map.Defaults.Style, // 'mapbox://styles/mapbox/streets-v9',
         center: [
-          Constants.Map.Defaults.Longitude,
-          Constants.Map.Defaults.Latitude
+          Map.Defaults.Longitude,
+          Map.Defaults.Latitude
         ],
-        zoom: Constants.Map.Defaults.Zoom
+        zoom: Map.Defaults.Zoom
       },
       geolocateControl: {
         show: true,
@@ -55,14 +57,34 @@ export default {
         mapRef = map;
         const pos = await Geolocation.getCurrentPosition();
         await this.centerAtUserLocation(map, pos.coords);
+        await this.loadFeatures(pos.coords)
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     },
     centerAtUserLocation: async function(map, pos) {
       mapRef.flyTo({
         center: [pos.longitude, pos.latitude],
         zoom: 13
+      });
+    },
+    loadFeatures: async function(pos) {
+      // TODO: Yield features instead of return whole array
+      const features = await FeatureService.getFeaturesNearBy(pos);
+      features.forEach(f => this.addFeatureToLayer(f))
+      console.log(features);
+    },
+    addFeatureToLayer(feature){
+      mapRef.addLayer({
+        id: feature._id,
+        type: "fill",
+        paint: {
+          "fill-color": "#ff0000"
+        },
+        source: {
+          type: "geojson",
+          data: feature.geojson
+        }
       });
     }
   }
