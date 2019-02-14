@@ -1,13 +1,13 @@
 <template>
-	<div>
-		<LoadingComponent :loading="loading"></LoadingComponent>
-		<div class="page-container md-layout-column">
-			<NavBarComponent></NavBarComponent>
-			<md-content>
-				<MapComponent @mapLoaded="onMapLoaded"></MapComponent>
-			</md-content>
-		</div>
-	</div>
+    <div>
+        <LoadingComponent :loading="loading"></LoadingComponent>
+        <div class="page-container md-layout-column">
+            <NavBarComponent></NavBarComponent>
+            <md-content>
+                <MapComponent @mapLoaded="onMapLoaded"></MapComponent>
+            </md-content>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -18,18 +18,18 @@ import NavBarComponent from '@/components/NavBarComponent'
 export default {
   name: 'Home',
   components: {
-		MapComponent,
-		NavBarComponent,
-		LoadingComponent,
-	},
-	data: () => ({
-		loading: true,
-	}),
-	methods: {
-		onMapLoaded() {
-			this.loading = false;
-		}
-	}
+    MapComponent,
+    NavBarComponent,
+    LoadingComponent
+  },
+  data: () => ({
+    loading: true
+  }),
+  methods: {
+    onMapLoaded () {
+      this.loading = false
+    }
+  }
 }
 </script>
 <style scoped>

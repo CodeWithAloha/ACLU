@@ -1,7 +1,7 @@
 <template>
   <div v-if="loading" class="loading-page">
     <!-- <md-progress-spinner class="md-accent" :md-stroke="6" md-mode="indeterminate"></md-progress-spinner> -->
-		<img src="@/assets/spinner-image.svg" class="spinner"/>
+        <img src="@/assets/spinner-image.svg" class="spinner"/>
   </div>
 </template>
 
@@ -11,19 +11,19 @@ export default {
     loading: true
   },
   methods: {
-    start() {
-      this.loading = true;
+    start () {
+      this.loading = true
     },
-    finish() {
-      this.loading = false;
+    finish () {
+      this.loading = false
     }
   }
-};
+}
 </script>
 
 <style scoped>
 .loading-page {
-	display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;

@@ -1,82 +1,82 @@
 <template>
-	<div>
-		<md-toolbar class="md-primary">
-			<div class="md-layout md-alignment-center-center">
-				<div class="md-layout-item menu">
-					<md-button class="md-icon-button" @click="showNavigation= true">
-						<md-icon>settings</md-icon>
-					</md-button>
-				</div>
-				<div class="md-layout-item title">
-					<span class="md-title">Holo Holo</span>
-				</div>
-				<div class="md-layout-item search">
-					<md-button class="md-icon-button" @click="showSearch= true">
-						<md-icon>search</md-icon>
-					</md-button>
-				</div>
-			</div>
-		</md-toolbar>
-		<md-drawer :md-active.sync="showNavigation">
-			<md-toolbar class="md-transparent" md-elevation="0">
-				<span class="md-title">MENU</span>
-			</md-toolbar>
+    <div>
+        <md-toolbar class="md-primary">
+            <div class="md-layout md-alignment-center-center">
+                <div class="md-layout-item menu">
+                    <md-button class="md-icon-button" @click="showNavigation= true">
+                        <md-icon>settings</md-icon>
+                    </md-button>
+                </div>
+                <div class="md-layout-item title">
+                    <span class="md-title">Holo Holo</span>
+                </div>
+                <div class="md-layout-item search">
+                    <md-button class="md-icon-button" @click="showSearch= true">
+                        <md-icon>search</md-icon>
+                    </md-button>
+                </div>
+            </div>
+        </md-toolbar>
+        <md-drawer :md-active.sync="showNavigation">
+            <md-toolbar class="md-transparent" md-elevation="0">
+                <span class="md-title">MENU</span>
+            </md-toolbar>
 
-			<md-list>
-				<md-list-item>
-					<router-link to="/about">
-						<md-icon>bookmarks</md-icon>
-						<span class="md-list-item-text">about holo holo</span>
-					</router-link>
-				</md-list-item>
+            <md-list>
+                <md-list-item>
+                    <router-link to="/about">
+                        <md-icon>bookmarks</md-icon>
+                        <span class="md-list-item-text">about holo holo</span>
+                    </router-link>
+                </md-list-item>
 
-				<md-list-item>
-					<a href="https://acluhi.org/" target="_blank">
-						<md-icon>bookmarks</md-icon>
-						<span class="md-list-item-text">aclu initiatives</span>
-					</a>
-				</md-list-item>
+                <md-list-item>
+                    <a href="https://acluhi.org/" target="_blank">
+                        <md-icon>bookmarks</md-icon>
+                        <span class="md-list-item-text">aclu initiatives</span>
+                    </a>
+                </md-list-item>
 
-				<md-list-item>
-					<a href="https://www.codeforhawaii.org/" target="_blank">
-						<md-icon>bookmarks</md-icon>
-						<span class="md-list-item-text">code for hawaii</span>
-					</a>
-				</md-list-item>
+                <md-list-item>
+                    <a href="https://www.codeforhawaii.org/" target="_blank">
+                        <md-icon>bookmarks</md-icon>
+                        <span class="md-list-item-text">code for hawaii</span>
+                    </a>
+                </md-list-item>
 
-				<md-list-item>
-					<router-link to="/report_feedback">
-						<md-icon>feedback</md-icon>
-						<span class="md-list-item-text">report feedback</span>
-					</router-link>
-				</md-list-item>
+                <md-list-item>
+                    <router-link to="/report_feedback">
+                        <md-icon>feedback</md-icon>
+                        <span class="md-list-item-text">report feedback</span>
+                    </router-link>
+                </md-list-item>
 
-				<md-list-item>
-					<router-link to="/settings">
-						<md-icon>build</md-icon>
-						<span class="md-list-item-text">settings</span>
-					</router-link>
-				</md-list-item>
-			</md-list>
+                <md-list-item>
+                    <router-link to="/settings">
+                        <md-icon>build</md-icon>
+                        <span class="md-list-item-text">settings</span>
+                    </router-link>
+                </md-list-item>
+            </md-list>
 
-			<RibbonComponent></RibbonComponent>
-		</md-drawer>
-	</div>
+            <RibbonComponent></RibbonComponent>
+        </md-drawer>
+    </div>
 </template>
 
 <script>
 import RibbonComponent from '@/components/RibbonComponent'
 
 export default {
-  name: "NavBarComponent",
+  name: 'NavBarComponent',
   components: {
-		RibbonComponent,
-	},
+    RibbonComponent
+  },
   data: () => ({
     showNavigation: false,
     showSidepanel: false
   })
-};
+}
 </script>
 
 <style lang="scss" scoped>
