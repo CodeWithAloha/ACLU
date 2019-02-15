@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:7.10
+      - image: circleci/node:11.6
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -15,23 +15,38 @@ jobs:
       # - image: circleci/mongo:3.4.4
 
     working_directory: ~/repo
-
+    
+    branches: 
+      only:
+        - develop
+ 
     steps:
       - checkout
 
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
+            - node11.6-dependencies-{{ checksum "frontend-v2/package.json" }}
             # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
+            - node11.6-dependencies-
+      
+      - run: 
+          working_directory: ~/repo/frontend-v2
+          command: npm install
 
-      - run: yarn install
+      - run: 
+          working_directory: ~/repo/frontend-v2
+          command: npm build
 
       - save_cache:
           paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+            - frontend-v2/node_modules
+          key: node11.6-dependencies-{{ checksum "frontend-v2/package.json" }}
 
       # run tests!
-      - run: yarn test
+      - run: 
+          working_directory: ~/repo/frontend-v2
+          command: npm run lint
+      - run: 
+          working_directory: ~/repo/frontend-v2
+          command: npm audit
