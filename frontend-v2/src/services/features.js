@@ -1,18 +1,18 @@
-import Feature from '@/models/Feature';
-import { Settings } from '@/services/constants';
-import Axios from 'axios';
+import Feature from '@/models/Feature'
+import { Settings } from '@/services/constants'
+import Axios from 'axios'
 
 export default {
   /**
    * Returns features near to the given position.
    */
-  getFeaturesNearBy: async (pos, radius = 10000) => {
+  getFeaturesNearBy: async (lat, lon, radius = 1000) => {
     const geoQuery = {
       'geojson.geometry': {
         $near: {
           $geometry: {
             type: 'Point',
-            coordinates: [pos.longitude, pos.latitude]
+            coordinates: [lon, lat]
           },
           $maxDistance: radius
         }
@@ -28,13 +28,9 @@ export default {
       features.concat(parseFeatures(response.data._items))
     }
     return features
-    // if () {
-    //   return this.getLayerData(url, map);
-    // }
   }
 }
 
 function parseFeatures (features) {
-  console.log(features)
   return features.map(item => new Feature(item))
 }

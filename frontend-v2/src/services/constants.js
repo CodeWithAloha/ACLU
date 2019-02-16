@@ -22,3 +22,11 @@ export const OpenStatus = {
   Closed: 'CLOSED',
   Unknown: 'UNKNOWN'
 }
+
+export const Colors = {
+  Restricted: '#ff4136',
+  Permitted: '#2ecc40',
+  Unknown: 'GREY',
+  Warning: '#ffff00',
+  LayerBorder: '#ffffff'
+}
