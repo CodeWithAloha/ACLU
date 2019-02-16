@@ -14,7 +14,6 @@
 <script>
 import Mapbox from 'mapbox-gl-vue'
 import { Map, Settings } from '@/services/constants'
-import Geolocation from '@/services/geolocation'
 import MapboxGeocoder from 'mapbox-gl-geocoder'
 import 'mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 import FeatureService from '@/services/features'
@@ -59,10 +58,6 @@ export default {
         mapRef = map
         await this.loadMapboxWidgets(mapRef)
         this.$emit('mapLoaded')
-        // TODO: Cleanup unused geolocation
-        // const pos = await Geolocation.getCurrentPosition();
-        // await this.centerAtUserLocation(map, pos.coords);
-        // await this.loadFeatures(pos.coords);
       } catch (error) {
         console.error(error)
       }
