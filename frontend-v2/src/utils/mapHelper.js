@@ -1,4 +1,4 @@
-import { Colors, OpenStatus } from '@/services/constants';
+import { Colors, OpenStatus } from '@/services/constants'
 export default {
   getFeatureLayer: async (feature) => {
     return {

@@ -1,4 +1,4 @@
-import { getFeatureStatus } from './FeatureStatus';
+import { getFeatureStatus } from './FeatureStatus'
 
 export default class {
   constructor (feature) {
