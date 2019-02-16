@@ -1,30 +1,22 @@
 <template>
   <div>
-    <Splash :show="loading"></Splash>
-    <Loading></Loading>
-    <Map @mapLoaded="onMapLoaded"></Map>
+    <Splash></Splash>
+    <Map></Map>
   </div>
 </template>
 
 <script>
 import Splash from '@/components/Splash'
-import Loading from '@/components/Loading'
 import Map from '@/components/Map'
 
 export default {
   name: 'Home',
   components: {
     Map,
-    Loading,
     Splash
   },
-  data: () => ({
-    loading: true
-  }),
+  data: () => ({}),
   methods: {
-    onMapLoaded () {
-      this.loading = false
-    }
   }
 }
 </script>
