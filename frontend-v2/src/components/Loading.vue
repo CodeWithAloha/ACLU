@@ -17,8 +17,8 @@ export default {
   props: {
     loading: true
   },
-  mounted() {
-    this.animate();
+  mounted () {
+    this.animate()
   },
   methods: {
     animate: function () {

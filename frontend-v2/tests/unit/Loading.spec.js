@@ -1,5 +1,5 @@
-import Loading from '@/components/Loading.vue';
-import { shallowMount } from '@vue/test-utils';
+import Loading from '@/components/Loading.vue'
+import { shallowMount } from '@vue/test-utils'
 
 describe('Loading.vue', () => {
   it('renders when loading prop is true', () => {

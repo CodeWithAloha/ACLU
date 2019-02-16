@@ -13,31 +13,31 @@
 </template>
 
 <script>
-import Loading from "@/components/Loading";
-import Mapbox from "mapbox-gl-vue";
-import { Map, Settings } from "@/services/constants";
-import MapboxGeocoder from "mapbox-gl-geocoder";
-import "mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
-import FeatureService from "@/services/features";
-import MapHelper from "@/utils/mapHelper";
+import Loading from '@/components/Loading'
+import Mapbox from 'mapbox-gl-vue'
+import { Map, Settings } from '@/services/constants'
+import MapboxGeocoder from 'mapbox-gl-geocoder'
+import 'mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
+import FeatureService from '@/services/features'
+import MapHelper from '@/utils/mapHelper'
 
 /**
  *  We have to keep the map reference outside vue 'data' object
  *  otherwise the mapbox styles break
  */
-let mapRef = {};
-let geocoder;
+let mapRef = {}
+let geocoder
 export default {
-  name: "Map",
+  name: 'Map',
   components: {
     Loading,
     Mapbox
   },
-  data: function() {
+  data: function () {
     return {
       mapboxToken: Settings.MapBoxToken,
       mapOptions: {
-        container: "map",
+        container: 'map',
         style: Map.Defaults.Style,
         center: [Map.Defaults.Longitude, Map.Defaults.Latitude],
         zoom: Map.Defaults.Zoom
@@ -45,7 +45,7 @@ export default {
       loading: true,
       geolocateControl: {
         show: true,
-        position: "top-left",
+        position: 'top-left',
         options: {
           trackUserLocation: true,
           positionOptions: {
@@ -53,58 +53,58 @@ export default {
           }
         }
       }
-    };
+    }
   },
-  mounted() {},
+  mounted () {},
   methods: {
-    async onMapLoaded(map) {
+    async onMapLoaded (map) {
       try {
-        mapRef = map;
-        await this.loadMapboxWidgets(mapRef);
-        this.$emit("mapLoaded");
-        this.loading = false;
+        mapRef = map
+        await this.loadMapboxWidgets(mapRef)
+        this.$emit('mapLoaded')
+        this.loading = false
       } catch (error) {
-        console.error(error);
+        console.error(error)
       }
     },
-    onUserIsGeolocated(geolocateControl, pos) {
-      this.loadFeatures(pos.coords.latitude, pos.coords.longitude);
+    onUserIsGeolocated (geolocateControl, pos) {
+      this.loadFeatures(pos.coords.latitude, pos.coords.longitude)
     },
-    loadMapboxWidgets(map) {
+    loadMapboxWidgets (map) {
       // Geocoder (Search Bar)
       // TODO: It'd be nice if we can make this its own controller
       // Limit results to hawaii only
-      const bboxHawaii = [-160.3, 16.7, -151.8, 23.3];
+      const bboxHawaii = [-160.3, 16.7, -151.8, 23.3]
       geocoder = new MapboxGeocoder({
         accessToken: Settings.MapBoxToken,
         bbox: bboxHawaii
-      });
-      geocoder.on("result", ev => {
-        const [lon, lat] = ev.result.geometry.coordinates;
-        this.loadFeatures(lat, lon);
-      });
-      document.getElementById("geocoder").appendChild(geocoder.onAdd(mapRef));
+      })
+      geocoder.on('result', ev => {
+        const [lon, lat] = ev.result.geometry.coordinates
+        this.loadFeatures(lat, lon)
+      })
+      document.getElementById('geocoder').appendChild(geocoder.onAdd(mapRef))
     },
-    async loadFeatures(lat, lon) {
-      this.loading = true;
+    async loadFeatures (lat, lon) {
+      this.loading = true
       // TODO: Yield features instead of return whole array
-      const features = await FeatureService.getFeaturesNearBy(lat, lon);
+      const features = await FeatureService.getFeaturesNearBy(lat, lon)
       for (const f of features) {
-        this.addFeatureToLayer(f);
+        this.addFeatureToLayer(f)
       }
-      this.loading = false;
+      this.loading = false
     },
-    async addFeatureToLayer(feature) {
+    async addFeatureToLayer (feature) {
       try {
-        const layer = await MapHelper.getFeatureLayer(feature);
-        mapRef.addLayer(layer);
+        const layer = await MapHelper.getFeatureLayer(feature)
+        mapRef.addLayer(layer)
       } catch (error) {
-        console.log(`Couldn't add layer for feature ${feature._id}.`);
-        console.error(error);
+        console.log(`Couldn't add layer for feature ${feature._id}.`)
+        console.error(error)
       }
     }
   }
-};
+}
 </script>
 
 <style lang='css'>
