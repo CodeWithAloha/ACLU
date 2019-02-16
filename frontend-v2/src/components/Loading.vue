@@ -1,5 +1,5 @@
 <template>
-  <div v-if="loading" class="loading-page">
+  <div v-show="loading" class="loading-component">
     <!-- <md-progress-spinner class="md-accent" :md-stroke="6" md-mode="indeterminate"></md-progress-spinner> -->
 
     <!-- Spinner derived from: https://blog.usejournal.com/vue-js-gsap-animations-26fc6b1c3c5a -->
@@ -17,21 +17,15 @@ export default {
   props: {
     loading: true
   },
-  methods: {
-    start () {
-      this.loading = true
-    },
-    finish () {
-      this.loading = false
-    }
-  },
   mounted () {
-    const { spinner, spinnerPulse } = this.$refs
-    const timeline = new TimelineLite({
-      onComplete: () => timeline.restart()
-    })
-    // TODO this is a somewhat temporary solution to pass the failing unit test
-    if (this.loading) {
+    this.animate()
+  },
+  methods: {
+    animate: function () {
+      const { spinner, spinnerPulse } = this.$refs
+      const timeline = new TimelineLite({
+        onComplete: () => timeline.restart()
+      })
       timeline
         .to(spinner, 0.4, {
           scale: 0.8,
@@ -68,7 +62,7 @@ export default {
 </script>
 
 <style scoped>
-.loading-page {
+.loading-component {
   display: flex;
   align-items: center;
   justify-content: center;
