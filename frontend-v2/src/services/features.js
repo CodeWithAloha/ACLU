@@ -6,7 +6,7 @@ export default {
   /**
    * Returns features near to the given position.
    */
-  getFeaturesNearBy: async (lat, lon, radius = 1000) => {
+  getFeaturesNearBy: async (lat, lon, radius = 500) => {
     const geoQuery = {
       'geojson.geometry': {
         $near: {
@@ -22,10 +22,10 @@ export default {
       geoQuery
     )}`
     let response = await Axios.get(url)
-    const features = parseFeatures(response.data._items)
+    let features = parseFeatures(response.data._items)
     while (response.data._links.next) {
       response = await Axios.get(`${Settings.ApiBasePath}/${response.data._links.next.href}`)
-      features.concat(parseFeatures(response.data._items))
+      features = features.concat(parseFeatures(response.data._items))
     }
     return features
   }
