@@ -11,7 +11,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "gsap": "^2.0.2",
-    "mapbox-gl": "^0.48.0",
+    "mapbox-gl": "^0.53.0",
     "mapbox-gl-geocoder": "^2.0.1",
     "mapbox-gl-vue": "^1.9.0",
     "moment": "^2.24.0",
@@ -22,12 +22,12 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.4.0",
     "@vue/cli-plugin-eslint": "^3.4.0",
-    "@vue/cli-plugin-unit-jest": "^3.4.0",
+    "@vue/cli-plugin-unit-jest": "^3.4.1",
     "@vue/cli-service": "^3.4.0",
     "@vue/eslint-config-standard": "^3.0.0",
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "^23.0.1",
+    "babel-jest": "^24.1.0",
     "lint-staged": "^7.2.0",
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",

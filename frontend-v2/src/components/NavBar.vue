@@ -24,6 +24,13 @@
 
       <md-list>
         <md-list-item>
+          <router-link to="/">
+            <md-icon>map</md-icon>
+            <span class="md-list-item-text">Home</span>
+          </router-link>
+        </md-list-item>
+
+        <md-list-item>
           <router-link to="/about">
             <md-icon>bookmarks</md-icon>
             <span class="md-list-item-text">about holo holo</span>

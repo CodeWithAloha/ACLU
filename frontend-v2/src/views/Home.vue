@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Splash></Splash>
-    <Map></Map>
+    <Splash :show="showSplash"></Splash>
+    <Map @mapLoaded="onMapLoaded"></Map>
   </div>
 </template>
 
@@ -15,8 +15,13 @@ export default {
     Map,
     Splash
   },
-  data: () => ({}),
-  methods: {
+  data: () => ({
+    // showSplash: true
+  }),
+  mounted() {
+    // setTimeout(() => {
+    //   this.showSplash = false
+    // }, 2000);
   }
 }
 </script>

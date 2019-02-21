@@ -47,7 +47,7 @@ export default {
         show: true,
         position: 'top-left',
         options: {
-          trackUserLocation: true,
+          trackUserLocation: false,
           positionOptions: {
             enableHighAccuracy: true
           }
@@ -90,7 +90,7 @@ export default {
       // TODO: Yield features instead of return whole array
       const features = await FeatureService.getFeaturesNearBy(lat, lon)
       for (const f of features) {
-        this.addFeatureToLayer(f)
+        await this.addFeatureToLayer(f)
       }
       this.loading = false
     },
