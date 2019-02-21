@@ -1,35 +1,28 @@
 <template>
-	<div>
-		<LoadingComponent :loading="loading"></LoadingComponent>
-		<div class="page-container md-layout-column">
-			<NavBarComponent></NavBarComponent>
-			<md-content>
-				<MapComponent @mapLoaded="onMapLoaded"></MapComponent>
-			</md-content>
-		</div>
-	</div>
+  <div>
+    <Splash :show="showSplash"></Splash>
+    <Map @mapLoaded="onMapLoaded"></Map>
+  </div>
 </template>
 
 <script>
-import LoadingComponent from '@/components/LoadingComponent'
-import MapComponent from '@/components/MapComponent'
-import NavBarComponent from '@/components/NavBarComponent'
+import Splash from '@/components/Splash'
+import Map from '@/components/Map'
 
 export default {
   name: 'Home',
   components: {
-		MapComponent,
-		NavBarComponent,
-		LoadingComponent,
-	},
-	data: () => ({
-		loading: true,
-	}),
-	methods: {
-		onMapLoaded() {
-			this.loading = false;
-		}
-	}
+    Map,
+    Splash
+  },
+  data: () => ({
+    // showSplash: true
+  }),
+  mounted() {
+    // setTimeout(() => {
+    //   this.showSplash = false
+    // }, 2000);
+  }
 }
 </script>
 <style scoped>

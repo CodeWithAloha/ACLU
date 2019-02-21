@@ -6,11 +6,17 @@ env:
 phases:
   install:
     commands:
-      - echo Installing Node ...
+      - echo Installing Node...
+      # - wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
       - wget -qO- https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz | tar xJ --directory /usr/local
       - ln -s /usr/local/node-v${NODE_VERSION}-linux-x64 /usr/local/node
       - export PATH=/usr/local/node/bin/:${PATH}
-      - echo Upgrading AWS CLI
+      # Permission settings for npm
+      - mkdir ~/.npm-global
+      - npm config set prefix '~/.npm-global'
+      - export PATH=~/.npm-global/bin/:${PATH}
+
+      - echo Upgrading AWS CLI...
       # - apt-get install python-pip -y
       - pip install awscli --upgrade --user
       - echo Logging into AWS ECR
@@ -22,10 +28,10 @@ phases:
       - IMAGE_TAG=`date +%s%3N`
       - echo Installing dependencies
       - cd frontend-v2
-      - npm i
+      - npm install
       # TODO Remove this when we frontend is configured to read BASE_PATH from env
-      - echo TEMP FIX - Replacing http://localhost with actual API URL
-      - find ./ -type f -print0 | xargs -0 sed -i'' -e 's|http://localhost:50050|'https://$API_URL'|'
+      # - echo TEMP FIX - Replacing http://localhost with actual API URL
+      # - find ./ -type f -print0 | xargs -0 sed -i'' -e 's|http://localhost:50050|'https://$API_URL'|'
       # - npm test
   build:
     commands:
