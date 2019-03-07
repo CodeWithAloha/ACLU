@@ -2,9 +2,7 @@
   <div id="app">
     <div class="page-container md-layout-column">
       <NavBar></NavBar>
-      <md-content>
-        <router-view/>
-      </md-content>
+      <router-view/>
     </div>
   </div>
 </template>
