@@ -78,13 +78,11 @@ export default {
 <style scoped>
     #about-page {
         background-color: #fafafa;
-        color: rgba(1, 1, 1, 0.95);
         text-align: center;
         align-content: center;
     }
     #about-page-content {
         width: 80%;
-        background-color: #fafafa;
         display: inline-block;
     }
 </style>
