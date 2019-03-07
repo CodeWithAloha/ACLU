@@ -18,7 +18,7 @@ export default {
   data: () => ({
     // showSplash: true
   }),
-  mounted() {
+  mounted () {
     // setTimeout(() => {
     //   this.showSplash = false
     // }, 2000);
