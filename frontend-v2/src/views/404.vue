@@ -18,14 +18,19 @@ export default {
 
 <style lang="scss">
   .NotFound {
+    text-align: center;
+    padding: 3rem;
     h1 {
-      font-size: 5rem;
+      font-size: 10rem;
+      color: var(--md-theme-default-primary, #448aff);
     }
     .subtitle {
-      font-size: 2rem;
+      font-size: 1.5rem;
+      line-height: 1.5rem;
     }
     .info {
-      font-size: 3rem;
+      font-size: 1.75rem;
+      line-height: 1.75rem;
     }
   }
 </style>
