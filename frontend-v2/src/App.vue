@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <transition name="fade">
-      <Splash v-if="showSplash" @click="hide"></Splash>
+      <Splash v-if="showSplash" @hide-splash="hide"></Splash>
       <div v-show="!showSplash">
         <NavBar></NavBar>
         <router-view/>
