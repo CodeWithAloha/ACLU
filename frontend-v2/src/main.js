@@ -15,3 +15,9 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
+
+if (!store.state.accessibility.completedInitialSurvey) {
+  router.replace('accessibility')
+} else if (!store.state.completedIntro) {
+  router.replace('intro')
+}

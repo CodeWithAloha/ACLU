@@ -12,14 +12,16 @@
       <slot name="body" />
     </div>
     <div class="Footer">
-      <md-button @click="next()">Next</md-button>
+      <md-button v-if="back" @click="back()">Back</md-button>
+      <span style="flex: 1" />
+      <md-button @click="next()">{{ nextText || "Next" }}</md-button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['next']
+  props: ['next', 'back', 'nextText']
 }
 </script>
 
@@ -53,7 +55,7 @@ export default {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 40vh;
+    height: 35vh;
     padding: 0.5rem;
     background-image: linear-gradient(130deg, #30a5e8, #3067e8);
   }
@@ -63,10 +65,11 @@ export default {
     flex-direction: column;
     align-items: center;
     flex: 1;
+    padding: 1.5rem;
+    font-size: 1rem;
   }
 
   .Footer {
     display: flex;
-    justify-content: flex-end;
   }
 </style>

@@ -11,6 +11,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "gsap": "^2.0.2",
+    "local-storage-fallback": "^4.1.1",
     "mapbox-gl": "^0.53.0",
     "mapbox-gl-geocoder": "^2.0.1",
     "mapbox-gl-vue": "^1.9.0",
