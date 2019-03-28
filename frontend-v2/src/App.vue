@@ -40,4 +40,10 @@ body, html {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
+#app, .page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 </style>
