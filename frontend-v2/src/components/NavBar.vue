@@ -52,7 +52,7 @@
         </md-list-item>
 
         <md-list-item @click="showNavigation=false">
-          <router-link to="/report_feedback">
+          <router-link to="/report-feedback">
             <md-icon>feedback</md-icon>
             <span class="md-list-item-text">report feedback</span>
           </router-link>
