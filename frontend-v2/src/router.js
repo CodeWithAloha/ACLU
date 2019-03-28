@@ -18,7 +18,17 @@ export default new Router({
     {
       path: '/settings',
       name: 'settings',
-      component: () => import(/* webpackChunkName: "about" */ './views/Settings.vue')
+      component: () => import(/* webpackChunkName: "settings" */ './views/Settings.vue')
+    },
+    {
+      path: '/accessibility',
+      name: 'accessibility',
+      component: () => import(/* webpackChunkName: "accessibilitySurvey" */ './views/AccessibilitySurvey.vue')
+    },
+    {
+      path: '/intro',
+      name: 'intro',
+      component: () => import(/*  webpackChunkName: "intro" */ './views/Intro.vue')
     },
     {
       path: '*',

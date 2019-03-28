@@ -11,13 +11,15 @@
   "dependencies": {
     "axios": "^0.18.0",
     "gsap": "^2.0.2",
+    "local-storage-fallback": "^4.1.1",
     "mapbox-gl": "^0.53.0",
     "mapbox-gl-geocoder": "^2.0.1",
     "mapbox-gl-vue": "^1.9.0",
     "moment": "^2.24.0",
     "vue": "^2.5.17",
     "vue-material": "^1.0.0-beta-10.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.4.0",
