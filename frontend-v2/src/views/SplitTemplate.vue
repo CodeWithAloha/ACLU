@@ -12,11 +12,16 @@
       <slot name="body" />
     </div>
     <div class="Footer">
-      <md-button>Next</md-button>
+      <md-button @click="next()">Next</md-button>
     </div>
   </div>
 </template>
 
+<script>
+export default {
+  props: ['next']
+}
+</script>
 
 <style lang="scss">
   .Title {
@@ -64,5 +69,4 @@
     display: flex;
     justify-content: flex-end;
   }
-
 </style>

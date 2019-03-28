@@ -9,8 +9,8 @@ export default {
   name: 'intro',
   data () {
     return {
-      page: 0,
-    };
+      page: 0
+    }
   },
   components: {
   }
