@@ -16,7 +16,6 @@ if (!defaultState) {
   }
 } else {
   defaultState = JSON.parse(defaultState)
-  console.log('default state', defaultState)
 }
 
 const store = new Vuex.Store({
