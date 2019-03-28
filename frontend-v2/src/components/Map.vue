@@ -13,37 +13,31 @@
 </template>
 
 <script>
-import Loading from "@/components/Loading";
-import Mapbox from "mapbox-gl-vue";
-import {
-  Colors,
-  FeatureType,
-  Map,
-  OpenStatus,
-  Settings
-} from "@/services/constants";
-import MapboxGeocoder from "mapbox-gl-geocoder";
-import "mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
-import FeatureService from "@/services/features";
-import { MapBoxColorExpression } from "@/utils/mapHelper";
+import Loading from '@/components/Loading'
+import Mapbox from 'mapbox-gl-vue'
+import { Colors, Map, Settings } from '@/services/constants'
+import MapboxGeocoder from 'mapbox-gl-geocoder'
+import 'mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
+import FeatureService from '@/services/features'
+import { MapBoxColorExpression } from '@/utils/mapHelper'
 
 /**
  *  We have to keep the map reference outside vue 'data' object
  *  otherwise the mapbox styles break
  */
-let mapRef = {};
-let geocoder;
+let mapRef = {}
+let geocoder
 export default {
-  name: "Map",
+  name: 'Map',
   components: {
     Loading,
     Mapbox
   },
-  data: function() {
+  data: function () {
     return {
       mapboxToken: Settings.MapBoxToken,
       mapOptions: {
-        container: "map",
+        container: 'map',
         style: Map.Defaults.Style,
         center: [Map.Defaults.Longitude, Map.Defaults.Latitude],
         zoom: Map.Defaults.Zoom
@@ -51,7 +45,7 @@ export default {
       loading: true,
       geolocateControl: {
         show: true,
-        position: "top-left",
+        position: 'top-left',
         options: {
           trackUserLocation: false,
           positionOptions: {
@@ -59,73 +53,73 @@ export default {
           }
         }
       }
-    };
+    }
   },
-  mounted() {},
+  mounted () {},
   methods: {
-    async onMapLoaded(map) {
+    async onMapLoaded (map) {
       try {
-        mapRef = map;
-        await this.loadMapboxWidgets(mapRef);
-        this.$emit("mapLoaded");
-        this.loading = false;
+        mapRef = map
+        await this.loadMapboxWidgets(mapRef)
+        this.$emit('mapLoaded')
+        this.loading = false
       } catch (error) {
-        console.error(error);
+        console.error(error)
       }
     },
-    onUserIsGeolocated(geolocateControl, pos) {
-      this.loadFeatures(pos.coords.latitude, pos.coords.longitude);
+    onUserIsGeolocated (geolocateControl, pos) {
+      this.loadFeatures(pos.coords.latitude, pos.coords.longitude)
     },
-    loadMapboxWidgets(map) {
+    loadMapboxWidgets (map) {
       // Geocoder (Search Bar)
       // TODO: It'd be nice if we can make this its own controller
       // Limit results to hawaii only
-      const bboxHawaii = [-160.3, 16.7, -151.8, 23.3];
+      const bboxHawaii = [-160.3, 16.7, -151.8, 23.3]
       geocoder = new MapboxGeocoder({
         accessToken: Settings.MapBoxToken,
         bbox: bboxHawaii
-      });
-      geocoder.on("result", ev => {
-        const [lon, lat] = ev.result.geometry.coordinates;
-        this.loadFeatures(lat, lon);
-      });
-      document.getElementById("geocoder").appendChild(geocoder.onAdd(mapRef));
+      })
+      geocoder.on('result', ev => {
+        const [lon, lat] = ev.result.geometry.coordinates
+        this.loadFeatures(lat, lon)
+      })
+      document.getElementById('geocoder').appendChild(geocoder.onAdd(mapRef))
     },
-    async loadFeatures(lat, lon) {
-      this.loading = true;
+    async loadFeatures (lat, lon) {
+      this.loading = true
       // TODO: Yield features instead of return whole array (since it requires multiple requests)
-      const features = await FeatureService.getFeaturesNearBy(lat, lon);
-      const source = [];
+      const features = await FeatureService.getFeaturesNearBy(lat, lon)
+      const source = []
       for (const f of features) {
-        const geo = f.geojson;
-        geo.properties.condition = await f.getStatus();
-        source.push(geo);
+        const geo = f.geojson
+        geo.properties.condition = await f.getStatus()
+        source.push(geo)
       }
       // Create an id for this source and layer (mapbox accepts unique sources and layers only)
-      const id = Date.now().toString();
+      const id = Date.now().toString()
       mapRef.addSource(id, {
-        type: "geojson",
+        type: 'geojson',
         data: {
-          type: "FeatureCollection",
+          type: 'FeatureCollection',
           features: source
         }
-      });
+      })
       mapRef.addLayer({
         id: id,
-        type: "fill",
+        type: 'fill',
         paint: {
-          "fill-color": MapBoxColorExpression,
-          "fill-opacity": 0.5,
-          "fill-outline-color": Colors.LayerBorder
+          'fill-color': MapBoxColorExpression,
+          'fill-opacity': 0.5,
+          'fill-outline-color': Colors.LayerBorder
         },
         source: id,
-        filter: ["==", "$type", "Polygon"]
-      });
+        filter: ['==', '$type', 'Polygon']
+      })
 
-      this.loading = false;
+      this.loading = false
     }
   }
-};
+}
 </script>
 
 <style lang='css'>
