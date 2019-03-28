@@ -1,31 +1,18 @@
 import { Colors, OpenStatus } from '@/services/constants'
-export default {
-  getFeatureLayer: async (feature) => {
-    return {
-      id: feature._id,
-      type: 'fill',
-      paint: {
-        'fill-color': getLayerColor(await feature.getStatus()),
-        'fill-opacity': 0.5,
-        'fill-outline-color': Colors.LayerBorder
-      },
-      source: {
-        type: 'geojson',
-        data: feature.geojson
-      }
-    }
-  }
-}
 
-function getLayerColor (status) {
-  switch (status) {
-    case OpenStatus.Open:
-      return Colors.Permitted
-    case OpenStatus.ClosingSoon:
-      return Colors.Warning
-    case OpenStatus.Closed:
-      return Colors.Restricted
-    default:
-      return Colors.Unknown
-  }
-}
+/*
+  MapBox uses expressions to conditional color/render features.
+  See the following url for an example of working expressions
+  https://docs.mapbox.com/mapbox-gl-js/example/data-join/
+*/
+export const MapBoxColorExpression = [
+  'match',
+  ['get', 'condition'],
+  OpenStatus.Open,
+  Colors.Permitted,
+  OpenStatus.ClosingSoon,
+  Colors.Warning,
+  OpenStatus.Closed,
+  Colors.Restricted,
+  /* defaulr color */ Colors.Unknown
+]

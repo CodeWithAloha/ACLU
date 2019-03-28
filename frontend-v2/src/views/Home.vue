@@ -1,5 +1,5 @@
 <template>
-  <Map @mapLoaded="onMapLoaded"></Map>
+  <Map ></Map>
 </template>
 
 <script>
