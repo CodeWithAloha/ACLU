@@ -19,8 +19,11 @@ import { Colors, Map, Settings } from "@/services/constants";
 import MapboxGeocoder from "mapbox-gl-geocoder";
 import "mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import FeatureService from "@/services/features";
-import { MapBoxColorExpression } from "@/utils/mapHelper";
-
+import {
+  MapBoxColorExpression,
+  MapBoxPatternExpression,
+  Patterns
+} from "@/utils/mapHelper";
 /**
  *  We have to keep the map reference outside vue 'data' object
  *  otherwise the mapbox styles break
@@ -84,6 +87,17 @@ export default {
         this.loadFeatures(lat, lon);
       });
       document.getElementById("geocoder").appendChild(geocoder.onAdd(mapRef));
+
+      // load images
+      mapRef.loadImage(Patterns.GreenPattern, (err, img) => {
+        mapRef.addImage("GreenPattern", img);
+      });
+      mapRef.loadImage(Patterns.RedPattern, (err, img) => {
+        mapRef.addImage("RedPattern", img);
+      });
+      mapRef.loadImage(Patterns.YellowPattern, (err, img) => {
+        mapRef.addImage("YellowPattern", img);
+      });
     },
     async loadFeatures(lat, lon) {
       this.loading = true;
@@ -108,8 +122,23 @@ export default {
           features: source
         }
       });
+
       mapRef.addLayer({
-        id: id,
+        id: `${id}-pattern`,
+        type: "fill",
+        minzoom: 13,
+        paint: {
+          // "fill-color": MapBoxColorExpression,
+          // "fill-opacity": 0.5,
+          // "fill-outline-color": Colors.LayerBorder,
+          "fill-pattern": MapBoxPatternExpression
+        },
+        source: id,
+        filter: ["==", "$type", "Polygon"]
+      });
+
+      mapRef.addLayer({
+        id: `${id}-color`,
         type: "fill",
         paint: {
           "fill-color": MapBoxColorExpression,
