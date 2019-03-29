@@ -200,35 +200,35 @@ export default {
   }
 
   &.open {
-    color: #73cc7f;
+    color: #50d076;
     &::before {
-      background-color: #73cc7f;
-      border-right: 5px solid #73cc7f;
-      border-left: 5px solid #73cc7f;
+      background-color: #50d076;
+      border-right: 5px solid #50d076;
+      border-left: 5px solid #50d076;
     }
   }
   &.private {
-    color: #ce4269;
+    color: #f0404d;
     &::before {
-      background-color: #ce4269;
-      border-right: 5px solid #ce4269;
-      border-left: 5px solid #ce4269;
+      background-color: #f0404d;
+      border-right: 5px solid #f0404d;
+      border-left: 5px solid #f0404d;
     }
   }
   &.conditional {
-    color: #eba844;
+    color: #f6c95f;
     &::before {
-      background-color: #eba844;
-      border-right: 5px solid #eba844;
-      border-left: 5px solid #eba844;
+      background-color: #f6c95f;
+      border-right: 5px solid #f6c95f;
+      border-left: 5px solid #f6c95f;
     }
   }
   &.unknown {
-    color: #5883e6;
+    color: #699bf9;
     &::before {
-      background-color: #5883e6;
-      border-right: 5px solid #5883e6;
-      border-left: 5px solid #5883e6;
+      background-color: #699bf9;
+      border-right: 5px solid #699bf9;
+      border-left: 5px solid #699bf9;
     }
   }
 
