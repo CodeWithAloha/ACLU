@@ -36,14 +36,14 @@ export default {
   methods: {
     next () {
       this.$store.commit('completedAccessibilitySurvey')
-      this.$router.push("intro")
+      this.$router.push('intro')
     },
     onChangeColorblindness (event) {
       this.$store.commit('toggleColorblindness')
     },
     onChangePartialSight (event) {
       this.$store.commit('togglePartialSight')
-    },
+    }
   }
 }
 </script>

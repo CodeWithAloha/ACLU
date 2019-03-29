@@ -13,34 +13,34 @@
 </template>
 
 <script>
-import Loading from "@/components/Loading";
-import Mapbox from "mapbox-gl-vue";
-import { Colors, Map, Settings } from "@/services/constants";
-import MapboxGeocoder from "mapbox-gl-geocoder";
-import "mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
-import FeatureService from "@/services/features";
+import Loading from '@/components/Loading'
+import Mapbox from 'mapbox-gl-vue'
+import { Colors, Map, Settings } from '@/services/constants'
+import MapboxGeocoder from 'mapbox-gl-geocoder'
+import 'mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
+import FeatureService from '@/services/features'
 import {
   MapBoxColorExpression,
   MapBoxPatternExpression,
   Patterns
-} from "@/utils/mapHelper";
+} from '@/utils/mapHelper'
 /**
  *  We have to keep the map reference outside vue 'data' object
  *  otherwise the mapbox styles break
  */
-let mapRef = {};
-let geocoder;
+let mapRef = {}
+let geocoder
 export default {
-  name: "Map",
+  name: 'Map',
   components: {
     Loading,
     Mapbox
   },
-  data: function() {
+  data: function () {
     return {
       mapboxToken: Settings.MapBoxToken,
       mapOptions: {
-        container: "map",
+        container: 'map',
         style: Map.Defaults.Style,
         center: [Map.Defaults.Longitude, Map.Defaults.Latitude],
         zoom: Map.Defaults.Zoom
@@ -48,7 +48,7 @@ export default {
       loading: true,
       geolocateControl: {
         show: true,
-        position: "top-left",
+        position: 'top-left',
         options: {
           trackUserLocation: false,
           positionOptions: {
@@ -56,103 +56,121 @@ export default {
           }
         }
       }
-    };
+    }
   },
-  mounted() {},
+  mounted () {},
   methods: {
-    async onMapLoaded(map) {
+    async onMapLoaded (map) {
       try {
-        mapRef = map;
-        await this.loadMapboxWidgets(mapRef);
-        this.$emit("mapLoaded");
-        this.loading = false;
+        mapRef = map
+        await this.loadMapboxWidgets(mapRef)
+        this.$emit('mapLoaded')
+        this.loading = false
       } catch (error) {
-        console.error(error);
+        console.error(error)
       }
     },
-    onUserIsGeolocated(geolocateControl, pos) {
-      this.loadFeatures(pos.coords.latitude, pos.coords.longitude);
+    onUserIsGeolocated (geolocateControl, pos) {
+      this.loadFeatures(pos.coords.latitude, pos.coords.longitude)
     },
-    loadMapboxWidgets(map) {
+    async loadMapboxWidgets (map) {
       // Geocoder (Search Bar)
       // TODO: It'd be nice if we can make this its own controller
       // Limit results to hawaii only
-      const bboxHawaii = [-160.3, 16.7, -151.8, 23.3];
+      const bboxHawaii = [-160.3, 16.7, -151.8, 23.3]
       geocoder = new MapboxGeocoder({
         accessToken: Settings.MapBoxToken,
         bbox: bboxHawaii
-      });
-      geocoder.on("result", ev => {
-        const [lon, lat] = ev.result.geometry.coordinates;
-        this.loadFeatures(lat, lon);
-      });
-      document.getElementById("geocoder").appendChild(geocoder.onAdd(mapRef));
+      })
+      geocoder.on('result', ev => {
+        const [lon, lat] = ev.result.geometry.coordinates
+        this.loadFeatures(lat, lon)
+      })
+      document.getElementById('geocoder').appendChild(geocoder.onAdd(mapRef))
 
       // load images
-      mapRef.loadImage(Patterns.GreenPattern, (err, img) => {
-        mapRef.addImage("GreenPattern", img);
-      });
-      mapRef.loadImage(Patterns.RedPattern, (err, img) => {
-        mapRef.addImage("RedPattern", img);
-      });
-      mapRef.loadImage(Patterns.YellowPattern, (err, img) => {
-        mapRef.addImage("YellowPattern", img);
-      });
+      // const asyncLoadImage = utils.promisify(mapRef.loadImage)
+      // const greenPatternImage = await asyncLoadImage(Patterns.GreenPattern);
+      // mapRef.addImage("GreenPattern", greenPatternImage);
+      // const redPatternImage = await asyncLoadImage(Patterns.RedPattern);
+      // mapRef.addImage("GreenPattern", redPatternImage);
+      // const yellowPatternImage = await asyncLoadImage(Patterns.YellowPattern);
+      // mapRef.addImage("GreenPattern", yellowPatternImage);
+      await Promise.all([
+        new Promise((resolve, reject) => {
+          mapRef.loadImage(Patterns.GreenPattern, (err, img) => {
+            if (err) reject(err)
+            mapRef.addImage('GreenPattern', img)
+            resolve()
+          })
+        }),
+        new Promise((resolve, reject) => {
+          mapRef.loadImage(Patterns.RedPattern, (err, img) => {
+            if (err) reject(err)
+            mapRef.addImage('RedPattern', img)
+            resolve()
+          })
+        }),
+        new Promise((resolve, reject) => {
+          mapRef.loadImage(Patterns.YellowPattern, (err, img) => {
+            if (err) reject(err)
+            mapRef.addImage('YellowPattern', img)
+            resolve()
+          })
+        })
+      ])
     },
-    async loadFeatures(lat, lon) {
-      this.loading = true;
+    async loadFeatures (lat, lon) {
+      this.loading = true
       // TODO: Yield features instead of return whole array (since it requires multiple requests)
-      const features = await FeatureService.getFeaturesNearBy(lat, lon);
-      const source = [];
+      const features = await FeatureService.getFeaturesNearBy(lat, lon)
+      const source = []
       for (const f of features) {
         if (!this.$store.state.renderedFeatures[f._id]) {
-          const geo = f.geojson;
-          geo.properties.condition = await f.getStatus();
-          source.push(geo);
+          const geo = f.geojson
+          geo.properties.condition = await f.getStatus()
+          source.push(geo)
           // Keep a "set" of all distinct rendered features so we don't render them twice
-          this.$store.state.renderedFeatures[f._id] = geo;
+          this.$store.state.renderedFeatures[f._id] = geo
         }
       }
       // Create an id for this source and layer (mapbox accepts unique sources and layers only)
-      const id = Date.now().toString();
+      const id = Date.now().toString()
       mapRef.addSource(id, {
-        type: "geojson",
+        type: 'geojson',
         data: {
-          type: "FeatureCollection",
+          type: 'FeatureCollection',
           features: source
         }
-      });
+      })
 
       mapRef.addLayer({
         id: `${id}-pattern`,
-        type: "fill",
-        minzoom: 13,
+        type: 'fill',
+        minzoom: 14,
         paint: {
-          // "fill-color": MapBoxColorExpression,
-          // "fill-opacity": 0.5,
-          // "fill-outline-color": Colors.LayerBorder,
-          "fill-pattern": MapBoxPatternExpression
+          'fill-pattern': MapBoxPatternExpression
         },
         source: id,
-        filter: ["==", "$type", "Polygon"]
-      });
+        filter: ['==', '$type', 'Polygon']
+      })
 
       mapRef.addLayer({
         id: `${id}-color`,
-        type: "fill",
+        type: 'fill',
         paint: {
-          "fill-color": MapBoxColorExpression,
-          "fill-opacity": 0.5,
-          "fill-outline-color": Colors.LayerBorder
+          'fill-color': MapBoxColorExpression,
+          'fill-opacity': 0.5,
+          'fill-outline-color': Colors.LayerBorder
         },
         source: id,
-        filter: ["==", "$type", "Polygon"]
-      });
+        filter: ['==', '$type', 'Polygon']
+      })
 
-      this.loading = false;
+      this.loading = false
     }
   }
-};
+}
 </script>
 
 <style lang='css'>

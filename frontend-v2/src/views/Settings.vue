@@ -33,14 +33,14 @@ export default {
   },
   methods: {
     done () {
-      this.$router.push("/");
+      this.$router.push('/')
     },
     onChangeColorblindness (event) {
-      this.$store.commit('toggleColorblindness');
+      this.$store.commit('toggleColorblindness')
     },
     onChangePartialSight (event) {
-      this.$store.commit('togglePartialSight');
-    },
+      this.$store.commit('togglePartialSight')
+    }
   }
 }
 </script>
