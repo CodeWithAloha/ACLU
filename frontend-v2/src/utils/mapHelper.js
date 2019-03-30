@@ -1,4 +1,4 @@
-import { Colors, OpenStatus } from '@/services/constants'
+import { Colors, OpenStatus } from '@/services/constants';
 
 /*
   MapBox uses expressions to conditional color/render features.

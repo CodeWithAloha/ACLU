@@ -52,15 +52,18 @@ export default {
     &::before {
       width: 15px;
       height: 15px;
-      margin-right: 1rem;
+      margin-right: 0.5rem;
     }
   }
 
   margin: 0.5rem 0.2rem;
+  background-color: #ffffff;
   box-shadow: -0.05rem 0.15rem 0.2rem rgba(0, 0, 0, 0.25);
   border-radius: 0.2rem;
   font-weight: bold;
-
+  &.no-gutter {
+    margin: 0rem 0rem;
+  }
   &::before {
     content: "";
     border-radius: 100%;
