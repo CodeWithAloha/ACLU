@@ -172,11 +172,11 @@ export default {
           mapRef.removeLayer(`${currentMapId}-selected`);
         } catch (error) {
           // swallow
+          console.log(error);
         }
       }
 
       currentMapId = Date.now().toString();
-      console.log(this.$store.state.renderedFeatures)
       mapRef.addSource(currentMapId, {
         type: "geojson",
         data: {
