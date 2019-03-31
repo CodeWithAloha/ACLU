@@ -1,7 +1,5 @@
 <template>
-  <div v-show="loading" class="loading-component">
-    <!-- <md-progress-spinner class="md-accent" :md-stroke="6" md-mode="indeterminate"></md-progress-spinner> -->
-
+  <div class="loading-component">
     <!-- Spinner derived from: https://blog.usejournal.com/vue-js-gsap-animations-26fc6b1c3c5a -->
     <div ref="spinner" class="spinner">
       <img src="@/assets/spinner-image.svg" class="spinner-image"/>
@@ -14,9 +12,6 @@
 import { TimelineLite, Back, Elastic, Expo } from 'gsap'
 
 export default {
-  props: {
-    loading: true
-  },
   mounted () {
     this.animate()
   },

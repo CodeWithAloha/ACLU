@@ -1,5 +1,5 @@
 <template>
-  <Map></Map>
+  <Map :splash="splash"></Map>
 </template>
 
 <script>
@@ -9,6 +9,7 @@ export default {
   name: 'Home',
   components: {
     Map
-  }
+  },
+  props: ['splash']
 }
 </script>

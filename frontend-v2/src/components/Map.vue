@@ -1,13 +1,14 @@
 <template>
   <div>
-    <Loading :loading="loading"></Loading>
-    <div id='geocoder' class='geocoder'></div>
+    <Loading v-if="loading"/>
+    <div id="geocoder" class="geocoder"></div>
     <mapbox
-    :accessToken="mapboxToken"
-    :map-options="mapOptions"
-    :geolocate-control="geolocateControl"
-    @map-load="onMapLoaded"
-    @geolocate-geolocate="onUserIsGeolocated"></mapbox>
+      :accessToken="mapboxToken"
+      :map-options="mapOptions"
+      :geolocate-control="geolocateControl"
+      @map-load="onMapLoaded"
+      @geolocate-geolocate="onUserIsGeolocated"
+    ></mapbox>
     <!-- Can't bind options to a Vue DataObject because it breaks mapbox -->
   </div>
 </template>
@@ -33,6 +34,7 @@ export default {
     Loading,
     Mapbox
   },
+  props: ['splash'],
   data: function () {
     return {
       mapboxToken: Settings.MapBoxToken,
@@ -55,7 +57,12 @@ export default {
       }
     }
   },
-  mounted () {},
+  watch: {
+    splash: function () {
+      // This method must be called after the map is shown after being initially hidden.
+      mapRef.resize()
+    }
+  },
   methods: {
     async onMapLoaded (map) {
       try {

@@ -2,11 +2,11 @@
   <div id="app">
     <transition name="fade">
       <Splash v-if="showSplash" @hide-splash="hide"></Splash>
-      <div v-show="!showSplash">
-        <NavBar></NavBar>
-        <router-view/>
-      </div>
     </transition>
+    <div v-show="!showSplash">
+      <NavBar></NavBar>
+      <router-view :splash="showSplash" />
+    </div>
   </div>
 </template>
 
@@ -36,12 +36,13 @@ export default {
 </script>
 
 <style>
-body, html {
+body,
+html {
   height: 100%;
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
