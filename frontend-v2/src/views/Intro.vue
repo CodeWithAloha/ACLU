@@ -37,10 +37,10 @@
     </template>
     <template slot="body">
       <h1>How it works</h1>
-      <p> 
-        The initial highlighted polygon will always represent your current location. You can tap on any of the displayed polygons to get information about the restrictions in the area. 
+      <p>
+        The initial highlighted polygon will always represent your current location. You can tap on any of the displayed polygons to get information about the restrictions in the area.
 
-        The for states of the locations are the following: 
+        The for states of the locations are the following:
       </p>
       <div class="chip-wrap">
         <div class="chip mini open">
@@ -71,7 +71,7 @@
         Private
       </div>
       <p>
-        The color red represents an area that is private or closed to to the public. 
+        The color red represents an area that is private or closed to to the public.
       </p>
     </template>
   </SplitTemplate>
@@ -88,7 +88,7 @@
         Conditional
       </div>
       <p>
-        The yellow polygon represents an area in which the status will change soon. 
+        The yellow polygon represents an area in which the status will change soon.
       </p>
     </template>
   </SplitTemplate>
@@ -105,7 +105,7 @@
         Open
       </div>
       <p>
-        The green polygon represents an area that is open to the public. 
+        The green polygon represents an area that is open to the public.
       </p>
     </template>
   </SplitTemplate>
@@ -122,7 +122,7 @@
         Unknown
       </div>
       <p>
-        The blue polygon will be displayed when we are unable to identify the location  or restrictions of an area. 
+        The blue polygon will be displayed when we are unable to identify the location  or restrictions of an area.
       </p>
     </template>
   </SplitTemplate>
@@ -146,7 +146,7 @@ export default {
     back () {
       this.page--
     },
-    
+
     finish () {
       this.$store.commit('completedIntro')
       this.$router.push('/')
@@ -154,7 +154,7 @@ export default {
   },
   components: {
     SplitTemplate
-  },
+  }
 }
 </script>
 
