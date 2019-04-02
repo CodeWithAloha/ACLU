@@ -1,7 +1,7 @@
 <template>
-  <div class="chip" v-bind:class="[sizeClass, colorClass]">
-    {{ text }}
-  </div>
+  <a href="#" class="chip" v-bind:class="[sizeClass, colorClass]">
+      {{ text }}
+  </a>
 </template>
 
 <script>
@@ -61,6 +61,7 @@ export default {
   box-shadow: -0.05rem 0.15rem 0.2rem rgba(0, 0, 0, 0.25);
   border-radius: 0.2rem;
   font-weight: bold;
+  text-decoration: none !important;
   &.no-gutter {
     margin: 0rem 0rem;
   }
@@ -72,7 +73,7 @@ export default {
   }
 
   &.success {
-    color: #50d076;
+    color: #50d076 !important;
     &::before {
       background-color: #50d076;
       border-right: 5px solid #50d076;
@@ -80,7 +81,7 @@ export default {
     }
   }
   &.alert {
-    color: #f0404d;
+    color: #f0404d !important;
     &::before {
       background-color: #f0404d;
       border-right: 5px solid #f0404d;
@@ -88,7 +89,7 @@ export default {
     }
   }
   &.warning {
-    color: #f6c95f;
+    color: #f6c95f !important;
     &::before {
       background-color: #f6c95f;
       border-right: 5px solid #f6c95f;
@@ -96,7 +97,7 @@ export default {
     }
   }
   &.unknown {
-    color: #699bf9;
+    color: #699bf9 !important;
     &::before {
       background-color: #699bf9;
       border-right: 5px solid #699bf9;
