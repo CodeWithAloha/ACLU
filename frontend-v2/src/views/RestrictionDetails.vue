@@ -1,22 +1,31 @@
 <template>
   <div class="RestrictionDetails">
-    <h1>Restriction Details</h1>
-    <h1 class="RestrictionCategory">{{ category }}</h1>
-    <hr>
-    <div class="FlexBox">
-      <div class="LocationName">{{ name }}</div>
-      <div class="LocationAddress">{{ address }}</div>
-    </div>
-    <hr>
-    <div class="FlexBox">
-      <div class="BoxHeader">Hours</div>
-      <div class="LocationHours">{{ hours }}</div>
-    </div>
-    <hr>
-    <div class="FlexBox">
-      <div class="BoxHeader">Restriction Details</div>
-      <div class="RestrictionNotes">{{ details }}</div>
-    </div>
+    <md-toolbar :md-elevation="1">
+      <span class="md-title">Restriction Details</span>
+    </md-toolbar>
+    <md-list class="md-double-line">
+      <md-subheader>{{ name }}</md-subheader>
+      <md-list-item>
+          <div class="md-list-item-text">
+            <span>{{ category }}</span>
+          </div>
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-subheader>Location Information</md-subheader>
+      <md-list-item>
+          <div class="md-list-item-text">
+            <span>{{ address }}</span>
+            <span>{{ hours }}</span>
+          </div>
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-subheader>Restriction Notes</md-subheader>
+      <md-list-item>
+          <div class="md-list-item-text">
+            <span>{{ details }}</span>
+          </div>
+      </md-list-item>
+    </md-list>
   </div>
 </template>
 
