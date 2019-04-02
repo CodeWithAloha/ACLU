@@ -114,7 +114,7 @@
 
 <script>
 import SplitTemplate from '@/views/SplitTemplate.vue'
-import StatusButton from "@/components/StatusButton.vue"
+import StatusButton from '@/components/StatusButton.vue'
 
 export default {
   name: 'intro',

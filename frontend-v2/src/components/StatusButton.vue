@@ -6,33 +6,33 @@
 
 <script>
 export default {
-  name: "StatusButton",
+  name: 'StatusButton',
   components: {},
-  props: ["theme", "size", "text"],
+  props: ['theme', 'size', 'text'],
   computed: {
-    colorClass() {
+    colorClass () {
       switch (this.theme) {
-        case "success":
-          return "success";
-        case "warning":
-          return "warning";
-        case "alert":
-          return "alert";
-        case "primary":
+        case 'success':
+          return 'success'
+        case 'warning':
+          return 'warning'
+        case 'alert':
+          return 'alert'
+        case 'primary':
         default:
-          return "unknown";
+          return 'unknown'
       }
     },
-    sizeClass() {
+    sizeClass () {
       switch (this.size) {
-        case "large":
-          return "large";
+        case 'large':
+          return 'large'
         default:
-          return "mini";
+          return 'mini'
       }
     }
   }
-};
+}
 </script>
 
 <style lang="scss">

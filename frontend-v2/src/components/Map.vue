@@ -18,22 +18,24 @@ import Mapbox from "mapbox-gl-vue";
 import { Map, Settings } from "@/services/constants";
 import "mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import { MapboxHandler, MapboxHandlerEvents } from "@/utils/mapboxHandler";
+
 /**
  *  We have to keep the map reference outside vue 'data' object
  *  otherwise the mapbox styles break
  */
 let mapboxHandler;
+
 export default {
-  name: "Map",
+  name: 'Map',
   components: {
     Loading,
     Mapbox
   },
-  data: function() {
+  data: function () {
     return {
       mapboxToken: Settings.MapBoxToken,
       mapOptions: {
-        container: "map",
+        container: 'map',
         style: Map.Defaults.Style,
         center: [Map.Defaults.Longitude, Map.Defaults.Latitude],
         zoom: Map.Defaults.Zoom
@@ -41,7 +43,7 @@ export default {
       loading: true,
       geolocateControl: {
         show: true,
-        position: "top-left",
+        position: 'top-left',
         options: {
           trackUserLocation: false,
           positionOptions: {
@@ -78,7 +80,7 @@ export default {
         });
         await mapboxHandler.loadMapboxWidgets();
       } catch (error) {
-        console.error(error);
+        console.error(error)
       }
     },
     async onUserIsGeolocated(geolocateControl, pos) {
@@ -88,7 +90,7 @@ export default {
       );
     }
   }
-};
+}
 </script>
 
 <style lang='css'>
