@@ -12,7 +12,6 @@
 <script>
 import Map from '@/components/Map'
 import StatusButton from '@/components/StatusButton'
-import { OpenStatus } from '@/services/constants'
 
 export default {
   name: 'Home',
