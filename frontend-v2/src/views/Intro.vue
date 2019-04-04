@@ -42,7 +42,7 @@
 
         The for states of the locations are the following:
       </p>
-      <div class="chip-wrap">
+      <div class="status-buttons-wrap">
         <StatusButton :status="OpenStatus.Open"></StatusButton>
         <StatusButton :status="OpenStatus.ClosingSoon"></StatusButton>
         <StatusButton :status="OpenStatus.Closed"></StatusButton>
@@ -147,7 +147,7 @@ export default {
 </script>
 
 <style lang="scss">
-.chip-wrap {
+.status-buttons-wrap {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
