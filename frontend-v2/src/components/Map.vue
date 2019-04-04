@@ -13,17 +13,17 @@
 </template>
 
 <script>
-import Loading from "@/components/Loading";
-import Mapbox from "mapbox-gl-vue";
-import { Map, Settings } from "@/services/constants";
-import "mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
-import { MapboxHandler, MapboxHandlerEvents } from "@/utils/mapboxHandler";
+import Loading from '@/components/Loading'
+import Mapbox from 'mapbox-gl-vue'
+import { Map, Settings } from '@/services/constants'
+import 'mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
+import { MapboxHandler, MapboxHandlerEvents } from '@/utils/mapboxHandler'
 
 /**
  *  We have to keep the map reference outside vue 'data' object
  *  otherwise the mapbox styles break
  */
-let mapboxHandler;
+let mapboxHandler
 
 export default {
   name: 'Map',
@@ -51,43 +51,43 @@ export default {
           }
         }
       }
-    };
+    }
   },
   methods: {
-    onLoading() {
-      this.loading = true;
+    onLoading () {
+      this.loading = true
     },
-    onFinishedLoading() {
-      this.loading = false;
+    onFinishedLoading () {
+      this.loading = false
     },
-    async onMapLoaded(map) {
+    async onMapLoaded (map) {
       try {
-        mapboxHandler = new MapboxHandler(map, this.$store);
+        mapboxHandler = new MapboxHandler(map, this.$store)
 
         // Subscribe to map events
-        mapboxHandler.on(MapboxHandlerEvents.MapLoading, this.onLoading);
-        mapboxHandler.on(MapboxHandlerEvents.FeaturesLoading, this.onLoading);
-        mapboxHandler.on(MapboxHandlerEvents.MapLoaded, this.onFinishedLoading);
+        mapboxHandler.on(MapboxHandlerEvents.MapLoading, this.onLoading)
+        mapboxHandler.on(MapboxHandlerEvents.FeaturesLoading, this.onLoading)
+        mapboxHandler.on(MapboxHandlerEvents.MapLoaded, this.onFinishedLoading)
         mapboxHandler.on(
           MapboxHandlerEvents.FeaturesLoaded,
           this.onFinishedLoading
-        );
+        )
         mapboxHandler.on(MapboxHandlerEvents.MapLoaded, () => {
-          this.$emit("mapLoaded");
-        });
+          this.$emit('mapLoaded')
+        })
         mapboxHandler.on(MapboxHandlerEvents.FeatureSelected, feature => {
-          this.$emit("featureSelected", feature);
-        });
-        await mapboxHandler.loadMapboxWidgets();
+          this.$emit('featureSelected', feature)
+        })
+        await mapboxHandler.loadMapboxWidgets()
       } catch (error) {
         console.error(error)
       }
     },
-    async onUserIsGeolocated(geolocateControl, pos) {
+    async onUserIsGeolocated (geolocateControl, pos) {
       await mapboxHandler.loadFeatures(
         pos.coords.latitude,
         pos.coords.longitude
-      );
+      )
     }
   }
 }

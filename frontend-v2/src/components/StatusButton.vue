@@ -1,26 +1,42 @@
 <template>
-  <a href="#" class="chip" v-bind:class="[sizeClass, colorClass]">
-      {{ text }}
+  <!-- <router-link to="/restriction-details" class="chip" v-bind:class="[sizeClass, renderProperties.theme]">
+    {{ renderProperties.text }}
+  </router-link> -->
+  <a href="#" class="chip" v-bind:class="[sizeClass, renderProperties.theme]" @click="onClick">
+      {{ renderProperties.text }}
   </a>
 </template>
 
 <script>
+import { OpenStatus } from '@/services/constants'
 export default {
   name: 'StatusButton',
   components: {},
-  props: ['theme', 'size', 'text'],
+  props: ['status', 'size'],
   computed: {
-    colorClass () {
-      switch (this.theme) {
-        case 'success':
-          return 'success'
-        case 'warning':
-          return 'warning'
-        case 'alert':
-          return 'alert'
-        case 'primary':
+    renderProperties () {
+      switch (this.status) {
+        case OpenStatus.Open:
+          return {
+            theme: 'success',
+            text: 'Permitted'
+          }
+        case OpenStatus.ClosingSoon:
+          return {
+            theme: 'warning',
+            text: 'Closing Soon'
+          }
+        case OpenStatus.Closed:
+          return {
+            theme: 'alert',
+            text: 'Restricted'
+          }
+        case OpenStatus.Unknown:
         default:
-          return 'unknown'
+          return {
+            theme: 'primary',
+            text: 'Unknown'
+          }
       }
     },
     sizeClass () {
@@ -30,6 +46,11 @@ export default {
         default:
           return 'mini'
       }
+    }
+  },
+  methods: {
+    onClick () {
+      this.$emit('click')
     }
   }
 }
@@ -96,7 +117,7 @@ export default {
       border-left: 5px solid #f6c95f;
     }
   }
-  &.unknown {
+  &.primary {
     color: #699bf9 !important;
     &::before {
       background-color: #699bf9;

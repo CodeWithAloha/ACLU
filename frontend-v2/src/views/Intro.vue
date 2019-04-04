@@ -43,10 +43,10 @@
         The for states of the locations are the following:
       </p>
       <div class="chip-wrap">
-        <StatusButton theme="success" text="Open" ></StatusButton>
-        <StatusButton theme="warning" text="Closing Soon" ></StatusButton>
-        <StatusButton theme="alert" text="Restricted" ></StatusButton>
-        <StatusButton theme="primary" text="Unknown" ></StatusButton>
+        <StatusButton :status="OpenStatus.Open"></StatusButton>
+        <StatusButton :status="OpenStatus.ClosingSoon"></StatusButton>
+        <StatusButton :status="OpenStatus.Closed"></StatusButton>
+        <StatusButton :status="OpenStatus.Unknown"></StatusButton>
       </div>
     </template>
   </SplitTemplate>
@@ -59,7 +59,7 @@
       logo
     </template>
     <template slot="body">
-      <StatusButton theme="alert" size="large" text="Restricted"></StatusButton>
+      <StatusButton :status="OpenStatus.Closed" size="large"></StatusButton>
       <p>
         The color red represents an area that is private or closed to to the public.
       </p>
@@ -74,7 +74,7 @@
       logo
     </template>
     <template slot="body">
-      <StatusButton theme="warning" size="large" text="Closing Soon"></StatusButton>
+      <StatusButton :status="OpenStatus.ClosingSoon" size="large"></StatusButton>
       <p>
         The yellow polygon represents an area in which the status will change soon.
       </p>
@@ -89,7 +89,7 @@
       logo
     </template>
     <template slot="body">
-      <StatusButton theme="alert" size="large" text="Restricted"></StatusButton>
+      <StatusButton :status="OpenStatus.Open" size="large"></StatusButton>
       <p>
         The green polygon represents an area that is open to the public.
       </p>
@@ -104,7 +104,7 @@
       logo
     </template>
     <template slot="body">
-      <StatusButton theme="primary" size="large" text="Unknown"></StatusButton>
+      <StatusButton :status="OpenStatus.Unknown" size="large"></StatusButton>
       <p>
         The blue polygon will be displayed when we are unable to identify the location  or restrictions of an area.
       </p>
@@ -115,12 +115,14 @@
 <script>
 import SplitTemplate from '@/views/SplitTemplate.vue'
 import StatusButton from '@/components/StatusButton.vue'
+import { OpenStatus } from '@/services/constants'
 
 export default {
   name: 'intro',
   data () {
     return {
-      page: 0
+      page: 0,
+      OpenStatus: OpenStatus
     }
   },
   methods: {

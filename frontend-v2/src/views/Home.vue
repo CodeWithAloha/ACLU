@@ -1,60 +1,39 @@
 <template>
 <div>
     <Map @featureSelected="onFeatureSelected"></Map>
-    <div v-if="this.selectedFeature" class="wrapper-status-button">
-      <StatusButton :theme="selectedFeatureStatus().theme" :text="selectedFeatureStatus().text" size="large"></StatusButton>
+    <div v-if="selectedFeature" class="wrapper-status-button">
+      <StatusButton :status="selectedFeature.properties.condition" size="large" @click="onStatusButtonClick"></StatusButton>
     </div>
+    <!-- TODO: Integrate with Details component when ready -->
+    <!-- <FeatureDetails :feature="selectedFeature"></FeatureDetails> -->
   </div>
 </template>
 
 <script>
-import Map from "@/components/Map";
-import StatusButton from "@/components/StatusButton";
-import { OpenStatus } from "@/services/constants";
+import Map from '@/components/Map'
+import StatusButton from '@/components/StatusButton'
+import { OpenStatus } from '@/services/constants'
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     Map,
     StatusButton
   },
-  data() {
+  data () {
     return {
       selectedFeature: null
-    };
+    }
   },
   methods: {
-    onFeatureSelected(feature) {
-      this.selectedFeature = feature;
+    onFeatureSelected (featureId) {
+      this.selectedFeature = this.$store.state.renderedFeatures[featureId]
     },
-    selectedFeatureStatus() {
-      if (!this.selectedFeature) return;
-      switch (this.selectedFeature.properties.condition) {
-        case OpenStatus.Open:
-          return {
-            theme: "success",
-            text: "Permitted"
-          };
-        case OpenStatus.ClosingSoon:
-          return {
-            theme: "warning",
-            text: "Closing Soon"
-          };
-        case OpenStatus.Closed:
-          return {
-            theme: "alert",
-            text: "Restricted"
-          };
-        case OpenStatus.Unknown:
-        default:
-          return {
-            theme: "primary",
-            text: "Unknown"
-          };
-      }
+    onStatusButtonClick(){
+      // TODO: Show FeatureDetails component when status button is clicked
     }
   }
-};
+}
 </script>
 <style>
 .wrapper-status-button {
