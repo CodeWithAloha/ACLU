@@ -33,7 +33,12 @@ export default new Router({
     {
       path: '/restriction-details',
       name: 'restriction-details',
-      component: () => import(/* webpackChunkName: "about" */ './views/RestrictionDetails.vue')
+      component: () => import(/* webpackChunkName: "restrictionDetails" */ './views/RestrictionDetails.vue')
+    },
+    {
+      path: '/restriction-card-test',
+      name: 'restriction-card-test',
+      component: () => import(/* webpackChunkName: "testCard" */ './views/RestrictionPopupTest.vue')
     },
     {
       path: '*',
