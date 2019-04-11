@@ -1,10 +1,12 @@
 <template>
-  <SplitTemplate :next="done" nextText="Done">
+  <SplitTemplate :next="next">
     <template slot="title">
-      Settings
+      Accessibility Survey
+    </template>
+    <template slot="subtitle">
+      Do you have any of the following conditions?
     </template>
     <template slot="body">
-      <h1>Accessibility</h1>
       <div class="checkbox-wrap">
         <md-checkbox
           v-model="colorblindness"
@@ -32,8 +34,9 @@ export default {
     SplitTemplate
   },
   methods: {
-    done () {
-      this.$router.push('/')
+    next () {
+      this.$store.commit('completedAccessibilitySurvey')
+      this.$router.push('intro')
     },
     onChangeColorblindness (event) {
       this.$store.commit('toggleColorblindness')

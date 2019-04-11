@@ -1,4 +1,7 @@
 <template>
+<<<<<<< HEAD
+  <Map :splash="splash"></Map>
+=======
 <div>
     <Map @featureSelected="onFeatureSelected"></Map>
     <div v-if="selectedFeature" class="wrapper-status-button">
@@ -7,6 +10,7 @@
     <!-- TODO: Integrate with Details component when ready -->
     <!-- <FeatureDetails :feature="selectedFeature"></FeatureDetails> -->
   </div>
+>>>>>>> develop
 </template>
 
 <script>
@@ -16,6 +20,11 @@ import StatusButton from '@/components/StatusButton'
 export default {
   name: 'Home',
   components: {
+<<<<<<< HEAD
+    Map
+  },
+  props: ['splash']
+=======
     Map,
     StatusButton
   },
@@ -32,6 +41,7 @@ export default {
       // TODO: Show FeatureDetails component when status button is clicked
     }
   }
+>>>>>>> develop
 }
 </script>
 <style>

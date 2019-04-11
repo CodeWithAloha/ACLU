@@ -24,9 +24,9 @@ export const OpenStatus = {
 }
 
 export const Colors = {
-  Restricted: '#ff4136',
-  Permitted: '#2ecc40',
-  Unknown: 'GREY',
-  Warning: '#ffff00',
+  Restricted: '#f0404d',
+  Permitted: '#50d076',
+  Unknown: '#699bf9',
+  Warning: '#f6c95f',
   LayerBorder: '#ffffff'
 }
