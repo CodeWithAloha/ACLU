@@ -14,7 +14,6 @@ export default {
   name: 'RestrictionPopup',
   methods: {
     OpenRestrictionDialog () {
-      console.log("Feature", this.feature)
       this.showDialog = true
     },
   },
