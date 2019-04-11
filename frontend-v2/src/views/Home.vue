@@ -28,7 +28,7 @@ export default {
     onFeatureSelected (featureId) {
       this.selectedFeature = this.$store.state.renderedFeatures[featureId]
     },
-    onStatusButtonClick(){
+    onStatusButtonClick () {
       // TODO: Show FeatureDetails component when status button is clicked
     }
   }
