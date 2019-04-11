@@ -1,8 +1,8 @@
 <template>
   <div>
-  <md-dialog ref="RestrictionDialog">
+  <md-dialog :md-active.sync="showDialog">
     <md-dialog-title>Open</md-dialog-title>
-    <md-dialog-content md-label="General" :md-active.sync="showDialog" ref="RestrictionDialog">
+    <md-dialog-content md-label="General" >
       <md-list class="md-double-line">
         <md-subheader>{{ name }}</md-subheader>
         <md-subheader>Location Information</md-subheader>
@@ -27,10 +27,10 @@ export default {
   name: 'RestrictionPopup',
   methods: {
     OpenRestrictionDialog () {
-      this.$refs.RestrictionDialog.open()
+      this.showDialog = true
     },
     CloseRestrictionDialog () {
-      this.$refs.RestrictionDialog.close()
+      this.showDialog = false
     }
   },
   props: ['feature'],
