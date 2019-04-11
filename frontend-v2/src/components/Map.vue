@@ -16,17 +16,15 @@
 import Loading from '@/components/Loading'
 import Mapbox from 'mapbox-gl-vue'
 import { Map, Settings } from '@/services/constants'
-import MapboxGeocoder from 'mapbox-gl-geocoder'
 import 'mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
-import FeatureService from '@/services/features'
-import MapHelper from '@/utils/mapHelper'
+import { MapboxHandler, MapboxHandlerEvents } from '@/utils/mapboxHandler'
 
 /**
  *  We have to keep the map reference outside vue 'data' object
  *  otherwise the mapbox styles break
  */
-let mapRef = {}
-let geocoder
+let mapboxHandler
+
 export default {
   name: 'Map',
   components: {
@@ -55,53 +53,41 @@ export default {
       }
     }
   },
-  mounted () {},
   methods: {
-    async onMapLoaded (map) {
-      try {
-        mapRef = map
-        await this.loadMapboxWidgets(mapRef)
-        this.$emit('mapLoaded')
-        this.loading = false
-      } catch (error) {
-        console.error(error)
-      }
-    },
-    onUserIsGeolocated (geolocateControl, pos) {
-      this.loadFeatures(pos.coords.latitude, pos.coords.longitude)
-    },
-    loadMapboxWidgets (map) {
-      // Geocoder (Search Bar)
-      // TODO: It'd be nice if we can make this its own controller
-      // Limit results to hawaii only
-      const bboxHawaii = [-160.3, 16.7, -151.8, 23.3]
-      geocoder = new MapboxGeocoder({
-        accessToken: Settings.MapBoxToken,
-        bbox: bboxHawaii
-      })
-      geocoder.on('result', ev => {
-        const [lon, lat] = ev.result.geometry.coordinates
-        this.loadFeatures(lat, lon)
-      })
-      document.getElementById('geocoder').appendChild(geocoder.onAdd(mapRef))
-    },
-    async loadFeatures (lat, lon) {
+    onLoading () {
       this.loading = true
-      // TODO: Yield features instead of return whole array
-      const features = await FeatureService.getFeaturesNearBy(lat, lon)
-      for (const f of features) {
-        await this.addFeatureToLayer(f)
-      }
+    },
+    onFinishedLoading () {
       this.loading = false
     },
-    async addFeatureToLayer (feature) {
+    async onMapLoaded (map) {
       try {
-        const layer = await MapHelper.getFeatureLayer(feature)
-        mapRef.addLayer(layer)
+        mapboxHandler = new MapboxHandler(map, this.$store)
+
+        // Subscribe to map events
+        mapboxHandler.on(MapboxHandlerEvents.MapLoading, this.onLoading)
+        mapboxHandler.on(MapboxHandlerEvents.FeaturesLoading, this.onLoading)
+        mapboxHandler.on(MapboxHandlerEvents.MapLoaded, this.onFinishedLoading)
+        mapboxHandler.on(
+          MapboxHandlerEvents.FeaturesLoaded,
+          this.onFinishedLoading
+        )
+        mapboxHandler.on(MapboxHandlerEvents.MapLoaded, () => {
+          this.$emit('mapLoaded')
+        })
+        mapboxHandler.on(MapboxHandlerEvents.FeatureSelected, feature => {
+          this.$emit('featureSelected', feature)
+        })
+        await mapboxHandler.loadMapboxWidgets()
       } catch (error) {
-        console.log(`Couldn't add layer for feature ${feature._id}.`)
         console.error(error)
       }
+    },
+    async onUserIsGeolocated (geolocateControl, pos) {
+      await mapboxHandler.loadFeatures(
+        pos.coords.latitude,
+        pos.coords.longitude
+      )
     }
   }
 }

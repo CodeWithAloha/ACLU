@@ -42,19 +42,11 @@
 
         The for states of the locations are the following:
       </p>
-      <div class="chip-wrap">
-        <div class="chip mini open">
-          Open
-        </div>
-        <div class="chip mini private">
-          Private
-        </div>
-        <div class="chip mini conditional">
-          Conditional
-        </div>
-        <div class="chip mini unknown">
-          Unknown
-        </div>
+      <div class="status-buttons-wrap">
+        <StatusButton :status="OpenStatus.Open"></StatusButton>
+        <StatusButton :status="OpenStatus.ClosingSoon"></StatusButton>
+        <StatusButton :status="OpenStatus.Closed"></StatusButton>
+        <StatusButton :status="OpenStatus.Unknown"></StatusButton>
       </div>
     </template>
   </SplitTemplate>
@@ -67,9 +59,7 @@
       logo
     </template>
     <template slot="body">
-      <div class="chip large private">
-        Private
-      </div>
+      <StatusButton :status="OpenStatus.Closed" size="large"></StatusButton>
       <p>
         The color red represents an area that is private or closed to to the public.
       </p>
@@ -84,9 +74,7 @@
       logo
     </template>
     <template slot="body">
-      <div class="chip large conditional">
-        Conditional
-      </div>
+      <StatusButton :status="OpenStatus.ClosingSoon" size="large"></StatusButton>
       <p>
         The yellow polygon represents an area in which the status will change soon.
       </p>
@@ -101,9 +89,7 @@
       logo
     </template>
     <template slot="body">
-      <div class="chip large open">
-        Open
-      </div>
+      <StatusButton :status="OpenStatus.Open" size="large"></StatusButton>
       <p>
         The green polygon represents an area that is open to the public.
       </p>
@@ -118,9 +104,7 @@
       logo
     </template>
     <template slot="body">
-      <div class="chip large unknown">
-        Unknown
-      </div>
+      <StatusButton :status="OpenStatus.Unknown" size="large"></StatusButton>
       <p>
         The blue polygon will be displayed when we are unable to identify the location  or restrictions of an area.
       </p>
@@ -130,12 +114,15 @@
 
 <script>
 import SplitTemplate from '@/views/SplitTemplate.vue'
+import StatusButton from '@/components/StatusButton.vue'
+import { OpenStatus } from '@/services/constants'
 
 export default {
   name: 'intro',
   data () {
     return {
-      page: 0
+      page: 0,
+      OpenStatus: OpenStatus
     }
   },
   methods: {
@@ -153,85 +140,16 @@ export default {
     }
   },
   components: {
-    SplitTemplate
+    SplitTemplate,
+    StatusButton
   }
 }
 </script>
 
 <style lang="scss">
-
-.chip-wrap {
+.status-buttons-wrap {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-
-.chip {
-
-  &.mini {
-    width: 45%;
-    padding: 0.2rem 1rem;
-    &::before {
-      height: 10px;
-    }
-  }
-
-  &.large {
-    min-width: 50%;
-    padding: 0.5rem 1rem;
-    font-size: 1.5rem;
-    &::before {
-      width: 15px;
-      height: 15px;
-      margin-right: 1rem;
-    }
-  }
-
-  margin: 0.5rem 0.2rem;
-  box-shadow: -0.05rem 0.15rem 0.2rem rgba(0, 0, 0, 0.25);
-  border-radius: 0.2rem;
-  font-weight: bold;
-
-  &::before {
-    content: "";
-    border-radius: 100%;
-    margin-right: 0.5rem;
-    display: inline-block;
-  }
-
-  &.open {
-    color: #73cc7f;
-    &::before {
-      background-color: #73cc7f;
-      border-right: 5px solid #73cc7f;
-      border-left: 5px solid #73cc7f;
-    }
-  }
-  &.private {
-    color: #ce4269;
-    &::before {
-      background-color: #ce4269;
-      border-right: 5px solid #ce4269;
-      border-left: 5px solid #ce4269;
-    }
-  }
-  &.conditional {
-    color: #eba844;
-    &::before {
-      background-color: #eba844;
-      border-right: 5px solid #eba844;
-      border-left: 5px solid #eba844;
-    }
-  }
-  &.unknown {
-    color: #5883e6;
-    &::before {
-      background-color: #5883e6;
-      border-right: 5px solid #5883e6;
-      border-left: 5px solid #5883e6;
-    }
-  }
-
-}
-
 </style>

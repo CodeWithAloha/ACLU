@@ -1,6 +1,6 @@
-import Vuex from 'vuex'
-import Vue from 'vue'
 import storage from 'local-storage-fallback'
+import Vue from 'vue'
+import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
@@ -12,7 +12,8 @@ if (!defaultState) {
       partialSight: false,
       completedInitialSurvey: false
     },
-    completedIntro: false
+    completedIntro: false,
+    renderedFeatures: {}
   }
 } else {
   defaultState = JSON.parse(defaultState)
