@@ -20,8 +20,11 @@ if (!defaultState) {
 }
 
 const store = new Vuex.Store({
-  state: defaultState,
+  state: { ...defaultState, splash: true },
   mutations: {
+    showSplash (state) {
+      state.splash = false
+    },
     toggleColorblindness (state) {
       state.accessibility.colorblindness = !state.accessibility.colorblindness
     },

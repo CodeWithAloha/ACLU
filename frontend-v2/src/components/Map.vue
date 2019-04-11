@@ -3,11 +3,12 @@
     <Loading v-if="loading"/>
     <div id="geocoder" class="geocoder"></div>
     <mapbox
-    :accessToken="mapboxToken"
-    :map-options="mapOptions"
-    :geolocate-control="geolocateControl"
-    @map-load="onMapLoaded"
-    @geolocate-geolocate="onUserIsGeolocated"></mapbox>
+      :accessToken="mapboxToken"
+      :map-options="mapOptions"
+      :geolocate-control="geolocateControl"
+      @map-load="onMapLoaded"
+      @geolocate-geolocate="onUserIsGeolocated"
+    ></mapbox>
     <!-- Can't bind options to a Vue DataObject because it breaks mapbox -->
   </div>
 </template>
@@ -23,7 +24,7 @@ import { MapboxHandler, MapboxHandlerEvents } from '@/utils/mapboxHandler'
  *  We have to keep the map reference outside vue 'data' object
  *  otherwise the mapbox styles break
  */
-let mapboxHandler
+let mapRef, mapboxHandler
 
 export default {
   name: 'Map',
@@ -31,7 +32,6 @@ export default {
     Loading,
     Mapbox
   },
-  props: ['splash'],
   data: function () {
     return {
       mapboxToken: Settings.MapBoxToken,
@@ -54,8 +54,13 @@ export default {
       }
     }
   },
+  computed: {
+    splash () {
+      return this.$store.state.splash
+    }
+  },
   watch: {
-    splash: function () {
+    splash (newValue, oldValue) {
       // This method must be called after the map is shown after being initially hidden.
       mapRef.resize()
     }
@@ -65,10 +70,12 @@ export default {
       this.loading = true
     },
     onFinishedLoading () {
+      this.$store.commit('showSplash')
       this.loading = false
     },
     async onMapLoaded (map) {
       try {
+        mapRef = map
         mapboxHandler = new MapboxHandler(map, this.$store)
 
         // Subscribe to map events
@@ -79,9 +86,6 @@ export default {
           MapboxHandlerEvents.FeaturesLoaded,
           this.onFinishedLoading
         )
-        mapboxHandler.on(MapboxHandlerEvents.MapLoaded, () => {
-          this.$emit('mapLoaded')
-        })
         mapboxHandler.on(MapboxHandlerEvents.FeatureSelected, feature => {
           this.$emit('featureSelected', feature)
         })

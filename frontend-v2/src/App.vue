@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <transition name="fade">
-      <Splash v-if="showSplash" @hide-splash="hide"></Splash>
+      <Splash v-if="splash" @hide-splash="hide"></Splash>
     </transition>
-    <div v-show="!showSplash">
+    <div v-show="!splash">
       <NavBar></NavBar>
-      <router-view :splash="showSplash" />
+      <router-view />
     </div>
   </div>
 </template>
@@ -19,17 +19,19 @@ export default {
     Splash,
     NavBar
   },
-  data: () => ({
-    showSplash: true
-  }),
+  computed: {
+    splash () {
+      return this.$store.state.splash
+    }
+  },
   mounted () {
     setTimeout(() => {
       this.hide()
-    }, 2000)
+    }, 3000)
   },
   methods: {
     hide: function () {
-      this.showSplash = false
+      this.$store.commit('showSplash')
     }
   }
 }
