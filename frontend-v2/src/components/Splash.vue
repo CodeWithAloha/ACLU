@@ -1,5 +1,5 @@
 <template>
-  <div class="splash">
+  <div class="splash" @click="$emit('hide-splash')">
     <div>
       <img class="logo" src="../assets/holoholo-logo@3x.png" alt="Holo Holo">
     </div>
