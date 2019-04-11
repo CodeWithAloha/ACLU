@@ -97,32 +97,32 @@ export default {
     color: #50d076 !important;
     &::before {
       background-color: #50d076;
-      border-right: 5px solid #50d076;
-      border-left: 5px solid #50d076;
+      width: 15px;
+      height: 15px;
     }
   }
   &.alert {
     color: #f0404d !important;
     &::before {
       background-color: #f0404d;
-      border-right: 5px solid #f0404d;
-      border-left: 5px solid #f0404d;
+      width: 15px;
+      height: 15px;
     }
   }
   &.warning {
     color: #f6c95f !important;
     &::before {
       background-color: #f6c95f;
-      border-right: 5px solid #f6c95f;
-      border-left: 5px solid #f6c95f;
+      width: 15px;
+      height: 15px;
     }
   }
   &.primary {
     color: #699bf9 !important;
     &::before {
       background-color: #699bf9;
-      border-right: 5px solid #699bf9;
-      border-left: 5px solid #699bf9;
+      width: 15px;
+      height: 15px;
     }
   }
 }

@@ -5,19 +5,23 @@
       <StatusButton :status="selectedFeature.properties.condition" size="large" @click="onStatusButtonClick"></StatusButton>
     </div>
     <!-- TODO: Integrate with Details component when ready -->
-    <!-- <FeatureDetails :feature="selectedFeature"></FeatureDetails> -->
+    <RestrictionPopup
+      ref="popup"
+      :feature="selectedFeature" />
   </div>
 </template>
 
 <script>
 import Map from '@/components/Map'
 import StatusButton from '@/components/StatusButton'
+import RestrictionPopup from '@/components/RestrictionPopup'
 
 export default {
   name: 'Home',
   components: {
     Map,
-    StatusButton
+    StatusButton,
+    RestrictionPopup
   },
   data () {
     return {
@@ -29,7 +33,7 @@ export default {
       this.selectedFeature = this.$store.state.renderedFeatures[featureId]
     },
     onStatusButtonClick () {
-      // TODO: Show FeatureDetails component when status button is clicked
+      this.$refs.popup.OpenRestrictionDialog();
     }
   }
 }
