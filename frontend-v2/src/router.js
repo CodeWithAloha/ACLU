@@ -42,6 +42,11 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/RestrictionDetails.vue')
     },
     {
+      path: '/rights',
+      name: 'rights',
+      component: () => import(/* webpackChunkName: "about" */ './views/Rights.vue')
+    },
+    {
       path: '*',
       name: '404',
       component: () => import(/* webpackChunkName: "about" */ './views/404.vue')
