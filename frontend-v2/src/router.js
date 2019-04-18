@@ -19,7 +19,8 @@ export default new Router({
     },
     {
       path: '/report-feedback',
-      name: 'report-feedback'
+      name: 'report-feedback',
+      component: () => import(/* webpackChunkName: "report-feedback" */ './views/ReportFeedback.vue')
     },
     {
       path: '/settings',
