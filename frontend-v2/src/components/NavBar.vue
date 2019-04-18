@@ -38,6 +38,13 @@
         </md-list-item>
 
         <md-list-item @click="showNavigation=false">
+          <router-link to="/rights">
+            <md-icon>info</md-icon>
+            <span class="md-list-item-text">your rights</span>
+          </router-link>
+        </md-list-item>
+
+        <md-list-item @click="showNavigation=false">
           <a href="https://acluhi.org/" target="_blank">
             <md-icon>launch</md-icon>
             <span class="md-list-item-text">aclu initiatives</span>
