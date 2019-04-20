@@ -15,7 +15,7 @@ Please start by reading the [project proposal](docs/ACLU-Access-App.pdf).
 ## Frontend Development
 
 We are using Vue.js for our frontend. The project was created using [vue-cli](https://cli.vuejs.org/).
-If you look at the folder structure you will see a `frontend` and a `frontend-v2` folders. Go for the `v2` :)
+If you look at the folder structure you will see a `frontend` and a `frontend` folders. Go for the `v2` :)
 
 Updated dev instructions (using nvm):
 1. Install nvm using `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash`
@@ -36,7 +36,7 @@ Other useful commands:
 
 Old instructions (using npm):
 
-1. `cd frontend-v2`
+1. `cd frontend`
 1. `npm install`
 1. `npm run serve`
 1. Open http://localhost:8080

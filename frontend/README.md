@@ -1,4 +1,4 @@
-# frontend-v2
+# frontend
 
 ## Project setup
 ```

@@ -27,7 +27,7 @@ phases:
       - echo Define build version
       - IMAGE_TAG=`date +%s%3N`
       - echo Installing dependencies
-      - cd frontend-v2
+      - cd frontend
       - npm install
       # TODO Remove this when we frontend is configured to read BASE_PATH from env
       # - echo TEMP FIX - Replacing http://localhost with actual API URL
@@ -37,7 +37,7 @@ phases:
     commands:
       - cd $CODEBUILD_SRC_DIR # move to code buil root directory, in case that previous script cd into a different directory
       - echo Building Frontend
-      - cd frontend-v2
+      - cd frontend
       - npm run build --prod
       - echo Building API containers
       - cd $CODEBUILD_SRC_DIR/backend
@@ -49,13 +49,13 @@ phases:
     commands:
       - cd $CODEBUILD_SRC_DIR # move to code buil root directory, in case that previous script cd into a different directory
       - echo Updating site in s3
-      - aws s3 sync ./frontend-v2/dist s3://$FRONTEND_BUCKET --acl public-read --delete --region $AWS_DEFAULT_REGION
+      - aws s3 sync ./frontend/dist s3://$FRONTEND_BUCKET --acl public-read --delete --region $AWS_DEFAULT_REGION
       - echo Pushing docker API container to AWS ECR
       - docker push $IMAGES_REPO_URL:$IMAGE_TAG
       - echo adding latest tag
       - docker push $IMAGES_REPO_URL:latest
 artifacts:
   files:
-    - frontend-v2/dist/**/*
+    - frontend/dist/**/*
   #discard-paths: yes
   #base-directory: location
