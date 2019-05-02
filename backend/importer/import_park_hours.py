@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
 # Copyright © 2017
@@ -66,12 +66,14 @@ def parse_park_hours_html_text(html_text):
         # skip table heading
         for tr in table('tr')[1:]:
             cells = tr('td')
-            park = cells[0]('span')
-            times = cells[1]('span')
+            park = cells[0].getText()
+            times = cells[1].getText()
 
             # Trim strings and discard empty ones
-            park = [e for e in [e.text.strip() for e in park] if e]
-            times = [e for e in [e.text.strip() for e in times] if e]
+            park = park.strip()
+            # split park on - character to get sub areas
+            park = [e for e in [e.strip() for e in park.split("-")] if e]
+            times = [e for e in [e.strip() for e in times.split("\n")] if e]
 
             # Expand times list to match park times
             while len(park) > len(times):
@@ -111,6 +113,11 @@ def get_html_text(url_or_path):
 def main(argv):
     url_or_path = argv[1] if len(argv) > 1 else PARK_URL
     html_text = get_html_text(url_or_path)
+    # replace span tags since the source html is broken with unmatched span tags
+    span_re = re.compile('<span.*?>', re.IGNORECASE)
+    close_span_re = re.compile('</span.*?>', re.IGNORECASE)
+    html_text = span_re.sub('', html_text)
+    html_text = close_span_re.sub('', html_text)
     park_hours = parse_park_hours_html_text(html_text)
     json_text = json.dumps(park_hours)
     logger.info(json_text)
