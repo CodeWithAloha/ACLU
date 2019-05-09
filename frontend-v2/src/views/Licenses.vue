@@ -2,13 +2,13 @@
   <div id="license-page">
     <div id="license-page-content">
       <h1>Licenses</h1>
-      <VueMarkdown>{{txt}}</VueMarkdown>
+      <VueMarkdown>{{licenseText}}</VueMarkdown>
     </div>
   </div>
 </template>
 
 <script>
-import txt from 'raw-loader!../assets/licenses.md'
+import licenseText from 'raw-loader!../assets/licenses.md'
 import VueMarkdown from 'vue-markdown'
 
 export default {
@@ -18,7 +18,7 @@ export default {
   },
   data: () => {
     return {
-      txt: txt
+      licenseText
     };
   }
 }
