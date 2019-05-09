@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <transition name="fade">
-      <Splash v-if="splash" @hide-splash="hide"></Splash>
+      <Splash v-if="splash"/>
     </transition>
     <div v-show="!splash">
-      <NavBar></NavBar>
-      <router-view />
+      <NavBar/>
+      <router-view/>
     </div>
   </div>
 </template>
@@ -22,16 +22,6 @@ export default {
   computed: {
     splash () {
       return this.$store.state.splash
-    }
-  },
-  mounted () {
-    setTimeout(() => {
-      this.hide()
-    }, 3000)
-  },
-  methods: {
-    hide: function () {
-      this.$store.commit('showSplash')
     }
   }
 }
@@ -63,7 +53,8 @@ html {
   color: #42b983;
 }
 
-#app, .page-container {
+#app,
+.page-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;

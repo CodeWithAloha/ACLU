@@ -15,12 +15,12 @@ export default {
   methods: {
     OpenRestrictionDialog () {
       this.showDialog = true
-    },
+    }
   },
   props: ['feature'],
   data: () => ({
-    showDialog: false,
-  }),
+    showDialog: false
+  })
 }
 </script>
 
