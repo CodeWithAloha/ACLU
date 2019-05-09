@@ -45,7 +45,12 @@ export default new Router({
     {
       path: '/rights',
       name: 'rights',
-      component: () => import(/* webpackChunkName: "about" */ './views/Rights.vue')
+      component: () => import(/* webpackChunkName: "rights" */ './views/Rights.vue')
+    },
+    {
+      path: '/licenses',
+      name: 'licenses',
+      component: () => import(/* webpackChunkName: "license" */ './views/Licenses.vue')
     },
     {
       path: '*',
