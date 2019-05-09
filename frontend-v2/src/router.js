@@ -48,6 +48,11 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/Rights.vue')
     },
     {
+      path: '/licenses',
+      name: 'licenses',
+      component: () => import(/* webpackChunkName: "about" */ './views/Licenses.vue')
+    },
+    {
       path: '*',
       name: '404',
       component: () => import(/* webpackChunkName: "about" */ './views/404.vue')
