@@ -33,7 +33,7 @@ export default {
       this.selectedFeature = this.$store.state.renderedFeatures[featureId]
     },
     onStatusButtonClick () {
-      this.$refs.popup.OpenRestrictionDialog();
+      this.$refs.popup.OpenRestrictionDialog()
     }
   }
 }
