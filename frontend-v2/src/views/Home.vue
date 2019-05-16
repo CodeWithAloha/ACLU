@@ -4,28 +4,28 @@
     <div v-if="selectedFeature" class="wrapper-status-button">
       <StatusButton :status="selectedFeature.properties.condition" size="large" @click="onStatusButtonClick"></StatusButton>
     </div>
-    <!-- TODO: Integrate with Details component when ready -->
-    <RestrictionPopup
-      ref="popup"
-      :feature="selectedFeature" />
+      <transition name="slide">
+        <RestrictionSlide v-if="restriction"/>
+      </transition>
   </div>
 </template>
 
 <script>
 import Map from '@/components/Map'
 import StatusButton from '@/components/StatusButton'
-import RestrictionPopup from '@/components/RestrictionPopup'
+import RestrictionSlide from '@/components/RestrictionSlide'
 
 export default {
   name: 'Home',
   components: {
     Map,
     StatusButton,
-    RestrictionPopup
+    RestrictionSlide
   },
   data () {
     return {
-      selectedFeature: null
+      selectedFeature: null,
+      restriction: false
     }
   },
   methods: {
@@ -33,7 +33,7 @@ export default {
       this.selectedFeature = this.$store.state.renderedFeatures[featureId]
     },
     onStatusButtonClick () {
-      this.$refs.popup.OpenRestrictionDialog()
+      this.restriction = !this.restriction
     }
   }
 }
@@ -49,5 +49,13 @@ export default {
   margin-left: -125px;
   left: 50%;
   text-align: center;
+}
+
+.slide-enter-active, .slide-leave-active {
+  transition: all .3s ease;
+}
+
+.slide-enter, .slide-leave-to {
+  transform: translateY(50%);
 }
 </style>
