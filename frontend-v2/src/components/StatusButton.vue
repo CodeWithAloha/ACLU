@@ -1,59 +1,62 @@
 <template>
   <!-- <router-link to="/restriction-details" class="chip" v-bind:class="[sizeClass, renderProperties.theme]">
     {{ renderProperties.text }}
-  </router-link> -->
-  <a href="#" class="chip" v-bind:class="[sizeClass, renderProperties.theme]" @click="onClick">
-      {{ renderProperties.text }}
-  </a>
+  </router-link>-->
+  <a
+    href="#"
+    class="chip"
+    v-bind:class="[sizeClass, renderProperties.theme]"
+    @click="onClick"
+  >{{ renderProperties.text }}</a>
 </template>
 
 <script>
-import { OpenStatus } from '@/services/constants'
+import { OpenStatus } from "@/services/constants";
 export default {
-  name: 'StatusButton',
+  name: "StatusButton",
   components: {},
-  props: ['status', 'size'],
+  props: ["status", "size"],
   computed: {
-    renderProperties () {
+    renderProperties() {
       switch (this.status) {
         case OpenStatus.Open:
           return {
-            theme: 'success',
-            text: 'Permitted'
-          }
+            theme: "success",
+            text: "Open to Public"
+          };
         case OpenStatus.ClosingSoon:
           return {
-            theme: 'warning',
-            text: 'Closing Soon'
-          }
+            theme: "warning",
+            text: "Closing Soon"
+          };
         case OpenStatus.Closed:
           return {
-            theme: 'alert',
-            text: 'Restricted'
-          }
+            theme: "alert",
+            text: "Closed"
+          };
         case OpenStatus.Unknown:
         default:
           return {
-            theme: 'primary',
-            text: 'Unknown'
-          }
+            theme: "primary",
+            text: "Unknown"
+          };
       }
     },
-    sizeClass () {
+    sizeClass() {
       switch (this.size) {
-        case 'large':
-          return 'large'
+        case "large":
+          return "large";
         default:
-          return 'mini'
+          return "mini";
       }
     }
   },
   methods: {
-    onClick () {
-      this.$emit('click')
+    onClick() {
+      this.$emit("click");
     }
   }
-}
+};
 </script>
 
 <style lang="scss">
