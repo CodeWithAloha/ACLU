@@ -1,4 +1,6 @@
 const webpack = require('webpack')
+const marked = require('marked')
+const renderer = new marked.Renderer()
 
 module.exports = {
   configureWebpack: {
@@ -6,6 +8,23 @@ module.exports = {
       new webpack.ProvidePlugin({
         mapboxgl: 'mapbox-gl'
       })
-    ]
+    ],
+    module: {
+      rules: [{
+        test: /\.md$/,
+        use: [
+          {
+            loader: 'html-loader'
+          },
+          {
+            loader: 'markdown-loader',
+            options: {
+              pedantic: true,
+              renderer
+            }
+          }
+        ]
+      }]
+    }
   }
 }

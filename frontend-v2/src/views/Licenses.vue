@@ -2,24 +2,20 @@
   <div id="license-page">
     <div id="license-page-content">
       <h1>Licenses</h1>
-      <VueMarkdown>{{licenseText}}</VueMarkdown>
+      <div v-html="licenseText"></div>
     </div>
   </div>
 </template>
 
 <script>
-import licenseText from 'raw-loader!../assets/licenses.md'
-import VueMarkdown from 'vue-markdown'
+import licenseText from '../assets/licenses.md'
 
 export default {
   name: 'Licenses',
-  components: {
-    VueMarkdown
-  },
   data: () => {
     return {
       licenseText
-    };
+    }
   }
 }
 </script>
