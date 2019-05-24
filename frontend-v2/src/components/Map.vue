@@ -14,29 +14,29 @@
 </template>
 
 <script>
-import Loading from '@/components/Loading'
-import Mapbox from 'mapbox-gl-vue'
-import { Map, Settings } from '@/services/constants'
-import 'mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
-import { MapboxHandler, MapboxHandlerEvents } from '@/utils/mapboxHandler'
+import Loading from "@/components/Loading";
+import Mapbox from "mapbox-gl-vue";
+import { Map, Settings } from "@/services/constants";
+import "mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
+import { MapboxHandler, MapboxHandlerEvents } from "@/utils/mapboxHandler";
 
 /**
  *  We have to keep the map reference outside vue 'data' object
  *  otherwise the mapbox styles break
  */
-let mapRef, mapboxHandler
+let mapRef, mapboxHandler;
 
 export default {
-  name: 'Map',
+  name: "Map",
   components: {
     Loading,
     Mapbox
   },
-  data: function () {
+  data: function() {
     return {
       mapboxToken: Settings.MapBoxToken,
       mapOptions: {
-        container: 'map',
+        container: "map",
         style: Map.Defaults.Style,
         center: [Map.Defaults.Longitude, Map.Defaults.Latitude],
         zoom: Map.Defaults.Zoom
@@ -44,7 +44,7 @@ export default {
       loading: true,
       geolocateControl: {
         show: true,
-        position: 'top-left',
+        position: "top-left",
         options: {
           trackUserLocation: false,
           positionOptions: {
@@ -52,56 +52,56 @@ export default {
           }
         }
       }
-    }
+    };
   },
   computed: {
-    splash () {
-      return this.$store.state.splash
+    splash() {
+      return this.$store.state.splash;
     }
   },
   watch: {
-    splash (newValue, oldValue) {
+    splash(newValue, oldValue) {
       // This method must be called after the map is shown after being initially hidden.
-      mapRef.resize()
+      mapRef.resize();
     }
   },
   methods: {
-    onLoading () {
-      this.loading = true
+    onLoading() {
+      this.loading = true;
     },
-    onFinishedLoading () {
-      this.$store.commit('showSplash')
-      this.loading = false
+    onFinishedLoading() {
+      this.$store.commit("showSplash");
+      this.loading = false;
     },
-    async onMapLoaded (map) {
+    async onMapLoaded(map) {
       try {
-        mapRef = map
-        mapboxHandler = new MapboxHandler(map, this.$store)
+        mapRef = map;
+        mapboxHandler = new MapboxHandler(map, this.$store);
 
         // Subscribe to map events
-        mapboxHandler.on(MapboxHandlerEvents.MapLoading, this.onLoading)
-        mapboxHandler.on(MapboxHandlerEvents.FeaturesLoading, this.onLoading)
-        mapboxHandler.on(MapboxHandlerEvents.MapLoaded, this.onFinishedLoading)
+        mapboxHandler.on(MapboxHandlerEvents.MapLoading, this.onLoading);
+        mapboxHandler.on(MapboxHandlerEvents.FeaturesLoading, this.onLoading);
+        mapboxHandler.on(MapboxHandlerEvents.MapLoaded, this.onFinishedLoading);
         mapboxHandler.on(
           MapboxHandlerEvents.FeaturesLoaded,
           this.onFinishedLoading
-        )
+        );
         mapboxHandler.on(MapboxHandlerEvents.FeatureSelected, feature => {
-          this.$emit('featureSelected', feature)
-        })
-        await mapboxHandler.loadMapboxWidgets()
+          this.$emit("featureSelected", feature);
+        });
+        await mapboxHandler.loadMapboxWidgets();
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
     },
-    async onUserIsGeolocated (geolocateControl, pos) {
+    async onUserIsGeolocated(geolocateControl, pos) {
       await mapboxHandler.loadFeatures(
         pos.coords.latitude,
         pos.coords.longitude
-      )
+      );
     }
   }
-}
+};
 </script>
 
 <style lang='css'>
@@ -117,10 +117,8 @@ export default {
 
 <style scoped>
 #map {
-  position: absolute;
-  bottom: 0;
-  top: 0;
   width: 100%;
+  flex: 1;
 }
 
 #geocoder {
