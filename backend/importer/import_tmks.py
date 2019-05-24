@@ -32,9 +32,9 @@ logger = logging.getLogger("aclu_importer.tmks")
 def import_tmk(tmk_features_path, api_base_url):
 
     pool = multiprocessing.Pool(processes=multiprocessing.cpu_count())
-
+    
     organization = get_organization(api_base_url, "Park")
-
+    
     numFeatures = 0
     if organization:
         for feature in get_features_from_geojson(tmk_features_path):
@@ -50,12 +50,15 @@ def import_tmk(tmk_features_path, api_base_url):
 
 
 def _construct_tmk_feature_json(feature, organization):
+    # Empty restrictions
+    feature['properties']['restrictions'] = {}
     return {
         "_id": str(uuid.uuid4()),
         "geojson": feature,
         "organization": organization["_id"],
         "name": "TMK " + str(feature['properties']['TMK']),
         "type": "tmk",
+        "restrictions": {},
         "last_imported_at":
             get_pyeve_formatted_datetime(datetime.datetime.utcnow())
     }

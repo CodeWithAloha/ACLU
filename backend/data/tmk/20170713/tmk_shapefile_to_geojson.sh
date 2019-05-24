@@ -30,4 +30,15 @@ python geojson_chunker.py --source "./2017-07-13.tmk.geojson" --destination "./t
 #   -H "Content-Type: application/json" \
 #   -d @0.1.geojson
 
-python mapbox_importer.py --source "./2017-07-13.tmk.geojson" --chunksize 100
+# python mapbox_importer.py --source "./2017-07-13.tmk.geojson" --chunksize 100
+
+
+
+
+
+# docker run -v "$(pwd)":/data geodata/gdal ogr2ogr -f GeoJSON -t_srs crs:84 2019.05.01.parks.geojson "/data/parks/2019.05.01_Parks/Parks.shp"
+# docker run -v "$(pwd)":/data geodata/gdal ogr2ogr -f GeoJSON -t_srs crs:84 2019.05.01.park_amanities.geojson "/data/parks/2019.05.01_Park_Amenities/Park_Amenities.shp"
+
+# /usr/bin/ogr2ogr -f GeoJSON -t_srs crs:84 \
+# "importer/2019.05.01.parks.geojson" \
+# "data/parks/2019.05.01_Parks/Parks.shp"

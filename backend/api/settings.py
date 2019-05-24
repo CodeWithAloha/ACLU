@@ -49,6 +49,9 @@ features = {
         'last_imported_at': {
             'type': 'datetime'
         },
+        'restrictions': {
+            'type': "dict",
+        },
     }
 }
 
@@ -137,6 +140,5 @@ feature_park_restrictions = {
 DOMAIN = {
     'organizations': organizations,
     'features': features,
-    'feature_park_restrictions': feature_park_restrictions,
     'holidays': holidays
 }
