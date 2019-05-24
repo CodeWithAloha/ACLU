@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mapbox-container">
     <Loading v-if="loading"/>
     <div id="geocoder" class="geocoder"></div>
     <mapbox
@@ -128,5 +128,10 @@ export default {
   left: 50%;
   margin-left: -25%;
   margin-top: 10px;
+}
+
+.mapbox-container {
+  display: flex;
+  flex: 1;
 }
 </style>

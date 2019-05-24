@@ -9,7 +9,7 @@
       ></StatusButton>
     </div>
     <transition name="slide">
-      <RestrictionSlide v-if="restriction"/>
+      <RestrictionSlide @close="closeRestrictionSlide()" v-if="restriction"/>
     </transition>
   </div>
 </template>
@@ -38,6 +38,9 @@ export default {
     },
     onStatusButtonClick() {
       this.restriction = !this.restriction;
+    },
+    closeRestrictionSlide() {
+      this.restriction = false;
     }
   }
 };
@@ -69,10 +72,5 @@ export default {
   display: flex;
   flex-direction: column;
   flex: 1;
-
-  > div {
-    display: flex;
-    flex: 1;
-  }
 }
 </style>
