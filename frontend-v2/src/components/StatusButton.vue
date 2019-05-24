@@ -11,52 +11,52 @@
 </template>
 
 <script>
-import { OpenStatus } from "@/services/constants";
+import { OpenStatus } from '@/services/constants'
 export default {
-  name: "StatusButton",
+  name: 'StatusButton',
   components: {},
-  props: ["status", "size"],
+  props: ['status', 'size'],
   computed: {
-    renderProperties() {
+    renderProperties () {
       switch (this.status) {
         case OpenStatus.Open:
           return {
-            theme: "success",
-            text: "Open to Public"
-          };
+            theme: 'success',
+            text: 'Open to Public'
+          }
         case OpenStatus.ClosingSoon:
           return {
-            theme: "warning",
-            text: "Closing Soon"
-          };
+            theme: 'warning',
+            text: 'Closing Soon'
+          }
         case OpenStatus.Closed:
           return {
-            theme: "alert",
-            text: "Closed"
-          };
+            theme: 'alert',
+            text: 'Closed'
+          }
         case OpenStatus.Unknown:
         default:
           return {
-            theme: "primary",
-            text: "Unknown"
-          };
+            theme: 'primary',
+            text: 'Unknown'
+          }
       }
     },
-    sizeClass() {
+    sizeClass () {
       switch (this.size) {
-        case "large":
-          return "large";
+        case 'large':
+          return 'large'
         default:
-          return "mini";
+          return 'mini'
       }
     }
   },
   methods: {
-    onClick() {
-      this.$emit("click");
+    onClick () {
+      this.$emit('click')
     }
   }
-};
+}
 </script>
 
 <style lang="scss">
