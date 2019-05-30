@@ -1,44 +1,51 @@
 <template>
-<div>
+  <div class="map-container">
     <Map @featureSelected="onFeatureSelected"></Map>
     <div v-if="selectedFeature" class="wrapper-status-button">
-      <StatusButton :status="selectedFeature.properties.condition" size="large" @click="onStatusButtonClick"></StatusButton>
+      <StatusButton
+        :status="selectedFeature.properties.condition"
+        size="large"
+        @click="onStatusButtonClick"
+      ></StatusButton>
     </div>
-    <!-- TODO: Integrate with Details component when ready -->
-    <RestrictionPopup
-      ref="popup"
-      :feature="selectedFeature" />
+    <transition name="slide">
+      <RestrictionSlide @close="closeRestrictionSlide()" v-if="restriction"/>
+    </transition>
   </div>
 </template>
 
 <script>
-import Map from '@/components/Map'
-import StatusButton from '@/components/StatusButton'
-import RestrictionPopup from '@/components/RestrictionPopup'
+import Map from "@/components/Map";
+import StatusButton from "@/components/StatusButton";
+import RestrictionSlide from "@/components/RestrictionSlide";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     Map,
     StatusButton,
-    RestrictionPopup
+    RestrictionSlide
   },
-  data () {
+  data() {
     return {
-      selectedFeature: null
-    }
+      selectedFeature: null,
+      restriction: false
+    };
   },
   methods: {
-    onFeatureSelected (featureId) {
-      this.selectedFeature = this.$store.state.renderedFeatures[featureId]
+    onFeatureSelected(featureId) {
+      this.selectedFeature = this.$store.state.renderedFeatures[featureId];
     },
-    onStatusButtonClick () {
-      this.$refs.popup.OpenRestrictionDialog()
+    onStatusButtonClick() {
+      this.restriction = !this.restriction;
+    },
+    closeRestrictionSlide() {
+      this.restriction = false;
     }
   }
-}
+};
 </script>
-<style>
+<style lang="scss">
 .wrapper-status-button {
   position: absolute;
   bottom: 50px;
@@ -49,5 +56,21 @@ export default {
   margin-left: -125px;
   left: 50%;
   text-align: center;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.3s ease;
+}
+
+.slide-enter,
+.slide-leave-to {
+  transform: translateY(100%);
+}
+
+.map-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 </style>

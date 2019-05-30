@@ -34,11 +34,11 @@ export default {
   z-index: 99;
 }
 
-.fade-enter-active, .fade-leave-active {
+.fade-leave-active {
   transition: opacity .5s;
 }
 
-.fade-enter, .fade-leave-to {
+.fade-leave-to {
   opacity: 0;
 }
 
