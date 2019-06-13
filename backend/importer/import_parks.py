@@ -99,7 +99,7 @@ def _construct_park_feature_json(feature, organization, park_hours, park_ameniti
 def _attach_park_hours_restrictions(f, park_name, park_hours):
     try:
         hours = park_hours.get(park_name, False)
-        if hours is not None:
+        if hours:
             logger.info("Setting park hours for {0}".format(park_name))
             hours_parts = hours.get('park')
             hours = {
@@ -112,6 +112,7 @@ def _attach_park_hours_restrictions(f, park_name, park_hours):
     except Exception as e:
         logger.error("Error occurred trying to attach park hour restrictions: "
                      + str(e))
+        logger.error(traceback.format_exc())
 
 def _attach_data_from_park_amenities_file(f, park_name, park_amenities_json):
     try:
