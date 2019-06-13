@@ -71,13 +71,6 @@
             <span class="md-list-item-text">settings</span>
           </router-link>
         </md-list-item>
-
-        <md-list-item @click="showNavigation=false">
-          <router-link to="/licenses">
-            <md-icon>code</md-icon>
-            <span class="md-list-item-text">open source licenses</span>
-          </router-link>
-        </md-list-item>
       </md-list>
 
       <Ribbon/>
@@ -86,10 +79,10 @@
 </template>
 
 <script>
-import Ribbon from '@/components/Ribbon'
+import Ribbon from "@/components/Ribbon";
 
 export default {
-  name: 'NavBar',
+  name: "NavBar",
   components: {
     Ribbon
   },
@@ -97,7 +90,7 @@ export default {
     showNavigation: false,
     showSidepanel: false
   })
-}
+};
 </script>
 
 <style lang="scss" scoped>

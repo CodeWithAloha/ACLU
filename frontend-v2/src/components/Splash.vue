@@ -8,14 +8,14 @@
 </template>
 
 <script>
-import RibbonComponent from '@/components/Ribbon'
+import RibbonComponent from "@/components/Ribbon";
 
 export default {
-  name: 'Splash',
+  name: "Splash",
   components: {
     RibbonComponent
   }
-}
+};
 </script>
 
 <style scoped>
@@ -35,7 +35,7 @@ export default {
 }
 
 .fade-leave-active {
-  transition: opacity .5s;
+  transition: opacity 0.5s;
 }
 
 .fade-leave-to {
