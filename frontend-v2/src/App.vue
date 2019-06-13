@@ -11,20 +11,20 @@
 </template>
 
 <script>
-import Splash from "@/components/Splash";
-import NavBar from "@/components/NavBar";
+import Splash from '@/components/Splash'
+import NavBar from '@/components/NavBar'
 export default {
-  name: "App",
+  name: 'App',
   components: {
     Splash,
     NavBar
   },
   computed: {
-    splash() {
-      return this.$store.state.splash;
+    splash () {
+      return this.$store.state.splash
     }
-  },
-};
+  }
+}
 </script>
 
 <style>

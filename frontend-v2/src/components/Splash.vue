@@ -8,14 +8,14 @@
 </template>
 
 <script>
-import RibbonComponent from "@/components/Ribbon";
+import RibbonComponent from '@/components/Ribbon'
 
 export default {
-  name: "Splash",
+  name: 'Splash',
   components: {
     RibbonComponent
   }
-};
+}
 </script>
 
 <style scoped>

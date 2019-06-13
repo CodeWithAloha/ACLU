@@ -8,8 +8,8 @@
 
 <script>
 export default {
-  name: "RestrictionSlide"
-};
+  name: 'RestrictionSlide'
+}
 </script>
 
 <style scoped>
