@@ -1,6 +1,6 @@
 <template>
   <div id="rights-page">
-    <div id="rights-page-content">
+    <div class="page-content" id="rights-page-content">
       <h1>Your Rights</h1>
       <p>
         Holoholo is an open-source web app designed to help you better know your rights

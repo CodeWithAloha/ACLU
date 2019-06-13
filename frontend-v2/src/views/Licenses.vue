@@ -1,6 +1,6 @@
 <template>
   <div id="license-page">
-    <div id="license-page-content">
+    <div class="page-content">
       <h1>Licenses</h1>
       <div v-html="licenseText"></div>
     </div>
@@ -19,12 +19,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-#license-page-content {
-  padding: 2rem 4rem;
-  font-size: 1rem;
-  line-height: 2rem;
-  overflow-x: hidden;
-}
-</style>
