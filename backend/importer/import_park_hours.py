@@ -13,6 +13,8 @@ import requests
 import json
 import re
 import sys
+import argparse
+
 from bs4 import BeautifulSoup
 
 logging.config.fileConfig(
@@ -84,7 +86,8 @@ def parse_park_hours_html_text(html_text):
                 park.append(park[-1])
 
             # Assume first line of park description is name
-            entry = {'name': park[0], 'hours': {}}
+            entry = {'name': translate_unicode(park[0]),
+                     'hours': {}}
 
             # then modify first description to be canonical 'park' for entry_hours
             park[0] = "park"
@@ -104,15 +107,45 @@ def get_html_text(url_or_path):
     if url_or_path.lower().startswith("http"):
         return requests.get(url_or_path).text
     # if not, try to read it from a path
-    with open(url_or_path, "r") as f:
-        return f.read()
-    # else return empty string
-    return ""
+    try:
+        with open(url_or_path, "r") as f:
+            return f.read()
+    except Exception:
+        return ""
 
 
-def main(argv):
-    url_or_path = argv[1] if len(argv) > 1 else PARK_URL
-    html_text = get_html_text(url_or_path)
+def translate_unicode(input: str) -> str:
+    """
+    Code to convert Hawaiian uncode to ascii, in particular remove kahakos and okinas
+
+    :param input: string to clean
+    :return: string with kahakos and okinas removed
+    """
+    trans_input = "Āāōūʻ"
+    trans_output = "Aaou "
+    trans_table = str.maketrans(trans_input, trans_output)
+    return input.translate(trans_table)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output_file",
+                        "-o",
+                        type=str,
+                        default="park_hours.json",
+                        help="path to file to output")
+    parser.add_argument("--import_url",
+                        "-i",
+                        type=str,
+                        default=PARK_URL,
+                        help="path to file or url to use for parsing")
+    parser.add_argument("--force",
+                        action="store_true")
+    args = parser.parse_args()
+    if os.path.exists(args.output_file) and not args.force:
+        logger.error(f"Refusing to overwrite: {args.output_file}\n")
+        sys.exit(1)
+    html_text = get_html_text(args.import_url)
     # replace span tags since the source html is broken with unmatched span tags
     span_re = re.compile('<span.*?>', re.IGNORECASE)
     close_span_re = re.compile('</span.*?>', re.IGNORECASE)
@@ -120,16 +153,16 @@ def main(argv):
     html_text = close_span_re.sub('', html_text)
     park_hours = parse_park_hours_html_text(html_text)
     json_text = json.dumps(park_hours)
-    with open('park_hours.json', 'w') as f:
-      f.write(json_text)
-    logger.info(json_text)
+
+    with open(args.output_file, 'w') as f:
+        f.write(json_text)
     return 0
 
 
 if __name__ == '__main__':
     try:
-        result = main(sys.argv)
-    except:
+        result = main()
+    except Exception:
         result = -1
         raise
     sys.exit(result)
