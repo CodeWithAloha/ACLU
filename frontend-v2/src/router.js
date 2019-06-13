@@ -19,7 +19,8 @@ export default new Router({
     },
     {
       path: '/report-feedback',
-      name: 'report-feedback'
+      name: 'report-feedback',
+      component: () => import(/* webpackChunkName: "report-feedback" */ './views/ReportFeedback.vue')
     },
     {
       path: '/settings',
@@ -40,6 +41,16 @@ export default new Router({
       path: '/restriction-details',
       name: 'restriction-details',
       component: () => import(/* webpackChunkName: "about" */ './views/RestrictionDetails.vue')
+    },
+    {
+      path: '/rights',
+      name: 'rights',
+      component: () => import(/* webpackChunkName: "rights" */ './views/Rights.vue')
+    },
+    {
+      path: '/licenses',
+      name: 'licenses',
+      component: () => import(/* webpackChunkName: "license" */ './views/Licenses.vue')
     },
     {
       path: '*',

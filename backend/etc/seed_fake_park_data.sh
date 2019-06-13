@@ -390,7 +390,7 @@ done;
 
 cd "${__dir}/../"
 
-/usr/bin/ogr2ogr -f GeoJSON -t_srs crs:84 \
+ogr2ogr -f GeoJSON -t_srs crs:84 \
 "importer/2017-07-19.parks.geojson" \
 "data/parks/2017.07.19 - Parks__Oahu/Parks__Oahu.shp"
 

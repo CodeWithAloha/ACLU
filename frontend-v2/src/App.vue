@@ -1,12 +1,12 @@
 <template>
   <div id="app">
     <transition name="fade">
-      <Splash v-if="showSplash" @click="hide"></Splash>
-      <div v-show="!showSplash">
-        <NavBar></NavBar>
-        <router-view/>
-      </div>
+      <Splash v-if="splash"/>
     </transition>
+    <div v-show="!splash">
+      <NavBar/>
+      <router-view/>
+    </div>
   </div>
 </template>
 
@@ -19,29 +19,22 @@ export default {
     Splash,
     NavBar
   },
-  data: () => ({
-    showSplash: true
-  }),
-  mounted () {
-    setTimeout(() => {
-      this.hide()
-    }, 2000)
-  },
-  methods: {
-    hide: function () {
-      this.showSplash = false
+  computed: {
+    splash () {
+      return this.$store.state.splash
     }
   }
 }
 </script>
 
 <style>
-body, html {
+body,
+html {
   height: 100%;
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
@@ -60,7 +53,8 @@ body, html {
   color: #42b983;
 }
 
-#app, .page-container {
+#app,
+.page-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;

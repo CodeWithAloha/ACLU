@@ -3,17 +3,17 @@
 ## Requirements
 
 * Docker ([Mac](https://store.docker.com/editions/community/docker-ce-desktop-mac); Linux :neckbeard:)
-* [jq](https://stedolan.github.io/jq/)
-* [httpie](https://httpie.org/)
+* [jq](https://stedolan.github.io/jq/) -- for jq command
+* [httpie](https://httpie.org/) -- for http command
+* [gdal](https://gdal.org/) -- for ogr2ogr command
 * Python 2.7.9
 
 ## Running
 
 As a note, to run the database, you need a .env file in this directory that
 contains the database environment variables. Please ask someone in the channel
-#cfh-aclu for the file. We do know that there is an extraneous Mongo db image
-currently in the docker-compose script, but we kept it around for s-giggles in
-the case that someone wants to run Mongo locally.
+#cfh-aclu for the file. If you want to run mongodb locally, uncomment the
+mongo image settings to use the bitnami mongodb image.
 
 ```
 $ make dev
@@ -25,6 +25,21 @@ $ curl http://localhost:50050/aloha
 Please see the [data schema](Schema.md) for more details.
 
 # Common tasks
+
+## Environment variables
+
+Many of the commands and files below assume that the following environment
+variables are set:
+
+* MONGO_HOST (use aclu-db to match the docker compose container name)
+* MONGO_PORT (27017 should be used)
+* MONGO_USERNAME
+* MONGO_PASSWORD
+* MONGO_DBNAME 
+
+If `MONGO_HOST` or `MONGO_PORT` are not set to `aclu-db` or `27017` respectively
+, you will need to change the docker-compose configs and probably several of the
+scripts in order to get things to run.
 
 ## Converting tmk data to geojson
 
@@ -124,8 +139,9 @@ aclu-api |  planner returned error: unable to find index for $geoNear query
 
 ### Creating the spatial index
 
-```docker exec -it <db_container_id> mongo aclu --eval "db.features.ensureIndex({'geojson.geometry': '2dsphere'})"```
-docker exec -it c322bf76719f mongo aclu --eval "db.features.ensureIndex({'geojson.geometry': '2dsphere'})"
+
+```docker exec -it <db_container_id> mongo --username ${MONGO_USERNAME} --password ${MONGO_PASSWORD} ${MONGO_DBNAME} --eval "db.features.ensureIndex({'geojson.geometry': '2dsphere'})"```
+
 ### Dropping entire collection
 
 ```docker exec -it <db_container_id> mongo aclu --eval "db.features.drop()"```
