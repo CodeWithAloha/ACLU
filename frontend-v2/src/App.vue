@@ -59,4 +59,17 @@ html {
   display: flex;
   flex-direction: column;
 }
+
+.page-content {
+  padding: 2rem 4rem;
+  font-size: 1rem;
+  line-height: 2rem;
+  overflow-x: hidden;
+}
+
+@media (max-width: 720px) {
+  .page-content {
+    padding: 1rem 2rem;
+  }
+}
 </style>
