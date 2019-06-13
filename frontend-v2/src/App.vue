@@ -3,7 +3,7 @@
     <transition name="fade">
       <Splash v-if="splash"/>
     </transition>
-    <div v-show="!splash">
+    <div class="page-container" v-show="!splash">
       <NavBar/>
       <router-view/>
     </div>
@@ -11,20 +11,20 @@
 </template>
 
 <script>
-import Splash from '@/components/Splash'
-import NavBar from '@/components/NavBar'
+import Splash from "@/components/Splash";
+import NavBar from "@/components/NavBar";
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Splash,
     NavBar
   },
   computed: {
-    splash () {
-      return this.$store.state.splash
+    splash() {
+      return this.$store.state.splash;
     }
   }
-}
+};
 </script>
 
 <style>

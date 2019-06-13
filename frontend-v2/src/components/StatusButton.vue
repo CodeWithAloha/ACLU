@@ -1,10 +1,13 @@
 <template>
   <!-- <router-link to="/restriction-details" class="chip" v-bind:class="[sizeClass, renderProperties.theme]">
     {{ renderProperties.text }}
-  </router-link> -->
-  <a href="#" class="chip" v-bind:class="[sizeClass, renderProperties.theme]" @click="onClick">
-      {{ renderProperties.text }}
-  </a>
+  </router-link>-->
+  <a
+    href="#"
+    class="chip"
+    v-bind:class="[sizeClass, renderProperties.theme]"
+    @click="onClick"
+  >{{ renderProperties.text }}</a>
 </template>
 
 <script>
@@ -19,7 +22,7 @@ export default {
         case OpenStatus.Open:
           return {
             theme: 'success',
-            text: 'Permitted'
+            text: 'Open to Public'
           }
         case OpenStatus.ClosingSoon:
           return {
@@ -29,7 +32,7 @@ export default {
         case OpenStatus.Closed:
           return {
             theme: 'alert',
-            text: 'Restricted'
+            text: 'Closed'
           }
         case OpenStatus.Unknown:
         default:
