@@ -38,7 +38,7 @@ phases:
       - cd $CODEBUILD_SRC_DIR # move to code buil root directory, in case that previous script cd into a different directory
       - echo Building Frontend
       - cd frontend-v2
-      - npm run build --prod
+      - npm run build #--prod
       - echo Building API containers
       - cd $CODEBUILD_SRC_DIR/backend
       - docker build --build-arg MONGO_HOST=$MONGO_HOST --build-arg MONGO_PORT=$MONGO_PORT --build-arg MONGO_USERNAME=$MONGO_USERNAME --build-arg MONGO_PASSWORD=$MONGO_PASSWORD --build-arg MONGO_DBNAME=$MONGO_DBNAME -t $IMAGES_REPO_URL:$IMAGE_TAG .
