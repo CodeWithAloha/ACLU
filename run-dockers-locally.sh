@@ -20,7 +20,10 @@ docker run -d --name=aclu-api \
   aclu-api
 
 cd ./backend/importer
+python import_park_hours.py > 2019.05.22.park_hours.json
+
 python import_parks.py \
   --park_features_path "./2019.05.01.parks.geojson" \
-  --park_hours_path="../data/parks/2017.10.20_Honolulu-Park-Hours/park-closure-hours.json" \
+  --park_hours_path="./2019.05.22.park_hours.json" \
   --park_amenities_path="2019.05.01.park_amenities.geojson"
+

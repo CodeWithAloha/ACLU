@@ -70,7 +70,6 @@ def _post_park_feature_and_restriction(api_base_url,
                                        park_hours,
                                        park_amenities_json):
     f = _construct_park_feature_json(feature, organization, park_hours, park_amenities_json)
-    
     feature_id = post_feature(api_base_url, f)
 
 def _construct_park_feature_json(feature, organization, park_hours, park_amenities_json):
@@ -100,7 +99,7 @@ def _construct_park_feature_json(feature, organization, park_hours, park_ameniti
 def _attach_park_hours_restrictions(f, park_name, park_hours):
     try:
         hours = park_hours.get(park_name, False)
-        if hours:
+        if hours is not None:
             logger.info("Setting park hours for {0}".format(park_name))
             hours_parts = hours.get('park')
             hours = {
