@@ -24,13 +24,6 @@ export default {
       return this.$store.state.splash;
     }
   },
-  mounted() {
-    if (this.$route.name !== "home") {
-      setTimeout(() => {
-        this.$store.commit("hideSplash");
-      }, 1000);
-    }
-  }
 };
 </script>
 
