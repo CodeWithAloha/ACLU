@@ -7,7 +7,10 @@
 
 import json
 import logging
+import re
+
 import requests
+
 
 
 logger = logging.getLogger("aclu_importer.utilities")
@@ -97,6 +100,28 @@ def _get_api_resource_url(api_base_url, resource):
 def _get_regex_payload(field, field_query):
     regex_payload = {field: {'$regex': ".*" + field_query + ".*"}}
     return {'where': json.dumps(regex_payload)}
+
+
+unicode_re = re.compile(r'\W', re.ASCII)
+
+
+def normalize_string(input: str) -> str:
+    """
+    Code to convert Hawaiian uncode to ascii, in particular remove kahakos and okinas
+
+    :param input: string to clean
+    :return: string with kahakos and okinas removed
+    """
+    trans_input = "Āāēīōōū"
+    trans_output = "Aaeioou"
+    trans_table = str.maketrans(trans_input, trans_output)
+    # need to remove the okina, the translations require a 1 to 1 replacement
+    # so do it with a replace
+    # new_input = input.replace('ʻ', '')
+    # new_input = new_input.replace('‘', '')
+    new_input = input.translate(trans_table)
+    return unicode_re.sub('', new_input, re.ASCII)
+
 
 
 # vim: fenc=utf-8
