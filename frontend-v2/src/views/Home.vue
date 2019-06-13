@@ -15,35 +15,35 @@
 </template>
 
 <script>
-import Map from "@/components/Map";
-import StatusButton from "@/components/StatusButton";
-import RestrictionSlide from "@/components/RestrictionSlide";
+import Map from '@/components/Map'
+import StatusButton from '@/components/StatusButton'
+import RestrictionSlide from '@/components/RestrictionSlide'
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     Map,
     StatusButton,
     RestrictionSlide
   },
-  data() {
+  data () {
     return {
       selectedFeature: null,
       restriction: false
-    };
+    }
   },
   methods: {
-    onFeatureSelected(featureId) {
-      this.selectedFeature = this.$store.state.renderedFeatures[featureId];
+    onFeatureSelected (featureId) {
+      this.selectedFeature = this.$store.state.renderedFeatures[featureId]
     },
-    onStatusButtonClick() {
-      this.restriction = !this.restriction;
+    onStatusButtonClick () {
+      this.restriction = !this.restriction
     },
-    closeRestrictionSlide() {
-      this.restriction = false;
+    closeRestrictionSlide () {
+      this.restriction = false
     }
   }
-};
+}
 </script>
 <style lang="scss">
 .wrapper-status-button {
