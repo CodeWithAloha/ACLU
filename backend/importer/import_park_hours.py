@@ -121,10 +121,14 @@ def translate_unicode(input: str) -> str:
     :param input: string to clean
     :return: string with kahakos and okinas removed
     """
-    trans_input = "Āāōūʻ"
-    trans_output = "Aaou "
+    trans_input = "Āāēīōōū"
+    trans_output = "Aaeioou"
     trans_table = str.maketrans(trans_input, trans_output)
-    return input.translate(trans_table)
+    # need to remove the okina, the translations require a 1 to 1 replacement
+    # so do it with a replace
+    new_input = input.replace('ʻ', '')
+    new_input = new_input.replace('‘', '')
+    return new_input.translate(trans_table)
 
 
 def main():
