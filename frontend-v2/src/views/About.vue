@@ -58,18 +58,17 @@ export default {
 </script>
 
 <style scoped>
-    #about-page {
-        background-color: #fafafa;
-        text-align: center;
-        align-content: center;
-    }
-    #about-page-text {
-        text-align: left;
-        align-content: left;
-
-    }
-    #about-page-content {
-        width: 80%;
-        display: inline-block;
-    }
+#about-page {
+  background-color: #fafafa;
+  text-align: center;
+  align-content: center;
+}
+#about-page-text {
+  text-align: left;
+  align-content: left;
+}
+#about-page-content {
+  width: 80%;
+  display: inline-block;
+}
 </style>

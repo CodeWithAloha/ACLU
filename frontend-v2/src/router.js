@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import About from './views/About.vue'
+import Store from './store'
 
 Vue.use(Router)
 
@@ -10,7 +11,11 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      beforeEnter (to, from, next) {
+        Store.commit('showSplash')
+        next()
+      }
     },
     {
       path: '/about',

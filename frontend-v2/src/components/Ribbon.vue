@@ -13,7 +13,7 @@ export default {
 <style>
 .ribbon {
   position: absolute;
-  bottom: 50px;
+  bottom: 35px;
   background-color: #4e82ed;
   width: 100%;
   text-align: center;

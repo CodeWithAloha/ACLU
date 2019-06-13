@@ -71,13 +71,6 @@
             <span class="md-list-item-text">settings</span>
           </router-link>
         </md-list-item>
-
-        <md-list-item @click="showNavigation=false">
-          <router-link to="/licenses">
-            <md-icon>code</md-icon>
-            <span class="md-list-item-text">open source licenses</span>
-          </router-link>
-        </md-list-item>
       </md-list>
 
       <Ribbon/>

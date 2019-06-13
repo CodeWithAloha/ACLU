@@ -70,7 +70,7 @@ export default {
       this.loading = true
     },
     onFinishedLoading () {
-      this.$store.commit('showSplash')
+      this.$store.commit('hideSplash')
       this.loading = false
     },
     async onMapLoaded (map) {
