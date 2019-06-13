@@ -117,9 +117,8 @@ def normalize_string(input: str) -> str:
     trans_table = str.maketrans(trans_input, trans_output)
     # need to remove the okina, the translations require a 1 to 1 replacement
     # so do it with a replace
-    # new_input = input.replace('ʻ', '')
-    # new_input = new_input.replace('‘', '')
     new_input = input.translate(trans_table)
+    new_input = new_input.lower()
     return unicode_re.sub('', new_input, re.ASCII)
 
 
