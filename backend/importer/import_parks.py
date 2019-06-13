@@ -77,12 +77,13 @@ def _construct_park_feature_json(feature, organization, park_hours, park_ameniti
     id = str(uuid.uuid4())
 
     # It is standard to add attributes to geojson properties
+    feature['properties']['NAME'] = park_name
+    feature['properties']['ID'] = id
     feature['properties']['RESTRICTIONS'] = {}
     feature['properties']['OWNERSHIP'] = 'CITY'
     feature['properties']['TYPE'] = 'park'
     feature['properties']['ORGANIZATION'] = organization["_id"]
     feature['properties']['FEATURE_TYPE'] = 'PARK'
-    feature['properties']['ID'] = id
 
     f = {
         "_id": id,

@@ -33,7 +33,7 @@ def import_tmk(tmk_features_path, api_base_url):
 
     pool = multiprocessing.Pool(processes=multiprocessing.cpu_count())
     
-    organization = get_organization(api_base_url, "Park")
+    organization = get_organization(api_base_url, "Private")
     
     numFeatures = 0
     if organization:
@@ -50,17 +50,21 @@ def import_tmk(tmk_features_path, api_base_url):
 
 
 def _construct_tmk_feature_json(feature, organization):
-    # Empty restrictions
-    feature['properties']['restrictions'] = {}
+    id = str(uuid.uuid4())
+    name = "TMK " + str(feature['properties']['TMK'])
+    feature['properties']['NAME'] = name
+    feature['properties']['ID'] = id
+    feature['properties']['RESTRICTIONS'] = {}
+    feature['properties']['OWNERSHIP'] = 'PRIVATE'
+    feature['properties']['TYPE'] = 'tmk'
+    feature['properties']['ORGANIZATION'] = organization["_id"]
+    feature['properties']['FEATURE_TYPE'] = 'TMK'
+    
     return {
-        "_id": str(uuid.uuid4()),
+        "_id": id,
         "geojson": feature,
-        "organization": organization["_id"],
-        "name": "TMK " + str(feature['properties']['TMK']),
-        "type": "tmk",
-        "restrictions": {},
-        "last_imported_at":
-            get_pyeve_formatted_datetime(datetime.datetime.utcnow())
+        "name": name,
+        "last_imported_at": get_pyeve_formatted_datetime(datetime.datetime.utcnow())
     }
 
 
