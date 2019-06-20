@@ -72,8 +72,6 @@
           </router-link>
         </md-list-item>
       </md-list>
-
-      <Ribbon/>
     </md-drawer>
   </div>
 </template>
