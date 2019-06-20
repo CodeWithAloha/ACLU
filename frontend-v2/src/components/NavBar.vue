@@ -72,17 +72,15 @@
           </router-link>
         </md-list-item>
       </md-list>
-
-      <Ribbon/>
     </md-drawer>
   </div>
 </template>
 
 <script>
-import Ribbon from '@/components/Ribbon'
+import Ribbon from "@/components/Ribbon";
 
 export default {
-  name: 'NavBar',
+  name: "NavBar",
   components: {
     Ribbon
   },
@@ -90,7 +88,7 @@ export default {
     showNavigation: false,
     showSidepanel: false
   })
-}
+};
 </script>
 
 <style lang="scss" scoped>
