@@ -19,6 +19,8 @@ new Vue({
 if (!store.state.renderedFeatures) store.state.renderedFeatures = {}
 if (!store.state.accessibility.completedInitialSurvey) {
   router.replace('accessibility')
+  store.commit('hideSplash')
 } else if (!store.state.completedIntro) {
   router.replace('intro')
+  store.commit('hideSplash')
 }
