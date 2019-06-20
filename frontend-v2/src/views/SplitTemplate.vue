@@ -21,8 +21,8 @@
 
 <script>
 export default {
-  props: ["next", "back", "nextText"]
-};
+  props: ['next', 'back', 'nextText']
+}
 </script>
 
 <style lang="scss">
