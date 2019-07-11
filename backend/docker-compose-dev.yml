@@ -17,14 +17,14 @@ services:
       - ./api:/src/api
     links:
       - db
-  #db:
-  #  container_name: aclu-db
-  #  image: 'bitnami/mongodb:4.0.9'
-  #  ports:
-  #    - "27017:27017"
-  #  volumes:
-  #    - ./mongodb-data:/bitnami
-  #  environment:
-  #    - MONGODB_USERNAME=${MONGO_USERNAME}
-  #    - MONGODB_PASSWORD=${MONGO_PASSWORD}
-  #    - MONGODB_DATABASE=${MONGO_DBNAME}
+  db:
+    container_name: aclu-db
+    image: 'bitnami/mongodb:4.0.9'
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongodb-data:/bitnami
+    environment:
+      - MONGODB_USERNAME=${MONGO_USERNAME}
+      - MONGODB_PASSWORD=${MONGO_PASSWORD}
+      - MONGODB_DATABASE=${MONGO_DBNAME}
