@@ -151,6 +151,10 @@ img {
   max-width: 75%;
 }
 
+.Title {
+  margin: 0;
+}
+
 .status-buttons-wrap {
   display: flex;
   flex-wrap: wrap;
