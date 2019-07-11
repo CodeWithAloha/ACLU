@@ -24,3 +24,5 @@ if (!store.state.accessibility.completedInitialSurvey) {
   router.replace('intro')
   store.commit('hideSplash')
 }
+
+document.querySelector('#app').style.height = `${window.innerHeight}px`
