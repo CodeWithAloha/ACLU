@@ -1,7 +1,7 @@
 <template>
   <SplitTemplate v-if="page == 0" :next="next">
     <template slot="title">
-      logo
+      <img class="logo" src="../assets/holoholo-logo@3x.png" alt="Holo Holo">
     </template>
     <template slot="body">
       <h1>Go for a walk</h1>
@@ -17,7 +17,7 @@
     :back="back"
   >
     <template slot="title">
-      logo
+      <img class="logo" src="../assets/holoholo-logo@3x.png" alt="Holo Holo">
     </template>
     <template slot="body">
       <h1>How it works</h1>
@@ -33,7 +33,7 @@
     :back="back"
   >
     <template slot="title">
-      logo
+      <img class="logo" src="../assets/holoholo-logo@3x.png" alt="Holo Holo">
     </template>
     <template slot="body">
       <h1>How it works</h1>
@@ -56,7 +56,7 @@
     :back="back"
   >
     <template slot="title">
-      logo
+      <img class="logo" src="../assets/holoholo-logo@3x.png" alt="Holo Holo">
     </template>
     <template slot="body">
       <StatusButton :status="OpenStatus.Closed" size="large"></StatusButton>
@@ -71,7 +71,7 @@
     :back="back"
   >
     <template slot="title">
-      logo
+      <img class="logo" src="../assets/holoholo-logo@3x.png" alt="Holo Holo">
     </template>
     <template slot="body">
       <StatusButton :status="OpenStatus.ClosingSoon" size="large"></StatusButton>
@@ -86,7 +86,7 @@
     :back="back"
   >
     <template slot="title">
-      logo
+      <img class="logo" src="../assets/holoholo-logo@3x.png" alt="Holo Holo">
     </template>
     <template slot="body">
       <StatusButton :status="OpenStatus.Open" size="large"></StatusButton>
@@ -101,7 +101,7 @@
     :back="back"
   >
     <template slot="title">
-      logo
+      <img class="logo" src="../assets/holoholo-logo@3x.png" alt="Holo Holo">
     </template>
     <template slot="body">
       <StatusButton :status="OpenStatus.Unknown" size="large"></StatusButton>
@@ -147,6 +147,14 @@ export default {
 </script>
 
 <style lang="scss">
+img {
+  max-width: 75%;
+}
+
+.Title {
+  margin: 0;
+}
+
 .status-buttons-wrap {
   display: flex;
   flex-wrap: wrap;
