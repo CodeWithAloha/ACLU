@@ -2,6 +2,7 @@
   <md-button
     class="md-raised status"
     v-bind:class="[renderProperties.theme]"
+    @click="$emit('click')"
   >{{ renderProperties.text }}</md-button>
 </template>
 
