@@ -4,7 +4,6 @@
     <div v-if="selectedFeature" class="wrapper-status-button">
       <StatusButton
         :status="selectedFeature.properties.condition"
-        size="large"
         @click="onStatusButtonClick"
       ></StatusButton>
     </div>
