@@ -107,7 +107,7 @@ The seed_fake_park_data.sh script should perform the following:
  - Run the command "Converting parks data to geojson" to convert the parks data into a 2017-07-19.parks.geojson file placed into the importer directory
  - Run the command above to seed the organizations
  - ```cd importer; pip install -r requirements.txt```
- - ```python import_parks.py --feature_collection_path <path_to/2017-07-19.parks.geojson> ``` to bring in the parks data
+ - ```python import_parks.py --feature_collection_path <path_to/2017-07-19.parks.geojson>``` to bring in the parks data
 
 To see that the script worked:
 
@@ -139,11 +139,13 @@ aclu-api |  planner returned error: unable to find index for $geoNear query
 
 ### Creating the spatial index
 
+
 ```docker exec -it <db_container_id> mongo --username ${MONGO_USERNAME} --password ${MONGO_PASSWORD} ${MONGO_DBNAME} --eval "db.features.ensureIndex({'geojson.geometry': '2dsphere'})"```
 
 ### Dropping entire collection
 
 ```docker exec -it <db_container_id> mongo aclu --eval "db.features.drop()"```
+```docker exec -it c322bf76719f mongo aclu --eval "db.features.drop()"```
 
 # Tests
 

@@ -142,6 +142,7 @@ def main():
     html_text = close_span_re.sub('', html_text)
     park_hours = parse_park_hours_html_text(html_text)
     json_text = json.dumps(park_hours)
+
     with open(args.output_file, 'w') as f:
         f.write(json_text)
     return 0

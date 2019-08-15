@@ -34,21 +34,12 @@ features = {
                 'embeddable': True
             }
         },
-        'type': {
-            'type': 'string',
-            'allowed': ["park", "tmk"],
-            'required': True
-        },
         'geojson': {
             'type': 'feature'
         },
-        'ownership': {
-            'type': 'string',
-            'allowed': ["city", "state", "private", "federal", "military"]
-        },
         'last_imported_at': {
             'type': 'datetime'
-        },
+        }
     }
 }
 
@@ -137,6 +128,5 @@ feature_park_restrictions = {
 DOMAIN = {
     'organizations': organizations,
     'features': features,
-    'feature_park_restrictions': feature_park_restrictions,
     'holidays': holidays
 }

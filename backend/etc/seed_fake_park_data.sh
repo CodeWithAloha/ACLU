@@ -399,3 +399,5 @@ cd "${__dir}/../importer"
 pip install -r requirements.txt
 
 python import_parks.py --park_features_path "./2017-07-19.parks.geojson"
+
+python import_parks.py --park_features_path "./2019.05.01.parks.geojson"

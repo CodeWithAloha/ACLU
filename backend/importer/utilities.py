@@ -32,6 +32,7 @@ def get_organization(api_base_url, org_name):
             if (len(json_resp["_items"])) == 1:
                 return json_resp["_items"][0]
     except Exception as e:
+        print(e)
         logger.error(e)
         return None
 
@@ -45,10 +46,12 @@ def post_feature(api_base_url, feature_as_json):
             logger.info("Successfully uploaded Feature (id={0})".format(id))
             return id
         else:
-            logger.info("Unsuccessful: " + r.content)
+            logger.error(r.status_code)
+            logger.info("Unsuccessful feature upload")
             return None
-    except:
+    except Exception as e:
         logger.error("Error trying to post Feature")
+        logger.error(e)
         return None
 
 
