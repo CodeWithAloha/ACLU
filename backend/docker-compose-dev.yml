@@ -23,8 +23,11 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - ./mongodb-data:/bitnami
+      - aclu-db:/bitnami
     environment:
       - MONGODB_USERNAME=${MONGO_USERNAME}
       - MONGODB_PASSWORD=${MONGO_PASSWORD}
       - MONGODB_DATABASE=${MONGO_DBNAME}
+volumes:
+  aclu-db:
+    external: true
