@@ -34,6 +34,12 @@ features = {
                 'embeddable': True
             }
         },
+        'type': {
+            'type': 'string',
+            'minlength': 1,
+            'maxlength': 256,
+            'required': True
+        },
         'geojson': {
             'type': 'feature'
         },
