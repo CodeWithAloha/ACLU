@@ -15,8 +15,8 @@ services:
       - "50050:50050"
     volumes:
       - ./api:/src/api
-    links:
-      - db
+  #  links:
+  #    - db
   #db:
   #  container_name: aclu-db
   #  image: 'bitnami/mongodb:4.0.9'
