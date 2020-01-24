@@ -12,7 +12,6 @@ import re
 import requests
 
 
-
 logger = logging.getLogger("aclu_importer.utilities")
 
 

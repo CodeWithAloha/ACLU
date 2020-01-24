@@ -49,7 +49,7 @@ def import_park_features(api_base_url, park_features_path, park_hours_path, park
 
         park_hours = _get_park_hours(park_hours_path)
         
-        park_amenities_json = _get_park_amenities(park_amenities_path)
+        #park_amenities_json = _get_park_amenities(park_amenities_path)
 
         for feature in get_features_from_geojson(park_features_path):
             num_features += 1
@@ -72,13 +72,14 @@ def _post_park_feature_and_restriction(api_base_url,
     f = _construct_park_feature_json(feature, organization, park_hours, park_amenities_json)
     feature_id = post_feature(api_base_url, f)
 
+
 def _construct_park_feature_json(feature, organization, park_hours, park_amenities_json):
     park_name = feature['properties']['PARK_NAME']
-    id = str(uuid.uuid4())
+    feature_id = str(uuid.uuid4())
 
     # It is standard to add attributes to geojson properties
     feature['properties']['NAME'] = park_name
-    feature['properties']['ID'] = id
+    feature['properties']['ID'] = feature_id
     feature['properties']['RESTRICTIONS'] = {}
     feature['properties']['OWNERSHIP'] = 'CITY'
     feature['properties']['TYPE'] = 'park'
@@ -86,14 +87,17 @@ def _construct_park_feature_json(feature, organization, park_hours, park_ameniti
     feature['properties']['FEATURE_TYPE'] = 'PARK'
 
     f = {
-        "_id": id,
+        "_id": feature_id,
         "geojson": feature,
         "name": park_name,
         "last_imported_at": get_pyeve_formatted_datetime(datetime.datetime.utcnow())
     }
 
+    logger.info(f)
     _attach_park_hours_restrictions(f, park_name, park_hours)
-    _attach_data_from_park_amenities_file(f, park_name, park_amenities_json)
+    logger.info(f)
+    # _attach_data_from_park_amenities_file(f, park_name, park_amenities_json)
+    # logger.info(f)
     return f
 
 
@@ -115,16 +119,17 @@ def _attach_park_hours_restrictions(f, park_name, park_hours):
                      + str(e))
         logger.error(traceback.format_exc())
 
+
 def _attach_data_from_park_amenities_file(f, park_name, park_amenities_json):
     try:
         if park_amenities_json is None:
             logger.error('Missing amenities for park: ' + park_name)
             return
         for amenities in park_amenities_json['features']:
-          if amenities['properties']['PARK_NAME'] == park_name:
-            break
-          else:
-              amenities = None
+            if amenities['properties']['PARK_NAME'] == park_name:
+                break
+            else:
+                amenities = None
 
         # amenities = find(lambda amenity: amenity.PARK_NAME == park_name, park_amenities_json.features)
         if amenities:
@@ -171,9 +176,11 @@ def _get_park_hours(park_hours_path=None):
     try:
         with open(park_hours_path) as parks_file:
             return json.load(parks_file)
-    except:
+    except IOError as e:
         logger.error("Error occurred trying to retrieve park hours.")
+        logger.error(e)
         return None
+
 
 def _get_park_amenities(park_amenities_path=None):
     try:
