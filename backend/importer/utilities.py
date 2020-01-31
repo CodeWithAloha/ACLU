@@ -16,14 +16,13 @@ logger = logging.getLogger("aclu_importer.utilities")
 
 
 def get_organization(api_base_url, org_name):
-    logger.debug(
-        "Attempting to get an Organization (name={0})".format(org_name))
+    logger.debug(f"Attempting to get an Organization (name={org_name})")
 
     try:
         resource_base_url = _get_api_resource_url(
             api_base_url,
             'organizations')
-
+        print(resource_base_url)
         resource_payload = _get_regex_payload("name", org_name)
         r = requests.get(resource_base_url, params=resource_payload)
         if r.status_code == 200:
@@ -41,8 +40,8 @@ def post_feature(api_base_url, feature_as_json):
         resource_base_url = _get_api_resource_url(api_base_url, 'features')
         r = requests.post(resource_base_url, json=feature_as_json)
         if r.status_code == 201:
-            id = feature_as_json["_id"]
-            logger.info("Successfully uploaded Feature (id={0})".format(id))
+            feature_id = feature_as_json["_id"]
+            logger.info(f"Successfully uploaded Feature (id={feature_id})")
             return id
         else:
             logger.error(r.status_code)
@@ -59,14 +58,15 @@ def post_park_restriction(api_base_url, park_restriction_as_json):
         resource_base_url = _get_api_resource_url(api_base_url, 'feature_park_restrictions')
         r = requests.post(resource_base_url, json=park_restriction_as_json)
         if r.status_code == 201:
-            id = park_restriction_as_json["_id"]
-            logger.info("Successfully uploaded Park Restriction (id={0})".format(id))
+            restriction_id = park_restriction_as_json["_id"]
+            logger.info(f"Successfully uploaded Park Restriction (id={restriction_id})")
             return id
         else:
             logger.info("Unsuccessful: " + r.content)
             return None
-    except:
+    except Exception as e:
         logger.error("Error trying to post Park Restriction")
+        logger.error(e)
         return None
 
 
@@ -75,12 +75,13 @@ def post_holiday(api_base_url, holiday_as_json):
         resource_base_url = _get_api_resource_url(api_base_url, 'holidays')
         r = requests.post(resource_base_url, json=holiday_as_json)
         if r.status_code == 201:
-            id = holiday_as_json["_id"]
-            logger.info("Successfully uploaded Holiday (id={0})".format(id))
+            holiday_id = holiday_as_json["_id"]
+            logger.info(f"Successfully uploaded Holiday (id={holiday_id})")
         else:
             logger.info("Unsuccessful: " + r.content)
-    except:
+    except Exception as e:
         logger.error("Error trying to post Holiday")
+        logger.error(e)
 
 
 def get_pyeve_formatted_datetime(a_dt):
@@ -107,11 +108,11 @@ def _get_regex_payload(field, field_query):
 unicode_re = re.compile(r'\W', re.ASCII)
 
 
-def normalize_string(input: str) -> str:
+def normalize_string(input_string: str) -> str:
     """
     Code to convert Hawaiian uncode to ascii, in particular remove kahakos and okinas
 
-    :param input: string to clean
+    :param input_string: string to clean
     :return: string with kahakos and okinas removed
     """
     trans_input = "Āāēīōōū"
@@ -119,10 +120,9 @@ def normalize_string(input: str) -> str:
     trans_table = str.maketrans(trans_input, trans_output)
     # need to remove the okina, the translations require a 1 to 1 replacement
     # so do it with a replace
-    new_input = input.translate(trans_table)
+    new_input = input_string.translate(trans_table)
     new_input = new_input.lower()
     return unicode_re.sub('', new_input, re.ASCII)
-
 
 
 # vim: fenc=utf-8
