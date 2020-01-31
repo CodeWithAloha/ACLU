@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
 # Copyright © 2017
@@ -40,8 +40,10 @@ def import_park_features(api_base_url, park_features_path, park_hours_path, park
 
     pool = multiprocessing.Pool(processes=multiprocessing.cpu_count())
 
-    organization = get_organization(api_base_url, "Parks")
-    
+    # organization = get_organization(api_base_url, "Parks")
+    organization = get_organization(api_base_url, "features")
+    print(organization)
+
     num_features = 0
 
     park_amenities_json = None
@@ -49,7 +51,7 @@ def import_park_features(api_base_url, park_features_path, park_hours_path, park
 
         park_hours = _get_park_hours(park_hours_path)
         
-        #park_amenities_json = _get_park_amenities(park_amenities_path)
+        # park_amenities_json = _get_park_amenities(park_amenities_path)
 
         for feature in get_features_from_geojson(park_features_path):
             num_features += 1
@@ -60,7 +62,7 @@ def import_park_features(api_base_url, park_features_path, park_hours_path, park
     pool.join()
 
     end_time = timer()
-    logger.info("import_park_features took {} seconds and imported {} park features".format(end_time - start_time, num_features))
+    logger.info(f"import_park_features took {end_time - start_time} seconds and imported {num_features} park features")
     return sys.exit(0)
 
 
@@ -70,7 +72,7 @@ def _post_park_feature_and_restriction(api_base_url,
                                        park_hours,
                                        park_amenities_json):
     f = _construct_park_feature_json(feature, organization, park_hours, park_amenities_json)
-    feature_id = post_feature(api_base_url, f)
+    # feature_id = post_feature(api_base_url, f)
 
 
 def _construct_park_feature_json(feature, organization, park_hours, park_amenities_json):
@@ -125,6 +127,7 @@ def _attach_data_from_park_amenities_file(f, park_name, park_amenities_json):
         if park_amenities_json is None:
             logger.error('Missing amenities for park: ' + park_name)
             return
+        amenities = None
         for amenities in park_amenities_json['features']:
             if amenities['properties']['PARK_NAME'] == park_name:
                 break
@@ -161,7 +164,7 @@ def _attach_data_from_park_amenities_file(f, park_name, park_amenities_json):
             del amenities['properties']['PARK_TYPE']
 
             for amenity in amenities['properties']:
-                amenities['properties'][amenity] = amenities['properties'][amenity] == 'T' or amenities['properties'][amenity] == 'TRUE' or amenities['properties'][amenity] == 1 or amenities['properties'][amenity] == '1'
+                amenities['properties'][amenity] = amenities['properties'][amenity] in ['T', 'TRUE', 1, '1']
 
             f['geojson']['properties']['AMENITIES'] = amenities['properties']
         else:
