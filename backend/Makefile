@@ -8,5 +8,5 @@ prod:
 	bash -c 'trap "" SIGINT SIGTERM ERR; docker-compose -f docker-compose.yml -p aclu up'
 
 stop-prod:
-	bash -c 'trap "" SIGINT SIGTERM ERR; docker-compose -f docker-compose.yml -p aclu up'
+	bash -c 'trap "" SIGINT SIGTERM ERR; docker-compose -f docker-compose.yml -p aclu down'
 
