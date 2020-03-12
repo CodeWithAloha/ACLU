@@ -35,6 +35,23 @@ def get_organization(api_base_url, org_name):
         return None
 
 
+def get_features_from_tmk(api_base_url, tmk):
+    logger.debug(f"Attempting to get an entry with TMK={tmk})")
+    try:
+        resource_base_url = _get_api_resource_url(
+            api_base_url,
+            'features')
+        resource_payload = {'where': json.dumps({"name": f"TMK {tmk}"})}
+        r = requests.get(resource_base_url, params=resource_payload)
+        if r.status_code == 200:
+            json_resp = r.json()
+            if (len(json_resp["_items"])) == 1:
+                return json_resp["_items"][0]
+    except Exception as e:
+        logger.error(e)
+        return None
+
+
 def post_feature(api_base_url, feature_as_json):
     try:
         resource_base_url = _get_api_resource_url(api_base_url, 'features')
@@ -55,18 +72,19 @@ def post_feature(api_base_url, feature_as_json):
 
 def post_park_restriction(api_base_url, park_restriction_as_json):
     try:
-        resource_base_url = _get_api_resource_url(api_base_url, 'feature_park_restrictions')
+        resource_base_url = _get_api_resource_url(api_base_url, 'park_features')
         r = requests.post(resource_base_url, json=park_restriction_as_json)
+        logger.info(f"url = {resource_base_url}")
         if r.status_code == 201:
             restriction_id = park_restriction_as_json["_id"]
             logger.info(f"Successfully uploaded Park Restriction (id={restriction_id})")
             return id
         else:
-            logger.info("Unsuccessful: " + r.content)
+            logger.info("Unsuccessful: " + r.text)
             return None
     except Exception as e:
         logger.error("Error trying to post Park Restriction")
-        logger.error(e)
+        logger.error(e, exc_info=True)
         return None
 
 

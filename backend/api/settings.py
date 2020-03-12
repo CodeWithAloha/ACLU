@@ -8,6 +8,15 @@ MONGO_PORT = int(os.environ.get('MONGO_PORT', 27017))
 MONGO_USERNAME = os.environ.get('MONGO_USERNAME', '')
 MONGO_PASSWORD = os.environ.get('MONGO_PASSWORD', '')
 MONGO_DBNAME = os.environ.get('MONGO_DBNAME', 'aclu')
+# need to use URI to set retryWrites
+MONGO_URI = "mongodb://{}:{}@{}:{}/{}?retryWrites=false".format(MONGO_USERNAME, MONGO_PASSWORD, MONGO_HOST, MONGO_PORT,
+                                                                MONGO_DBNAME)
+
+print(MONGO_HOST)
+print(MONGO_PORT)
+print(MONGO_USERNAME)
+print(MONGO_PASSWORD)
+print(MONGO_DBNAME)
 
 RESOURCE_METHODS = ['GET', 'POST', 'DELETE']
 ITEM_METHODS = ['GET', 'PATCH', 'PUT', 'DELETE']
@@ -49,6 +58,38 @@ features = {
     }
 }
 
+park_features = {
+    'item_url': 'regex("[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}")',
+    'schema': {
+        '_id': {'type': 'uuid'},
+        'name': {
+            'type': 'string',
+            'minlength': 1,
+            'maxlength': 256,
+            'required': True
+        },
+        'organization': {
+            'type': 'uuid',
+            'data_relation': {
+                'resource': 'organizations',
+                'field': '_id',
+                'embeddable': True
+            }
+        },
+        'type': {
+            'type': 'string',
+            'minlength': 1,
+            'maxlength': 256,
+            'required': True
+        },
+        'geojson': {
+            'type': 'feature'
+        },
+        'last_imported_at': {
+            'type': 'datetime'
+        }
+    }
+}
 
 organizations = {
     'item_url': 'regex("[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}")',
@@ -134,5 +175,6 @@ feature_park_restrictions = {
 DOMAIN = {
     'organizations': organizations,
     'features': features,
+    'park_features': park_features,
     'holidays': holidays
 }

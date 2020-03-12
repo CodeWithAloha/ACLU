@@ -5,7 +5,7 @@ stop-dev:
 	bash -c 'trap "" SIGINT SIGTERM ERR; docker-compose -f docker-compose-dev.yml -p aclu down'
 
 prod:
-	bash -c 'trap "" SIGINT SIGTERM ERR; docker-compose -f docker-compose.yml -p aclu up'
+	bash -c 'trap "" SIGINT SIGTERM ERR; docker-compose -f docker-compose.yml -p aclu up --remove-orphans'
 
 stop-prod:
 	bash -c 'trap "" SIGINT SIGTERM ERR; docker-compose -f docker-compose.yml -p aclu down'

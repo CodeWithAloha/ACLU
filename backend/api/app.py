@@ -6,6 +6,7 @@
 # Distributed under terms of the MIT license.
 
 from eve import Eve
+from flask import Flask, request
 import os
 from uuid_encoder import UUIDEncoder
 from uuid_validator import UUIDValidator
