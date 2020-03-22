@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
@@ -10,6 +9,7 @@ import click
 import sys
 import os
 
+
 @click.command()
 @click.option('--source', default="./2017-07-13.tmk.geojson", help="Source file to split")
 @click.option('--destination', default="./tmp", help="Destination folder for files")
@@ -19,9 +19,9 @@ def split(source, destination, count_per_file):
     line = file.readline()
     header = ''
     while is_not_a_feature(line):
-        if (not line.startswith('"crs')):
+        if not line.startswith('"crs'):
           header += line
-          line = file.readline()
+        line = file.readline()
     number=0
     while True:
         output=open("%s/%s.geojson" %(destination, number),'w')
@@ -35,7 +35,7 @@ def split(source, destination, count_per_file):
             for i in range(count_per_file):
                 if is_not_a_feature(feature):
                     print(feature)
-                    if (i < count_per_file -1):
+                    if i < count_per_file -1:
                         print(i)
                         print(count_per_file)
                         # remove last ',' on features
@@ -52,9 +52,11 @@ def split(source, destination, count_per_file):
             output.write("]}")
             output.close()
 
+
 def is_not_a_feature(str):
   # Pretty weak way to check if the given string is not a geojson feature
   return not str.startswith('{ "type":')
+
 
 if __name__ == "__main__":
     split()
