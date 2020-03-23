@@ -6,8 +6,7 @@
 # Distributed under terms of the MIT license.
 
 import click
-import sys
-import os
+import json
 
 
 @click.command()
@@ -15,47 +14,16 @@ import os
 @click.option('--destination', default="./tmp", help="Destination folder for files")
 @click.option('--count_per_file', default=10000, help="Number of polygons per file")
 def split(source, destination, count_per_file):
-  file = open(source, 'r')
-  line = file.readline()
-  header = ''
-  while is_not_a_feature(line):
-    if not line.startswith('"crs'):
-      header += line
-    line = file.readline()
-  number = 0
-  while True:
-    output = open("%s/%s.geojson" % (destination, number), 'w')
-    output.write(header)
-    number += 1
-    feature = file.readline()
-    # Stop when we find the end of the file
-    if is_not_a_feature(feature):
-      break
-    else:
-      for i in range(count_per_file):
-        if is_not_a_feature(feature):
-          print(feature)
-          if i < count_per_file - 1:
-            print(i)
-            print(count_per_file)
-            # remove last ',' on features
-            output.seek(-1, os.SEEK_END)
-            output.truncate()
-          output.write("]}")
-          output.close()
-          sys.exit("Done!")
-        else:
-          if feature == '}':
-            print("wrong!!!")
-          output.write(feature)
-          feature = file.readline()
-      output.write("]}")
-      output.close()
-
-
-def is_not_a_feature(str):
-  # Pretty weak way to check if the given string is not a geojson feature
-  return not str.startswith('{ "type":')
+  geojson = json.loads(open(source, 'r').read())
+  for start, index in [(x, x // count_per_file) for x in range(0, len(geojson['features']), count_per_file)]:
+    chunked_geojson = {"type": "FeatureCollection",
+                       "name": "oahtmk",
+                       "crs": {"type": "name",
+                               "properties": {"name": "urn:ogc:def:crs:OGC:1.3:CRS84"}},
+                       'features': geojson['features'][start:start + count_per_file]}
+    filename = f"{destination}/{index}.geojson"
+    with open(filename, 'w') as output:
+      output.write(json.dumps(chunked_geojson))
 
 
 if __name__ == "__main__":
